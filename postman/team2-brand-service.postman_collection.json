@@ -1,0 +1,262 @@
+{
+  "info": {
+    "name": "Team 2 - Brand Service APIs",
+    "description": "APIs provided by the Brand Service (Srini & Sandipan)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Brand Search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"Oriental Bank\",\n  \"limit\": 10\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8001/api/v1/brands/search",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["api", "v1", "brands", "search"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Oriental Bank\",\n  \"limit\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/search",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "search"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"oriental_bank_pr\",\n      \"name\": \"Oriental Bank\",\n      \"full_name\": \"Oriental Bank of Puerto Rico\",\n      \"industry\": \"Banking\",\n      \"logo_url\": \"https://example.com/oriental_bank_logo.png\",\n      \"description\": \"Leading bank in Puerto Rico\",\n      \"confidence_score\": 0.95\n    }\n  ],\n  \"total_results\": 1\n}"
+        },
+        {
+          "name": "Error Response - Invalid Query",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"\",\n  \"limit\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/search",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "search"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Query cannot be empty\",\n    \"details\": {\n      \"field\": \"query\",\n      \"value\": \"\"\n    }\n  },\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Brand Areas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/areas",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["api", "v1", "brands", "oriental_bank_pr", "areas"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/areas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "oriental_bank_pr", "areas"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"self_service_portal\",\n      \"name\": \"Self Service Portal\",\n      \"description\": \"Online banking and customer self-service capabilities\",\n      \"relevance_score\": 0.92,\n      \"metrics\": [\"user_experience\", \"feature_completeness\", \"security\"]\n    },\n    {\n      \"id\": \"employer_branding\",\n      \"name\": \"Employer Branding\",\n      \"description\": \"Company reputation as an employer\",\n      \"relevance_score\": 0.78,\n      \"metrics\": [\"employee_satisfaction\", \"compensation\", \"work_life_balance\"]\n    },\n    {\n      \"id\": \"customer_service\",\n      \"name\": \"Customer Service\",\n      \"description\": \"Customer support and service quality\",\n      \"relevance_score\": 0.85,\n      \"metrics\": [\"response_time\", \"satisfaction_rate\", \"resolution_rate\"]\n    }\n  ]\n}"
+        },
+        {
+          "name": "Error Response - Brand Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/invalid_brand/areas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "invalid_brand", "areas"]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Brand not found\",\n    \"details\": {\n      \"field\": \"brand_id\",\n      \"value\": \"invalid_brand\"\n    }\n  },\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Competitors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/competitors?area=self_service_portal",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["api", "v1", "brands", "oriental_bank_pr", "competitors"],
+          "query": [
+            {
+              "key": "area",
+              "value": "self_service_portal"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/competitors?area=self_service_portal",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "oriental_bank_pr", "competitors"],
+              "query": [
+                {
+                  "key": "area",
+                  "value": "self_service_portal"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"banco_popular\",\n      \"name\": \"Banco Popular\",\n      \"logo_url\": \"https://example.com/banco_popular_logo.png\",\n      \"industry\": \"Banking\",\n      \"relevance_score\": 0.89,\n      \"competition_level\": \"direct\"\n    },\n    {\n      \"id\": \"first_bank\",\n      \"name\": \"First Bank\",\n      \"logo_url\": \"https://example.com/first_bank_logo.png\",\n      \"industry\": \"Banking\",\n      \"relevance_score\": 0.76,\n      \"competition_level\": \"direct\"\n    },\n    {\n      \"id\": \"santander\",\n      \"name\": \"Santander Bank\",\n      \"logo_url\": \"https://example.com/santander_logo.png\",\n      \"industry\": \"Banking\",\n      \"relevance_score\": 0.72,\n      \"competition_level\": \"direct\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["health"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"status\": \"healthy\",\n  \"service\": \"brand-service\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"version\": \"1.0.0\"\n}"
+        }
+      ]
+    }
+  ]
+} 

@@ -1,0 +1,459 @@
+{
+  "info": {
+    "name": "Team 1 - Frontend Service APIs",
+    "description": "APIs consumed by the Frontend Service (Chandu & Avishek)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Brand Service APIs",
+      "item": [
+        {
+          "name": "Search Brands",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Oriental Bank\",\n  \"limit\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/search",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "search"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"Oriental Bank\",\n  \"limit\": 10\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8001/api/v1/brands/search",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8001",
+                  "path": ["api", "v1", "brands", "search"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"oriental_bank_pr\",\n      \"name\": \"Oriental Bank\",\n      \"full_name\": \"Oriental Bank of Puerto Rico\",\n      \"industry\": \"Banking\",\n      \"logo_url\": \"https://example.com/oriental_bank_logo.png\",\n      \"description\": \"Leading bank in Puerto Rico\",\n      \"confidence_score\": 0.95\n    }\n  ],\n  \"total_results\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Brand Areas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/areas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "oriental_bank_pr", "areas"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/areas",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8001",
+                  "path": ["api", "v1", "brands", "oriental_bank_pr", "areas"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"self_service_portal\",\n      \"name\": \"Self Service Portal\",\n      \"description\": \"Online banking and customer self-service capabilities\",\n      \"relevance_score\": 0.92,\n      \"metrics\": [\"user_experience\", \"feature_completeness\", \"security\"]\n    },\n    {\n      \"id\": \"employer_branding\",\n      \"name\": \"Employer Branding\",\n      \"description\": \"Company reputation as an employer\",\n      \"relevance_score\": 0.78,\n      \"metrics\": [\"employee_satisfaction\", \"compensation\", \"work_life_balance\"]\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Competitors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/competitors?area=self_service_portal",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["api", "v1", "brands", "oriental_bank_pr", "competitors"],
+              "query": [
+                {
+                  "key": "area",
+                  "value": "self_service_portal"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/api/v1/brands/oriental_bank_pr/competitors?area=self_service_portal",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8001",
+                  "path": ["api", "v1", "brands", "oriental_bank_pr", "competitors"],
+                  "query": [
+                    {
+                      "key": "area",
+                      "value": "self_service_portal"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"banco_popular\",\n      \"name\": \"Banco Popular\",\n      \"logo_url\": \"https://example.com/banco_popular_logo.png\",\n      \"industry\": \"Banking\",\n      \"relevance_score\": 0.89,\n      \"competition_level\": \"direct\"\n    },\n    {\n      \"id\": \"first_bank\",\n      \"name\": \"First Bank\",\n      \"logo_url\": \"https://example.com/first_bank_logo.png\",\n      \"industry\": \"Banking\",\n      \"relevance_score\": 0.76,\n      \"competition_level\": \"direct\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Collection Service APIs",
+      "item": [
+        {
+          "name": "Start Data Collection",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand_id\": \"oriental_bank_pr\",\n  \"competitor_id\": \"banco_popular\",\n  \"area_id\": \"self_service_portal\",\n  \"sources\": [\"news\", \"social_media\", \"glassdoor\", \"website\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brand_id\": \"oriental_bank_pr\",\n  \"competitor_id\": \"banco_popular\",\n  \"area_id\": \"self_service_portal\",\n  \"sources\": [\"news\", \"social_media\", \"glassdoor\", \"website\"]\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8002/api/v1/collect",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8002",
+                  "path": ["api", "v1", "collect"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"job_id\": \"collect_12345\",\n  \"status\": \"started\",\n  \"estimated_duration\": 180\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Collection Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/collect_12345/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "collect_12345", "status"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/api/v1/collect/collect_12345/status",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8002",
+                  "path": ["api", "v1", "collect", "collect_12345", "status"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"job_id\": \"collect_12345\",\n    \"status\": \"in_progress\",\n    \"progress\": 65,\n    \"completed_sources\": [\"news\", \"social_media\"],\n    \"remaining_sources\": [\"glassdoor\", \"website\"],\n    \"estimated_completion\": \"2024-01-15T10:30:00Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Collection Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/collect_12345/data",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "collect_12345", "data"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/api/v1/collect/collect_12345/data",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8002",
+                  "path": ["api", "v1", "collect", "collect_12345", "data"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"brand_data\": {\n      \"brand_id\": \"oriental_bank_pr\",\n      \"news_sentiment\": {\n        \"score\": 0.75,\n        \"articles_count\": 45,\n        \"positive_articles\": 34,\n        \"negative_articles\": 8,\n        \"neutral_articles\": 3\n      },\n      \"social_media\": {\n        \"overall_sentiment\": 0.68,\n        \"mentions_count\": 1234,\n        \"engagement_rate\": 0.045,\n        \"platforms\": {\n          \"twitter\": {\"sentiment\": 0.72, \"mentions\": 567},\n          \"facebook\": {\"sentiment\": 0.65, \"mentions\": 432},\n          \"linkedin\": {\"sentiment\": 0.71, \"mentions\": 235}\n        }\n      },\n      \"glassdoor\": {\n        \"overall_rating\": 3.8,\n        \"reviews_count\": 89,\n        \"pros\": [\"Good benefits\", \"Work-life balance\"],\n        \"cons\": [\"Limited growth opportunities\"],\n        \"recommendation_rate\": 0.78\n      },\n      \"website_analysis\": {\n        \"user_experience_score\": 0.82,\n        \"feature_completeness\": 0.75,\n        \"security_score\": 0.88,\n        \"accessibility_score\": 0.79\n      }\n    },\n    \"competitor_data\": {\n      \"brand_id\": \"banco_popular\",\n      \"news_sentiment\": {\n        \"score\": 0.82,\n        \"articles_count\": 67,\n        \"positive_articles\": 52,\n        \"negative_articles\": 10,\n        \"neutral_articles\": 5\n      },\n      \"social_media\": {\n        \"overall_sentiment\": 0.74,\n        \"mentions_count\": 1890,\n        \"engagement_rate\": 0.052,\n        \"platforms\": {\n          \"twitter\": {\"sentiment\": 0.78, \"mentions\": 890},\n          \"facebook\": {\"sentiment\": 0.71, \"mentions\": 678},\n          \"linkedin\": {\"sentiment\": 0.76, \"mentions\": 322}\n        }\n      },\n      \"glassdoor\": {\n        \"overall_rating\": 4.1,\n        \"reviews_count\": 156,\n        \"pros\": [\"Career growth\", \"Competitive salary\"],\n        \"cons\": [\"High workload\"],\n        \"recommendation_rate\": 0.85\n      },\n      \"website_analysis\": {\n        \"user_experience_score\": 0.89,\n        \"feature_completeness\": 0.82,\n        \"security_score\": 0.91,\n        \"accessibility_score\": 0.84\n      }\n    }\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Analysis Engine APIs",
+      "item": [
+        {
+          "name": "Start Analysis",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand_data\": {\n    \"brand_id\": \"oriental_bank_pr\",\n    \"news_sentiment\": {\"score\": 0.75},\n    \"social_media\": {\"overall_sentiment\": 0.68},\n    \"glassdoor\": {\"overall_rating\": 3.8},\n    \"website_analysis\": {\"user_experience_score\": 0.82}\n  },\n  \"competitor_data\": {\n    \"brand_id\": \"banco_popular\",\n    \"news_sentiment\": {\"score\": 0.82},\n    \"social_media\": {\"overall_sentiment\": 0.74},\n    \"glassdoor\": {\"overall_rating\": 4.1},\n    \"website_analysis\": {\"user_experience_score\": 0.89}\n  },\n  \"area_id\": \"self_service_portal\",\n  \"analysis_type\": \"comprehensive\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8003/api/v1/analyze",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8003",
+              "path": ["api", "v1", "analyze"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brand_data\": {\n    \"brand_id\": \"oriental_bank_pr\",\n    \"news_sentiment\": {\"score\": 0.75},\n    \"social_media\": {\"overall_sentiment\": 0.68},\n    \"glassdoor\": {\"overall_rating\": 3.8},\n    \"website_analysis\": {\"user_experience_score\": 0.82}\n  },\n  \"competitor_data\": {\n    \"brand_id\": \"banco_popular\",\n    \"news_sentiment\": {\"score\": 0.82},\n    \"social_media\": {\"overall_sentiment\": 0.74},\n    \"glassdoor\": {\"overall_rating\": 4.1},\n    \"website_analysis\": {\"user_experience_score\": 0.89}\n  },\n  \"area_id\": \"self_service_portal\",\n  \"analysis_type\": \"comprehensive\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8003/api/v1/analyze",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8003",
+                  "path": ["api", "v1", "analyze"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"analysis_id\": \"analysis_67890\",\n  \"status\": \"processing\",\n  \"estimated_duration\": 60\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Analysis Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8003/api/v1/analyze/analysis_67890/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8003",
+              "path": ["api", "v1", "analyze", "analysis_67890", "status"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/api/v1/analyze/analysis_67890/status",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8003",
+                  "path": ["api", "v1", "analyze", "analysis_67890", "status"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"analysis_id\": \"analysis_67890\",\n    \"status\": \"completed\",\n    \"progress\": 100,\n    \"completed_at\": \"2024-01-15T10:35:00Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Analysis Results",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8003/api/v1/analyze/analysis_67890/results",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8003",
+              "path": ["api", "v1", "analyze", "analysis_67890", "results"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/api/v1/analyze/analysis_67890/results",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8003",
+                  "path": ["api", "v1", "analyze", "analysis_67890", "results"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"analysis_id\": \"analysis_67890\",\n    \"area_id\": \"self_service_portal\",\n    \"brand_name\": \"Oriental Bank\",\n    \"competitor_name\": \"Banco Popular\",\n    \"overall_comparison\": {\n      \"brand_score\": 0.76,\n      \"competitor_score\": 0.84,\n      \"gap\": -0.08,\n      \"brand_ranking\": \"second\"\n    },\n    \"detailed_comparison\": {\n      \"user_experience\": {\n        \"brand_score\": 0.82,\n        \"competitor_score\": 0.89,\n        \"difference\": -0.07,\n        \"insight\": \"Banco Popular has superior user interface design\"\n      }\n    },\n    \"actionable_insights\": [\n      {\n        \"priority\": \"high\",\n        \"category\": \"feature_development\",\n        \"title\": \"Implement Advanced Mobile Banking\",\n        \"description\": \"Develop mobile app features like biometric authentication\",\n        \"estimated_effort\": \"3-4 months\",\n        \"expected_impact\": \"Increase user experience score by 0.15\"\n      }\n    ]\n  }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

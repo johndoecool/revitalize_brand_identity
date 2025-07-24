@@ -1,0 +1,316 @@
+{
+  "info": {
+    "name": "Team 3 - Data Collection Service APIs",
+    "description": "APIs provided by the Data Collection Service (Satyajit & Nilanjan)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Start Data Collection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"brand_id\": \"oriental_bank_pr\",\n  \"competitor_id\": \"banco_popular\",\n  \"area_id\": \"self_service_portal\",\n  \"sources\": [\"news\", \"social_media\", \"glassdoor\", \"website\"]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8002/api/v1/collect",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8002",
+          "path": ["api", "v1", "collect"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand_id\": \"oriental_bank_pr\",\n  \"competitor_id\": \"banco_popular\",\n  \"area_id\": \"self_service_portal\",\n  \"sources\": [\"news\", \"social_media\", \"glassdoor\", \"website\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"job_id\": \"collect_12345\",\n  \"status\": \"started\",\n  \"estimated_duration\": 180\n}"
+        },
+        {
+          "name": "Error Response - Invalid Sources",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brand_id\": \"oriental_bank_pr\",\n  \"competitor_id\": \"banco_popular\",\n  \"area_id\": \"self_service_portal\",\n  \"sources\": [\"invalid_source\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Invalid data source specified\",\n    \"details\": {\n      \"field\": \"sources\",\n      \"value\": [\"invalid_source\"]\n    }\n  },\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Collection Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8002/api/v1/collect/collect_12345/status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8002",
+          "path": ["api", "v1", "collect", "collect_12345", "status"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response - In Progress",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/collect_12345/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "collect_12345", "status"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"job_id\": \"collect_12345\",\n    \"status\": \"in_progress\",\n    \"progress\": 65,\n    \"completed_sources\": [\"news\", \"social_media\"],\n    \"remaining_sources\": [\"glassdoor\", \"website\"],\n    \"estimated_completion\": \"2024-01-15T10:30:00Z\",\n    \"current_step\": \"Collecting Glassdoor reviews\"\n  }\n}"
+        },
+        {
+          "name": "Success Response - Completed",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/collect_12345/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "collect_12345", "status"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"job_id\": \"collect_12345\",\n    \"status\": \"completed\",\n    \"progress\": 100,\n    \"completed_sources\": [\"news\", \"social_media\", \"glassdoor\", \"website\"],\n    \"remaining_sources\": [],\n    \"completed_at\": \"2024-01-15T10:28:00Z\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Collection Data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8002/api/v1/collect/collect_12345/data",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8002",
+          "path": ["api", "v1", "collect", "collect_12345", "data"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/collect_12345/data",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "collect_12345", "data"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"brand_data\": {\n      \"brand_id\": \"oriental_bank_pr\",\n      \"news_sentiment\": {\n        \"score\": 0.75,\n        \"articles_count\": 45,\n        \"positive_articles\": 34,\n        \"negative_articles\": 8,\n        \"neutral_articles\": 3,\n        \"recent_articles\": [\n          {\n            \"title\": \"Oriental Bank Expands Digital Services\",\n            \"sentiment\": \"positive\",\n            \"published_date\": \"2024-01-10\"\n          }\n        ]\n      },\n      \"social_media\": {\n        \"overall_sentiment\": 0.68,\n        \"mentions_count\": 1234,\n        \"engagement_rate\": 0.045,\n        \"platforms\": {\n          \"twitter\": {\"sentiment\": 0.72, \"mentions\": 567},\n          \"facebook\": {\"sentiment\": 0.65, \"mentions\": 432},\n          \"linkedin\": {\"sentiment\": 0.71, \"mentions\": 235}\n        },\n        \"trending_topics\": [\"digital banking\", \"customer service\", \"mobile app\"]\n      },\n      \"glassdoor\": {\n        \"overall_rating\": 3.8,\n        \"reviews_count\": 89,\n        \"pros\": [\"Good benefits\", \"Work-life balance\", \"Stable company\"],\n        \"cons\": [\"Limited growth opportunities\", \"Slow to adopt new technology\"],\n        \"recommendation_rate\": 0.78,\n        \"ceo_approval\": 0.82\n      },\n      \"website_analysis\": {\n        \"user_experience_score\": 0.82,\n        \"feature_completeness\": 0.75,\n        \"security_score\": 0.88,\n        \"accessibility_score\": 0.79,\n        \"mobile_friendliness\": 0.76,\n        \"load_time\": 2.3\n      }\n    },\n    \"competitor_data\": {\n      \"brand_id\": \"banco_popular\",\n      \"news_sentiment\": {\n        \"score\": 0.82,\n        \"articles_count\": 67,\n        \"positive_articles\": 52,\n        \"negative_articles\": 10,\n        \"neutral_articles\": 5,\n        \"recent_articles\": [\n          {\n            \"title\": \"Banco Popular Launches AI-Powered Chatbot\",\n            \"sentiment\": \"positive\",\n            \"published_date\": \"2024-01-12\"\n          }\n        ]\n      },\n      \"social_media\": {\n        \"overall_sentiment\": 0.74,\n        \"mentions_count\": 1890,\n        \"engagement_rate\": 0.052,\n        \"platforms\": {\n          \"twitter\": {\"sentiment\": 0.78, \"mentions\": 890},\n          \"facebook\": {\"sentiment\": 0.71, \"mentions\": 678},\n          \"linkedin\": {\"sentiment\": 0.76, \"mentions\": 322}\n        },\n        \"trending_topics\": [\"AI banking\", \"innovation\", \"customer experience\"]\n      },\n      \"glassdoor\": {\n        \"overall_rating\": 4.1,\n        \"reviews_count\": 156,\n        \"pros\": [\"Career growth\", \"Competitive salary\", \"Innovative culture\"],\n        \"cons\": [\"High workload\", \"Fast-paced environment\"],\n        \"recommendation_rate\": 0.85,\n        \"ceo_approval\": 0.89\n      },\n      \"website_analysis\": {\n        \"user_experience_score\": 0.89,\n        \"feature_completeness\": 0.82,\n        \"security_score\": 0.91,\n        \"accessibility_score\": 0.84,\n        \"mobile_friendliness\": 0.92,\n        \"load_time\": 1.8\n      }\n    }\n  }\n}"
+        },
+        {
+          "name": "Error Response - Job Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/collect/invalid_job/data",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "collect", "invalid_job", "data"]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Collection job not found\",\n    \"details\": {\n      \"field\": \"job_id\",\n      \"value\": \"invalid_job\"\n    }\n  },\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Data Sources Configuration",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8002/api/v1/sources/config",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8002",
+          "path": ["api", "v1", "sources", "config"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/api/v1/sources/config",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["api", "v1", "sources", "config"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"available_sources\": [\n      {\n        \"id\": \"news\",\n        \"name\": \"News APIs\",\n        \"description\": \"News sentiment analysis\",\n        \"enabled\": true,\n        \"rate_limit\": 1000\n      },\n      {\n        \"id\": \"social_media\",\n        \"name\": \"Social Media\",\n        \"description\": \"Social media sentiment analysis\",\n        \"enabled\": true,\n        \"rate_limit\": 500\n      },\n      {\n        \"id\": \"glassdoor\",\n        \"name\": \"Glassdoor Reviews\",\n        \"description\": \"Employee reviews and ratings\",\n        \"enabled\": true,\n        \"rate_limit\": 100\n      },\n      {\n        \"id\": \"website\",\n        \"name\": \"Website Analysis\",\n        \"description\": \"Website performance and UX analysis\",\n        \"enabled\": true,\n        \"rate_limit\": 50\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8002/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8002",
+          "path": ["health"]
+        }
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8002/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"status\": \"healthy\",\n  \"service\": \"data-collection-service\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"version\": \"1.0.0\",\n  \"active_jobs\": 3\n}"
+        }
+      ]
+    }
+  ]
+} 

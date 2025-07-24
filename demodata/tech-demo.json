@@ -1,0 +1,368 @@
+{
+  "demo_id": "tech_demo",
+  "name": "Tech Employer Branding Comparison",
+  "description": "Comparison between Microsoft and Google in employer branding and workplace culture",
+  "brand": {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "full_name": "Microsoft Corporation",
+    "industry": "Technology",
+    "logo_url": "https://example.com/microsoft_logo.png",
+    "description": "Global technology leader with focus on productivity and cloud computing",
+    "website": "https://www.microsoft.com"
+  },
+  "competitor": {
+    "id": "google",
+    "name": "Google",
+    "full_name": "Alphabet Inc. (Google)",
+    "industry": "Technology",
+    "logo_url": "https://example.com/google_logo.png",
+    "description": "Innovative tech giant known for search, AI, and cutting-edge technology",
+    "website": "https://www.google.com"
+  },
+  "area": {
+    "id": "employer_branding",
+    "name": "Employer Branding",
+    "description": "Company reputation as an employer and workplace culture"
+  },
+  "brand_data": {
+    "brand_id": "microsoft",
+    "news_sentiment": {
+      "score": 0.78,
+      "articles_count": 89,
+      "positive_articles": 67,
+      "negative_articles": 12,
+      "neutral_articles": 10,
+      "recent_articles": [
+        {
+          "title": "Microsoft Named Best Workplace for Diversity",
+          "sentiment": "positive",
+          "published_date": "2024-01-12",
+          "source": "Forbes"
+        },
+        {
+          "title": "Microsoft Expands Remote Work Policy",
+          "sentiment": "positive",
+          "published_date": "2024-01-09",
+          "source": "TechCrunch"
+        },
+        {
+          "title": "Some Employees Express Concerns About Return to Office",
+          "sentiment": "negative",
+          "published_date": "2024-01-06",
+          "source": "Business Insider"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.72,
+      "mentions_count": 2345,
+      "engagement_rate": 0.058,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.75,
+          "mentions": 1234,
+          "trending_topics": ["workplace culture", "diversity", "remote work"]
+        },
+        "facebook": {
+          "sentiment": 0.69,
+          "mentions": 678,
+          "trending_topics": ["employee benefits", "career growth"]
+        },
+        "linkedin": {
+          "sentiment": 0.76,
+          "mentions": 433,
+          "trending_topics": ["professional development", "technology innovation"]
+        }
+      },
+      "trending_topics": ["workplace culture", "diversity", "remote work", "employee benefits"]
+    },
+    "glassdoor": {
+      "overall_rating": 4.2,
+      "reviews_count": 234,
+      "pros": [
+        "Excellent benefits and compensation",
+        "Strong work-life balance",
+        "Great learning opportunities",
+        "Inclusive and diverse culture",
+        "Stable company with good job security"
+      ],
+      "cons": [
+        "Large company bureaucracy",
+        "Slow decision-making processes",
+        "Some teams have high workload",
+        "Limited flexibility in certain roles"
+      ],
+      "recommendation_rate": 0.87,
+      "ceo_approval": 0.91,
+      "recent_reviews": [
+        {
+          "rating": 5,
+          "pros": "Amazing benefits and inclusive culture",
+          "cons": "Sometimes slow to move on decisions",
+          "date": "2024-01-13"
+        },
+        {
+          "rating": 4,
+          "pros": "Great learning opportunities and stability",
+          "cons": "Large company politics",
+          "date": "2024-01-11"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.85,
+      "feature_completeness": 0.88,
+      "security_score": 0.92,
+      "accessibility_score": 0.87,
+      "mobile_friendliness": 0.89,
+      "load_time": 2.1,
+      "features": [
+        "Comprehensive careers section",
+        "Employee testimonials",
+        "Diversity and inclusion content",
+        "Benefits information",
+        "Professional development programs",
+        "Remote work policies"
+      ],
+      "missing_features": [
+        "Real-time employee reviews",
+        "Interactive culture assessment",
+        "Direct application tracking"
+      ]
+    }
+  },
+  "competitor_data": {
+    "brand_id": "google",
+    "news_sentiment": {
+      "score": 0.81,
+      "articles_count": 112,
+      "positive_articles": 89,
+      "negative_articles": 15,
+      "neutral_articles": 8,
+      "recent_articles": [
+        {
+          "title": "Google Ranked #1 Best Company to Work For",
+          "sentiment": "positive",
+          "published_date": "2024-01-14",
+          "source": "Fortune"
+        },
+        {
+          "title": "Google's Innovative Perks Set Industry Standard",
+          "sentiment": "positive",
+          "published_date": "2024-01-10",
+          "source": "Business Week"
+        },
+        {
+          "title": "Some Employees Concerned About Work-Life Balance",
+          "sentiment": "negative",
+          "published_date": "2024-01-07",
+          "source": "Tech News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.79,
+      "mentions_count": 3456,
+      "engagement_rate": 0.065,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.82,
+          "mentions": 1890,
+          "trending_topics": ["innovation", "perks", "workplace culture"]
+        },
+        "facebook": {
+          "sentiment": 0.76,
+          "mentions": 987,
+          "trending_topics": ["employee benefits", "career opportunities"]
+        },
+        "linkedin": {
+          "sentiment": 0.81,
+          "mentions": 579,
+          "trending_topics": ["technology leadership", "professional growth"]
+        }
+      },
+      "trending_topics": ["innovation", "perks", "workplace culture", "employee benefits"]
+    },
+    "glassdoor": {
+      "overall_rating": 4.4,
+      "reviews_count": 456,
+      "pros": [
+        "Amazing perks and benefits",
+        "Innovative and exciting work",
+        "Top-tier compensation",
+        "Cutting-edge technology",
+        "Fast-paced and dynamic environment",
+        "Excellent career growth opportunities"
+      ],
+      "cons": [
+        "High expectations and pressure",
+        "Work-life balance challenges",
+        "Fast-paced environment can be stressful",
+        "Some teams have long hours"
+      ],
+      "recommendation_rate": 0.92,
+      "ceo_approval": 0.94,
+      "recent_reviews": [
+        {
+          "rating": 5,
+          "pros": "Incredible perks and innovative culture",
+          "cons": "High pressure and expectations",
+          "date": "2024-01-14"
+        },
+        {
+          "rating": 4,
+          "pros": "Amazing technology and career growth",
+          "cons": "Work-life balance can be challenging",
+          "date": "2024-01-12"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.92,
+      "feature_completeness": 0.91,
+      "security_score": 0.94,
+      "accessibility_score": 0.89,
+      "mobile_friendliness": 0.95,
+      "load_time": 1.6,
+      "features": [
+        "Interactive careers portal",
+        "Employee stories and testimonials",
+        "Comprehensive benefits showcase",
+        "Culture and values section",
+        "Innovation and technology focus",
+        "Diversity and inclusion programs",
+        "Real-time application status"
+      ],
+      "missing_features": [
+        "Detailed salary information",
+        "Work-life balance metrics"
+      ]
+    }
+  },
+  "analysis_results": {
+    "overall_comparison": {
+      "brand_score": 0.82,
+      "competitor_score": 0.89,
+      "gap": -0.07,
+      "brand_ranking": "second",
+      "confidence_level": 0.94
+    },
+    "detailed_comparison": {
+      "employee_satisfaction": {
+        "brand_score": 0.78,
+        "competitor_score": 0.85,
+        "difference": -0.07,
+        "insight": "Google has higher employee satisfaction due to innovative perks and exciting work environment",
+        "trend": "improving"
+      },
+      "compensation": {
+        "brand_score": 0.84,
+        "competitor_score": 0.91,
+        "difference": -0.07,
+        "insight": "Google offers more competitive compensation packages and innovative benefits",
+        "trend": "stable"
+      },
+      "work_life_balance": {
+        "brand_score": 0.86,
+        "competitor_score": 0.78,
+        "difference": 0.08,
+        "insight": "Microsoft has better work-life balance policies and more stable work environment",
+        "trend": "improving"
+      },
+      "career_growth": {
+        "brand_score": 0.80,
+        "competitor_score": 0.88,
+        "difference": -0.08,
+        "insight": "Google provides faster career advancement and more dynamic growth opportunities",
+        "trend": "stable"
+      }
+    },
+    "actionable_insights": [
+      {
+        "priority": "high",
+        "category": "employee_benefits",
+        "title": "Enhance Employee Benefits and Perks",
+        "description": "Develop innovative benefits packages to compete with Google's attractive offerings",
+        "estimated_effort": "4-6 months",
+        "expected_impact": "Increase employee satisfaction score by 0.12",
+        "roi_estimate": "$3.2M annually (reduced turnover)",
+        "implementation_steps": [
+          "Conduct employee benefits survey",
+          "Research innovative tech company perks",
+          "Design new benefits package",
+          "Implement flexible work arrangements",
+          "Add wellness and mental health programs",
+          "Create career development initiatives"
+        ],
+        "success_metrics": [
+          "Employee satisfaction scores",
+          "Retention rates",
+          "Benefits utilization rates"
+        ]
+      },
+      {
+        "priority": "medium",
+        "category": "workplace_culture",
+        "title": "Strengthen Innovation Culture",
+        "description": "Enhance innovation-focused workplace culture to attract top tech talent",
+        "estimated_effort": "6-8 months",
+        "expected_impact": "Increase employer brand score by 0.08",
+        "roi_estimate": "$2.1M annually (talent attraction)",
+        "implementation_steps": [
+          "Launch innovation labs and hackathons",
+          "Implement 20% time for personal projects",
+          "Create innovation recognition programs",
+          "Enhance technology showcase events",
+          "Develop innovation-focused training programs"
+        ],
+        "success_metrics": [
+          "Innovation project participation",
+          "Patent applications",
+          "Employee engagement scores"
+        ]
+      },
+      {
+        "priority": "low",
+        "category": "recruitment",
+        "title": "Improve Recruitment Marketing",
+        "description": "Enhance recruitment marketing to better showcase Microsoft's unique advantages",
+        "estimated_effort": "3-4 months",
+        "expected_impact": "Increase candidate quality by 15%",
+        "roi_estimate": "$1.8M annually (better hires)",
+        "implementation_steps": [
+          "Develop compelling employer brand messaging",
+          "Create employee testimonial videos",
+          "Enhance careers website experience",
+          "Implement targeted recruitment campaigns",
+          "Build university partnerships"
+        ],
+        "success_metrics": [
+          "Candidate quality scores",
+          "Time to hire",
+          "Offer acceptance rates"
+        ]
+      }
+    ],
+    "strengths_to_maintain": [
+      {
+        "area": "work_life_balance",
+        "description": "Strong work-life balance policies are competitive advantage",
+        "recommendation": "Continue promoting work-life balance as key differentiator",
+        "current_score": 0.86
+      },
+      {
+        "area": "stability",
+        "description": "Company stability and job security are valued by employees",
+        "recommendation": "Emphasize long-term career stability and growth",
+        "current_score": 0.84
+      }
+    ],
+    "market_positioning": {
+      "brand_position": "Stable technology leader with excellent work-life balance",
+      "competitor_position": "Innovative tech giant with cutting-edge perks and fast growth",
+      "differentiation_opportunity": "Focus on stability, work-life balance, and inclusive culture",
+      "target_audience": "Professionals seeking stable careers with good work-life balance"
+    }
+  }
+} 
