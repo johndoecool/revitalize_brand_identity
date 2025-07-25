@@ -18,6 +18,7 @@ A comprehensive microservice architecture for brand management, providing APIs f
 - [Python Installation and Configuration](#python-installation-and-configuration)
 - [Virtual Environment Setup](#virtual-environment-setup)
 - [Project Setup in Visual Studio Code](#project-setup-in-visual-studio-code)
+- [Setup Vector Database Locally](#setup-vector-database-locally)
 - [Swagger Documentation Setup](#swagger-documentation-setup)
 - [API Endpoints](#api-endpoints)
 - [Testing](#testing)
@@ -203,6 +204,38 @@ rm -rf venv
        }
      ]
    }
+   ```
+
+## Setup Vector Database Locally
+
+1. **Installing ChromaDB Dependency:**
+   ```bash
+   pip install chromadb
+   ```
+
+2. **Get the ChromaDB Client:**
+   ```bash
+   import chromadb
+   chroma_client = chromadb.Client()
+   ```
+
+3. **Create a collection:**
+   ```bash
+   collection = chroma_client.create_collection(name="my_collection")
+   ```
+
+4. **Add some text documents to the collection:**
+   ```bash
+   collection.add(
+      documents=["This is a document", "This is another document"],
+      metadatas=[{"source": "my_source"}, {"source": "my_source"}],
+      ids=["id1", "id2"]
+   )
+   ```
+
+5. **Or you can simply use Chroma’s backend Swagger REST API docs are viewable by running below command in virtual environment and then go to http://localhost:8000/docs:**
+   ```bash
+   chroma run
    ```
 
 ## Swagger Documentation Setup
