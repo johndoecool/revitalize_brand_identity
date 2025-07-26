@@ -1,0 +1,347 @@
+{
+  "demo_id": "banking_demo",
+  "name": "Banking Comparison - Self Service Portal",
+  "description": "Comparison between Oriental Bank and Banco Popular in self-service portal capabilities",
+  "brand": {
+    "id": "oriental_bank_pr",
+    "name": "Oriental Bank",
+    "full_name": "Oriental Bank of Puerto Rico",
+    "industry": "Banking",
+    "logo_url": "https://example.com/oriental_bank_logo.png",
+    "description": "Leading bank in Puerto Rico with strong traditional banking services",
+    "website": "https://www.orientalbank.com"
+  },
+  "competitor": {
+    "id": "banco_popular",
+    "name": "Banco Popular",
+    "full_name": "Banco Popular de Puerto Rico",
+    "industry": "Banking",
+    "logo_url": "https://example.com/banco_popular_logo.png",
+    "description": "Innovative digital banking leader in Puerto Rico",
+    "website": "https://www.bancopopular.com"
+  },
+  "area": {
+    "id": "self_service_portal",
+    "name": "Self Service Portal",
+    "description": "Online banking and customer self-service capabilities"
+  },
+  "brand_data": {
+    "brand_id": "oriental_bank_pr",
+    "news_sentiment": {
+      "score": 0.75,
+      "articles_count": 45,
+      "positive_articles": 34,
+      "negative_articles": 8,
+      "neutral_articles": 3,
+      "recent_articles": [
+        {
+          "title": "Oriental Bank Expands Digital Services",
+          "sentiment": "positive",
+          "published_date": "2024-01-10",
+          "source": "Puerto Rico Business Journal"
+        },
+        {
+          "title": "Oriental Bank Reports Strong Q4 Performance",
+          "sentiment": "positive",
+          "published_date": "2024-01-08",
+          "source": "Financial Times"
+        },
+        {
+          "title": "Customers Express Concerns About Mobile App",
+          "sentiment": "negative",
+          "published_date": "2024-01-05",
+          "source": "Local News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.68,
+      "mentions_count": 1234,
+      "engagement_rate": 0.045,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.72,
+          "mentions": 567,
+          "trending_topics": ["digital banking", "customer service"]
+        },
+        "facebook": {
+          "sentiment": 0.65,
+          "mentions": 432,
+          "trending_topics": ["mobile app", "online banking"]
+        },
+        "linkedin": {
+          "sentiment": 0.71,
+          "mentions": 235,
+          "trending_topics": ["career opportunities", "banking technology"]
+        }
+      },
+      "trending_topics": ["digital banking", "customer service", "mobile app", "online banking"]
+    },
+    "glassdoor": {
+      "overall_rating": 3.8,
+      "reviews_count": 89,
+      "pros": [
+        "Good benefits and work-life balance",
+        "Stable company with job security",
+        "Friendly work environment",
+        "Good training opportunities"
+      ],
+      "cons": [
+        "Limited growth opportunities",
+        "Slow to adopt new technology",
+        "Bureaucratic processes",
+        "Limited remote work options"
+      ],
+      "recommendation_rate": 0.78,
+      "ceo_approval": 0.82,
+      "recent_reviews": [
+        {
+          "rating": 4,
+          "pros": "Great benefits and work environment",
+          "cons": "Slow to innovate",
+          "date": "2024-01-12"
+        },
+        {
+          "rating": 3,
+          "pros": "Job security",
+          "cons": "Limited career growth",
+          "date": "2024-01-10"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.82,
+      "feature_completeness": 0.75,
+      "security_score": 0.88,
+      "accessibility_score": 0.79,
+      "mobile_friendliness": 0.76,
+      "load_time": 2.3,
+      "features": [
+        "Online account management",
+        "Bill payment",
+        "Fund transfers",
+        "Basic mobile app",
+        "Security alerts"
+      ],
+      "missing_features": [
+        "Biometric authentication",
+        "Real-time notifications",
+        "AI-powered insights",
+        "Advanced mobile features"
+      ]
+    }
+  },
+  "competitor_data": {
+    "brand_id": "banco_popular",
+    "news_sentiment": {
+      "score": 0.82,
+      "articles_count": 67,
+      "positive_articles": 52,
+      "negative_articles": 10,
+      "neutral_articles": 5,
+      "recent_articles": [
+        {
+          "title": "Banco Popular Launches AI-Powered Chatbot",
+          "sentiment": "positive",
+          "published_date": "2024-01-12",
+          "source": "Tech News"
+        },
+        {
+          "title": "Banco Popular Leads Digital Banking Innovation",
+          "sentiment": "positive",
+          "published_date": "2024-01-09",
+          "source": "Digital Banking Report"
+        },
+        {
+          "title": "Some Customers Find New Features Complex",
+          "sentiment": "negative",
+          "published_date": "2024-01-06",
+          "source": "Customer Reviews"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.74,
+      "mentions_count": 1890,
+      "engagement_rate": 0.052,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.78,
+          "mentions": 890,
+          "trending_topics": ["AI banking", "innovation"]
+        },
+        "facebook": {
+          "sentiment": 0.71,
+          "mentions": 678,
+          "trending_topics": ["mobile banking", "digital features"]
+        },
+        "linkedin": {
+          "sentiment": 0.76,
+          "mentions": 322,
+          "trending_topics": ["technology", "career growth"]
+        }
+      },
+      "trending_topics": ["AI banking", "innovation", "mobile banking", "digital features"]
+    },
+    "glassdoor": {
+      "overall_rating": 4.1,
+      "reviews_count": 156,
+      "pros": [
+        "Career growth opportunities",
+        "Competitive salary and benefits",
+        "Innovative culture",
+        "Modern technology stack",
+        "Remote work options"
+      ],
+      "cons": [
+        "High workload and fast-paced environment",
+        "Constant change and updates",
+        "High expectations",
+        "Work-life balance challenges"
+      ],
+      "recommendation_rate": 0.85,
+      "ceo_approval": 0.89,
+      "recent_reviews": [
+        {
+          "rating": 5,
+          "pros": "Great career growth and innovative culture",
+          "cons": "Fast-paced and demanding",
+          "date": "2024-01-13"
+        },
+        {
+          "rating": 4,
+          "pros": "Modern technology and good benefits",
+          "cons": "High workload",
+          "date": "2024-01-11"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.89,
+      "feature_completeness": 0.82,
+      "security_score": 0.91,
+      "accessibility_score": 0.84,
+      "mobile_friendliness": 0.92,
+      "load_time": 1.8,
+      "features": [
+        "Advanced online banking",
+        "AI-powered chatbot",
+        "Biometric authentication",
+        "Real-time notifications",
+        "Advanced mobile app",
+        "Personalized insights",
+        "Voice banking",
+        "Social media integration"
+      ],
+      "missing_features": [
+        "Traditional branch services focus",
+        "Simplified interface for older users"
+      ]
+    }
+  },
+  "analysis_results": {
+    "overall_comparison": {
+      "brand_score": 0.76,
+      "competitor_score": 0.84,
+      "gap": -0.08,
+      "brand_ranking": "second",
+      "confidence_level": 0.92
+    },
+    "detailed_comparison": {
+      "user_experience": {
+        "brand_score": 0.82,
+        "competitor_score": 0.89,
+        "difference": -0.07,
+        "insight": "Banco Popular has superior user interface design with modern UI/UX patterns",
+        "trend": "improving"
+      },
+      "feature_completeness": {
+        "brand_score": 0.75,
+        "competitor_score": 0.82,
+        "difference": -0.07,
+        "insight": "Oriental Bank lacks advanced mobile banking features like biometric authentication",
+        "trend": "stable"
+      },
+      "security": {
+        "brand_score": 0.88,
+        "competitor_score": 0.91,
+        "difference": -0.03,
+        "insight": "Both banks have strong security measures, but Banco Popular has edge in fraud detection",
+        "trend": "improving"
+      },
+      "performance": {
+        "brand_score": 0.79,
+        "competitor_score": 0.86,
+        "difference": -0.07,
+        "insight": "Banco Popular's platform loads faster and has better uptime",
+        "trend": "stable"
+      }
+    },
+    "actionable_insights": [
+      {
+        "priority": "high",
+        "category": "feature_development",
+        "title": "Implement Advanced Mobile Banking Features",
+        "description": "Develop mobile app features like biometric authentication, real-time notifications, and AI-powered financial insights",
+        "estimated_effort": "3-4 months",
+        "expected_impact": "Increase user experience score by 0.15",
+        "roi_estimate": "$2.5M annually",
+        "implementation_steps": [
+          "Conduct user research for mobile banking needs",
+          "Design mobile-first user interface with modern patterns",
+          "Implement biometric authentication (fingerprint, face ID)",
+          "Add real-time transaction notifications",
+          "Integrate AI-powered spending insights",
+          "Implement push notifications for security alerts"
+        ],
+        "success_metrics": [
+          "Mobile app adoption rate",
+          "User engagement time",
+          "Feature usage statistics"
+        ]
+      },
+      {
+        "priority": "medium",
+        "category": "user_experience",
+        "title": "Improve Website Navigation and Performance",
+        "description": "Redesign website navigation for better user flow and optimize performance",
+        "estimated_effort": "2-3 months",
+        "expected_impact": "Increase user experience score by 0.08",
+        "roi_estimate": "$1.2M annually",
+        "implementation_steps": [
+          "Analyze user journey patterns and pain points",
+          "Redesign navigation structure with clear hierarchy",
+          "Implement A/B testing for new designs",
+          "Optimize for mobile responsiveness",
+          "Improve page load times",
+          "Add progressive web app features"
+        ],
+        "success_metrics": [
+          "Page load time",
+          "User session duration",
+          "Bounce rate reduction"
+        ]
+      }
+    ],
+    "strengths_to_maintain": [
+      {
+        "area": "security",
+        "description": "Strong security measures are competitive advantage",
+        "recommendation": "Continue investing in security infrastructure and staff training",
+        "current_score": 0.88
+      },
+      {
+        "area": "customer_service",
+        "description": "High customer satisfaction in traditional banking services",
+        "recommendation": "Leverage existing customer relationships for digital transformation",
+        "current_score": 0.83
+      }
+    ],
+    "market_positioning": {
+      "brand_position": "Reliable traditional banking with strong security",
+      "competitor_position": "Innovative digital banking with modern features",
+      "differentiation_opportunity": "Focus on personalized customer service and security excellence",
+      "target_audience": "Traditional banking customers who value security and reliability"
+    }
+  }
+} 
