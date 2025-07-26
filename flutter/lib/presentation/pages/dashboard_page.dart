@@ -28,6 +28,11 @@ class _DashboardPageState extends State<DashboardPage>
   String? _analysisData_selectedArea;
   String? _analysisData_competitor;
   
+  // Loading state
+  bool _isLoadingAnalysis = false;
+  String _loadingStatus = '';
+  String _loadingDetail = '';
+  
   final List<TabItem> _tabs = [
     TabItem(icon: '🎯', title: 'Setup', id: 'setup'),
     TabItem(icon: '📊', title: 'Analysis', id: 'analysis'),
@@ -90,6 +95,8 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ),
             ),
+            // Loading overlay
+            if (_isLoadingAnalysis) _buildLoadingOverlay(),
           ],
         ),
       ),
@@ -313,8 +320,53 @@ class _DashboardPageState extends State<DashboardPage>
       _analysisData_brandName = brandName;
       _analysisData_selectedArea = selectedArea;
       _analysisData_competitor = competitor;
-      _selectedTabIndex = 1; // Switch to Analysis tab
+      _isLoadingAnalysis = true;
     });
+    
+    _simulateAnalysisProgress();
+  }
+
+  void _simulateAnalysisProgress() {
+    final steps = [
+      {'status': 'Initializing AI Analysis...', 'detail': 'Setting up data collection pipelines', 'duration': 800},
+      {'status': 'Collecting News Data...', 'detail': 'Analyzing 15,000+ news articles', 'duration': 1200},
+      {'status': 'Scraping Social Media...', 'detail': 'Processing 89,500+ social posts', 'duration': 1000},
+      {'status': 'Analyzing Glassdoor Reviews...', 'detail': 'Extracting insights from employee feedback', 'duration': 900},
+      {'status': 'Processing Financial Data...', 'detail': 'Analyzing market performance metrics', 'duration': 700},
+      {'status': 'Running LLM Analysis...', 'detail': 'Generating competitive insights with GPT-4', 'duration': 1100},
+      {'status': 'Generating Recommendations...', 'detail': 'Creating actionable strategic plan', 'duration': 600},
+      {'status': 'Analysis Complete!', 'detail': 'Preparing comprehensive dashboard', 'duration': 500},
+    ];
+
+    int currentStep = 0;
+
+    void processStep() {
+      if (currentStep < steps.length && mounted) {
+        final step = steps[currentStep];
+        setState(() {
+          _loadingStatus = step['status'] as String;
+          _loadingDetail = step['detail'] as String;
+        });
+
+        Future.delayed(Duration(milliseconds: step['duration'] as int), () {
+          currentStep++;
+          processStep();
+        });
+      } else {
+        _completeAnalysis();
+      }
+    }
+
+    processStep();
+  }
+
+  void _completeAnalysis() {
+    if (mounted) {
+      setState(() {
+        _isLoadingAnalysis = false;
+        _selectedTabIndex = 1; // Switch to Analysis tab
+      });
+    }
   }
 
   Widget _getTabContent(int index) {
@@ -358,6 +410,127 @@ class _DashboardPageState extends State<DashboardPage>
           onAnalysisLaunched: _onAnalysisLaunched,
         );
     }
+  }
+
+  Widget _buildLoadingOverlay() {
+    return Container(
+      color: Colors.black.withOpacity(0.7),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 400),
+            margin: EdgeInsets.all(24),
+            padding: EdgeInsets.all(32),
+            decoration: BoxDecoration(
+              color: AppColors.glassBackground,
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: AppColors.glassBorder),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.glowBlue.withOpacity(0.2),
+                  blurRadius: 20,
+                  offset: Offset(0, 10),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Loading icon with animation
+                Container(
+                  width: 80,
+                  height: 80,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.glowBlue),
+                    strokeWidth: 3,
+                  ),
+                ),
+                
+                SizedBox(height: 24),
+                
+                // Main status
+                Text(
+                  _loadingStatus,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                
+                SizedBox(height: 12),
+                
+                // Detail status
+                Text(
+                  _loadingDetail,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                
+                SizedBox(height: 32),
+                
+                // Progress indicator with glow effect
+                Container(
+                  width: double.infinity,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    color: AppColors.glassBackground,
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2),
+                          gradient: LinearGradient(
+                            colors: [
+                              AppColors.glowBlue,
+                              AppColors.glowPurple,
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.glowBlue.withOpacity(0.5),
+                              blurRadius: 8,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                
+                SizedBox(height: 16),
+                
+                // "Powered by AI" text
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '🤖',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Powered by Advanced AI Analysis',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: AppColors.textSecondary,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
 }
