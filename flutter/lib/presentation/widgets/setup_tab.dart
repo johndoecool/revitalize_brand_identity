@@ -240,7 +240,7 @@ class _SetupTabState extends State<SetupTab> {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: MediaQuery.of(context).size.width < 600 ? 1 : 2,
-        childAspectRatio: MediaQuery.of(context).size.width < 600 ? 4 : 3,
+        childAspectRatio: MediaQuery.of(context).size.width < 600 ? 4.0 : 3.5,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
       ),
@@ -256,7 +256,7 @@ class _SetupTabState extends State<SetupTab> {
             });
           },
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
@@ -271,6 +271,7 @@ class _SetupTabState extends State<SetupTab> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
@@ -286,6 +287,8 @@ class _SetupTabState extends State<SetupTab> {
                           fontWeight: FontWeight.w600,
                           color: isSelected ? area.colors.primary : AppColors.textPrimary,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     if (isSelected)
@@ -296,11 +299,16 @@ class _SetupTabState extends State<SetupTab> {
                       ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  area.description,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.textSecondary,
+                const SizedBox(height: 6),
+                Flexible(
+                  child: Text(
+                    area.description,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: AppColors.textSecondary,
+                      height: 1.3,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

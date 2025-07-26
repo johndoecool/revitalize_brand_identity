@@ -27,10 +27,13 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.flutter-plugins-dependencies-
 .packages
 .pub-cache/
 .pub/
-flutter/build/
+/flutter/build/
+build/
+.fvm/flutter_sdk
 
 # Symbolication related
 app.*.symbols
@@ -42,6 +45,16 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+flutter/android/app/debug/
+flutter/android/app/profile/
+flutter/android/app/release/
+flutter/android/.gradle/
+flutter/android/captures/
+flutter/android/gradle-wrapper.jar
+flutter/android/gradlew
+flutter/android/gradlew.bat
+flutter/android/local.properties
+flutter/android/key.properties
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -70,6 +83,11 @@ app.*.map.json
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
+flutter/ios/Pods/
+flutter/ios/.symlinks/
+flutter/ios/Runner.xcworkspace/xcshareddata/
+flutter/ios/Runner/GeneratedPluginRegistrant.*
+flutter/ios/Podfile.lock
 
 # macOS related
 **/macos/Flutter/GeneratedPluginRegistrant.swift
@@ -82,6 +100,7 @@ coverage/
 
 # Web related
 /web/build/
+flutter/build/web/
 
 # Windows related
 **/windows/**/generated_plugin_registrant.cc
@@ -172,6 +191,24 @@ secrets.json
 *.tar
 *.tar.gz
 *.rar
+
+# Flutter specific temporary files
+.metadata
+flutter/.flutter-plugins-dependencies
+flutter/.flutter-plugins
+flutter/.packages
+flutter/.dart_tool/
+flutter/pubspec.lock
+
+# Generated files
+flutter/lib/generated_plugin_registrant.dart
+flutter/ios/Runner/GeneratedPluginRegistrant.m
+flutter/ios/Runner/GeneratedPluginRegistrant.h
+flutter/macos/Runner/GeneratedPluginRegistrant.swift
+flutter/windows/runner/generated_plugin_registrant.cc
+flutter/windows/runner/generated_plugin_registrant.h
+flutter/linux/runner/generated_plugin_registrant.cc
+flutter/linux/runner/generated_plugin_registrant.h
 
 # Lock files (include pubspec.lock for Flutter)
 # pubspec.lock should be committed for Flutter apps
