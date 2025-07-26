@@ -8,6 +8,7 @@ import '../widgets/analysis_tab.dart';
 import '../widgets/insights_tab.dart';
 import '../widgets/roadmap_tab.dart';
 import '../widgets/report_tab.dart';
+import '../widgets/theme_toggle.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -71,7 +72,7 @@ class _DashboardPageState extends State<DashboardPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF0a0e1a), // Exact dark-bg color from HTML
+        color: AppColors.background, // Dynamic background color
         child: Stack(
           children: [
             _buildAnimatedBackground(),
@@ -149,10 +150,10 @@ class _DashboardPageState extends State<DashboardPage>
       margin: const EdgeInsets.only(bottom: 40), // Match HTML margin-bottom
       padding: const EdgeInsets.all(40), // Match HTML padding
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 255, 255, 0.08), // Exact --glass-bg from HTML
+        color: AppColors.glassBackground, // Dynamic glass background
         borderRadius: BorderRadius.circular(24), // Match HTML border-radius
         border: Border.all(
-          color: Color.fromRGBO(255, 255, 255, 0.1), // Exact --border-color from HTML
+          color: AppColors.glassBorder, // Dynamic border color
           width: 1,
         ),
       ),
@@ -160,17 +161,26 @@ class _DashboardPageState extends State<DashboardPage>
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20), // Match HTML backdrop-filter
         child: Column(
           children: [
-            // Gradient top border (::before pseudo-element)
-            Container(
-              width: double.infinity,
-              height: 2,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight, // 45deg angle like HTML --accent-gradient
-                  colors: [Color(0xFFff6b6b), Color(0xFF4ecdc4)], // Exact --accent-gradient
+            // Header top row with gradient border and theme toggle
+            Row(
+              children: [
+                // Gradient top border (::before pseudo-element)
+                Expanded(
+                  child: Container(
+                    height: 2,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight, // 45deg angle like HTML --accent-gradient
+                        colors: [Color(0xFFff6b6b), Color(0xFF4ecdc4)], // Exact --accent-gradient
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 16),
+                // Theme toggle in top-right
+                const ThemeToggle(),
+              ],
             ),
             const SizedBox(height: 32),
             
@@ -200,7 +210,7 @@ class _DashboardPageState extends State<DashboardPage>
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20.8, // 1.3rem = 20.8px (exact HTML match)
-                color: Color.fromRGBO(255, 255, 255, 0.7), // Exact --text-secondary
+                color: AppColors.textSecondary, // Dynamic text secondary color
                 fontWeight: FontWeight.w300,
               ),
             ),
@@ -235,7 +245,7 @@ class _DashboardPageState extends State<DashboardPage>
                   Text(
                     'VibeCoding Hackathon 2025',
                     style: TextStyle(
-                      color: Color(0xFFffffff), // Exact --text-primary
+                      color: Colors.white, // Keep white for badge contrast
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                     ),

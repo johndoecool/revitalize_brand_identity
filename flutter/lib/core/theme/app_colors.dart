@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Base Colors
+  // Dark Theme Colors
   static const Color darkBackground = Color(0xFF0a0e1a);
-  static const Color cardBackground = Color.fromRGBO(255, 255, 255, 0.05);
-  static const Color textPrimary = Color(0xFFFFFFFF);
-  static const Color textSecondary = Color.fromRGBO(255, 255, 255, 0.7);
-  static const Color borderColor = Color.fromRGBO(255, 255, 255, 0.1);
+  static const Color darkCardBackground = Color.fromRGBO(255, 255, 255, 0.05);
+  static const Color darkTextPrimary = Color(0xFFFFFFFF);
+  static const Color darkTextSecondary = Color.fromRGBO(255, 255, 255, 0.7);
+  static const Color darkBorderColor = Color.fromRGBO(255, 255, 255, 0.1);
+  static const Color darkGlassBackground = Color.fromRGBO(255, 255, 255, 0.08);
+  static const Color darkGlassBackgroundStrong = Color.fromRGBO(255, 255, 255, 0.12);
+  static const Color darkGlassBorder = Color.fromRGBO(255, 255, 255, 0.18);
+  static const Color darkSurfacePrimary = Color(0xFF1e1e2e);
 
-  // Glassmorphism Colors
-  static const Color glassBackground = Color.fromRGBO(255, 255, 255, 0.08);
-  static const Color glassBackgroundStrong = Color.fromRGBO(255, 255, 255, 0.12);
-  static const Color glassBorder = Color.fromRGBO(255, 255, 255, 0.18);
-  static const Color surfacePrimary = Color(0xFF1e1e2e);
+  // Light Theme Colors
+  static const Color lightBackground = Color(0xFFf8fafc);
+  static const Color lightCardBackground = Color.fromRGBO(255, 255, 255, 0.7);
+  static const Color lightTextPrimary = Color(0xFF1e293b);
+  static const Color lightTextSecondary = Color.fromRGBO(30, 41, 59, 0.7);
+  static const Color lightBorderColor = Color.fromRGBO(30, 41, 59, 0.1);
+  static const Color lightGlassBackground = Color.fromRGBO(255, 255, 255, 0.7);
+  static const Color lightGlassBackgroundStrong = Color.fromRGBO(255, 255, 255, 0.9);
+  static const Color lightGlassBorder = Color.fromRGBO(30, 41, 59, 0.08);
+  static const Color lightSurfacePrimary = Color(0xFFe2e8f0);
+
+  // Dynamic Theme Colors (getters)
+  static bool _isDarkMode = true;
+
+  static Color get background => _isDarkMode ? darkBackground : lightBackground;
+  static Color get cardBackground => _isDarkMode ? darkCardBackground : lightCardBackground;
+  static Color get textPrimary => _isDarkMode ? darkTextPrimary : lightTextPrimary;
+  static Color get textSecondary => _isDarkMode ? darkTextSecondary : lightTextSecondary;
+  static Color get borderColor => _isDarkMode ? darkBorderColor : lightBorderColor;
+  static Color get glassBackground => _isDarkMode ? darkGlassBackground : lightGlassBackground;
+  static Color get glassBackgroundStrong => _isDarkMode ? darkGlassBackgroundStrong : lightGlassBackgroundStrong;
+  static Color get glassBorder => _isDarkMode ? darkGlassBorder : lightGlassBorder;
+  static Color get surfacePrimary => _isDarkMode ? darkSurfacePrimary : lightSurfacePrimary;
+
+  // Method to update theme mode
+  static void setThemeMode(bool isDark) {
+    _isDarkMode = isDark;
+  }
 
   // Glow Colors
   static const Color glowBlue = Color(0xFF00d4ff);
