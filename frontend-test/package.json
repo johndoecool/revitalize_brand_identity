@@ -1,0 +1,45 @@
+{
+  "name": "brand-intelligence-hub-tests",
+  "version": "1.0.0",
+  "description": "Playwright automation test suite for Brand Intelligence Hub Flutter web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=Mobile",
+    "test:smoke": "playwright test tests/smoke.spec.ts",
+    "test:theme": "playwright test tests/theme.spec.ts",
+    "test:navigation": "playwright test tests/navigation.spec.ts",
+    "test:workflow": "playwright test tests/workflow.spec.ts",
+    "test:charts": "playwright test tests/charts.spec.ts",
+    "test:pdf": "playwright test tests/pdf.spec.ts",
+    "test:responsive": "playwright test tests/responsive.spec.ts",
+    "test:accessibility": "playwright test tests/accessibility.spec.ts",
+    "test:performance": "playwright test tests/performance.spec.ts",
+    "setup": "./scripts/setup.sh",
+    "run-tests": "./scripts/run-tests.sh",
+    "install": "playwright install"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "flutter",
+    "web",
+    "e2e"
+  ],
+  "author": "VibeCoding Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {}
+}
