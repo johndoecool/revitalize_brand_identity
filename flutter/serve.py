@@ -16,7 +16,7 @@ class CORSRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == "__main__":
-    PORT = 3000
+    PORT = 8080
     os.chdir('build/web')
     
     with socketserver.TCPServer(("127.0.0.1", PORT), CORSRequestHandler) as httpd:
