@@ -86,11 +86,13 @@ uvicorn app.main:app --host 0.0.0.0 --port 8003 --workers 4
 
 ## 📊 API Endpoints
 
-### Start Analysis
-```http
-POST /api/v1/analyze
-Content-Type: application/json
+### 1. Start Analysis
+**POST** `/api/v1/analyze`
 
+Start a new brand analysis comparing brand data with competitor data.
+
+**Request Body:**
+```json
 {
   "brand_data": {
     "brand_id": "oriental_bank_pr",
@@ -111,19 +113,297 @@ Content-Type: application/json
 }
 ```
 
-### Check Analysis Status
-```http
-GET /api/v1/analyze/{analysis_id}/status
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "analysis_id": "analysis_12345678",
+  "status": "processing",
+  "estimated_duration": 60
+}
 ```
 
-### Get Analysis Results
-```http
-GET /api/v1/analyze/{analysis_id}/results
+**Error Response (400):**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid analysis data provided",
+    "details": {
+      "field": "brand_data",
+      "value": "{}"
+    }
+  },
+  "timestamp": "2025-07-28T21:00:00Z"
+}
 ```
 
-### Health Check
-```http
-GET /health
+---
+
+### 2. Check Analysis Status
+**GET** `/api/v1/analyze/{analysis_id}/status`
+
+Get the current status and progress of an analysis.
+
+**Path Parameters:**
+- `analysis_id` (string): The unique identifier of the analysis
+
+**Success Response - Processing (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "analysis_id": "analysis_12345678",
+    "status": "processing",
+    "progress": 45,
+    "current_step": "Generating competitive analysis",
+    "estimated_completion": "2025-07-28T21:35:00Z"
+  }
+}
+```
+
+**Success Response - Completed (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "analysis_id": "analysis_12345678",
+    "status": "completed",
+    "progress": 100,
+    "completed_at": "2025-07-28T21:30:00Z"
+  }
+}
+```
+
+**Error Response (404):**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Analysis not found",
+    "details": {
+      "field": "analysis_id",
+      "value": "analysis_12345678"
+    }
+  },
+  "timestamp": "2025-07-28T21:00:00Z"
+}
+```
+
+---
+
+### 3. Get Analysis Results
+**GET** `/api/v1/analyze/{analysis_id}/results`
+
+Retrieve the complete results of a finished analysis.
+
+**Path Parameters:**
+- `analysis_id` (string): The unique identifier of the analysis
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "analysis_id": "analysis_12345678",
+    "area_id": "self_service_portal",
+    "brand_name": "Oriental Bank PR",
+    "competitor_name": "Banco Popular",
+    "overall_comparison": {
+      "brand_score": 0.76,
+      "competitor_score": 0.84,
+      "gap": -0.08,
+      "brand_ranking": "second",
+      "confidence_level": 0.92
+    },
+    "detailed_comparison": {
+      "user_experience": {
+        "brand_score": 0.82,
+        "competitor_score": 0.89,
+        "difference": -0.07,
+        "insight": "Competitor has superior UI/UX design and mobile optimization",
+        "trend": "improving"
+      },
+      "customer_satisfaction": {
+        "brand_score": 0.75,
+        "competitor_score": 0.81,
+        "difference": -0.06,
+        "insight": "Higher employee satisfaction correlates with better customer service",
+        "trend": "stable"
+      }
+    },
+    "actionable_insights": [
+      {
+        "priority": "high",
+        "category": "Technology",
+        "title": "Implement Advanced Mobile Banking Features",
+        "description": "Enhance mobile app with biometric authentication and advanced financial tools",
+        "estimated_effort": "3-6 months",
+        "expected_impact": "Increase UX score by 0.15 points",
+        "roi_estimate": "15-25% improvement in customer satisfaction",
+        "implementation_steps": [
+          "Conduct UX audit of current mobile app",
+          "Research competitor mobile features",
+          "Develop biometric authentication system",
+          "Implement advanced financial planning tools",
+          "Conduct user testing and feedback collection"
+        ],
+        "success_metrics": [
+          "Mobile app rating >4.5 stars",
+          "15% increase in mobile engagement",
+          "Reduced customer support tickets"
+        ]
+      }
+    ],
+    "strengths_to_maintain": [
+      {
+        "area": "Brand Trust",
+        "description": "Strong local market presence and customer loyalty",
+        "recommendation": "Continue community engagement and local sponsorships",
+        "current_score": 0.88
+      }
+    ],
+    "market_positioning": {
+      "brand_position": "Local community-focused bank with traditional values",
+      "competitor_position": "Technology-forward regional bank with modern services",
+      "differentiation_opportunity": "Combine traditional trust with modern technology",
+      "target_audience": "Local professionals and small businesses"
+    },
+    "trend_analysis": {
+      "brand_trend": "Gradual digital transformation needed",
+      "competitor_trend": "Strong digital innovation momentum",
+      "market_trend": "Increasing demand for digital banking solutions",
+      "recommendations": [
+        "Accelerate digital transformation initiatives",
+        "Invest in mobile-first customer experience",
+        "Maintain competitive advantage in personal service"
+      ]
+    },
+    "confidence_score": 0.89,
+    "created_at": "2025-07-28T21:00:00Z",
+    "completed_at": "2025-07-28T21:30:00Z"
+  }
+}
+```
+
+**Error Response (404):**
+```json
+{
+  "success": false,
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Analysis not found",
+    "details": {
+      "field": "analysis_id",
+      "value": "analysis_12345678"
+    }
+  },
+  "timestamp": "2025-07-28T21:00:00Z"
+}
+```
+
+---
+
+### 4. Get Analysis History
+**GET** `/api/v1/analyze/history`
+
+Retrieve a list of completed analyses with optional filtering.
+
+**Query Parameters:**
+- `brand_id` (string, optional): Filter by specific brand ID
+- `limit` (integer, optional): Maximum number of results (1-100, default: 10)
+
+**Example Request:**
+```bash
+GET /api/v1/analyze/history?brand_id=oriental_bank_pr&limit=5
+```
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "analysis_id": "analysis_12345678",
+      "brand_id": "oriental_bank_pr",
+      "competitor_id": "banco_popular", 
+      "area_id": "self_service_portal",
+      "status": "completed",
+      "overall_score": 0.76,
+      "completed_at": "2025-07-28T21:30:00Z"
+    },
+    {
+      "analysis_id": "analysis_87654321",
+      "brand_id": "oriental_bank_pr",
+      "competitor_id": "firstbank_pr",
+      "area_id": "mobile_banking",
+      "status": "completed", 
+      "overall_score": 0.82,
+      "completed_at": "2025-07-27T15:45:00Z"
+    }
+  ]
+}
+```
+
+---
+
+### 5. Health Check
+**GET** `/health`
+
+Check the health status of the Analysis Engine service and its dependencies.
+
+**Success Response (200):**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2025-07-28T21:00:00Z",
+  "version": "1.0.0",
+  "dependencies": {
+    "llm_service": "healthy",
+    "openai_api": "connected",
+    "together_api": "connected"
+  },
+  "uptime": "2h 45m 30s",
+  "memory_usage": "245.6 MB",
+  "active_analyses": 3
+}
+```
+
+**Degraded Response (200):**
+```json
+{
+  "status": "degraded",
+  "timestamp": "2025-07-28T21:00:00Z",
+  "version": "1.0.0",
+  "dependencies": {
+    "llm_service": "healthy",
+    "openai_api": "disconnected",
+    "together_api": "connected"
+  },
+  "uptime": "2h 45m 30s",
+  "memory_usage": "245.6 MB",
+  "active_analyses": 1,
+  "warnings": ["OpenAI API connection issues"]
+}
+```
+
+---
+
+### 6. Root Endpoint
+**GET** `/`
+
+Get basic service information and documentation links.
+
+**Success Response (200):**
+```json
+{
+  "message": "Analysis Engine Service",
+  "version": "1.0.0",
+  "timestamp": "2025-07-28T21:00:00Z",
+  "docs": "/docs"
+}
 ```
 
 ## 🧪 Testing & Verification
