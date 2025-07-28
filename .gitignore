@@ -218,3 +218,26 @@ yarn.lock
 # Deployment
 .vercel
 .netlify
+
+# Playwright Testing (frontend-test)
+frontend-test/node_modules/
+frontend-test/test-results/
+frontend-test/playwright-report/
+frontend-test/playwright/.cache/
+frontend-test/.env
+frontend-test/package-lock.json
+frontend-test/yarn.lock
+frontend-test/dist/
+
+# Test artifacts that should be kept
+# frontend-test/TEST_EXECUTION_REPORT.md - keep for documentation
+# frontend-test/TEST_COVERAGE.md - keep for documentation
+# frontend-test/README.md - keep for documentation
+
+# Temporary test files
+frontend-test/debug.spec.ts
+frontend-test/basic.spec.ts
+frontend-test/working.spec.ts
+frontend-test/*.png
+frontend-test/*.webm
+frontend-test/*.mp4
