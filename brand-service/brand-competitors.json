@@ -1,106 +1,8 @@
 [
   {
     "brand_id": "ofg",
-    "area_id": "environmental_sustainability",
-    "cached_at": "2025-07-27T14:36:08.705875",
-    "success": true,
-    "data": [
-      {
-        "id": "BAC",
-        "name": "Bank of America",
-        "logo_url": "https://img.logo.dev/ticker/BAC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.95,
-        "competition_level": "direct",
-        "symbol": "BAC"
-      },
-      {
-        "id": "JPM",
-        "name": "JPMorgan Chase",
-        "logo_url": "https://img.logo.dev/ticker/JPM?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.94,
-        "competition_level": "direct",
-        "symbol": "JPM"
-      },
-      {
-        "id": "WFC",
-        "name": "Wells Fargo",
-        "logo_url": "https://img.logo.dev/ticker/WFC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.93,
-        "competition_level": "direct",
-        "symbol": "WFC"
-      },
-      {
-        "id": "C",
-        "name": "Citigroup",
-        "logo_url": "https://img.logo.dev/ticker/C?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.92,
-        "competition_level": "direct",
-        "symbol": "C"
-      },
-      {
-        "id": "GS",
-        "name": "Goldman Sachs",
-        "logo_url": "https://img.logo.dev/ticker/GS?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Investment Banking",
-        "relevance_score": 0.91,
-        "competition_level": "indirect",
-        "symbol": "GS"
-      },
-      {
-        "id": "MS",
-        "name": "Morgan Stanley",
-        "logo_url": "https://img.logo.dev/ticker/MS?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Investment Banking",
-        "relevance_score": 0.9,
-        "competition_level": "indirect",
-        "symbol": "MS"
-      },
-      {
-        "id": "USB",
-        "name": "U.S. Bancorp",
-        "logo_url": "https://img.logo.dev/ticker/USB?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.89,
-        "competition_level": "indirect",
-        "symbol": "USB"
-      },
-      {
-        "id": "PNC",
-        "name": "PNC Financial Services",
-        "logo_url": "https://img.logo.dev/ticker/PNC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.88,
-        "competition_level": "indirect",
-        "symbol": "PNC"
-      },
-      {
-        "id": "TD",
-        "name": "Toronto-Dominion Bank",
-        "logo_url": "https://img.logo.dev/ticker/TD?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.87,
-        "competition_level": "indirect",
-        "symbol": "TD"
-      },
-      {
-        "id": "STT",
-        "name": "State Street",
-        "logo_url": "https://img.logo.dev/ticker/STT?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Financial Services",
-        "relevance_score": 0.86,
-        "competition_level": "indirect",
-        "symbol": "STT"
-      }
-    ]
-  },
-  {
-    "brand_id": "ofg",
-    "area_id": "financial_performance",
-    "cached_at": "2025-07-27T14:37:06.426571",
+    "area_id": "Financial Performance",
+    "cached_at": "2025-07-28T13:16:51.893216",
     "success": true,
     "data": [
       {
@@ -140,21 +42,12 @@
         "symbol": "CBSH"
       },
       {
-        "id": "UCBI",
-        "name": "United Community Banks",
-        "logo_url": "https://img.logo.dev/ticker/UCBI?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.91,
-        "competition_level": "direct",
-        "symbol": "UCBI"
-      },
-      {
         "id": "BOKF",
         "name": "BOK Financial Corporation",
         "logo_url": "https://img.logo.dev/ticker/BOKF?token=pk_TVi0kXveSqGUNVDsvdijOA",
         "industry": "Banking",
-        "relevance_score": 0.89,
-        "competition_level": "indirect",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
         "symbol": "BOKF"
       },
       {
@@ -162,9 +55,18 @@
         "name": "Synovus Financial",
         "logo_url": "https://img.logo.dev/ticker/SNV?token=pk_TVi0kXveSqGUNVDsvdijOA",
         "industry": "Banking",
-        "relevance_score": 0.88,
+        "relevance_score": 0.89,
         "competition_level": "indirect",
         "symbol": "SNV"
+      },
+      {
+        "id": "UCBI",
+        "name": "United Community Banks",
+        "logo_url": "https://img.logo.dev/ticker/UCBI?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "UCBI"
       },
       {
         "id": "WAL",
@@ -185,216 +87,412 @@
         "symbol": "CFR"
       },
       {
-        "id": "ZION",
-        "name": "Zions Bancorporation",
-        "logo_url": "https://img.logo.dev/ticker/ZION?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "id": "HBAN",
+        "name": "Huntington Bancshares",
+        "logo_url": "https://img.logo.dev/ticker/HBAN?token=pk_TVi0kXveSqGUNVDsvdijOA",
         "industry": "Banking",
         "relevance_score": 0.85,
         "competition_level": "indirect",
-        "symbol": "ZION"
-      }
-    ]
-  },
-  {
-    "brand_id": "ofg",
-    "area_id": "market_position",
-    "cached_at": "2025-07-27T14:37:59.776569",
-    "success": true,
-    "data": [
-      {
-        "id": "PBCT",
-        "name": "People's United Financial",
-        "logo_url": "https://img.logo.dev/ticker/PBCT?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.95,
-        "competition_level": "direct",
-        "symbol": "PBCT"
-      },
-      {
-        "id": "STI",
-        "name": "SunTrust Banks",
-        "logo_url": "https://img.logo.dev/ticker/STI?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.93,
-        "competition_level": "direct",
-        "symbol": "STI"
-      },
-      {
-        "id": "FHN",
-        "name": "First Horizon National",
-        "logo_url": "https://img.logo.dev/ticker/FHN?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.92,
-        "competition_level": "direct",
-        "symbol": "FHN"
-      },
-      {
-        "id": "RF",
-        "name": "Regions Financial",
-        "logo_url": "https://img.logo.dev/ticker/RF?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.91,
-        "competition_level": "direct",
-        "symbol": "RF"
-      },
-      {
-        "id": "ZION",
-        "name": "Zions Bancorporation",
-        "logo_url": "https://img.logo.dev/ticker/ZION?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.89,
-        "competition_level": "indirect",
-        "symbol": "ZION"
-      },
-      {
-        "id": "CBSH",
-        "name": "Commerce Bancshares",
-        "logo_url": "https://img.logo.dev/ticker/CBSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.88,
-        "competition_level": "indirect",
-        "symbol": "CBSH"
-      },
-      {
-        "id": "BOKF",
-        "name": "BOK Financial",
-        "logo_url": "https://img.logo.dev/ticker/BOKF?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.86,
-        "competition_level": "indirect",
-        "symbol": "BOKF"
-      },
-      {
-        "id": "SNV",
-        "name": "Synovus Financial",
-        "logo_url": "https://img.logo.dev/ticker/SNV?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.85,
-        "competition_level": "indirect",
-        "symbol": "SNV"
-      },
-      {
-        "id": "UCBI",
-        "name": "United Community Banks",
-        "logo_url": "https://img.logo.dev/ticker/UCBI?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.83,
-        "competition_level": "indirect",
-        "symbol": "UCBI"
-      },
-      {
-        "id": "WAL",
-        "name": "Western Alliance Bancorporation",
-        "logo_url": "https://img.logo.dev/ticker/WAL?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.82,
-        "competition_level": "indirect",
-        "symbol": "WAL"
-      }
-    ]
-  },
-  {
-    "brand_id": "ofg",
-    "area_id": "public_sentiment",
-    "cached_at": "2025-07-27T14:38:54.050074",
-    "success": true,
-    "data": [
-      {
-        "id": "BAC",
-        "name": "Bank of America",
-        "logo_url": "https://img.logo.dev/ticker/BAC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.95,
-        "competition_level": "direct",
-        "symbol": "BAC"
-      },
-      {
-        "id": "JPM",
-        "name": "JPMorgan Chase",
-        "logo_url": "https://img.logo.dev/ticker/JPM?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.94,
-        "competition_level": "direct",
-        "symbol": "JPM"
-      },
-      {
-        "id": "WFC",
-        "name": "Wells Fargo",
-        "logo_url": "https://img.logo.dev/ticker/WFC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.93,
-        "competition_level": "direct",
-        "symbol": "WFC"
-      },
-      {
-        "id": "C",
-        "name": "Citigroup",
-        "logo_url": "https://img.logo.dev/ticker/C?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.92,
-        "competition_level": "direct",
-        "symbol": "C"
-      },
-      {
-        "id": "GS",
-        "name": "Goldman Sachs",
-        "logo_url": "https://img.logo.dev/ticker/GS?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Investment Banking",
-        "relevance_score": 0.91,
-        "competition_level": "indirect",
-        "symbol": "GS"
-      },
-      {
-        "id": "MS",
-        "name": "Morgan Stanley",
-        "logo_url": "https://img.logo.dev/ticker/MS?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Investment Banking",
-        "relevance_score": 0.9,
-        "competition_level": "indirect",
-        "symbol": "MS"
-      },
-      {
-        "id": "BK",
-        "name": "Bank of New York Mellon",
-        "logo_url": "https://img.logo.dev/ticker/BK?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.89,
-        "competition_level": "indirect",
-        "symbol": "BK"
-      },
-      {
-        "id": "STT",
-        "name": "State Street",
-        "logo_url": "https://img.logo.dev/ticker/STT?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.88,
-        "competition_level": "indirect",
-        "symbol": "STT"
-      },
-      {
-        "id": "PNC",
-        "name": "PNC Financial Services",
-        "logo_url": "https://img.logo.dev/ticker/PNC?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.87,
-        "competition_level": "indirect",
-        "symbol": "PNC"
-      },
-      {
-        "id": "USB",
-        "name": "U.S. Bancorp",
-        "logo_url": "https://img.logo.dev/ticker/USB?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.86,
-        "competition_level": "indirect",
-        "symbol": "USB"
+        "symbol": "HBAN"
       }
     ]
   },
   {
     "brand_id": "CTSH",
-    "area_id": "talent_attraction",
-    "cached_at": "2025-07-27T14:40:35.669006",
+    "area_id": "Public Sentiment",
+    "cached_at": "2025-07-28T13:22:50.326668",
+    "success": true,
+    "data": [
+      {
+        "id": "ACN",
+        "name": "Accenture",
+        "logo_url": "https://img.logo.dev/ticker/ACN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "ACN"
+      },
+      {
+        "id": "INFY",
+        "name": "Infosys",
+        "logo_url": "https://img.logo.dev/ticker/INFY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.89,
+        "competition_level": "direct",
+        "symbol": "INFY"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "IBM"
+      },
+      {
+        "id": "WIT",
+        "name": "Wipro",
+        "logo_url": "https://img.logo.dev/ticker/WIT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.82,
+        "competition_level": "direct",
+        "symbol": "WIT"
+      },
+      {
+        "id": "HCLT",
+        "name": "HCL Technologies",
+        "logo_url": "https://img.logo.dev/ticker/HCLT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.79,
+        "competition_level": "direct",
+        "symbol": "HCLT"
+      },
+      {
+        "id": "TCS",
+        "name": "Tata Consultancy Services",
+        "logo_url": "https://img.logo.dev/ticker/TCS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.76,
+        "competition_level": "indirect",
+        "symbol": "TCS"
+      },
+      {
+        "id": "EPAM",
+        "name": "EPAM Systems",
+        "logo_url": "https://img.logo.dev/ticker/EPAM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.73,
+        "competition_level": "indirect",
+        "symbol": "EPAM"
+      },
+      {
+        "id": "G",
+        "name": "Genpact",
+        "logo_url": "https://img.logo.dev/ticker/G?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "G"
+      },
+      {
+        "id": "DXC",
+        "name": "DXC Technology",
+        "logo_url": "https://img.logo.dev/ticker/DXC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "DXC"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services",
+        "logo_url": "https://img.logo.dev/ticker/FIS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.61,
+        "competition_level": "indirect",
+        "symbol": "FIS"
+      }
+    ]
+  },
+  {
+    "brand_id": "NKE.NE",
+    "area_id": "Revenue Growth",
+    "cached_at": "2025-07-28T14:28:17.423897",
+    "success": true,
+    "data": [
+      {
+        "id": "UAA",
+        "name": "Under Armour",
+        "logo_url": "https://img.logo.dev/ticker/UAA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Sportswear",
+        "relevance_score": 0.95,
+        "competition_level": "Direct",
+        "symbol": "UAA"
+      },
+      {
+        "id": "VFC",
+        "name": "VF Corporation",
+        "logo_url": "https://img.logo.dev/ticker/VFC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Apparel",
+        "relevance_score": 0.88,
+        "competition_level": "Direct",
+        "symbol": "VFC"
+      },
+      {
+        "id": "COLM",
+        "name": "Columbia Sportswear",
+        "logo_url": "https://img.logo.dev/ticker/COLM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Sportswear",
+        "relevance_score": 0.85,
+        "competition_level": "Direct",
+        "symbol": "COLM"
+      },
+      {
+        "id": "DECK",
+        "name": "Deckers Outdoor",
+        "logo_url": "https://img.logo.dev/ticker/DECK?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Footwear",
+        "relevance_score": 0.82,
+        "competition_level": "Direct",
+        "symbol": "DECK"
+      },
+      {
+        "id": "SKX",
+        "name": "Skechers",
+        "logo_url": "https://img.logo.dev/ticker/SKX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Footwear",
+        "relevance_score": 0.79,
+        "competition_level": "Direct",
+        "symbol": "SKX"
+      },
+      {
+        "id": "FL",
+        "name": "Foot Locker",
+        "logo_url": "https://img.logo.dev/ticker/FL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Retail",
+        "relevance_score": 0.75,
+        "competition_level": "Indirect",
+        "symbol": "FL"
+      },
+      {
+        "id": "FINL",
+        "name": "Finish Line",
+        "logo_url": "https://img.logo.dev/ticker/FINL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Retail",
+        "relevance_score": 0.72,
+        "competition_level": "Indirect",
+        "symbol": "FINL"
+      },
+      {
+        "id": "HIBB",
+        "name": "Hibbett Sports",
+        "logo_url": "https://img.logo.dev/ticker/HIBB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Retail",
+        "relevance_score": 0.69,
+        "competition_level": "Indirect",
+        "symbol": "HIBB"
+      },
+      {
+        "id": "DSW",
+        "name": "DSW Inc.",
+        "logo_url": "https://img.logo.dev/ticker/DSW?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Retail",
+        "relevance_score": 0.66,
+        "competition_level": "Indirect",
+        "symbol": "DSW"
+      },
+      {
+        "id": "BGFV",
+        "name": "Big 5 Sporting Goods",
+        "logo_url": "https://img.logo.dev/ticker/BGFV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Retail",
+        "relevance_score": 0.63,
+        "competition_level": "Indirect",
+        "symbol": "BGFV"
+      }
+    ]
+  },
+  {
+    "brand_id": "OFG",
+    "area_id": "Financial Performance",
+    "cached_at": "2025-07-28T18:45:37.146465",
+    "success": true,
+    "data": [
+      {
+        "id": "BPOP",
+        "name": "Popular Inc.",
+        "logo_url": "https://img.logo.dev/ticker/BPOP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.95,
+        "competition_level": "Direct",
+        "symbol": "BPOP"
+      },
+      {
+        "id": "FBP",
+        "name": "First BanCorp.",
+        "logo_url": "https://img.logo.dev/ticker/FBP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.93,
+        "competition_level": "Direct",
+        "symbol": "FBP"
+      },
+      {
+        "id": "ESBK",
+        "name": "Elmira Savings Bank",
+        "logo_url": "https://img.logo.dev/ticker/ESBK?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.92,
+        "competition_level": "Direct",
+        "symbol": "ESBK"
+      },
+      {
+        "id": "FHB",
+        "name": "First Hawaiian Inc.",
+        "logo_url": "https://img.logo.dev/ticker/FHB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.91,
+        "competition_level": "Direct",
+        "symbol": "FHB"
+      },
+      {
+        "id": "PB",
+        "name": "Prosperity Bancshares Inc.",
+        "logo_url": "https://img.logo.dev/ticker/PB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.89,
+        "competition_level": "Indirect",
+        "symbol": "PB"
+      },
+      {
+        "id": "SNV",
+        "name": "Synovus Financial Corp.",
+        "logo_url": "https://img.logo.dev/ticker/SNV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.88,
+        "competition_level": "Indirect",
+        "symbol": "SNV"
+      },
+      {
+        "id": "CBSH",
+        "name": "Commerce Bancshares Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CBSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.86,
+        "competition_level": "Indirect",
+        "symbol": "CBSH"
+      },
+      {
+        "id": "CMA",
+        "name": "Comerica Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CMA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.85,
+        "competition_level": "Indirect",
+        "symbol": "CMA"
+      },
+      {
+        "id": "ZION",
+        "name": "Zions Bancorporation N.A.",
+        "logo_url": "https://img.logo.dev/ticker/ZION?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.84,
+        "competition_level": "Indirect",
+        "symbol": "ZION"
+      },
+      {
+        "id": "STL",
+        "name": "Sterling Bancorp",
+        "logo_url": "https://img.logo.dev/ticker/STL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banks",
+        "relevance_score": 0.83,
+        "competition_level": "Indirect",
+        "symbol": "STL"
+      }
+    ]
+  },
+  {
+    "brand_id": "CTSH",
+    "area_id": "REVENUE GROWTH",
+    "cached_at": "2025-07-28T18:48:27.344051",
+    "success": true,
+    "data": [
+      {
+        "id": "ACN",
+        "name": "Accenture",
+        "logo_url": "https://img.logo.dev/ticker/ACN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "ACN"
+      },
+      {
+        "id": "INFY",
+        "name": "Infosys",
+        "logo_url": "https://img.logo.dev/ticker/INFY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.89,
+        "competition_level": "direct",
+        "symbol": "INFY"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "IBM"
+      },
+      {
+        "id": "WIT",
+        "name": "Wipro",
+        "logo_url": "https://img.logo.dev/ticker/WIT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.82,
+        "competition_level": "direct",
+        "symbol": "WIT"
+      },
+      {
+        "id": "HCLT",
+        "name": "HCL Technologies",
+        "logo_url": "https://img.logo.dev/ticker/HCLT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.79,
+        "competition_level": "direct",
+        "symbol": "HCLT"
+      },
+      {
+        "id": "TCS",
+        "name": "Tata Consultancy Services",
+        "logo_url": "https://img.logo.dev/ticker/TCS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.76,
+        "competition_level": "indirect",
+        "symbol": "TCS"
+      },
+      {
+        "id": "EPAM",
+        "name": "EPAM Systems",
+        "logo_url": "https://img.logo.dev/ticker/EPAM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.73,
+        "competition_level": "indirect",
+        "symbol": "EPAM"
+      },
+      {
+        "id": "G",
+        "name": "Genpact",
+        "logo_url": "https://img.logo.dev/ticker/G?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "G"
+      },
+      {
+        "id": "DXC",
+        "name": "DXC Technology",
+        "logo_url": "https://img.logo.dev/ticker/DXC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "DXC"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services",
+        "logo_url": "https://img.logo.dev/ticker/FIS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.61,
+        "competition_level": "indirect",
+        "symbol": "FIS"
+      }
+    ]
+  },
+  {
+    "brand_id": "CTSH",
+    "area_id": "PUBLIC SENTIMENT",
+    "cached_at": "2025-07-28T18:49:23.349364",
     "success": true,
     "data": [
       {
@@ -486,104 +584,6 @@
         "relevance_score": 0.65,
         "competition_level": "indirect",
         "symbol": "FIS"
-      }
-    ]
-  },
-  {
-    "brand_id": "OFG",
-    "area_id": "Market Position",
-    "cached_at": "2025-07-27T14:42:04.323376",
-    "success": true,
-    "data": [
-      {
-        "id": "BPOP",
-        "name": "Popular Inc.",
-        "logo_url": "https://img.logo.dev/ticker/BPOP?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.95,
-        "competition_level": "direct",
-        "symbol": "BPOP"
-      },
-      {
-        "id": "FBP",
-        "name": "First BanCorp.",
-        "logo_url": "https://img.logo.dev/ticker/FBP?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Banking",
-        "relevance_score": 0.9,
-        "competition_level": "direct",
-        "symbol": "FBP"
-      },
-      {
-        "id": "ESNT",
-        "name": "Essent Group Ltd.",
-        "logo_url": "https://img.logo.dev/ticker/ESNT?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.85,
-        "competition_level": "indirect",
-        "symbol": "ESNT"
-      },
-      {
-        "id": "MTG",
-        "name": "MGIC Investment Corporation",
-        "logo_url": "https://img.logo.dev/ticker/MTG?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.8,
-        "competition_level": "indirect",
-        "symbol": "MTG"
-      },
-      {
-        "id": "RDN",
-        "name": "Radian Group Inc.",
-        "logo_url": "https://img.logo.dev/ticker/RDN?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.78,
-        "competition_level": "indirect",
-        "symbol": "RDN"
-      },
-      {
-        "id": "TRUP",
-        "name": "Trupanion Inc.",
-        "logo_url": "https://img.logo.dev/ticker/TRUP?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.75,
-        "competition_level": "indirect",
-        "symbol": "TRUP"
-      },
-      {
-        "id": "UNM",
-        "name": "Unum Group",
-        "logo_url": "https://img.logo.dev/ticker/UNM?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.72,
-        "competition_level": "indirect",
-        "symbol": "UNM"
-      },
-      {
-        "id": "WLTW",
-        "name": "Willis Towers Watson Public Limited Company",
-        "logo_url": "https://img.logo.dev/ticker/WLTW?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.7,
-        "competition_level": "indirect",
-        "symbol": "WLTW"
-      },
-      {
-        "id": "AFL",
-        "name": "Aflac Incorporated",
-        "logo_url": "https://img.logo.dev/ticker/AFL?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.68,
-        "competition_level": "indirect",
-        "symbol": "AFL"
-      },
-      {
-        "id": "PRI",
-        "name": "Primerica Inc.",
-        "logo_url": "https://img.logo.dev/ticker/PRI?token=pk_TVi0kXveSqGUNVDsvdijOA",
-        "industry": "Insurance",
-        "relevance_score": 0.65,
-        "competition_level": "indirect",
-        "symbol": "PRI"
       }
     ]
   }
