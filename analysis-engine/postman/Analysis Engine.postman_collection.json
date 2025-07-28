@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "4855c318-f663-48b1-957c-d5aa12e51e27",
+		"name": "Analysis Engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "374581",
+		"_collection_link": "https://vibecoding.postman.co/workspace/cda1b4d2-e372-4163-957b-a1a1cba6671d/collection/374581-4855c318-f663-48b1-957c-d5aa12e51e27?action=share&source=collection_link&creator=374581"
+	},
+	"item": [
+		{
+			"name": "1. analyze",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"brand_data\": {\r\n    \"brand_id\": \"oriental_bank_pr\",\r\n    \"news_sentiment\": {\"score\": 0.75},\r\n    \"social_media\": {\"overall_sentiment\": 0.68},\r\n    \"glassdoor\": {\"overall_rating\": 3.8},\r\n    \"website_analysis\": {\"user_experience_score\": 0.82}\r\n  },\r\n  \"competitor_data\": {\r\n    \"brand_id\": \"banco_popular\",\r\n    \"news_sentiment\": {\"score\": 0.82},\r\n    \"social_media\": {\"overall_sentiment\": 0.74},\r\n    \"glassdoor\": {\"overall_rating\": 4.1},\r\n    \"website_analysis\": {\"user_experience_score\": 0.89}\r\n  },\r\n  \"area_id\": \"self_service_portal\",\r\n  \"analysis_type\": \"comprehensive\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8003/api/v1/analyze",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"v1",
+						"analyze"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"brand_data\": {\r\n    \"brand_id\": \"oriental_bank_pr\",\r\n    \"news_sentiment\": {\"score\": 0.75},\r\n    \"social_media\": {\"overall_sentiment\": 0.68},\r\n    \"glassdoor\": {\"overall_rating\": 3.8},\r\n    \"website_analysis\": {\"user_experience_score\": 0.82}\r\n  },\r\n  \"competitor_data\": {\r\n    \"brand_id\": \"banco_popular\",\r\n    \"news_sentiment\": {\"score\": 0.82},\r\n    \"social_media\": {\"overall_sentiment\": 0.74},\r\n    \"glassdoor\": {\"overall_rating\": 4.1},\r\n    \"website_analysis\": {\"user_experience_score\": 0.89}\r\n  },\r\n  \"area_id\": \"self_service_portal\",\r\n  \"analysis_type\": \"comprehensive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/v1/analyze",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"analyze"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 28 Jul 2025 21:25:56 GMT",
+							"type": "text"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn",
+							"type": "text"
+						},
+						{
+							"key": "content-length",
+							"value": "96",
+							"type": "text"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "x-process-time",
+							"value": "0.006163358688354492",
+							"type": "text"
+						},
+						{
+							"key": "x-request-id",
+							"value": "d9f5eb52",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"analysis_id\": \"analysis_db1a1c9e\",\n    \"status\": \"processing\",\n    \"estimated_duration\": 60\n}"
+				}
+			]
+		},
+		{
+			"name": "2. status",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/api/v1/analyze/analysis_db1a1c9e/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"v1",
+						"analyze",
+						"analysis_db1a1c9e",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/v1/analyze/analysis_db1a1c9e/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"analyze",
+								"analysis_db1a1c9e",
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 28 Jul 2025 21:28:16 GMT",
+							"type": "text"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn",
+							"type": "text"
+						},
+						{
+							"key": "content-length",
+							"value": "145",
+							"type": "text"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "x-process-time",
+							"value": "0.004746198654174805",
+							"type": "text"
+						},
+						{
+							"key": "x-request-id",
+							"value": "540d205c",
+							"type": "text"
+						},
+						{
+							"key": "x-analysis-id",
+							"value": "analysis_db1a1c9e",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"analysis_id\": \"analysis_db1a1c9e\",\n        \"status\": \"completed\",\n        \"progress\": 100,\n        \"completed_at\": \"2025-07-28T21:26:16.192138+00:00\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "3. results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/api/v1/analyze/analysis_db1a1c9e/results",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"v1",
+						"analyze",
+						"analysis_db1a1c9e",
+						"results"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/v1/analyze/analysis_db1a1c9e/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"analyze",
+								"analysis_db1a1c9e",
+								"results"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 28 Jul 2025 21:29:11 GMT",
+							"type": "text"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn",
+							"type": "text"
+						},
+						{
+							"key": "content-length",
+							"value": "2511",
+							"type": "text"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "x-process-time",
+							"value": "0.004292011260986328",
+							"type": "text"
+						},
+						{
+							"key": "x-request-id",
+							"value": "dcf94c34",
+							"type": "text"
+						},
+						{
+							"key": "x-analysis-id",
+							"value": "analysis_db1a1c9e",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"analysis_id\": \"analysis_db1a1c9e\",\n        \"area_id\": \"self_service_portal\",\n        \"brand_name\": \"oriental_bank_pr\",\n        \"competitor_name\": \"banco_popular\",\n        \"overall_comparison\": {\n            \"brand_score\": 0.7525,\n            \"competitor_score\": 0.8175,\n            \"gap\": -0.06500000000000006,\n            \"brand_ranking\": \"second\",\n            \"confidence_level\": 0.85\n        },\n        \"detailed_comparison\": {\n            \"news_sentiment\": {\n                \"brand_score\": 0.75,\n                \"competitor_score\": 0.82,\n                \"difference\": -0.06999999999999995,\n                \"insight\": \"Brand sentiment analysis shows disadvantage in public perception\",\n                \"trend\": \"stable\"\n            },\n            \"social_media_sentiment\": {\n                \"brand_score\": 0.68,\n                \"competitor_score\": 0.74,\n                \"difference\": -0.05999999999999994,\n                \"insight\": \"Social media presence shows weaker engagement\",\n                \"trend\": \"stable\"\n            },\n            \"employee_satisfaction\": {\n                \"brand_score\": 0.76,\n                \"competitor_score\": 0.82,\n                \"difference\": -0.05999999999999994,\n                \"insight\": \"Employee satisfaction indicates lower workplace culture\",\n                \"trend\": \"stable\"\n            },\n            \"user_experience\": {\n                \"brand_score\": 0.82,\n                \"competitor_score\": 0.89,\n                \"difference\": -0.07000000000000006,\n                \"insight\": \"Website user experience shows inferior design and usability\",\n                \"trend\": \"stable\"\n            }\n        },\n        \"actionable_insights\": [\n            {\n                \"priority\": \"medium\",\n                \"category\": \"digital_transformation\",\n                \"title\": \"Enhance Digital Presence\",\n                \"description\": \"Improve overall digital footprint and customer engagement\",\n                \"estimated_effort\": \"2-3 months\",\n                \"expected_impact\": \"Increase brand visibility and customer satisfaction by 10-15%\",\n                \"roi_estimate\": null,\n                \"implementation_steps\": [\n                    \"Audit current digital channels\",\n                    \"Identify improvement opportunities\",\n                    \"Implement enhanced digital strategies\",\n                    \"Monitor and optimize performance\"\n                ],\n                \"success_metrics\": null\n            }\n        ],\n        \"strengths_to_maintain\": [\n            {\n                \"area\": \"Market Position\",\n                \"description\": \"Established market presence and brand recognition\",\n                \"recommendation\": \"Leverage existing brand equity while pursuing strategic improvements\",\n                \"current_score\": null\n            }\n        ],\n        \"market_positioning\": {\n            \"brand_position\": \"oriental_bank_pr positioned as established market player\",\n            \"competitor_position\": \"banco_popular positioned as competitive alternative\",\n            \"differentiation_opportunity\": \"Focus on unique value propositions and customer experience improvements\",\n            \"target_audience\": null\n        },\n        \"trend_analysis\": {\n            \"brand_trend\": \"improving\",\n            \"competitor_trend\": \"improving\",\n            \"market_trend\": \"digital_transformation\",\n            \"recommendations\": [\n                \"Accelerate digital transformation initiatives\",\n                \"Focus on customer experience improvements\",\n                \"Monitor competitive landscape for emerging threats\"\n            ]\n        },\n        \"confidence_score\": 0.75,\n        \"created_at\": \"2025-07-28T21:25:57.469477Z\",\n        \"completed_at\": \"2025-07-28T21:26:16.192138Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "4. history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/api/v1/analyze/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"api",
+						"v1",
+						"analyze",
+						"history"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/v1/analyze/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"analyze",
+								"history"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 28 Jul 2025 21:30:13 GMT",
+							"type": "text"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn",
+							"type": "text"
+						},
+						{
+							"key": "content-length",
+							"value": "242",
+							"type": "text"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "x-process-time",
+							"value": "0.0026590824127197266",
+							"type": "text"
+						},
+						{
+							"key": "x-request-id",
+							"value": "d0cc088a",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"analysis_id\": \"analysis_db1a1c9e\",\n            \"brand_id\": \"oriental_bank_pr\",\n            \"competitor_id\": \"banco_popular\",\n            \"area_id\": \"self_service_portal\",\n            \"created_at\": \"2025-07-28T21:25:57.469477Z\",\n            \"status\": \"completed\",\n            \"overall_score\": 0.7525\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "0. health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8003/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8003",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 28 Jul 2025 21:32:00 GMT",
+							"type": "text"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn",
+							"type": "text"
+						},
+						{
+							"key": "content-length",
+							"value": "153",
+							"type": "text"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"healthy\",\n    \"service\": \"analysis-engine\",\n    \"timestamp\": \"2025-07-28T21:32:00.243812Z\",\n    \"version\": \"1.0.0\",\n    \"llm_status\": \"connected\",\n    \"active_analyses\": 0\n}"
+				}
+			]
+		}
+	]
+}
