@@ -1,0 +1,369 @@
+{
+  "demo_id": "healthcare_demo",
+  "name": "Healthcare Product Innovation Comparison",
+  "description": "Comparison between Pfizer and Moderna in product innovation and R&D capabilities",
+  "brand": {
+    "id": "pfizer",
+    "name": "Pfizer",
+    "full_name": "Pfizer Inc.",
+    "industry": "Healthcare/Pharmaceuticals",
+    "logo_url": "https://example.com/pfizer_logo.png",
+    "description": "Global pharmaceutical leader with extensive R&D capabilities",
+    "website": "https://www.pfizer.com"
+  },
+  "competitor": {
+    "id": "moderna",
+    "name": "Moderna",
+    "full_name": "Moderna Inc.",
+    "industry": "Healthcare/Pharmaceuticals",
+    "logo_url": "https://example.com/moderna_logo.png",
+    "description": "Biotechnology company pioneering mRNA technology",
+    "website": "https://www.modernatx.com"
+  },
+  "area": {
+    "id": "product_innovation",
+    "name": "Product Innovation",
+    "description": "Research and development capabilities and product innovation"
+  },
+  "brand_data": {
+    "brand_id": "pfizer",
+    "news_sentiment": {
+      "score": 0.73,
+      "articles_count": 67,
+      "positive_articles": 48,
+      "negative_articles": 12,
+      "neutral_articles": 7,
+      "recent_articles": [
+        {
+          "title": "Pfizer Announces New Cancer Treatment Breakthrough",
+          "sentiment": "positive",
+          "published_date": "2024-01-13",
+          "source": "Medical News Today"
+        },
+        {
+          "title": "Pfizer Expands R&D Investment in mRNA Technology",
+          "sentiment": "positive",
+          "published_date": "2024-01-10",
+          "source": "Pharmaceutical Journal"
+        },
+        {
+          "title": "Some Patients Report Side Effects from New Drug",
+          "sentiment": "negative",
+          "published_date": "2024-01-07",
+          "source": "Health News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.69,
+      "mentions_count": 1890,
+      "engagement_rate": 0.042,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.71,
+          "mentions": 890,
+          "trending_topics": ["healthcare innovation", "medical research"]
+        },
+        "facebook": {
+          "sentiment": 0.67,
+          "mentions": 678,
+          "trending_topics": ["patient care", "medical breakthroughs"]
+        },
+        "linkedin": {
+          "sentiment": 0.73,
+          "mentions": 322,
+          "trending_topics": ["pharmaceutical research", "clinical trials"]
+        }
+      },
+      "trending_topics": ["healthcare innovation", "medical research", "patient care", "medical breakthroughs"]
+    },
+    "glassdoor": {
+      "overall_rating": 3.9,
+      "reviews_count": 345,
+      "pros": [
+        "Excellent research opportunities",
+        "Strong company stability",
+        "Good benefits and compensation",
+        "Meaningful work in healthcare",
+        "Professional development programs"
+      ],
+      "cons": [
+        "Large company bureaucracy",
+        "Slow decision-making processes",
+        "Limited flexibility in some roles",
+        "High pressure in clinical trials"
+      ],
+      "recommendation_rate": 0.81,
+      "ceo_approval": 0.85,
+      "recent_reviews": [
+        {
+          "rating": 4,
+          "pros": "Great research opportunities and stable company",
+          "cons": "Sometimes slow to innovate due to size",
+          "date": "2024-01-12"
+        },
+        {
+          "rating": 4,
+          "pros": "Meaningful work and good benefits",
+          "cons": "Large company politics",
+          "date": "2024-01-10"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.83,
+      "feature_completeness": 0.86,
+      "security_score": 0.90,
+      "accessibility_score": 0.84,
+      "mobile_friendliness": 0.81,
+      "load_time": 2.4,
+      "features": [
+        "Comprehensive product information",
+        "Clinical trial data",
+        "Patient resources",
+        "Research and development section",
+        "Investor relations",
+        "Corporate responsibility"
+      ],
+      "missing_features": [
+        "Real-time clinical trial updates",
+        "Interactive drug information",
+        "Patient community forums"
+      ]
+    }
+  },
+  "competitor_data": {
+    "brand_id": "moderna",
+    "news_sentiment": {
+      "score": 0.85,
+      "articles_count": 89,
+      "positive_articles": 72,
+      "negative_articles": 10,
+      "neutral_articles": 7,
+      "recent_articles": [
+        {
+          "title": "Moderna's mRNA Technology Shows Promise in Cancer Treatment",
+          "sentiment": "positive",
+          "published_date": "2024-01-14",
+          "source": "Science Daily"
+        },
+        {
+          "title": "Moderna Leads Innovation in Personalized Medicine",
+          "sentiment": "positive",
+          "published_date": "2024-01-11",
+          "source": "Biotech News"
+        },
+        {
+          "title": "Regulatory Challenges for New mRNA Therapies",
+          "sentiment": "negative",
+          "published_date": "2024-01-08",
+          "source": "Regulatory News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.78,
+      "mentions_count": 2345,
+      "engagement_rate": 0.055,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.81,
+          "mentions": 1234,
+          "trending_topics": ["mRNA technology", "innovation", "biotech"]
+        },
+        "facebook": {
+          "sentiment": 0.75,
+          "mentions": 789,
+          "trending_topics": ["medical breakthroughs", "future of medicine"]
+        },
+        "linkedin": {
+          "sentiment": 0.79,
+          "mentions": 322,
+          "trending_topics": ["biotechnology", "research innovation"]
+        }
+      },
+      "trending_topics": ["mRNA technology", "innovation", "biotech", "medical breakthroughs"]
+    },
+    "glassdoor": {
+      "overall_rating": 4.2,
+      "reviews_count": 234,
+      "pros": [
+        "Cutting-edge technology and innovation",
+        "Fast-paced and exciting work environment",
+        "High impact on healthcare",
+        "Collaborative and dynamic culture",
+        "Excellent career growth opportunities"
+      ],
+      "cons": [
+        "High pressure and expectations",
+        "Fast-paced environment can be stressful",
+        "Limited work-life balance",
+        "Constant change and uncertainty"
+      ],
+      "recommendation_rate": 0.88,
+      "ceo_approval": 0.92,
+      "recent_reviews": [
+        {
+          "rating": 5,
+          "pros": "Incredible innovation and cutting-edge technology",
+          "cons": "High pressure and fast-paced environment",
+          "date": "2024-01-13"
+        },
+        {
+          "rating": 4,
+          "pros": "Amazing research opportunities and impact",
+          "cons": "Work-life balance can be challenging",
+          "date": "2024-01-11"
+        }
+      ]
+    },
+    "website_analysis": {
+      "user_experience_score": 0.88,
+      "feature_completeness": 0.84,
+      "security_score": 0.92,
+      "accessibility_score": 0.86,
+      "mobile_friendliness": 0.89,
+      "load_time": 1.9,
+      "features": [
+        "Innovation showcase",
+        "mRNA technology explanation",
+        "Research pipeline",
+        "Clinical trial information",
+        "Patient resources",
+        "Technology platform details"
+      ],
+      "missing_features": [
+        "Comprehensive product catalog",
+        "Traditional pharmaceutical information",
+        "Extensive patient support programs"
+      ]
+    }
+  },
+  "analysis_results": {
+    "overall_comparison": {
+      "brand_score": 0.79,
+      "competitor_score": 0.87,
+      "gap": -0.08,
+      "brand_ranking": "second",
+      "confidence_level": 0.91
+    },
+    "detailed_comparison": {
+      "innovation_capability": {
+        "brand_score": 0.76,
+        "competitor_score": 0.89,
+        "difference": -0.13,
+        "insight": "Moderna leads in innovation with cutting-edge mRNA technology and faster development cycles",
+        "trend": "improving"
+      },
+      "research_pipeline": {
+        "brand_score": 0.82,
+        "competitor_score": 0.85,
+        "difference": -0.03,
+        "insight": "Both companies have strong pipelines, but Moderna's mRNA platform offers more flexibility",
+        "trend": "stable"
+      },
+      "market_position": {
+        "brand_score": 0.84,
+        "competitor_score": 0.78,
+        "difference": 0.06,
+        "insight": "Pfizer has stronger market presence and established distribution networks",
+        "trend": "stable"
+      },
+      "technology_platform": {
+        "brand_score": 0.75,
+        "competitor_score": 0.91,
+        "difference": -0.16,
+        "insight": "Moderna's mRNA platform is more innovative and adaptable for new applications",
+        "trend": "improving"
+      }
+    },
+    "actionable_insights": [
+      {
+        "priority": "high",
+        "category": "technology_investment",
+        "title": "Accelerate mRNA Technology Development",
+        "description": "Invest heavily in mRNA technology to compete with Moderna's innovative platform",
+        "estimated_effort": "12-18 months",
+        "expected_impact": "Increase innovation capability score by 0.15",
+        "roi_estimate": "$5.2M annually (new product revenue)",
+        "implementation_steps": [
+          "Establish dedicated mRNA research division",
+          "Hire top mRNA technology experts",
+          "Invest in mRNA manufacturing capabilities",
+          "Develop mRNA technology partnerships",
+          "Create mRNA innovation labs",
+          "Accelerate mRNA clinical trials"
+        ],
+        "success_metrics": [
+          "mRNA patent applications",
+          "mRNA clinical trial progress",
+          "mRNA technology partnerships"
+        ]
+      },
+      {
+        "priority": "medium",
+        "category": "research_efficiency",
+        "title": "Streamline R&D Processes",
+        "description": "Improve research efficiency and reduce time-to-market for new products",
+        "estimated_effort": "8-12 months",
+        "expected_impact": "Reduce development time by 25%",
+        "roi_estimate": "$3.8M annually (faster time to market)",
+        "implementation_steps": [
+          "Implement agile development methodologies",
+          "Enhance cross-functional collaboration",
+          "Invest in automation and AI tools",
+          "Streamline regulatory processes",
+          "Improve clinical trial design",
+          "Optimize manufacturing processes"
+        ],
+        "success_metrics": [
+          "Time to market reduction",
+          "Clinical trial efficiency",
+          "R&D productivity metrics"
+        ]
+      },
+      {
+        "priority": "low",
+        "category": "partnership_strategy",
+        "title": "Strengthen Innovation Partnerships",
+        "description": "Develop strategic partnerships with biotech startups and research institutions",
+        "estimated_effort": "6-9 months",
+        "expected_impact": "Access to 15+ new technology platforms",
+        "roi_estimate": "$2.1M annually (partnership value)",
+        "implementation_steps": [
+          "Establish innovation partnership program",
+          "Create startup incubation initiatives",
+          "Develop university research partnerships",
+          "Invest in biotech venture fund",
+          "Create open innovation platform",
+          "Establish technology licensing program"
+        ],
+        "success_metrics": [
+          "Number of active partnerships",
+          "Partnership pipeline value",
+          "Innovation pipeline diversity"
+        ]
+      }
+    ],
+    "strengths_to_maintain": [
+      {
+        "area": "market_presence",
+        "description": "Strong market presence and distribution networks are competitive advantage",
+        "recommendation": "Leverage market presence to accelerate new product launches",
+        "current_score": 0.84
+      },
+      {
+        "area": "financial_stability",
+        "description": "Financial stability enables large-scale R&D investments",
+        "recommendation": "Use financial strength to invest in breakthrough technologies",
+        "current_score": 0.86
+      }
+    ],
+    "market_positioning": {
+      "brand_position": "Established pharmaceutical leader with strong market presence",
+      "competitor_position": "Innovative biotech pioneer with cutting-edge mRNA technology",
+      "differentiation_opportunity": "Combine market strength with innovative technology development",
+      "target_audience": "Healthcare providers and patients seeking proven, reliable treatments"
+    }
+  }
+} 

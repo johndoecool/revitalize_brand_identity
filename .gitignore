@@ -1,0 +1,243 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies-
+.packages
+.pub-cache/
+.pub/
+/flutter/build/
+build/
+.fvm/flutter_sdk
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+flutter/android/app/debug/
+flutter/android/app/profile/
+flutter/android/app/release/
+flutter/android/.gradle/
+flutter/android/captures/
+flutter/android/gradle-wrapper.jar
+flutter/android/gradlew
+flutter/android/gradlew.bat
+flutter/android/local.properties
+flutter/android/key.properties
+
+# iOS/XCode related
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata
+**/ios/.generated/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+flutter/ios/Pods/
+flutter/ios/.symlinks/
+flutter/ios/Runner.xcworkspace/xcshareddata/
+flutter/ios/Runner/GeneratedPluginRegistrant.*
+flutter/ios/Podfile.lock
+
+# macOS related
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Coverage
+coverage/
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Web related
+/web/build/
+flutter/build/web/
+
+# Windows related
+**/windows/**/generated_plugin_registrant.cc
+**/windows/**/generated_plugin_registrant.h
+**/windows/**/generated_plugins.cmake
+**/windows/flutter/ephemeral/
+
+# Linux related
+**/linux/**/generated_plugin_registrant.cc
+**/linux/**/generated_plugin_registrant.h
+**/linux/**/generated_plugins.cmake
+**/linux/flutter/ephemeral/
+
+# Project specific
+# Backup directory
+backup/
+
+# Development utilities
+*.log
+# serve.py - keep for local development
+
+# Python related (keep for any Python utilities)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+services/*/build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Node.js related (keep for any Node utilities)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# API keys and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+config.json
+secrets.json
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Flutter specific temporary files
+.metadata
+flutter/.flutter-plugins-dependencies
+flutter/.flutter-plugins
+flutter/.packages
+flutter/.dart_tool/
+flutter/pubspec.lock
+
+# Generated files
+flutter/lib/generated_plugin_registrant.dart
+flutter/ios/Runner/GeneratedPluginRegistrant.m
+flutter/ios/Runner/GeneratedPluginRegistrant.h
+flutter/macos/Runner/GeneratedPluginRegistrant.swift
+flutter/windows/runner/generated_plugin_registrant.cc
+flutter/windows/runner/generated_plugin_registrant.h
+flutter/linux/runner/generated_plugin_registrant.cc
+flutter/linux/runner/generated_plugin_registrant.h
+
+# Lock files (include pubspec.lock for Flutter)
+# pubspec.lock should be committed for Flutter apps
+package-lock.json
+yarn.lock
+
+# Deployment
+.vercel
+.netlify
+
+# Playwright Testing (frontend-test)
+frontend-test/node_modules/
+frontend-test/test-results/
+frontend-test/playwright-report/
+frontend-test/playwright/.cache/
+frontend-test/.env
+frontend-test/package-lock.json
+frontend-test/yarn.lock
+frontend-test/dist/
+
+# Test artifacts that should be kept
+# frontend-test/TEST_EXECUTION_REPORT.md - keep for documentation
+# frontend-test/TEST_COVERAGE.md - keep for documentation
+# frontend-test/README.md - keep for documentation
+
+# Temporary test files
+frontend-test/debug.spec.ts
+frontend-test/basic.spec.ts
+frontend-test/working.spec.ts
+frontend-test/*.png
+frontend-test/*.webm
+frontend-test/*.mp4

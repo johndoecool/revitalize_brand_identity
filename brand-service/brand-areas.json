@@ -1,0 +1,353 @@
+[
+  {
+    "brand_id": "ofg",
+    "cached_at": "2025-07-27T14:35:13.857639",
+    "success": true,
+    "data": [
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Revenue, profitability, and growth metrics",
+        "relevance_score": 0.95,
+        "metrics": [
+          "revenue_growth",
+          "net_income",
+          "return_on_equity"
+        ]
+      },
+      {
+        "id": "market_position",
+        "name": "Market Position",
+        "description": "Competitive landscape and market share",
+        "relevance_score": 0.92,
+        "metrics": [
+          "market_share",
+          "competitor_analysis",
+          "customer_base"
+        ]
+      },
+      {
+        "id": "employee_experience",
+        "name": "Employee Experience",
+        "description": "Work environment, benefits, and employee satisfaction",
+        "relevance_score": 0.88,
+        "metrics": [
+          "employee_satisfaction",
+          "compensation",
+          "work_life_balance"
+        ]
+      },
+      {
+        "id": "public_sentiment",
+        "name": "Public Sentiment",
+        "description": "Social media and news media perception of the company",
+        "relevance_score": 0.85,
+        "metrics": [
+          "social_media_sentiment",
+          "news_media_coverage",
+          "reputation_score"
+        ]
+      },
+      {
+        "id": "product_quality",
+        "name": "Product Quality",
+        "description": "Quality and reliability of products or services",
+        "relevance_score": 0.82,
+        "metrics": [
+          "product_reliability",
+          "customer_support",
+          "feature_completeness"
+        ]
+      },
+      {
+        "id": "innovation",
+        "name": "Innovation",
+        "description": "Research and development, innovation pipeline, and intellectual property",
+        "relevance_score": 0.79,
+        "metrics": [
+          "research_and_development",
+          "patent_portfolio",
+          "innovation_awards"
+        ]
+      },
+      {
+        "id": "customer_service",
+        "name": "Customer Service",
+        "description": "Quality and responsiveness of customer support",
+        "relevance_score": 0.76,
+        "metrics": [
+          "customer_support",
+          "response_time",
+          "resolution_rate"
+        ]
+      },
+      {
+        "id": "supply_chain_management",
+        "name": "Supply Chain Management",
+        "description": "Efficiency and resilience of supply chain operations",
+        "relevance_score": 0.73,
+        "metrics": [
+          "supply_chain_visibility",
+          "inventory_management",
+          "logistics_efficiency"
+        ]
+      },
+      {
+        "id": "environmental_sustainability",
+        "name": "Environmental Sustainability",
+        "description": "Environmental impact and sustainability initiatives",
+        "relevance_score": 0.69,
+        "metrics": [
+          "carbon_footprint",
+          "renewable_energy",
+          "sustainability_reporting"
+        ]
+      },
+      {
+        "id": "corporate_governance",
+        "name": "Corporate Governance",
+        "description": "Board composition, executive compensation, and audit practices",
+        "relevance_score": 0.65,
+        "metrics": [
+          "board_diversity",
+          "executive_compensation",
+          "audit_committee_effectiveness"
+        ]
+      }
+    ]
+  },
+  {
+    "brand_id": "CTSH",
+    "cached_at": "2025-07-27T14:39:54.454377",
+    "success": true,
+    "data": [
+      {
+        "id": "revenue_growth",
+        "name": "Revenue Growth",
+        "description": "Year-over-year revenue increase",
+        "relevance_score": 0.95,
+        "metrics": [
+          "revenue",
+          "growth_rate",
+          "industry_average"
+        ]
+      },
+      {
+        "id": "employee_engagement",
+        "name": "Employee Engagement",
+        "description": "Employee satisfaction and involvement",
+        "relevance_score": 0.88,
+        "metrics": [
+          "employee_satisfaction",
+          "net_promoter_score",
+          "turnover_rate"
+        ]
+      },
+      {
+        "id": "market_share",
+        "name": "Market Share",
+        "description": "Company's share of the total market",
+        "relevance_score": 0.85,
+        "metrics": [
+          "market_size",
+          "company_share",
+          "competitor_share"
+        ]
+      },
+      {
+        "id": "customer_satisfaction",
+        "name": "Customer Satisfaction",
+        "description": "Customer happiness with products or services",
+        "relevance_score": 0.82,
+        "metrics": [
+          "customer_reviews",
+          "net_promoter_score",
+          "complaint_rate"
+        ]
+      },
+      {
+        "id": "innovation_capacity",
+        "name": "Innovation Capacity",
+        "description": "Company's ability to innovate and adapt",
+        "relevance_score": 0.79,
+        "metrics": [
+          "research_and_development",
+          "patent_filings",
+          "product_launches"
+        ]
+      },
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Company's financial health and stability",
+        "relevance_score": 0.76,
+        "metrics": [
+          "revenue",
+          "profit_margin",
+          "debt_to_equity_ratio"
+        ]
+      },
+      {
+        "id": "social_responsibility",
+        "name": "Social Responsibility",
+        "description": "Company's commitment to social and environmental causes",
+        "relevance_score": 0.73,
+        "metrics": [
+          "corporate_social_responsibility",
+          "environmental_sustainability",
+          "community_involvement"
+        ]
+      },
+      {
+        "id": "talent_attraction",
+        "name": "Talent Attraction",
+        "description": "Company's ability to attract and retain top talent",
+        "relevance_score": 0.69,
+        "metrics": [
+          "employer_branding",
+          "employee_value_proposition",
+          "time_to_hire"
+        ]
+      },
+      {
+        "id": "operational_efficiency",
+        "name": "Operational Efficiency",
+        "description": "Company's ability to optimize processes and reduce waste",
+        "relevance_score": 0.65,
+        "metrics": [
+          "process_efficiency",
+          "cost_reduction",
+          "supply_chain_optimization"
+        ]
+      },
+      {
+        "id": "regulatory_compliance",
+        "name": "Regulatory Compliance",
+        "description": "Company's adherence to laws and regulations",
+        "relevance_score": 0.61,
+        "metrics": [
+          "compliance_rate",
+          "audit_findings",
+          "regulatory_fines"
+        ]
+      }
+    ]
+  },
+  {
+    "brand_id": "OFG",
+    "cached_at": "2025-07-27T14:41:17.805286",
+    "success": true,
+    "data": [
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Revenue, profitability, and growth metrics",
+        "relevance_score": 0.95,
+        "metrics": [
+          "revenue_growth",
+          "net_income",
+          "return_on_equity"
+        ]
+      },
+      {
+        "id": "market_position",
+        "name": "Market Position",
+        "description": "Competitive standing and market share",
+        "relevance_score": 0.92,
+        "metrics": [
+          "market_share",
+          "competitor_analysis",
+          "customer_base"
+        ]
+      },
+      {
+        "id": "employee_experience",
+        "name": "Employee Experience",
+        "description": "Work environment, benefits, and employee satisfaction",
+        "relevance_score": 0.88,
+        "metrics": [
+          "employee_satisfaction",
+          "compensation",
+          "work_life_balance"
+        ]
+      },
+      {
+        "id": "public_sentiment",
+        "name": "Public Sentiment",
+        "description": "Brand reputation and social media presence",
+        "relevance_score": 0.85,
+        "metrics": [
+          "social_media_engagement",
+          "brand_reputation",
+          "customer_reviews"
+        ]
+      },
+      {
+        "id": "operational_efficiency",
+        "name": "Operational Efficiency",
+        "description": "Cost management, productivity, and supply chain optimization",
+        "relevance_score": 0.82,
+        "metrics": [
+          "cost_reduction",
+          "productivity",
+          "supply_chain_management"
+        ]
+      },
+      {
+        "id": "innovation_capacity",
+        "name": "Innovation Capacity",
+        "description": "Research and development, innovation, and technological advancement",
+        "relevance_score": 0.79,
+        "metrics": [
+          "research_and_development",
+          "innovation",
+          "technological_advancement"
+        ]
+      },
+      {
+        "id": "customer_experience",
+        "name": "Customer Experience",
+        "description": "Customer satisfaction, support, and retention",
+        "relevance_score": 0.76,
+        "metrics": [
+          "customer_satisfaction",
+          "customer_support",
+          "customer_retention"
+        ]
+      },
+      {
+        "id": "regulatory_compliance",
+        "name": "Regulatory Compliance",
+        "description": "Adherence to laws, regulations, and industry standards",
+        "relevance_score": 0.73,
+        "metrics": [
+          "regulatory_adherence",
+          "compliance_risk",
+          "audit_results"
+        ]
+      },
+      {
+        "id": "environmental_sustainability",
+        "name": "Environmental Sustainability",
+        "description": "Environmental impact, sustainability, and social responsibility",
+        "relevance_score": 0.69,
+        "metrics": [
+          "environmental_impact",
+          "sustainability",
+          "social_responsibility"
+        ]
+      },
+      {
+        "id": "corporate_governance",
+        "name": "Corporate Governance",
+        "description": "Leadership, board composition, and executive compensation",
+        "relevance_score": 0.65,
+        "metrics": [
+          "leadership",
+          "board_composition",
+          "executive_compensation"
+        ]
+      }
+    ]
+  }
+]
