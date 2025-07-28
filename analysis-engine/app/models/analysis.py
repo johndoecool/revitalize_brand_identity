@@ -1,12 +1,12 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional
-from datetime import datetime
+from typing import Dict, Any, List, Optional
 from enum import Enum
+from datetime import datetime
 
-class AnalysisType(str, Enum):
-    COMPREHENSIVE = "comprehensive"
-    QUICK = "quick"
-    DETAILED = "detailed"
+class Priority(str, Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
 
 class AnalysisStatus(str, Enum):
     PENDING = "pending"
@@ -14,40 +14,19 @@ class AnalysisStatus(str, Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
-class Priority(str, Enum):
-    HIGH = "high"
-    MEDIUM = "medium"
-    LOW = "low"
-
-# Request Models
-class AnalysisRequest(BaseModel):
-    brand_data: Dict[str, Any] = Field(..., description="Brand data from Data Collection Service")
-    competitor_data: Dict[str, Any] = Field(..., description="Competitor data from Data Collection Service")
-    area_id: str = Field(..., description="Area of analysis (e.g., 'self_service_portal')")
-    analysis_type: AnalysisType = Field(default=AnalysisType.COMPREHENSIVE, description="Type of analysis to perform")
-
-# Response Models
-class AnalysisInitResponse(BaseModel):
-    success: bool
-    analysis_id: str
-    status: AnalysisStatus
-    estimated_duration: int = Field(..., description="Estimated duration in seconds")
-
-class AnalysisStatusResponse(BaseModel):
-    success: bool
-    data: Dict[str, Any]
-
 class ComparisonScore(BaseModel):
-    brand_score: float = Field(..., ge=0.0, le=1.0, description="Brand score (0-1)")
-    competitor_score: float = Field(..., ge=0.0, le=1.0, description="Competitor score (0-1)")
-    difference: float = Field(..., description="Difference (brand - competitor)")
-    insight: str = Field(..., description="AI-generated insight")
+    brand_score: float = Field(..., ge=0.0, le=1.0, description="Brand score (0.0-1.0)")
+    competitor_score: float = Field(..., ge=0.0, le=1.0, description="Competitor score (0.0-1.0)")
+    difference: float = Field(..., description="Score difference (brand - competitor)")
+    insight: str = Field(..., description="Insight about this comparison")
+    trend: Optional[str] = Field(default="stable", description="Trend direction")
 
 class OverallComparison(BaseModel):
     brand_score: float = Field(..., ge=0.0, le=1.0)
     competitor_score: float = Field(..., ge=0.0, le=1.0)
-    gap: float = Field(..., description="Gap between scores")
-    brand_ranking: str = Field(..., description="Brand ranking (first, second, etc.)")
+    gap: float = Field(..., description="Performance gap")
+    brand_ranking: str = Field(..., description="Brand ranking position")
+    confidence_level: Optional[float] = Field(default=0.85, ge=0.0, le=1.0)
 
 class ActionableInsight(BaseModel):
     priority: Priority
@@ -56,17 +35,27 @@ class ActionableInsight(BaseModel):
     description: str
     estimated_effort: str
     expected_impact: str
+    roi_estimate: Optional[str] = None
     implementation_steps: List[str]
+    success_metrics: Optional[List[str]] = None
 
 class Strength(BaseModel):
     area: str
     description: str
     recommendation: str
+    current_score: Optional[float] = None
 
 class MarketPositioning(BaseModel):
     brand_position: str
     competitor_position: str
     differentiation_opportunity: str
+    target_audience: Optional[str] = None
+
+class TrendAnalysis(BaseModel):
+    brand_trend: str
+    competitor_trend: str
+    market_trend: str
+    recommendations: List[str]
 
 class AnalysisResults(BaseModel):
     analysis_id: str
@@ -78,20 +67,58 @@ class AnalysisResults(BaseModel):
     actionable_insights: List[ActionableInsight]
     strengths_to_maintain: List[Strength]
     market_positioning: MarketPositioning
-    confidence_score: float = Field(..., ge=0.0, le=1.0, description="AI confidence in analysis")
-    analysis_timestamp: datetime = Field(default_factory=datetime.utcnow)
+    trend_analysis: Optional[TrendAnalysis] = None
+    confidence_score: float = Field(default=0.85, ge=0.0, le=1.0)
+    created_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+
+# Request Models
+class AnalysisRequest(BaseModel):
+    brand_data: Dict[str, Any]
+    competitor_data: Dict[str, Any]
+    area_id: str
+    analysis_type: str = "comprehensive"
+
+class AnalysisResponse(BaseModel):
+    success: bool
+    analysis_id: str
+    status: AnalysisStatus
+    estimated_duration: Optional[int] = None
+
+class AnalysisStatusResponse(BaseModel):
+    success: bool
+    data: Dict[str, Any]
 
 class AnalysisResultsResponse(BaseModel):
     success: bool
     data: AnalysisResults
 
-# Internal Models
-class AnalysisJob(BaseModel):
+class AnalysisHistoryItem(BaseModel):
     analysis_id: str
-    request_data: AnalysisRequest
+    brand_id: str
+    competitor_id: str
+    area_id: str
+    created_at: datetime
     status: AnalysisStatus
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    completed_at: Optional[datetime] = None
-    progress: int = Field(default=0, ge=0, le=100)
-    results: Optional[AnalysisResults] = None
-    error_message: Optional[str] = None
+    overall_score: float
+
+class AnalysisHistoryResponse(BaseModel):
+    success: bool
+    data: List[AnalysisHistoryItem]
+
+class HealthCheckResponse(BaseModel):
+    status: str
+    service: str
+    timestamp: datetime
+    version: str
+    llm_status: str
+    active_analyses: int
+
+class ErrorDetails(BaseModel):
+    field: str
+    value: str
+
+class ErrorResponse(BaseModel):
+    success: bool = False
+    error: Dict[str, Any]
+    timestamp: datetime

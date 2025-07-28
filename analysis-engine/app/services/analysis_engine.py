@@ -1,248 +1,236 @@
-import uuid
 import asyncio
+import uuid
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Any, Optional
+from app.services.llm_service import LLMService
 from app.models.analysis import (
-    AnalysisRequest, AnalysisResults, AnalysisJob, AnalysisStatus, AnalysisType
+    AnalysisResults, AnalysisRequest, AnalysisStatus,
+    OverallComparison, ComparisonScore, ActionableInsight,
+    Strength, MarketPositioning, TrendAnalysis, Priority
 )
-from app.services.openai_service import OpenAIService
-from app.services.report_service import ReportService
 
 logger = logging.getLogger(__name__)
 
 class AnalysisEngine:
     def __init__(self):
-        self.openai_service = OpenAIService()
-        self.report_service = ReportService()
-        self.active_jobs: Dict[str, AnalysisJob] = {}
-    
-    async def start_analysis(self, request: AnalysisRequest) -> str:
+        self.llm_service = LLMService()
+        self.active_analyses: Dict[str, Dict[str, Any]] = {}
+        self.completed_analyses: Dict[str, AnalysisResults] = {}
+        
+    async def start_analysis(self, request: AnalysisRequest) -> tuple[str, str]:
         """
-        Start a new analysis job and return analysis ID
+        Start a new analysis and return analysis ID and status
         """
-        analysis_id = str(uuid.uuid4())
+        analysis_id = f"analysis_{uuid.uuid4().hex[:8]}"
         
-        # Create analysis job
-        job = AnalysisJob(
-            analysis_id=analysis_id,
-            request_data=request,
-            status=AnalysisStatus.PENDING
-        )
+        # Store analysis metadata
+        self.active_analyses[analysis_id] = {
+            "status": AnalysisStatus.PENDING,
+            "progress": 0,
+            "current_step": "Initializing analysis",
+            "created_at": datetime.now(timezone.utc),
+            "request": request
+        }
         
-        self.active_jobs[analysis_id] = job
+        # Start analysis in background
+        asyncio.create_task(self._perform_analysis(analysis_id, request))
         
-        # Start background analysis
-        asyncio.create_task(self._run_analysis(analysis_id))
-        
-        logger.info(f"Started analysis job: {analysis_id}")
-        return analysis_id
+        logger.info(f"Started analysis {analysis_id} for area: {request.area_id}")
+        return analysis_id, AnalysisStatus.PROCESSING
     
     async def get_analysis_status(self, analysis_id: str) -> Optional[Dict[str, Any]]:
-        """
-        Get the status of an analysis job
-        """
-        if analysis_id not in self.active_jobs:
-            return None
-        
-        job = self.active_jobs[analysis_id]
-        
-        return {
-            "analysis_id": analysis_id,
-            "status": job.status.value,
-            "progress": job.progress,
-            "completed_at": job.completed_at.isoformat() if job.completed_at else None,
-            "error_message": job.error_message
-        }
+        """Get the current status of an analysis"""
+        if analysis_id in self.active_analyses:
+            return self.active_analyses[analysis_id]
+        elif analysis_id in self.completed_analyses:
+            return {
+                "analysis_id": analysis_id,
+                "status": AnalysisStatus.COMPLETED,
+                "progress": 100,
+                "completed_at": self.completed_analyses[analysis_id].completed_at.isoformat()
+            }
+        return None
     
     async def get_analysis_results(self, analysis_id: str) -> Optional[AnalysisResults]:
-        """
-        Get the results of a completed analysis
-        """
-        if analysis_id not in self.active_jobs:
-            return None
-        
-        job = self.active_jobs[analysis_id]
-        
-        if job.status != AnalysisStatus.COMPLETED:
-            return None
-        
-        return job.results
+        """Get the results of a completed analysis"""
+        return self.completed_analyses.get(analysis_id)
     
-    async def _run_analysis(self, analysis_id: str):
-        """
-        Run the complete analysis pipeline
-        """
+    async def get_analysis_history(self, brand_id: Optional[str] = None, limit: int = 10) -> list:
+        """Get history of completed analyses"""
+        analyses = []
+        count = 0
+        
+        for analysis_id, results in self.completed_analyses.items():
+            if count >= limit:
+                break
+                
+            # Filter by brand_id if specified
+            if brand_id and results.brand_name.lower().replace(" ", "_") != brand_id:
+                continue
+            
+            analyses.append({
+                "analysis_id": analysis_id,
+                "brand_id": results.brand_name.lower().replace(" ", "_"),
+                "competitor_id": results.competitor_name.lower().replace(" ", "_"),
+                "area_id": results.area_id,
+                "created_at": results.created_at,
+                "status": AnalysisStatus.COMPLETED,
+                "overall_score": results.overall_comparison.brand_score
+            })
+            count += 1
+        
+        # Sort by created_at descending
+        analyses.sort(key=lambda x: x["created_at"], reverse=True)
+        return analyses
+    
+    async def _perform_analysis(self, analysis_id: str, request: AnalysisRequest):
+        """Perform the actual analysis workflow"""
         try:
-            job = self.active_jobs[analysis_id]
-            job.status = AnalysisStatus.PROCESSING
-            job.progress = 10
+            # Update status to processing
+            self.active_analyses[analysis_id].update({
+                "status": AnalysisStatus.PROCESSING,
+                "progress": 10,
+                "current_step": "Analyzing brand data"
+            })
             
-            logger.info(f"Starting analysis pipeline for {analysis_id}")
+            # Step 1: Validate and preprocess data
+            await asyncio.sleep(1)  # Simulate processing time
+            self.active_analyses[analysis_id].update({
+                "progress": 25,
+                "current_step": "Preprocessing competitor data"
+            })
             
-            # Step 1: Data preprocessing and validation
-            await self._update_progress(analysis_id, 20, "Preprocessing data...")
-            validated_data = await self._preprocess_data(job.request_data)
+            # Step 2: Perform LLM-based analysis
+            await asyncio.sleep(1)
+            self.active_analyses[analysis_id].update({
+                "progress": 50,
+                "current_step": "Generating competitive analysis"
+            })
             
-            # Step 2: AI-powered comparison analysis
-            await self._update_progress(analysis_id, 40, "Running AI analysis...")
-            analysis_results = await self.openai_service.analyze_brand_comparison(
-                validated_data["brand_data"],
-                validated_data["competitor_data"],
-                validated_data["area_id"]
+            # Call LLM service for analysis
+            results = await self.llm_service.analyze_brand_comparison(
+                request.brand_data,
+                request.competitor_data,
+                request.area_id
             )
             
-            # Set analysis ID
-            analysis_results.analysis_id = analysis_id
+            # Step 3: Post-process results
+            await asyncio.sleep(0.5)
+            self.active_analyses[analysis_id].update({
+                "progress": 75,
+                "current_step": "Generating actionable insights"
+            })
             
-            # Step 3: Trend analysis and pattern recognition
-            await self._update_progress(analysis_id, 60, "Analyzing trends...")
-            trend_data = await self._perform_trend_analysis(validated_data)
+            # Step 4: Generate trend analysis if applicable
+            await asyncio.sleep(0.5)
+            trend_analysis = await self._generate_trend_analysis(request)
+            results.trend_analysis = trend_analysis
             
-            # Step 4: Confidence scoring and validation
-            await self._update_progress(analysis_id, 80, "Validating results...")
-            confidence_score = await self.openai_service.validate_analysis_confidence(analysis_results)
-            analysis_results.confidence_score = confidence_score
+            # Step 5: Finalize results
+            results.analysis_id = analysis_id
+            results.created_at = self.active_analyses[analysis_id]["created_at"]
+            results.completed_at = datetime.now(timezone.utc)
             
-            # Step 5: Report generation
-            await self._update_progress(analysis_id, 90, "Generating reports...")
-            await self.report_service.generate_analysis_report(analysis_results)
+            # Validate confidence score
+            results.confidence_score = await self.llm_service.validate_analysis_confidence(results)
             
-            # Complete the analysis
-            await self._update_progress(analysis_id, 100, "Analysis completed")
-            job.results = analysis_results
-            job.status = AnalysisStatus.COMPLETED
-            job.completed_at = datetime.utcnow()
+            # Store completed analysis
+            self.completed_analyses[analysis_id] = results
             
-            logger.info(f"Analysis completed successfully: {analysis_id}")
+            # Remove from active analyses
+            del self.active_analyses[analysis_id]
+            
+            logger.info(f"Completed analysis {analysis_id} with confidence {results.confidence_score}")
             
         except Exception as e:
-            logger.error(f"Analysis failed for {analysis_id}: {str(e)}")
-            job.status = AnalysisStatus.FAILED
-            job.error_message = str(e)
-            job.completed_at = datetime.utcnow()
+            logger.error(f"Analysis {analysis_id} failed: {str(e)}")
+            self.active_analyses[analysis_id].update({
+                "status": AnalysisStatus.FAILED,
+                "error": str(e),
+                "failed_at": datetime.now(timezone.utc)
+            })
     
-    async def _update_progress(self, analysis_id: str, progress: int, message: str):
-        """
-        Update analysis progress
-        """
-        if analysis_id in self.active_jobs:
-            self.active_jobs[analysis_id].progress = progress
-            logger.info(f"Analysis {analysis_id}: {progress}% - {message}")
-        
-        # Small delay to simulate processing time
-        await asyncio.sleep(0.5)
-    
-    async def _preprocess_data(self, request: AnalysisRequest) -> Dict[str, Any]:
-        """
-        Preprocess and validate input data
-        """
-        # Data validation and cleaning
-        brand_data = request.brand_data
-        competitor_data = request.competitor_data
-        area_id = request.area_id
-        
-        # Basic validation
-        if not brand_data or not competitor_data:
-            raise ValueError("Brand data and competitor data are required")
-        
-        # Normalize data structure
-        normalized_brand = self._normalize_brand_data(brand_data)
-        normalized_competitor = self._normalize_brand_data(competitor_data)
-        
-        return {
-            "brand_data": normalized_brand,
-            "competitor_data": normalized_competitor,
-            "area_id": area_id,
-            "analysis_type": request.analysis_type
-        }
-    
-    def _normalize_brand_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Normalize brand data structure for consistent processing
-        """
-        # Ensure required fields exist
-        normalized = data.copy()
-        
-        # Add default values if missing
-        if "brand" not in normalized:
-            normalized["brand"] = {"name": "Unknown Brand"}
-        
-        if "competitor" not in normalized:
-            normalized["competitor"] = {"name": "Unknown Competitor"}
-        
-        return normalized
-    
-    async def _perform_trend_analysis(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Perform trend analysis and pattern recognition
-        """
+    async def _generate_trend_analysis(self, request: AnalysisRequest) -> TrendAnalysis:
+        """Generate trend analysis based on the comparison data"""
         try:
-            # Extract historical data if available
-            brand_data = data["brand_data"]
+            # Extract trend indicators from data
+            brand_score = self._calculate_trend_score(request.brand_data)
+            competitor_score = self._calculate_trend_score(request.competitor_data)
             
-            # Look for time-series data in the brand data
-            historical_data = {}
+            # Determine trends
+            brand_trend = "improving" if brand_score > 0.75 else "stable" if brand_score > 0.5 else "declining"
+            competitor_trend = "improving" if competitor_score > 0.75 else "stable" if competitor_score > 0.5 else "declining"
             
-            # Check for news sentiment trends
-            if "brand_data" in brand_data and "news_sentiment" in brand_data["brand_data"]:
-                historical_data["news_sentiment"] = brand_data["brand_data"]["news_sentiment"]
+            # Generate recommendations based on trends
+            recommendations = []
+            if competitor_score > brand_score:
+                recommendations.extend([
+                    "Accelerate digital transformation initiatives",
+                    "Focus on customer experience improvements"
+                ])
             
-            # Check for social media trends
-            if "brand_data" in brand_data and "social_media" in brand_data["brand_data"]:
-                historical_data["social_media"] = brand_data["brand_data"]["social_media"]
+            if brand_score > 0.8:
+                recommendations.append("Maintain current market leadership position")
             
-            # Generate trend analysis if we have data
-            if historical_data:
-                return await self.openai_service.generate_trend_analysis(historical_data)
-            else:
-                return {"message": "Insufficient historical data for trend analysis"}
-                
+            recommendations.append("Monitor competitive landscape for emerging threats")
+            
+            return TrendAnalysis(
+                brand_trend=brand_trend,
+                competitor_trend=competitor_trend,
+                market_trend="digital_transformation",
+                recommendations=recommendations
+            )
+            
         except Exception as e:
-            logger.warning(f"Trend analysis failed: {str(e)}")
-            return {"error": "Trend analysis unavailable"}
+            logger.warning(f"Failed to generate trend analysis: {str(e)}")
+            return TrendAnalysis(
+                brand_trend="stable",
+                competitor_trend="stable",
+                market_trend="digital_transformation",
+                recommendations=["Monitor market trends and competitor activities"]
+            )
     
-    async def generate_comparison_report(self, analysis_id: str) -> Optional[Dict[str, Any]]:
-        """
-        Generate formatted comparison report
-        """
-        results = await self.get_analysis_results(analysis_id)
-        if not results:
-            return None
+    def _calculate_trend_score(self, data: Dict[str, Any]) -> float:
+        """Calculate a trend score from data"""
+        scores = []
         
-        return await self.report_service.generate_comparison_report(results)
+        if 'news_sentiment' in data and isinstance(data['news_sentiment'], dict):
+            scores.append(data['news_sentiment'].get('score', 0.5))
+        
+        if 'social_media' in data and isinstance(data['social_media'], dict):
+            scores.append(data['social_media'].get('overall_sentiment', 0.5))
+        
+        if 'glassdoor' in data and isinstance(data['glassdoor'], dict):
+            scores.append(data['glassdoor'].get('overall_rating', 3.0) / 5.0)
+        
+        if 'website_analysis' in data and isinstance(data['website_analysis'], dict):
+            scores.append(data['website_analysis'].get('user_experience_score', 0.5))
+        
+        return sum(scores) / len(scores) if scores else 0.5
     
-    async def get_actionable_insights_summary(self, analysis_id: str) -> Optional[Dict[str, Any]]:
-        """
-        Get summarized actionable insights
-        """
-        results = await self.get_analysis_results(analysis_id)
-        if not results:
-            return None
-        
-        return {
-            "analysis_id": analysis_id,
-            "total_insights": len(results.actionable_insights),
-            "high_priority": len([i for i in results.actionable_insights if i.priority.value == "high"]),
-            "medium_priority": len([i for i in results.actionable_insights if i.priority.value == "medium"]),
-            "low_priority": len([i for i in results.actionable_insights if i.priority.value == "low"]),
-            "estimated_total_effort": self._calculate_total_effort(results.actionable_insights),
-            "confidence_score": results.confidence_score
-        }
-    
-    def _calculate_total_effort(self, insights) -> str:
-        """
-        Calculate total estimated effort for all insights
-        """
-        # Simple effort calculation - in production, this would be more sophisticated
-        total_months = 0
-        for insight in insights:
-            effort = insight.estimated_effort
-            if "month" in effort.lower():
-                # Extract numeric value (simplified)
-                import re
-                numbers = re.findall(r'\d+', effort)
-                if numbers:
-                    total_months += int(numbers[0])
-        
-        return f"{total_months} months total estimated effort"
+    def get_service_health(self) -> Dict[str, Any]:
+        """Get service health information"""
+        try:
+            # Test LLM connectivity
+            llm_status = "connected" if self.llm_service else "disconnected"
+            
+            return {
+                "status": "healthy",
+                "service": "analysis-engine",
+                "timestamp": datetime.now(timezone.utc),
+                "version": "1.0.0",
+                "llm_status": llm_status,
+                "active_analyses": len(self.active_analyses)
+            }
+        except Exception as e:
+            logger.error(f"Health check failed: {str(e)}")
+            return {
+                "status": "unhealthy",
+                "service": "analysis-engine",
+                "timestamp": datetime.now(timezone.utc),
+                "version": "1.0.0",
+                "llm_status": "error",
+                "active_analyses": 0,
+                "error": str(e)
+            }

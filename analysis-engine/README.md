@@ -1,315 +1,389 @@
 # Analysis Engine Service
 
-A comprehensive AI-powered brand analysis and comparison service using OpenAI GPT for generating actionable insights, recommendations, and competitive intelligence.
+A comprehensive brand analysis service with LLM provider toggle support for competitive intelligence and actionable insights.
 
-## Features
+## 🚀 Features
 
-- **OpenAI GPT Integration**: AI-powered analysis using GPT-4 for intelligent brand comparison
-- **Brand Comparison Engine**: Comprehensive brand vs competitor analysis
-- **Actionable Insights**: Prioritized recommendations with implementation roadmaps
-- **Trend Analysis**: Pattern recognition and trend analysis from historical data
-- **Report Generation**: Formatted reports with executive summaries and detailed breakdowns
-- **Confidence Scoring**: AI model validation and confidence metrics
-- **Real-time Progress**: Background processing with progress tracking
-- **Batch Analysis**: Support for multiple simultaneous analyses
+- **LLM Provider Toggle**: Switch between OpenAI and Together.ai
+- **Comprehensive Analysis**: Brand vs competitor analysis with scoring
+- **Actionable Insights**: Priority-based recommendations with implementation steps
+- **Real-time Status**: Track analysis progress with polling endpoints
+- **Trend Analysis**: Market positioning and trend identification
+- **Health Monitoring**: Service health and LLM connectivity checks
 
-## API Endpoints
+## 🔧 LLM Provider Configuration
 
-### Core Analysis Endpoints
+### Supported Providers
 
-- `POST /api/v1/analyze` - Start new analysis
-- `GET /api/v1/analyze/{id}/status` - Check analysis progress
-- `GET /api/v1/analyze/{id}/results` - Get complete results
-- `GET /api/v1/analyze/{id}/report` - Generate formatted report
-- `GET /api/v1/analyze/{id}/insights` - Get insights summary
-- `POST /api/v1/analyze/batch` - Batch analysis processing
+1. **OpenAI GPT-4** (Default)
+   - High-quality analysis with proven reliability
+   - Requires OpenAI API key
 
-### Health & Monitoring
+2. **Together.ai Llama-3.3-70B** 
+   - Cost-effective alternative with excellent performance
+   - Requires Together.ai API key
 
-- `GET /health` - Service health check
-- `GET /api/v1/health` - Detailed health status
+### Switching Providers
 
-## Quick Start
+Edit the `.env` file to change the LLM provider:
 
-### 1. Environment Setup
-
-```powershell
-# Navigate to the analysis service directory
-cd services\analysis_service
-
-# Create virtual environment
-python -m venv analysis_env
-
-# Activate virtual environment
-analysis_env\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 2. Configuration
-
-Copy the environment template and configure your settings:
-
-```powershell
-copy .env.example .env
-```
-
-Edit `.env` and add your OpenAI API key:
-
-```env
+```bash
+# For OpenAI (default)
+LLM_PROVIDER=openai
 OPENAI_API_KEY=your_openai_api_key_here
 OPENAI_MODEL=gpt-4
-SERVICE_PORT=8003
-LOG_LEVEL=INFO
+
+# For Together.ai
+LLM_PROVIDER=together
+TOGETHER_API_KEY=your_together_api_key_here
+TOGETHER_MODEL=meta-llama/Llama-3.3-70B-Instruct-Turbo-Free
 ```
 
-### 3. Run the Service
+### Environment Variables
 
-```powershell
-# Development mode with auto-reload
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8003 --reload
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `LLM_PROVIDER` | Choose `openai` or `together` | `openai` |
+| `OPENAI_API_KEY` | OpenAI API key | - |
+| `OPENAI_MODEL` | OpenAI model name | `gpt-4` |
+| `TOGETHER_API_KEY` | Together.ai API key | - |
+| `TOGETHER_MODEL` | Together.ai model name | `meta-llama/Llama-3.3-70B-Instruct-Turbo-Free` |
 
-# Or run directly
-python app\main.py
+## 📦 Installation
+
+1. **Navigate to the analysis-engine directory:**
+   ```bash
+   cd analysis-engine
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configure environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your API keys and preferred LLM provider
+   ```
+
+## 🏃‍♂️ Quick Start
+
+### Option 1: Direct Start (Recommended)
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8003
 ```
 
-### 4. Test the Service
+### Option 2: Python Module Mode
+```bash
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8003
+```
 
-The service will be available at:
-- API: http://localhost:8003
-- Documentation: http://localhost:8003/docs
-- Alternative docs: http://localhost:8003/redoc
+### Option 3: Production Mode
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8003 --workers 4
+```
 
-## Usage Examples
+## 📊 API Endpoints
 
 ### Start Analysis
+```http
+POST /api/v1/analyze
+Content-Type: application/json
 
-```python
-import requests
-
-# Analysis request
-data = {
-    "brand_data": {
-        "brand": {"name": "Oriental Bank", "id": "oriental_bank"},
-        "brand_data": {
-            "news_sentiment": {"score": 0.75, "articles_count": 45},
-            "social_media": {"followers": 50000, "engagement_rate": 0.03}
-        }
-    },
-    "competitor_data": {
-        "competitor": {"name": "Banco Popular", "id": "banco_popular"},
-        "brand_data": {
-            "news_sentiment": {"score": 0.85, "articles_count": 62},
-            "social_media": {"followers": 75000, "engagement_rate": 0.05}
-        }
-    },
-    "area_id": "self_service_portal",
-    "analysis_type": "comprehensive"
+{
+  "brand_data": {
+    "brand_id": "oriental_bank_pr",
+    "news_sentiment": {"score": 0.75},
+    "social_media": {"overall_sentiment": 0.68},
+    "glassdoor": {"overall_rating": 3.8},
+    "website_analysis": {"user_experience_score": 0.82}
+  },
+  "competitor_data": {
+    "brand_id": "banco_popular",
+    "news_sentiment": {"score": 0.82},
+    "social_media": {"overall_sentiment": 0.74},
+    "glassdoor": {"overall_rating": 4.1},
+    "website_analysis": {"user_experience_score": 0.89}
+  },
+  "area_id": "self_service_portal",
+  "analysis_type": "comprehensive"
 }
-
-# Start analysis
-response = requests.post("http://localhost:8003/api/v1/analyze", json=data)
-analysis_id = response.json()["analysis_id"]
 ```
 
-### Check Progress
-
-```python
-# Check status
-status_response = requests.get(f"http://localhost:8003/api/v1/analyze/{analysis_id}/status")
-print(f"Progress: {status_response.json()['data']['progress']}%")
+### Check Analysis Status
+```http
+GET /api/v1/analyze/{analysis_id}/status
 ```
 
-### Get Results
-
-```python
-# Get complete results (when analysis is complete)
-results = requests.get(f"http://localhost:8003/api/v1/analyze/{analysis_id}/results")
-analysis_data = results.json()["data"]
-
-print(f"Brand Score: {analysis_data['overall_comparison']['brand_score']}")
-print(f"Competitor Score: {analysis_data['overall_comparison']['competitor_score']}")
-print(f"Total Insights: {len(analysis_data['actionable_insights'])}")
+### Get Analysis Results
+```http
+GET /api/v1/analyze/{analysis_id}/results
 ```
 
-## Project Structure
-
-```
-analysis_service/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                 # FastAPI application entry point
-│   ├── core/
-│   │   ├── __init__.py
-│   │   └── config.py           # Configuration settings
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── analysis.py         # Pydantic models and data schemas
-│   ├── routers/
-│   │   ├── __init__.py
-│   │   └── analysis.py         # API route handlers
-│   └── services/
-│       ├── __init__.py
-│       ├── analysis_engine.py  # Core analysis orchestration
-│       ├── openai_service.py   # OpenAI GPT integration
-│       └── report_service.py   # Report generation and formatting
-├── tests/
-│   ├── __init__.py
-│   ├── test_api.py            # API integration tests
-│   ├── test_analysis_engine.py # Analysis engine unit tests
-│   ├── test_openai_service.py  # OpenAI service tests
-│   └── test_report_service.py  # Report service tests
-├── requirements.txt            # Python dependencies
-├── .env.example               # Environment configuration template
-└── README.md                  # This file
+### Health Check
+```http
+GET /health
 ```
 
-## Development
+## 🧪 Testing & Verification
 
-### Running Tests
-
-```powershell
-# Install test dependencies
-pip install pytest pytest-asyncio
-
-# Run all tests
-pytest
-
-# Run specific test file
-pytest tests/test_analysis_engine.py
-
-# Run with coverage
-pytest --cov=app tests/
+### Test LLM Connectivity
+```bash
+# Test OpenAI provider
+curl -X POST "http://localhost:8003/api/v1/analyze" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "brand_data": {"brand_id": "test_brand"},
+    "competitor_data": {"brand_id": "test_competitor"},
+    "area_id": "test_area",
+    "analysis_type": "comprehensive"
+  }'
 ```
 
-### Code Quality
-
-```powershell
-# Format code
-pip install black
-black app/ tests/
-
-# Lint code
-pip install flake8
-flake8 app/ tests/
-```
-
-## OpenAI Integration Details
-
-### Key Features
-
-1. **Intelligent Analysis**: Uses GPT-4 for sophisticated brand comparison
-2. **Structured Prompts**: Carefully crafted prompts for consistent analysis
-3. **Error Handling**: Robust error handling for API failures
-4. **Confidence Scoring**: Built-in validation and confidence metrics
-
-### Analysis Process
-
-1. **Data Preprocessing**: Validates and normalizes input data
-2. **AI Analysis**: Sends structured prompts to OpenAI GPT
-3. **Result Parsing**: Converts AI responses to structured data
-4. **Trend Analysis**: Additional AI analysis for pattern recognition
-5. **Confidence Validation**: Validates analysis quality and reliability
-6. **Report Generation**: Formats results into comprehensive reports
-
-## API Contract Compliance
-
-This service implements the exact API contracts specified in the project documentation:
-
-- ✅ `POST /api/v1/analyze` - Analysis request endpoint
-- ✅ `GET /api/v1/analyze/{analysis_id}/status` - Status monitoring
-- ✅ `GET /api/v1/analyze/{analysis_id}/results` - Results retrieval
-- ✅ Background processing with progress tracking
-- ✅ Comprehensive analysis data structure
-- ✅ Actionable insights and recommendations
-- ✅ Market positioning analysis
-
-## Monitoring & Health
-
-### Health Checks
-
-The service provides multiple health check endpoints:
-
-```powershell
-# Basic health check
+### Test Health Endpoint
+```bash
 curl http://localhost:8003/health
-
-# Detailed health status
-curl http://localhost:8003/api/v1/health
 ```
 
-### Logging
+### Switch Providers and Test
+```bash
+# 1. Edit .env to change LLM_PROVIDER
+# 2. Restart service
+# 3. Test with the same curl command above
+```
 
-Comprehensive logging is implemented throughout the service:
+This will verify:
+- LLM service initialization and connectivity
+- Analysis engine workflow
+- Provider switching functionality
+- API response format compliance
 
-- Analysis start/completion events
-- OpenAI API interactions
-- Error tracking and debugging
-- Performance metrics
+## 🔧 Configuration Details
 
-## Production Considerations
+### LLM Service Architecture
 
-### Security
+The `LLMService` class provides a unified interface for both providers:
 
-- Environment-based configuration
-- API key protection
-- Input validation and sanitization
-- Error message sanitization
+```python
+from app.services.llm_service import LLMService
 
-### Performance
+# Automatically uses the configured provider
+llm_service = LLMService()
 
-- Asynchronous processing
-- Background task management
-- Efficient OpenAI API usage
-- Response caching considerations
+# Generate completion with either provider
+response = await llm_service.generate_completion(messages)
+```
 
-### Scalability
+### Provider-Specific Features
 
-- Stateless service design
-- Horizontal scaling capability
-- Database integration ready
-- Load balancing support
+**OpenAI GPT-4:**
+- Excellent reasoning and analysis quality
+- Consistent response format
+- Reliable API uptime
 
-## Troubleshooting
+**Together.ai Llama-3.3-70B:**
+- Cost-effective for high-volume usage
+- Strong performance on analytical tasks
+- Open-source model flexibility
+
+## 📈 Analysis Output Structure
+
+The service returns comprehensive analysis results:
+
+```json
+{
+  "success": true,
+  "data": {
+    "analysis_id": "analysis_12345",
+    "overall_comparison": {
+      "brand_score": 0.76,
+      "competitor_score": 0.84,
+      "gap": -0.08,
+      "brand_ranking": "second"
+    },
+    "detailed_comparison": {
+      "user_experience": {
+        "brand_score": 0.82,
+        "competitor_score": 0.89,
+        "difference": -0.07,
+        "insight": "Competitor has superior UI/UX design"
+      }
+    },
+    "actionable_insights": [
+      {
+        "priority": "high",
+        "title": "Implement Advanced Mobile Banking Features",
+        "implementation_steps": ["...", "..."],
+        "expected_impact": "Increase UX score by 0.15"
+      }
+    ]
+  }
+}
+```
+
+## 🚀 Production Deployment
+
+1. **Set production environment variables**
+2. **Choose appropriate LLM provider based on cost/quality requirements**
+3. **Configure logging level** (`LOG_LEVEL=INFO`)
+4. **Set up monitoring** for health endpoint
+5. **Configure rate limiting** for API endpoints
+
+## 🤝 Integration with Other Services
+
+The Analysis Engine integrates with:
+- **Data Collection Service** (port 8002): Raw data input
+- **Brand Service** (port 8001): Brand metadata
+- **Frontend Service**: Analysis visualization
+
+## 📋 API Contract Compliance
+
+This implementation maintains full compatibility with the expected API contract defined in the Postman collection:
+- Identical request/response formats
+- Same endpoint paths and methods
+- Consistent error handling structure
+- Matching data models and validation
+
+## 🔍 Troubleshooting
 
 ### Common Issues
 
-1. **OpenAI API Key Issues**
-   ```
-   Error: OPENAI_API_KEY is required
-   Solution: Set your OpenAI API key in the .env file
-   ```
+1. **LLM API Key Not Working:**
+   - Verify API key in `.env` file
+   - Check API key permissions and quotas
+   - Test connectivity with simple requests
 
-2. **Import Errors**
-   ```
-   Error: Module not found
-   Solution: Ensure virtual environment is activated and dependencies installed
-   ```
+2. **Analysis Fails:**
+   - Check input data format matches examples
+   - Verify LLM provider is accessible
+   - Review service logs for error details
 
-3. **Port Conflicts**
-   ```
-   Error: Port 8003 already in use
-   Solution: Change SERVICE_PORT in .env or stop conflicting service
-   ```
+3. **Service Won't Start:**
+   - Ensure port 8003 is available
+   - Install all required dependencies
+   - Check Python version compatibility
 
-### Logs
+### Debug Mode
 
-Check application logs for detailed error information:
-
-```powershell
-# Run with detailed logging
-LOG_LEVEL=DEBUG python app/main.py
+Enable debug logging and start service:
+```bash
+# Set environment variable and start
+LOG_LEVEL=DEBUG uvicorn app.main:app --reload --host 0.0.0.0 --port 8003
 ```
 
-## Contributing
+### Test API Manually
+```bash
+# Check service is running
+curl http://localhost:8003/health
 
-1. Follow the existing code structure and patterns
-2. Add tests for new functionality
-3. Update documentation for API changes
-4. Ensure OpenAI integration best practices
-5. Test with demo data before deployment
+# Test analysis endpoint
+curl -X POST "http://localhost:8003/api/v1/analyze" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "brand_data": {"brand_id": "test_brand", "news_sentiment": {"score": 0.75}},
+    "competitor_data": {"brand_id": "test_competitor", "news_sentiment": {"score": 0.82}},
+    "area_id": "test_area",
+    "analysis_type": "comprehensive"
+  }'
+```
 
-## License
+## 🔄 Analysis Engine Processing Flow
 
-This project is part of the Revitalize Brand Identity microservice architecture.
+The following diagram illustrates the internal processing logic of the Analysis Engine service:
+
+```mermaid
+flowchart TD
+    A["HTTP Request /api/v1/analyze"] --> B["Request Logging Middleware"]
+    B --> C["Analysis Router"]
+    C --> D["Input Validation"]
+    
+    D --> E{"Valid Input?"}
+    E -->|No| F["Return 400 Error"]
+    E -->|Yes| G["Analysis Engine Service"]
+    
+    G --> H["Generate Analysis ID"]
+    H --> I["Extract Brand & Competitor Data"]
+    
+    I --> J["LLM Service Provider Check"]
+    J --> K{"Provider Type?"}
+    
+    K -->|OpenAI| L["OpenAI GPT-4 Client"]
+    K -->|Together.ai| M["Together.ai HTTP Client"]
+    
+    L --> N["Build Analysis Prompt"]
+    M --> N
+    
+    N --> O["Context Assembly"]
+    O --> P["Brand Data Context"]
+    O --> Q["Competitor Data Context"]
+    O --> R["Analysis Instructions"]
+    
+    P --> S["LLM API Call"]
+    Q --> S
+    R --> S
+    
+    S --> T{"API Success?"}
+    T -->|No| U["Fallback Response Generation"]
+    T -->|Yes| V["Parse LLM Response"]
+    
+    U --> W["Structure Fallback Results"]
+    V --> X["Extract Analysis Components"]
+    
+    X --> Y["Overall Comparison Scores"]
+    X --> Z["Detailed Category Analysis"]
+    X --> AA["Actionable Insights"]
+    X --> BB["Strengths & Positioning"]
+    
+    Y --> CC["Build AnalysisResults Object"]
+    Z --> CC
+    AA --> CC
+    BB --> CC
+    W --> CC
+    
+    CC --> DD["Response Logging"]
+    DD --> EE["Return JSON Response"]
+    
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style J fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style L fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style M fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style S fill:#ffebee,stroke:#d32f2f,stroke-width:2px
+    style CC fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    style EE fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    
+    classDef httpNode fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef llmNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef dataNode fill:#ffebee,stroke:#d32f2f,stroke-width:2px
+    classDef resultNode fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef errorNode fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
+    
+    class A,B,C,DD,EE httpNode
+    class J,K,L,M,N,O,S,V llmNode
+    class P,Q,R,I,Y,Z,AA,BB dataNode
+    class CC,W,X resultNode
+    class F,U,T errorNode
+```
+
+### 🔧 Key Processing Steps
+
+1. **Request Handling**: HTTP middleware logs all requests and routes to analysis endpoint
+2. **Data Validation**: Ensures proper format of brand and competitor data
+3. **Provider Selection**: Dynamically chooses between OpenAI or Together.ai based on configuration
+4. **Context Building**: Assembles comprehensive prompts with brand data and analysis instructions
+5. **LLM Processing**: Makes API calls with robust error handling and SSL bypass for corporate environments
+6. **Response Parsing**: Extracts structured analysis components from AI responses
+7. **Fallback Logic**: Generates contextual responses when LLM calls fail
+8. **Result Structuring**: Builds standardized AnalysisResults with scores and insights
+9. **Response Delivery**: Returns JSON with comprehensive logging
+
+### 🎯 Analysis Components Generated
+
+- **Overall Scores**: Brand vs competitor numerical comparisons
+- **Category Analysis**: Detailed breakdown by business areas
+- **Actionable Insights**: Priority-ranked recommendations with implementation steps
+- **Competitive Strengths**: Brand advantages and market positioning analysis
+
+## 📝 License
+
+This service is part of the Brand Identity Revitalization project.

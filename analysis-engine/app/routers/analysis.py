@@ -1,95 +1,207 @@
-from fastapi import APIRouter, HTTPException, BackgroundTasks
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, HTTPException, Query
+from typing import Optional
+from datetime import datetime, timezone
 import logging
+import json
+
 from app.models.analysis import (
-    AnalysisRequest, AnalysisInitResponse, AnalysisStatusResponse, 
-    AnalysisResultsResponse, AnalysisStatus
+    AnalysisRequest, AnalysisResponse, AnalysisStatusResponse,
+    AnalysisResultsResponse, AnalysisHistoryResponse, ErrorResponse,
+    AnalysisStatus
 )
 from app.services.analysis_engine import AnalysisEngine
 
+# Configure logger
 logger = logging.getLogger(__name__)
-router = APIRouter()
+
+router = APIRouter(prefix="/api/v1", tags=["analysis"])
 
 # Initialize analysis engine
 analysis_engine = AnalysisEngine()
 
-@router.post("/analyze", response_model=AnalysisInitResponse)
-async def start_analysis(request: AnalysisRequest, background_tasks: BackgroundTasks):
+@router.post("/analyze", response_model=AnalysisResponse)
+async def start_analysis(request: AnalysisRequest):
     """
-    Start a new brand analysis job
+    Start a new brand analysis comparing brand data with competitor data
+    """
+    # Log only the analysis-specific details (request already logged by middleware)
+    logger.info("ANALYSIS_ENDPOINT_START")
+    logger.info(f"Analysis_area: {getattr(request, 'area_id', 'Not specified')}")
+    logger.info(f"Analysis_type: {getattr(request, 'analysis_type', 'comprehensive')}")
     
-    This endpoint initiates a comprehensive analysis comparing brand performance
-    against competitors in a specific area (e.g., self-service portal, mobile app).
-    """
     try:
-        logger.info(f"Starting analysis for area: {request.area_id}")
-        
-        # Validate request
-        if not request.brand_data or not request.competitor_data:
+        # Validate request data
+        if not request.brand_data:
             raise HTTPException(
-                status_code=400, 
-                detail="Both brand_data and competitor_data are required"
+                status_code=400,
+                detail={
+                    "success": False,
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Invalid analysis data provided",
+                        "details": {
+                            "field": "brand_data",
+                            "value": "{}"
+                        }
+                    },
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+            )
+        
+        if not request.competitor_data:
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "success": False,
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Invalid analysis data provided",
+                        "details": {
+                            "field": "competitor_data",
+                            "value": "{}"
+                        }
+                    },
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+            )
+        
+        if not request.area_id:
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "success": False,
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Invalid analysis data provided",
+                        "details": {
+                            "field": "area_id",
+                            "value": ""
+                        }
+                    },
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
             )
         
         # Start analysis
-        analysis_id = await analysis_engine.start_analysis(request)
+        analysis_id, status = await analysis_engine.start_analysis(request)
         
-        # Estimate duration based on analysis type
-        duration_map = {
-            "quick": 30,
-            "comprehensive": 90,
-            "detailed": 120
-        }
-        estimated_duration = duration_map.get(request.analysis_type.value, 90)
-        
-        return AnalysisInitResponse(
+        return AnalysisResponse(
             success=True,
             analysis_id=analysis_id,
-            status=AnalysisStatus.PROCESSING,
-            estimated_duration=estimated_duration
-        )
-        
-    except Exception as e:
-        logger.error(f"Failed to start analysis: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Analysis initialization failed: {str(e)}")
-
-@router.get("/analyze/{analysis_id}/status", response_model=AnalysisStatusResponse)
-async def get_analysis_status(analysis_id: str):
-    """
-    Get the current status of an analysis job
-    
-    Returns the progress, status, and completion information for the specified analysis.
-    """
-    try:
-        status_data = await analysis_engine.get_analysis_status(analysis_id)
-        
-        if not status_data:
-            raise HTTPException(status_code=404, detail="Analysis not found")
-        
-        return AnalysisStatusResponse(
-            success=True,
-            data=status_data
+            status=status,
+            estimated_duration=60
         )
         
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Failed to get analysis status: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Status retrieval failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "success": False,
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": f"Analysis failed: {str(e)}",
+                    "details": {}
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+        )
+
+@router.get("/analyze/{analysis_id}/status", response_model=AnalysisStatusResponse)
+async def get_analysis_status(analysis_id: str):
+    """
+    Get the current status of an analysis
+    """
+    try:
+        status_data = await analysis_engine.get_analysis_status(analysis_id)
+        
+        if not status_data:
+            raise HTTPException(
+                status_code=404,
+                detail={
+                    "success": False,
+                    "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Analysis not found",
+                        "details": {
+                            "field": "analysis_id",
+                            "value": analysis_id
+                        }
+                    },
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+            )
+        
+        # Format response based on status
+        if status_data["status"] == AnalysisStatus.PROCESSING:
+            response_data = {
+                "analysis_id": analysis_id,
+                "status": status_data["status"],
+                "progress": status_data.get("progress", 0),
+                "current_step": status_data.get("current_step", "Processing"),
+                "estimated_completion": "2024-01-15T10:35:00Z"  # Mock completion time
+            }
+        elif status_data["status"] == AnalysisStatus.COMPLETED:
+            response_data = {
+                "analysis_id": analysis_id,
+                "status": status_data["status"],
+                "progress": 100,
+                "completed_at": status_data.get("completed_at", datetime.now(timezone.utc).isoformat())
+            }
+        else:
+            response_data = {
+                "analysis_id": analysis_id,
+                "status": status_data["status"],
+                "progress": status_data.get("progress", 0),
+                "error": status_data.get("error")
+            }
+        
+        return AnalysisStatusResponse(
+            success=True,
+            data=response_data
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "success": False,
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": f"Failed to get analysis status: {str(e)}",
+                    "details": {}
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+        )
 
 @router.get("/analyze/{analysis_id}/results", response_model=AnalysisResultsResponse)
 async def get_analysis_results(analysis_id: str):
     """
-    Get the complete results of a finished analysis
-    
-    Returns detailed comparison results, actionable insights, and recommendations.
-    Only available for completed analyses.
+    Get the results of a completed analysis
     """
     try:
         results = await analysis_engine.get_analysis_results(analysis_id)
         
         if not results:
-            raise HTTPException(status_code=404, detail="Analysis not found or not completed")
+            raise HTTPException(
+                status_code=404,
+                detail={
+                    "success": False,
+                    "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Analysis not found",
+                        "details": {
+                            "field": "analysis_id",
+                            "value": analysis_id
+                        }
+                    },
+                    "timestamp": datetime.now(timezone.utc).isoformat()
+                }
+            )
         
         return AnalysisResultsResponse(
             success=True,
@@ -99,103 +211,45 @@ async def get_analysis_results(analysis_id: str):
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Failed to get analysis results: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Results retrieval failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "success": False,
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": f"Failed to get analysis results: {str(e)}",
+                    "details": {}
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+        )
 
-@router.get("/analyze/{analysis_id}/report")
-async def get_analysis_report(analysis_id: str):
+@router.get("/analyze/history", response_model=AnalysisHistoryResponse)
+async def get_analysis_history(
+    brand_id: Optional[str] = Query(None, description="Filter by brand ID"),
+    limit: int = Query(10, ge=1, le=100, description="Maximum number of results")
+):
     """
-    Generate and return a formatted analysis report
-    
-    Returns a comprehensive report with executive summary, detailed comparisons,
-    and actionable insights in a structured format.
+    Get history of completed analyses
     """
     try:
-        report = await analysis_engine.generate_comparison_report(analysis_id)
+        history = await analysis_engine.get_analysis_history(brand_id, limit)
         
-        if not report:
-            raise HTTPException(status_code=404, detail="Analysis not found or report generation failed")
+        return AnalysisHistoryResponse(
+            success=True,
+            data=history
+        )
         
-        return JSONResponse(content={
-            "success": True,
-            "report": report
-        })
-        
-    except HTTPException:
-        raise
     except Exception as e:
-        logger.error(f"Failed to generate report: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Report generation failed: {str(e)}")
-
-@router.get("/analyze/{analysis_id}/insights")
-async def get_actionable_insights_summary(analysis_id: str):
-    """
-    Get a summary of actionable insights from the analysis
-    
-    Returns prioritized insights with effort estimates and impact projections.
-    """
-    try:
-        insights_summary = await analysis_engine.get_actionable_insights_summary(analysis_id)
-        
-        if not insights_summary:
-            raise HTTPException(status_code=404, detail="Analysis not found or insights not available")
-        
-        return JSONResponse(content={
-            "success": True,
-            "insights_summary": insights_summary
-        })
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Failed to get insights summary: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Insights retrieval failed: {str(e)}")
-
-@router.post("/analyze/batch")
-async def start_batch_analysis(requests: list[AnalysisRequest]):
-    """
-    Start multiple analysis jobs in batch
-    
-    Useful for comparing multiple competitors or analyzing multiple areas simultaneously.
-    """
-    try:
-        if len(requests) > 10:  # Limit batch size
-            raise HTTPException(status_code=400, detail="Batch size cannot exceed 10 analyses")
-        
-        analysis_ids = []
-        
-        for request in requests:
-            analysis_id = await analysis_engine.start_analysis(request)
-            analysis_ids.append(analysis_id)
-        
-        return JSONResponse(content={
-            "success": True,
-            "batch_id": f"batch_{len(analysis_ids)}_{analysis_ids[0][:8]}",
-            "analysis_ids": analysis_ids,
-            "total_analyses": len(analysis_ids)
-        })
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Failed to start batch analysis: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Batch analysis failed: {str(e)}")
-
-@router.get("/health")
-async def health_check():
-    """
-    Health check endpoint for the analysis service
-    """
-    return {
-        "status": "healthy",
-        "service": "analysis-engine",
-        "active_analyses": len(analysis_engine.active_jobs),
-        "capabilities": [
-            "brand_comparison",
-            "competitor_analysis", 
-            "actionable_insights",
-            "trend_analysis",
-            "report_generation",
-            "confidence_scoring"
-        ]
-    }
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "success": False,
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": f"Failed to get analysis history: {str(e)}",
+                    "details": {}
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+        )
