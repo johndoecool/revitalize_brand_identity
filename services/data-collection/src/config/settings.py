@@ -15,10 +15,10 @@ class Settings(BaseSettings):
     use_vector_db: bool = True
     
     # API Keys
-    news_api_key: Optional[str] = "4a6cf4104eb743cd8a1b298fd72145d3"
-    twitter_api_key: Optional[str] = "10UOgI1yDVfa2zDqp9AVSz0ns"
-    twitter_api_secret: Optional[str] = "3ehgJJcAd33MNFrVZ2q54UHICNJM8RJTNeqo3yAdvoE9VUXHeG"
-    twitter_bearer_token: Optional[str] = "AAAAAAAAAAAAAAAAAAAAAC4a3QEAAAAAuqCeHPDyGmfqFNVMUvuH%2Bjuj9%2F8%3DE0CvOqvREyFo9roLo7vIxaaQKThM01QguRhnRM0pxCESpKK0dk"
+    news_api_key: Optional[str] = ""
+    twitter_api_key: Optional[str] = ""
+    twitter_api_secret: Optional[str] = ""
+    twitter_bearer_token: Optional[str] = ""
     
     # Redis Configuration
     redis_url: str = "redis://localhost:6379/0"
