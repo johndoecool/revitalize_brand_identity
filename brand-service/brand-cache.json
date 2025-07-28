@@ -23,7 +23,7 @@
       }
     ],
     "total_results": 2,
-    "cached_at": "2025-07-27T14:34:28.515156",
+    "cached_at": "2025-07-28T13:14:50.856957",
     "expires_at": null
   },
   {
@@ -59,7 +59,115 @@
       }
     ],
     "total_results": 3,
-    "cached_at": "2025-07-27T14:39:31.232134",
+    "cached_at": "2025-07-28T13:19:35.529699",
+    "expires_at": null
+  },
+  {
+    "query": "nike",
+    "success": true,
+    "data": [
+      {
+        "id": "NKE.NE",
+        "name": "NIKE, Inc.",
+        "full_name": "NIKE, Inc.",
+        "industry": "Apparel - Footwear & Accessories",
+        "logo_url": "https://img.logo.dev/ticker/NKE.NE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "NIKE, Inc., together with its subsidiaries, designs, develops, markets, and sells athletic footwear, apparel, equipment, accessories, and services worldwide. The company provides athletic and casual footwear, apparel, and accessories under the Jumpman trademark; and casual sneakers, apparel, and accessories under the Converse, Chuck Taylor, All Star, One Star, Star Chevron, and Jack Purcell trademarks. It also sells a line of performance equipment and accessories comprising bags, sport balls, socks, eyewear, timepieces, digital devices, bats, gloves, protective equipment, and other equipment for sports activities under the NIKE brand; and various plastic products to other manufacturers. In addition, the company markets apparel with licensed college and professional team, and league logos, as well as sells sports apparel; and licenses unaffiliated parties to manufacture and sell apparel, digital devices, and applications and other equipment for sports activities under NIKE-owned trademarks. It sells its products to footwear stores; sporting goods stores; athletic specialty stores; department stores; skate, tennis, and golf shops; and other retail accounts through NIKE-owned retail stores, digital platforms, independent distributors, licensees, and sales representatives. NIKE, Inc. was founded in 1964 and is headquartered in Beaverton, Oregon.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "NKE.DE",
+        "name": "NIKE, Inc.",
+        "full_name": "NIKE, Inc.",
+        "industry": "Apparel - Footwear & Accessories",
+        "logo_url": "https://img.logo.dev/ticker/NKE.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "NIKE, Inc., together with its subsidiaries, designs, develops, markets, and sells men's, women's, and kids athletic footwear, apparel, equipment, and accessories worldwide. The company provides athletic and casual footwear, apparel, and accessories under the Jumpman trademark; and casual sneakers, apparel, and accessories under the Converse, Chuck Taylor, All Star, One Star, Star Chevron, and Jack Purcell trademarks. In addition, it sells a line of performance equipment and accessories comprising bags, socks, sport balls, eyewear, timepieces, digital devices, bats, gloves, protective equipment, and other equipment for sports activities under the NIKE brand; and various plastic products to other manufacturers. The company markets apparel with licensed college and professional team, and league logos, as well as sells sports apparel. Additionally, it licenses unaffiliated parties to manufacture and sell apparel, digital devices, and applications and other equipment for sports activities under NIKE-owned trademarks. The company sells its products to footwear stores; sporting goods stores; athletic specialty stores; department stores; skate, tennis, and golf shops; and other retail accounts through NIKE-owned retail stores, digital platforms, independent distributors, licensees, and sales representatives. The company was formerly known as Blue Ribbon Sports, Inc. and changed its name to NIKE, Inc. in 1971. NIKE, Inc. was founded in 1964 and is headquartered in Beaverton, Oregon.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "NKE.BA",
+        "name": "NIKE, Inc.",
+        "full_name": "NIKE, Inc.",
+        "industry": "Apparel - Footwear & Accessories",
+        "logo_url": "https://img.logo.dev/ticker/NKE.BA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "NIKE, Inc., together with its subsidiaries, designs, develops, markets, and sells athletic footwear, apparel, equipment, accessories, and services worldwide. The company provides athletic and casual footwear, apparel, and accessories under the Jumpman trademark; and casual sneakers, apparel, and accessories under the Converse, Chuck Taylor, All Star, One Star, Star Chevron, and Jack Purcell trademarks. It also sells a line of performance equipment and accessories comprising bags, sport balls, socks, eyewear, timepieces, digital devices, bats, gloves, protective equipment, and other equipment for sports activities under the NIKE brand; and various plastic products to other manufacturers. In addition, the company markets apparel with licensed college and professional team, and league logos, as well as sells sports apparel; and licenses unaffiliated parties to manufacture and sell apparel, digital devices, and applications and other equipment for sports activities under NIKE-owned trademarks. It sells its products to footwear stores; sporting goods stores; athletic specialty stores; department stores; skate, tennis, and golf shops; and other retail accounts through NIKE-owned retail stores, digital platforms, independent distributors, licensees, and sales representatives. NIKE, Inc. was founded in 1964 and is headquartered in Beaverton, Oregon.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "NKE",
+        "name": "NIKE, Inc.",
+        "full_name": "NIKE, Inc.",
+        "industry": "Apparel - Footwear & Accessories",
+        "logo_url": "https://img.logo.dev/ticker/NKE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "NIKE, Inc., together with its subsidiaries, designs, develops, markets, and sells men's, women's, and kids athletic footwear, apparel, equipment, and accessories worldwide. The company provides athletic and casual footwear, apparel, and accessories under the Jumpman trademark; and casual sneakers, apparel, and accessories under the Converse, Chuck Taylor, All Star, One Star, Star Chevron, and Jack Purcell trademarks. In addition, it sells a line of performance equipment and accessories comprising bags, socks, sport balls, eyewear, timepieces, digital devices, bats, gloves, protective equipment, and other equipment for sports activities under the NIKE brand; and various plastic products to other manufacturers. The company markets apparel with licensed college and professional team, and league logos, as well as sells sports apparel. Additionally, it licenses unaffiliated parties to manufacture and sell apparel, digital devices, and applications and other equipment for sports activities under NIKE-owned trademarks. The company sells its products to footwear stores; sporting goods stores; athletic specialty stores; department stores; skate, tennis, and golf shops; and other retail accounts through NIKE-owned retail stores, digital platforms, independent distributors, licensees, and sales representatives. The company was formerly known as Blue Ribbon Sports, Inc. and changed its name to NIKE, Inc. in 1971. NIKE, Inc. was founded in 1964 and is headquartered in Beaverton, Oregon.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "027740.KS",
+        "name": "Maniker.Co.,Ltd",
+        "full_name": "Maniker.Co.,Ltd",
+        "industry": "Packaged Foods",
+        "logo_url": "https://img.logo.dev/ticker/027740.KS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Maniker.Co.,Ltd engages in hatching, breeding, slaughtering, and processing of chickens. The company primarily produces and exports various frozen, refrigerated, and retort products, such as meat processed foods, smoked chicken, frozen cooked foods, and ham and sausages. It distributes its products through chicken specialty stores, department stores, hotels, direct management stores, and discount stores, as well as Internet or phone. The company was formerly known as DaeYun Food Co., Ltd. and changed its name to Maniker.Co.,Ltd in October 1998. The company was founded in 1962 and is based in Yongin-si, South Korea.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "LNMG",
+        "name": "Linike Medical Group Ltd",
+        "full_name": "Linike Medical Group Ltd",
+        "industry": "Shell Companies",
+        "logo_url": "https://img.logo.dev/ticker/LNMG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Linike Medical Group Ltd engages in the renewable energy business. The company is involved in the creation of a solar farm in India. It also focuses on commercial real estate development business. The company was formerly known as Litian Group Inc. and changed its name to Linike Medical Group Ltd in August 2021. Linike Medical Group Ltd is based in Calgary, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "MLPHO.PA",
+        "name": "Photonike Capital S.A.",
+        "full_name": "Photonike Capital S.A.",
+        "industry": "Financial - Capital Markets",
+        "logo_url": "https://img.logo.dev/ticker/MLPHO.PA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Photonike Capital SA provides bespoke risk protection solutions in the industrial and financial processes. It offers tailor made solutions for credit enhancement, market hedging, and alternative finance purposes. The company was founded in 2008 and is based in Brussels, Belgium.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "MKLNF",
+        "name": "M1 Kliniken AG",
+        "full_name": "M1 Kliniken AG",
+        "industry": "Medical - Care Facilities",
+        "logo_url": "https://img.logo.dev/ticker/MKLNF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "M1 Kliniken AG, together with its subsidiaries, operates medical centers for aesthetic and plastic surgery in Germany, Austria, the Netherlands, Switzerland, the United Kingdom, Croatia, and Australia. The company operates in two segments, Beauty and Trade. It develops and markets pharmaceutical, medical, and medical technology products for aesthetic medicine and cosmetic dermatology, as well as trades in pharmaceutical, biosimilars, and other medical products and devices in the areas of oncology, HIV, rheumatism, neurology, cardiovascular diseases, and narcotics. The company also engages in the acquisition, management, and sale of real estate, primarily in the health care sector. It offers its products to doctors, pharmacies, and wholesalers under the M1 Select brand. The company operates a network of outpatient specialist centers; and a specialized surgical clinic center, as well as 46 specialist centers under the M1 Med Beauty brand. M1 Kliniken AG was founded in 2007 and is based in Berlin, Germany. M1 Kliniken AG operates as a subsidiary of MPH Health Care AG.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "M12.DE",
+        "name": "M1 Kliniken AG",
+        "full_name": "M1 Kliniken AG",
+        "industry": "Medical - Care Facilities",
+        "logo_url": "https://img.logo.dev/ticker/M12.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "M1 Kliniken AG, together with its subsidiaries, operates medical centers for aesthetic and plastic surgery in Germany, Austria, the Netherlands, Switzerland, the United Kingdom, Croatia, and Australia. The company operates in two segments, Beauty and Trade. It develops and markets pharmaceutical, medical, and medical technology products for aesthetic medicine and cosmetic dermatology, as well as trades in pharmaceutical, biosimilars, and other medical products and devices in the areas of oncology, HIV, rheumatism, neurology, cardiovascular diseases, and narcotics. The company also engages in the acquisition, management, and sale of real estate, primarily in the health care sector. It offers its products to doctors, pharmacies, and wholesalers under the M1 Select brand. The company operates a network of outpatient specialist centers; and a specialized surgical clinic center, as well as 46 specialist centers under the M1 Med Beauty brand. M1 Kliniken AG was founded in 2007 and is based in Berlin, Germany. M1 Kliniken AG operates as a subsidiary of MPH Health Care AG.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "MAK.DE",
+        "name": "Maternus-Kliniken AG",
+        "full_name": "Maternus-Kliniken AG",
+        "industry": "Medical - Care Facilities",
+        "logo_url": "https://img.logo.dev/ticker/MAK.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Maternus-Kliniken Aktiengesellschaft operates retirement and nursing homes, rehabilitation clinics, and various service companies that operate in the field of geriatric care and rehabilitation medicine. The company also provides emergency call, assisted living, rehabilitation, and follow-up treatment services, as well as domestic, inpatient, short term, and handicapped care services. It operates approximately 23 facilities in Germany. The company was founded in 1877 and is headquartered in Berlin, Germany.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "LIK.DE",
+        "name": "LIMES Schlosskliniken AG",
+        "full_name": "LIMES Schlosskliniken AG",
+        "industry": "Medical - Care Facilities",
+        "logo_url": "https://img.logo.dev/ticker/LIK.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "LIMES Schlosskliniken AG operates private hospitals for psychiatry, psychotherapy, and psychosomatics services. It focuses on the treatment of stress-related illnesses, as well as mental and emotional disorders, such as depression, acute burnout, affective disorders, and trauma. The company is headquartered in Cologne, Germany. LIMES Schlosskliniken AG is a subsidiary of GMF Capital Gmbh.",
+        "confidence_score": 0.9
+      }
+    ],
+    "total_results": 11,
+    "cached_at": "2025-07-28T14:27:08.261043",
     "expires_at": null
   }
 ]
