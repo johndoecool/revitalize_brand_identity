@@ -6,6 +6,7 @@ class BrandModel {
   final String logoUrl;
   final String description;
   final String website;
+  final double confidenceScore;
 
   BrandModel({
     required this.id,
@@ -14,7 +15,8 @@ class BrandModel {
     required this.industry,
     required this.logoUrl,
     required this.description,
-    required this.website,
+    this.website = '',
+    this.confidenceScore = 0.0,
   });
 
   factory BrandModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class BrandModel {
       logoUrl: json['logo_url'] ?? '',
       description: json['description'] ?? '',
       website: json['website'] ?? '',
+      confidenceScore: (json['confidence_score'] ?? 0.0).toDouble(),
     );
   }
 
@@ -38,11 +41,23 @@ class BrandModel {
       'logo_url': logoUrl,
       'description': description,
       'website': website,
+      'confidence_score': confidenceScore,
     };
+  }
+
+  /// Get confidence percentage as integer (0-100)
+  int get confidencePercentage => (confidenceScore * 100).round();
+
+  /// Get confidence color based on score
+  /// Green for high (80%+), Yellow for medium (60%+), Red for low
+  String get confidenceLevel {
+    if (confidenceScore >= 0.8) return 'high';
+    if (confidenceScore >= 0.6) return 'medium';
+    return 'low';
   }
 
   @override
   String toString() {
-    return 'BrandModel(id: $id, name: $name, industry: $industry)';
+    return 'BrandModel(id: $id, name: $name, industry: $industry, confidence: ${confidencePercentage}%)';
   }
 }
