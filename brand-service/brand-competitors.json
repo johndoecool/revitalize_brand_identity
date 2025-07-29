@@ -586,5 +586,691 @@
         "symbol": "FIS"
       }
     ]
+  },
+  {
+    "brand_id": "OZK",
+    "area_id": null,
+    "cached_at": "2025-07-28T18:49:07.336747",
+    "success": true,
+    "data": [
+      {
+        "id": "FHN",
+        "name": "First Horizon Corporation",
+        "logo_url": "https://img.logo.dev/ticker/FHN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "FHN"
+      },
+      {
+        "id": "ZION",
+        "name": "Zions Bancorporation",
+        "logo_url": "https://img.logo.dev/ticker/ZION?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "ZION"
+      },
+      {
+        "id": "HBAN",
+        "name": "Huntington Bancshares Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/HBAN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "HBAN"
+      },
+      {
+        "id": "CFR",
+        "name": "Cullen/Frost Bankers, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CFR?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "CFR"
+      },
+      {
+        "id": "BOKF",
+        "name": "BOK Financial Corporation",
+        "logo_url": "https://img.logo.dev/ticker/BOKF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "BOKF"
+      },
+      {
+        "id": "SNV",
+        "name": "Synovus Financial Corp.",
+        "logo_url": "https://img.logo.dev/ticker/SNV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "SNV"
+      },
+      {
+        "id": "WAL",
+        "name": "Western Alliance Bancorporation",
+        "logo_url": "https://img.logo.dev/ticker/WAL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "WAL"
+      },
+      {
+        "id": "CBSH",
+        "name": "Commerce Bancshares, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CBSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "CBSH"
+      },
+      {
+        "id": "UMPQ",
+        "name": "Umpqua Holdings Corporation",
+        "logo_url": "https://img.logo.dev/ticker/UMPQ?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "UMPQ"
+      },
+      {
+        "id": "PB",
+        "name": "Prosperity Bancshares, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/PB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "PB"
+      }
+    ]
+  },
+  {
+    "brand_id": "BAC",
+    "area_id": "reputation",
+    "cached_at": "2025-07-28T19:41:48.956440",
+    "success": true,
+    "data": [
+      {
+        "id": "WFC",
+        "name": "Wells Fargo",
+        "logo_url": "https://img.logo.dev/ticker/WFC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "WFC"
+      },
+      {
+        "id": "JPM",
+        "name": "JPMorgan Chase",
+        "logo_url": "https://img.logo.dev/ticker/JPM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "JPM"
+      },
+      {
+        "id": "C",
+        "name": "Citigroup",
+        "logo_url": "https://img.logo.dev/ticker/C?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "C"
+      },
+      {
+        "id": "GS",
+        "name": "Goldman Sachs",
+        "logo_url": "https://img.logo.dev/ticker/GS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Investment Banking",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "GS"
+      },
+      {
+        "id": "MS",
+        "name": "Morgan Stanley",
+        "logo_url": "https://img.logo.dev/ticker/MS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Investment Banking",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "MS"
+      },
+      {
+        "id": "USB",
+        "name": "U.S. Bancorp",
+        "logo_url": "https://img.logo.dev/ticker/USB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "USB"
+      },
+      {
+        "id": "PNC",
+        "name": "PNC Financial Services",
+        "logo_url": "https://img.logo.dev/ticker/PNC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "PNC"
+      },
+      {
+        "id": "TD",
+        "name": "Toronto-Dominion Bank",
+        "logo_url": "https://img.logo.dev/ticker/TD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "TD"
+      },
+      {
+        "id": "COF",
+        "name": "Capital One Financial",
+        "logo_url": "https://img.logo.dev/ticker/COF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "COF"
+      },
+      {
+        "id": "FITB",
+        "name": "Fifth Third Bancorp",
+        "logo_url": "https://img.logo.dev/ticker/FITB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Banking",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "FITB"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL",
+    "area_id": "product_innovation",
+    "cached_at": "2025-07-28T19:43:04.020360",
+    "success": true,
+    "data": [
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc.",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "E-commerce",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "FB",
+        "name": "Meta Platforms, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/FB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "FB"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Networking",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Enterprise Software",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines Corporation",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.84,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL",
+    "area_id": "market_position",
+    "cached_at": "2025-07-28T19:57:32.253274",
+    "success": true,
+    "data": [
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com, Inc",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "FB",
+        "name": "Meta Platforms, Inc",
+        "logo_url": "https://img.logo.dev/ticker/FB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "FB"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.91,
+        "competition_level": "indirect",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems, Inc",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.9,
+        "competition_level": "indirect",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines Corporation",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL",
+    "area_id": "public_sentiment",
+    "cached_at": "2025-07-28T20:09:50.772387",
+    "success": true,
+    "data": [
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com Inc",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "E-commerce",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "FB",
+        "name": "Meta Platforms Inc",
+        "logo_url": "https://img.logo.dev/ticker/FB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "FB"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.91,
+        "competition_level": "indirect",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems Inc",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.9,
+        "competition_level": "indirect",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL",
+    "area_id": "customer_satisfaction",
+    "cached_at": "2025-07-28T20:11:03.884783",
+    "success": true,
+    "data": [
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "E-commerce",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "FB",
+        "name": "Meta Platforms, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/FB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "FB"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines Corporation",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.84,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
+  },
+  {
+    "brand_id": "DEMO_OB",
+    "area_id": "financial_performance",
+    "cached_at": "2025-07-28T20:12:55.603285",
+    "success": true,
+    "data": [
+      {
+        "id": "VRSN",
+        "name": "VeriSign",
+        "logo_url": "https://img.logo.dev/ticker/VRSN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Services",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "VRSN"
+      },
+      {
+        "id": "GPN",
+        "name": "Global Payments",
+        "logo_url": "https://img.logo.dev/ticker/GPN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "GPN"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services",
+        "logo_url": "https://img.logo.dev/ticker/FIS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "FIS"
+      },
+      {
+        "id": "ADP",
+        "name": "Automatic Data Processing",
+        "logo_url": "https://img.logo.dev/ticker/ADP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "ADP"
+      },
+      {
+        "id": "PAYX",
+        "name": "Paychex",
+        "logo_url": "https://img.logo.dev/ticker/PAYX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "PAYX"
+      },
+      {
+        "id": "SQ",
+        "name": "Square",
+        "logo_url": "https://img.logo.dev/ticker/SQ?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "SQ"
+      },
+      {
+        "id": "PYPL",
+        "name": "PayPal",
+        "logo_url": "https://img.logo.dev/ticker/PYPL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "PYPL"
+      },
+      {
+        "id": "INTU",
+        "name": "Intuit",
+        "logo_url": "https://img.logo.dev/ticker/INTU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "INTU"
+      },
+      {
+        "id": "MA",
+        "name": "Mastercard",
+        "logo_url": "https://img.logo.dev/ticker/MA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.84,
+        "competition_level": "indirect",
+        "symbol": "MA"
+      },
+      {
+        "id": "V",
+        "name": "Visa",
+        "logo_url": "https://img.logo.dev/ticker/V?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Financial Services",
+        "relevance_score": 0.83,
+        "competition_level": "indirect",
+        "symbol": "V"
+      }
+    ]
   }
 ]
