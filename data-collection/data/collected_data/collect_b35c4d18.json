@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.004,
+      "articles_count": 100,
+      "positive_articles": 3,
+      "negative_articles": 2,
+      "neutral_articles": 45,
+      "recent_articles": [
+        {
+          "title": "Can AI Ever Become Conscious? (Or Is It Already?)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.bgr.com/1924173/can-ai-become-conscious/",
+          "source": "BGR"
+        },
+        {
+          "title": "If Android Takes Over, What Happens to Chromebooks?",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.howtogeek.com/thread/googles-merging-chromeos-and-android-under-the-hood-and-ive-got-questions/",
+          "source": "How-To Geek"
+        },
+        {
+          "title": "BitMine says Ethereum ‘implied value’ is $60,000 amid race to own 5% of total ETH supply",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://cryptoslate.com/bitmine-says-ethereum-implied-value-is-60000-amid-race-to-own-5-of-total-eth-supply/",
+          "source": "CryptoSlate"
+        },
+        {
+          "title": "Re: GoDaddy deleting most ancillary registration contact information",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://seclists.org/nanog/2025/Jul/195",
+          "source": "Seclists.org"
+        },
+        {
+          "title": "Meta's year of bold 'superintelligence' bets unlikely to pump profits",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/tech/technology/metas-year-of-bold-superintelligence-bets-unlikely-to-pump-profits/articleshow/122973516.cms",
+          "source": "The Times of India"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.79,
+      "mentions_count": 748,
+      "engagement_rate": 0.0037,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.793,
+          "mentions": 523
+        },
+        "linkedin": {
+          "sentiment": 0.793,
+          "mentions": 219
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 340,
+      "pros": [
+        "Good work-life balance",
+        "Competitive salary",
+        "Great benefits package"
+      ],
+      "cons": [
+        "Limited career advancement",
+        "Outdated technology",
+        "Poor communication"
+      ],
+      "recommendation_rate": 0.9,
+      "ceo_approval": 0.7
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 1.48
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.012,
+      "articles_count": 93,
+      "positive_articles": 3,
+      "negative_articles": 0,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "Spain's watchdog expands probe into Apple over App Store pricing",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/tech/technology/spains-watchdog-expands-probe-into-apple-over-app-store-pricing/articleshow/122973861.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Spain's watchdog expands probe into Apple over App Store pricing",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.channelnewsasia.com/business/spains-watchdog-expands-probe-apple-over-app-store-pricing-5264691",
+          "source": "CNA"
+        },
+        {
+          "title": "The Best Apple M4 MacBook Air Laptop Deal Just Got Even Better, But Time's Running Out",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.cnet.com/deals/the-best-apple-m4-macbook-air-laptop-deal-just-got-even-better-but-times-running-out/",
+          "source": "CNET"
+        },
+        {
+          "title": "Spotify forecasts quarterly profit below estimates on higher taxes",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.thehindubusinessline.com/companies/spotify-forecasts-quarterly-profit-below-estimates-on-higher-taxes/article69868844.ece",
+          "source": "BusinessLine"
+        },
+        {
+          "title": "11 states offer 'sales tax holidays' on back-to-school supplies including MacBooks. See the full list",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://biztoc.com/x/5b6eb0b1a8c5453c",
+          "source": "Biztoc.com"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17875265,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.721,
+          "mentions": 539
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17874726
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 259,
+      "pros": [
+        "Good company culture",
+        "Good work-life balance",
+        "Competitive salary"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.59,
+      "ceo_approval": 0.69
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.11
+    }
+  }
+}

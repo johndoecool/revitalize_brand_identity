@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Microsoft",
+    "news_sentiment": {
+      "score": 0.004,
+      "articles_count": 97,
+      "positive_articles": 1,
+      "negative_articles": 0,
+      "neutral_articles": 49,
+      "recent_articles": [
+        {
+          "title": "Microsoft’s Copilot Mode for Edge wants to be your AI sidekick",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://phandroid.com/2025/07/29/microsofts-copilot-mode-for-edge-wants-to-be-your-ai-sidekick/",
+          "source": "Phandroid - News for Android"
+        },
+        {
+          "title": "Enable Secret Copilot Mode Toggle Switch in Profile Flyout Menu in Microsoft Edge",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.askvg.com/enable-secret-copilot-mode-toggle-switch-in-profile-flyout-menu-in-microsoft-edge/",
+          "source": "Askvg.com"
+        },
+        {
+          "title": "TCS layoffs are a reminder that AI has crashed the tech party, and redirected the paychecks",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/jobs/hr-policies-trends/tcs-layoffs-are-a-reminder-that-ai-has-crashed-the-tech-party-and-redirected-the-paychecks/articleshow/122969309.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Who Is Shailesh Jejurikar? P&G Appoints India-Born Executive As Its Global CEO",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.ndtvprofit.com/business/who-is-shailesh-jejurikar-pg-appoints-india-born-executive-as-its-global-ceo",
+          "source": "Ndtvprofit.com"
+        },
+        {
+          "title": "Top Technology Stocks To Follow Today – July 27th",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.etfdailynews.com/2025/07/29/top-technology-stocks-to-follow-today-july-27th/",
+          "source": "ETF Daily News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 25994932,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.416,
+          "mentions": 4
+        },
+        "facebook": {
+          "sentiment": 0.781,
+          "mentions": 229
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 25994699
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 4.0,
+      "reviews_count": 240,
+      "pros": [
+        "Good work-life balance",
+        "Competitive salary",
+        "Great benefits package"
+      ],
+      "cons": [
+        "Limited career advancement",
+        "Outdated technology",
+        "Poor communication"
+      ],
+      "recommendation_rate": 0.9,
+      "ceo_approval": 0.7
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.08
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.012,
+      "articles_count": 98,
+      "positive_articles": 3,
+      "negative_articles": 0,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "Meta smartwatch launch might finally be happening this September",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://phandroid.com/2025/07/29/meta-smartwatch-launch-might-finally-be-happening-this-september/",
+          "source": "Phandroid - News for Android"
+        },
+        {
+          "title": "I bought Samsung's Galaxy Watch Ultra 2025, but I'd recommend this model instead",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.zdnet.com/article/i-bought-samsungs-galaxy-watch-ultra-2025-but-id-recommend-this-model-instead/",
+          "source": "ZDNet"
+        },
+        {
+          "title": "vivo X200 FE: Top 3 Features We Like from the First-ever Compact Telephoto Flagship",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.yugatech.com/feature/vivo-x200-fe-top-3-features/",
+          "source": "Yugatech.com"
+        },
+        {
+          "title": "iOS 26 Public Beta: AirPods Get a Major Upgrade",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.geeky-gadgets.com/iios-26-public-beta-airpods/",
+          "source": "Geeky Gadgets"
+        },
+        {
+          "title": "Tested: Corsair's latest SSD may be small, but it has a magnetic personality",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.creativebloq.com/tech/accessories/tested-corsairs-latest-ssd-may-be-small-but-it-has-a-magnetic-personality",
+          "source": "Creative Bloq"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17874999,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.591,
+          "mentions": 1
+        },
+        "facebook": {
+          "sentiment": 0.721,
+          "mentions": 539
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17874459
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 4.6,
+      "reviews_count": 156,
+      "pros": [
+        "Collaborative team environment",
+        "Job security",
+        "Career growth opportunities"
+      ],
+      "cons": [
+        "Poor communication",
+        "High workload",
+        "Bureaucratic processes"
+      ],
+      "recommendation_rate": 0.56,
+      "ceo_approval": 0.66
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.08
+    }
+  }
+}
