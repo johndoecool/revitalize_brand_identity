@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.008,
+      "articles_count": 100,
+      "positive_articles": 2,
+      "negative_articles": 1,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "AI Mentions: How to Get LLMs to Mention Your Brand",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.semrush.com/blog/ai-mentions/",
+          "source": "Semrush.com"
+        },
+        {
+          "title": "NASA spacecraft snaps images of lunar transit and Earth eclipse on the same day — see the photos - Live Science",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://slashdot.org/firehose.pl?op=view&amp;id=178501256",
+          "source": "Slashdot.org"
+        },
+        {
+          "title": "“Gave His Life Protecting Others”: NYPD Cop Fatally Shot Was On The Verge Of Welcoming 3rd Child",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.boredpanda.com/nypd-officer-fatally-shot-during-nyc-shooting-was-expecting-third-child/",
+          "source": "Boredpanda.com"
+        },
+        {
+          "title": "A Foldable That Means Business: vivo X Fold5 is Built for the Way You Work",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://soyacincau.com/2025/07/29/vivo-x-fold5-foldable-smartphone-multitasking-origin-workbench/",
+          "source": "SoyaCincau.com"
+        },
+        {
+          "title": "Alecta Tjanstepension Omsesidigt Sells 1,183,000 Shares of Alphabet Inc. (NASDAQ:GOOGL)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.etfdailynews.com/2025/07/29/alecta-tjanstepension-omsesidigt-sells-1183000-shares-of-alphabet-inc-nasdaqgoogl/",
+          "source": "ETF Daily News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.79,
+      "mentions_count": 748,
+      "engagement_rate": 0.0037,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.793,
+          "mentions": 523
+        },
+        "linkedin": {
+          "sentiment": 0.793,
+          "mentions": 219
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 254,
+      "pros": [
+        "Learning opportunities",
+        "Flexible working hours",
+        "Collaborative team environment"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.54,
+      "ceo_approval": 0.64
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 1.26
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.008,
+      "articles_count": 90,
+      "positive_articles": 3,
+      "negative_articles": 1,
+      "neutral_articles": 46,
+      "recent_articles": [
+        {
+          "title": "JangaFX releases IlluGen 1.0",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.cgchannel.com/2025/07/jangafx-releases-illugen-1-0/",
+          "source": "Cgchannel.com"
+        },
+        {
+          "title": "iOS 26 AirPods Public Beta: Top Features You Need to Try First",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.geeky-gadgets.com/ios-26-airpods-public-beta/",
+          "source": "Geeky Gadgets"
+        },
+        {
+          "title": "Apple Hospitality REIT, Inc. (NYSE:APLE) Shares Purchased by Universal Beteiligungs und Servicegesellschaft mbH",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.etfdailynews.com/2025/07/29/apple-hospitality-reit-inc-nyseaple-shares-purchased-by-universal-beteiligungs-und-servicegesellschaft-mbh/",
+          "source": "ETF Daily News"
+        },
+        {
+          "title": "You Didn’t Hear This From Me, But Gossip Is Good For You.",
+          "sentiment": "positive",
+          "published_date": "2025-07-29",
+          "url": "https://slate.com/podcasts/how-to/2025/07/how-to-gossip-more",
+          "source": "Slate Magazine"
+        },
+        {
+          "title": "When Black Swans Became Common: Banks' Race for Survival and Antifragility (Alex Kreger)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.finextra.com/blogposting/29000/when-black-swans-became-common-banks-race-for-survival-and-antifragility",
+          "source": "Finextra"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17875084,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.721,
+          "mentions": 539
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17874545
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.0,
+      "reviews_count": 260,
+      "pros": [
+        "Good work-life balance",
+        "Competitive salary",
+        "Great benefits package"
+      ],
+      "cons": [
+        "Limited career advancement",
+        "Outdated technology",
+        "Poor communication"
+      ],
+      "recommendation_rate": 0.6,
+      "ceo_approval": 0.7
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.07
+    }
+  }
+}

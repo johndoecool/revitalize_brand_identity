@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Cognizant",
+    "news_sentiment": {
+      "score": 0.012,
+      "articles_count": 95,
+      "positive_articles": 4,
+      "negative_articles": 1,
+      "neutral_articles": 45,
+      "recent_articles": [
+        {
+          "title": "Laxmi India Finance IPO opens today in ₹150-158 price band",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.thehindubusinessline.com/markets/laxmi-india-finance-ipo-opens-today-in-150-158-price-band/article69867781.ece",
+          "source": "BusinessLine"
+        },
+        {
+          "title": "Laxmi India Finance garners over Rs 75 cr from anchor investors. Check key details here",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/markets/ipos/fpos/laxmi-india-finance-garners-over-rs-75-cr-from-anchor-investors-check-key-details-here/articleshow/122964060.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Troubles deepen at TCS; Honasa’s beauty-tech plan",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/tech/newsletters/morning-dispatch/troubles-deepen-at-tcs-honasas-beauty-tech-pitch/articleshow/122963615.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "TCS to freeze senior hiring, pause annual salary hikes",
+          "sentiment": "negative",
+          "published_date": "2025-07-29",
+          "url": "https://economictimes.indiatimes.com/tech/information-tech/tcs-to-freeze-senior-hiring-pause-annual-salary-hikes/articleshow/122958816.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "“To Be Ignorant of what Occurred Before You Were Born is to Remain Always a Child,” Observed Marcus Tullius Cicero",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.lewrockwell.com/lrc-blog/to-be-ignorant-of-what-occurred-before-you-were-born-is-to-remain-always-a-child-observed-marcus-tullius-cicero/",
+          "source": "Lewrockwell.com"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 8362418,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.421,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.718,
+          "mentions": 298
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 8362120
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 4.0,
+      "reviews_count": 240,
+      "pros": [
+        "Good work-life balance",
+        "Competitive salary",
+        "Great benefits package"
+      ],
+      "cons": [
+        "Limited career advancement",
+        "Outdated technology",
+        "Poor communication"
+      ],
+      "recommendation_rate": 0.9,
+      "ceo_approval": 0.9
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.12
+    }
+  },
+  "competitor_data": {
+    "brand_id": "IBM",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 99,
+      "positive_articles": 0,
+      "negative_articles": 0,
+      "neutral_articles": 50,
+      "recent_articles": [
+        {
+          "title": "Reviewing Brink’s (NYSE:BCO) & Cap Gemini (OTCMKTS:CGEMY)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.etfdailynews.com/2025/07/29/reviewing-brinks-nysebco-cap-gemini-otcmktscgemy/",
+          "source": "ETF Daily News"
+        },
+        {
+          "title": "IBM Storage DS8A00 Architecture and Implementation Guide",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.redbooks.ibm.com/abstracts/sg248559.html",
+          "source": "Ibm.com"
+        },
+        {
+          "title": "Crisis in liberal stronghold: Media Matters collapses under legal battles over free speech",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.naturalnews.com/2025-07-29-media-matters-collapses-legal-battles-free-speech.html",
+          "source": "Naturalnews.com"
+        },
+        {
+          "title": "9月19日(金) AndTech「次世代半導体パッケージの実装・チップレット集積技術の動向と課題および高精度研削・エッジトリミング技術」WEBオンライン Zoomセミナー講座を開講予定",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://prtimes.jp/main/html/rd/p/000001277.000080053.html",
+          "source": "Prtimes.jp"
+        },
+        {
+          "title": "Japanese researchers discover 248 Nazca Line geoglyphs in Peru",
+          "sentiment": "neutral",
+          "published_date": "2025-07-29",
+          "url": "https://www.japantimes.co.jp/news/2025/07/29/japan/nazca-lines-geoglyphs/",
+          "source": "The Japan Times"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 18515148,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.53,
+          "mentions": 9
+        },
+        "facebook": {
+          "sentiment": 0.732,
+          "mentions": 272
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 18514867
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 4.7,
+      "reviews_count": 277,
+      "pros": [
+        "Job security",
+        "Career growth opportunities",
+        "Good company culture"
+      ],
+      "cons": [
+        "Bureaucratic processes",
+        "Limited training opportunities",
+        "Inconsistent management"
+      ],
+      "recommendation_rate": 0.77,
+      "ceo_approval": 0.87
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 0.26
+    }
+  }
+}
