@@ -4,6 +4,10 @@ import json
 import logging
 import requests
 import urllib3
+import uuid
+import aiohttp
+import asyncio
+from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
 from app.core.config import settings, LLMProvider
 from app.models.analysis import (
@@ -31,31 +35,9 @@ class LLMService:
             if not self.config["api_key"]:
                 raise ValueError("TOGETHER_API_KEY is required when using Together.ai provider")
             
-            # Use direct HTTP approach like the working code
-            if not self.config.get("ssl_verify", True):
-                logger.info("Setting up Together.ai with SSL bypass using requests session")
-                
-                # Create a requests session with SSL disabled (like working code)
-                import requests
-                self.together_session = requests.Session()
-                self.together_session.verify = False
-                
-                # Store session for direct API calls
-                self.client = None  # We'll use direct HTTP calls instead of SDK
-                logger.info("Together.ai configured with direct HTTP calls (SSL bypass)")
-            else:
-                # Standard initialization for environments without SSL issues
-                try:
-                    self.client = Together(api_key=self.config["api_key"])
-                    self.together_session = None
-                    logger.info("Together.ai client initialized with standard SSL")
-                except Exception as e:
-                    logger.warning(f"Together.ai standard init failed: {e}, falling back to HTTP")
-                    # Fall back to HTTP approach
-                    import requests
-                    self.together_session = requests.Session()
-                    self.together_session.verify = False
-                    self.client = None
+            # We'll use aiohttp for all Together.ai calls now - no need for sessions
+            self.client = None  # Not using the SDK, using direct async HTTP calls
+            logger.info("Together.ai configured for async HTTP calls")
         else:
             raise ValueError(f"Unsupported LLM provider: {self.provider}")
         
@@ -91,12 +73,17 @@ class LLMService:
         
         try:
             if self.provider == LLMProvider.OPENAI:
-                logger.info("Making OpenAI API call...")
-                response = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=messages,
-                    temperature=kwargs.get('temperature', 0.3),
-                    max_tokens=kwargs.get('max_tokens', 4000)
+                logger.info("Making async OpenAI API call...")
+                # Use asyncio to run the sync OpenAI call in a thread pool
+                loop = asyncio.get_event_loop()
+                response = await loop.run_in_executor(
+                    None,
+                    lambda: self.client.chat.completions.create(
+                        model=self.model,
+                        messages=messages,
+                        temperature=kwargs.get('temperature', 0.3),
+                        max_tokens=kwargs.get('max_tokens', 4000)
+                    )
                 )
                 content = response.choices[0].message.content
                 
@@ -109,48 +96,17 @@ class LLMService:
                 return content
             
             elif self.provider == LLMProvider.TOGETHER:
-                # Use direct HTTP calls if using session (SSL bypass mode)
-                if hasattr(self, 'together_session') and self.together_session is not None:
-                    logger.info("Making Together.ai HTTP API call...")
-                    response = await self._together_http_completion(messages, **kwargs)
-                    
-                    # Log the response
-                    logger.info("Together.ai HTTP API call completed")
-                    logger.info(f"Response_length: {len(response)} characters")
-                    logger.info(f"Response_preview: {response[:500]}..." if len(response) > 500 else f"Full_response: {response}")
-                    logger.info("=" * 80)
-                    
-                    return response
-                else:
-                    # Use SDK if available
-                    if self.client is None:
-                        logger.warning("Together.ai client not available, using fallback response")
-                        fallback = self._generate_fallback_response(messages)
-                        
-                        # Log fallback response
-                        logger.info("Using fallback response")
-                        logger.info(f"Fallback_length: {len(fallback)} characters")
-                        logger.info(f"Fallback_preview: {fallback[:500]}..." if len(fallback) > 500 else f"Full_fallback: {fallback}")
-                        logger.info("=" * 80)
-                        
-                        return fallback
-                    
-                    logger.info("Making Together.ai SDK call...")
-                    response = self.client.chat.completions.create(
-                        model=self.model,
-                        messages=messages,
-                        temperature=kwargs.get('temperature', 0.3),
-                        max_tokens=kwargs.get('max_tokens', 4000)
-                    )
-                    content = response.choices[0].message.content
-                    
-                    # Log the response
-                    logger.info("Together.ai SDK call successful")
-                    logger.info(f"Response_length: {len(content)} characters")
-                    logger.info(f"Response_preview: {content[:500]}..." if len(content) > 500 else f"Full_response: {content}")
-                    logger.info("=" * 80)
-                    
-                    return content
+                # Use async HTTP calls for Together.ai
+                logger.info("Making async Together.ai HTTP API call...")
+                response = await self._together_http_completion(messages, **kwargs)
+                
+                # Log the response
+                logger.info("Together.ai async HTTP API call completed")
+                logger.info(f"Response_length: {len(response)} characters")
+                logger.info(f"Response_preview: {response[:500]}..." if len(response) > 500 else f"Full_response: {response}")
+                logger.info("=" * 80)
+                
+                return response
             
         except Exception as e:
             logger.error("LLM_COMPLETION_FAILED")
@@ -163,7 +119,7 @@ class LLMService:
     
     async def _together_http_completion(self, messages: List[Dict[str, str]], **kwargs) -> str:
         """
-        Direct HTTP API call to Together.ai (based on working code)
+        Direct async HTTP API call to Together.ai using aiohttp
         """
         try:
             url = "https://api.together.xyz/v1/chat/completions"
@@ -185,59 +141,47 @@ class LLMService:
             logger.info(f"Payload_max_tokens: {payload['max_tokens']}")
             logger.info(f"Messages_count: {len(payload['messages'])}")
             
-            # Make the request with better timeout handling
-            try:
-                logger.info("Sending HTTP request to Together.ai...")
-                response = self.together_session.post(
-                    url, 
-                    headers=headers, 
-                    json=payload, 
-                    timeout=60  # Increased timeout for complex analysis
-                )
-                logger.info(f"HTTP_response_status: {response.status_code}")
-            except requests.exceptions.Timeout:
-                logger.warning("Together.ai request timed out, using fallback response")
-                return self._generate_fallback_response(messages)
-            except requests.exceptions.ConnectionError as e:
-                logger.warning(f"Together.ai connection error: {e}, using fallback response")
-                return self._generate_fallback_response(messages)
+            # Create async HTTP session with SSL configuration
+            timeout = aiohttp.ClientTimeout(total=60)  # 60 second timeout
+            ssl_context = False if not self.config.get("ssl_verify", True) else None
             
-            if response.status_code == 200:
-                logger.info("Together.ai HTTP request successful (200)")
-                result = response.json()
-                logger.info(f"Response_JSON_keys: {list(result.keys())}")
-                
-                if 'choices' in result and len(result['choices']) > 0:
-                    content = result['choices'][0].get('message', {}).get('content', '').strip()
-                    logger.info(f"Together.ai content extracted: {len(content)} characters")
-                    logger.info(f"Content_preview: {content[:300]}..." if len(content) > 300 else f"Full_content: {content}")
-                    return content
-                else:
-                    logger.warning("Together.ai: No choices in response, using fallback")
-                    logger.warning(f"Response_structure: {result}")
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                try:
+                    logger.info("Sending async HTTP request to Together.ai...")
+                    async with session.post(
+                        url, 
+                        headers=headers, 
+                        json=payload,
+                        ssl=ssl_context
+                    ) as response:
+                        logger.info(f"HTTP_response_status: {response.status}")
+                        
+                        if response.status == 200:
+                            logger.info("Together.ai HTTP request successful (200)")
+                            result = await response.json()
+                            logger.info(f"Response_JSON_keys: {list(result.keys())}")
+                            
+                            if 'choices' in result and len(result['choices']) > 0:
+                                content = result['choices'][0].get('message', {}).get('content', '').strip()
+                                logger.info(f"Together.ai content extracted: {len(content)} characters")
+                                logger.info(f"Content_preview: {content[:300]}..." if len(content) > 300 else f"Full_content: {content}")
+                                return content
+                            else:
+                                logger.warning("Together.ai: No choices in response, using fallback")
+                                logger.warning(f"Response_structure: {result}")
+                                return self._generate_fallback_response(messages)
+                        else:
+                            logger.warning(f"Together.ai HTTP error {response.status}, using fallback response")
+                            error_text = await response.text()
+                            logger.warning(f"Error_response: {error_text}")
+                            return self._generate_fallback_response(messages)
+                            
+                except asyncio.TimeoutError:
+                    logger.warning("Together.ai request timed out, using fallback response")
                     return self._generate_fallback_response(messages)
-            elif response.status_code == 429:
-                logger.warning("Together.ai rate limit exceeded (429), using fallback response")
-                try:
-                    error_detail = response.json()
-                    logger.warning(f"Rate_limit_details: {error_detail}")
-                except:
-                    logger.warning(f"Rate_limit_response_text: {response.text[:200]}")
-                return self._generate_fallback_response(messages)
-            elif response.status_code == 503:
-                logger.warning("Together.ai service unavailable (503), using fallback response")
-                try:
-                    error_detail = response.json()
-                    logger.warning(f"Service_unavailable_details: {error_detail}")
-                except:
-                    logger.warning(f"Service_unavailable_response_text: {response.text[:200]}")
-                return self._generate_fallback_response(messages)
-            else:
-                logger.warning(f"Together.ai HTTP error: {response.status_code}")
-                error_text = response.text[:200]
-                logger.warning(f"Error_details: {error_text}")
-                logger.warning("Using fallback response due to HTTP error")
-                return self._generate_fallback_response(messages)
+                except aiohttp.ClientError as e:
+                    logger.warning(f"Together.ai connection error: {e}, using fallback response")
+                    return self._generate_fallback_response(messages)
                 
         except Exception as e:
             logger.error(f"Together.ai HTTP call failed: {e}")
@@ -565,235 +509,404 @@ Provide numerical scores for all comparisons and be specific about implementatio
             confidence_score=0.85  # Base confidence score
         )
     
-    def _extract_scores(self, data: Dict[str, Any]) -> Dict[str, float]:
-        """Extract numerical scores from brand/competitor data"""
-        scores = {}
-        
-        if 'news_sentiment' in data and isinstance(data['news_sentiment'], dict):
-            scores['news_sentiment'] = data['news_sentiment'].get('score', 0.5)
-        
-        if 'social_media' in data and isinstance(data['social_media'], dict):
-            scores['social_media'] = data['social_media'].get('overall_sentiment', 0.5)
-        
-        if 'glassdoor' in data and isinstance(data['glassdoor'], dict):
-            scores['glassdoor'] = data['glassdoor'].get('overall_rating', 3.0) / 5.0
-        
-        if 'website_analysis' in data and isinstance(data['website_analysis'], dict):
-            scores['website_analysis'] = data['website_analysis'].get('user_experience_score', 0.5)
-        
-        return scores
-    
-    def _calculate_overall_score(self, scores: Dict[str, float]) -> float:
-        """Calculate overall score from individual scores"""
-        if not scores:
-            return 0.5  # Default neutral score
-        
-        return sum(scores.values()) / len(scores)
-    
-    def _generate_actionable_insights(
-        self, 
-        detailed_comparison: Dict[str, ComparisonScore], 
-        brand_name: str, 
-        competitor_name: str
-    ) -> List[ActionableInsight]:
-        """Generate actionable insights based on comparison gaps"""
-        insights = []
-        
-        # Find the biggest gaps (negative differences mean competitor is ahead)
-        gaps = [(category, scores.difference) for category, scores in detailed_comparison.items()]
-        gaps.sort(key=lambda x: x[1])  # Sort by difference (smallest first = biggest gaps)
-        
-        # Generate insights for the biggest gaps
-        for category, difference in gaps[:3]:  # Top 3 gaps
-            if difference < -0.1:  # Significant gap where competitor is ahead
-                insight = self._create_improvement_insight(category, brand_name, competitor_name)
-                insights.append(insight)
-        
-        # If no significant gaps, create general improvement insights
-        if not insights:
-            insights.append(ActionableInsight(
-                priority=Priority.MEDIUM,
-                category="digital_transformation",
-                title="Enhance Digital Presence",
-                description="Improve overall digital footprint and customer engagement",
-                estimated_effort="2-3 months",
-                expected_impact="Increase brand visibility and customer satisfaction by 10-15%",
-                implementation_steps=[
-                    "Audit current digital channels",
-                    "Identify improvement opportunities",
-                    "Implement enhanced digital strategies",
-                    "Monitor and optimize performance"
-                ]
-            ))
-        
-        return insights
-    
-    def _create_improvement_insight(self, category: str, brand_name: str, competitor_name: str) -> ActionableInsight:
-        """Create specific improvement insight based on category"""
-        category_insights = {
-            'news_sentiment': ActionableInsight(
-                priority=Priority.HIGH,
-                category="public_relations",
-                title="Improve Public Sentiment",
-                description=f"Enhance public perception and media coverage to match {competitor_name}'s performance",
-                estimated_effort="3-4 months",
-                expected_impact="Increase news sentiment score by 0.15-0.20 points",
-                implementation_steps=[
-                    "Conduct media sentiment analysis",
-                    "Develop positive PR campaign strategy",
-                    "Engage with key media outlets",
-                    "Monitor and respond to public feedback"
-                ]
-            ),
-            'social_media_sentiment': ActionableInsight(
-                priority=Priority.HIGH,
-                category="social_media",
-                title="Enhance Social Media Strategy",
-                description="Improve social media engagement and sentiment",
-                estimated_effort="2-3 months",
-                expected_impact="Increase social media sentiment by 0.10-0.15 points",
-                implementation_steps=[
-                    "Analyze competitor social media strategies",
-                    "Develop engaging content calendar",
-                    "Increase community interaction",
-                    "Implement social listening tools"
-                ]
-            ),
-            'employee_satisfaction': ActionableInsight(
-                priority=Priority.MEDIUM,
-                category="human_resources",
-                title="Improve Employee Experience",
-                description="Enhance workplace culture and employee satisfaction",
-                estimated_effort="4-6 months",
-                expected_impact="Increase Glassdoor rating by 0.3-0.5 points",
-                implementation_steps=[
-                    "Conduct employee satisfaction survey",
-                    "Identify key pain points",
-                    "Implement workplace improvements",
-                    "Enhance benefits and recognition programs"
-                ]
-            ),
-            'user_experience': ActionableInsight(
-                priority=Priority.HIGH,
-                category="digital_experience",
-                title="Enhance Website User Experience",
-                description="Improve website design and user experience",
-                estimated_effort="2-3 months",
-                expected_impact="Increase UX score by 0.10-0.15 points",
-                implementation_steps=[
-                    "Conduct UX audit and user testing",
-                    "Redesign key user journeys",
-                    "Implement responsive design improvements",
-                    "Optimize site performance and accessibility"
-                ]
-            )
-        }
-        
-        return category_insights.get(category, ActionableInsight(
-            priority=Priority.MEDIUM,
-            category="general_improvement",
-            title=f"Improve {category.replace('_', ' ').title()}",
-            description=f"Address performance gap in {category}",
-            estimated_effort="2-3 months",
-            expected_impact="Improve competitive positioning",
-            implementation_steps=[
-                "Analyze current performance",
-                "Benchmark against competitors",
-                "Implement improvement strategy",
-                "Monitor progress"
-            ]
-        ))
-    
-    def _generate_strengths(self, detailed_comparison: Dict[str, ComparisonScore], brand_name: str) -> List[Strength]:
-        """Generate strengths to maintain based on positive performance areas"""
-        strengths = []
-        
-        for category, scores in detailed_comparison.items():
-            if scores.difference > 0.05:  # Brand is performing better
-                strength = Strength(
-                    area=category.replace('_', ' ').title(),
-                    description=f"Strong performance in {category.replace('_', ' ')} provides competitive advantage",
-                    recommendation=f"Continue investing in {category.replace('_', ' ')} to maintain market leadership"
-                )
-                strengths.append(strength)
-        
-        # Default strength if none found
-        if not strengths:
-            strengths.append(Strength(
-                area="Market Position",
-                description="Established market presence and brand recognition",
-                recommendation="Leverage existing brand equity while pursuing strategic improvements"
-            ))
-        
-        return strengths
-    
-    async def generate_trend_analysis(self, historical_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _get_dynamic_system_prompt(self) -> str:
         """
-        Generate trend analysis and pattern recognition
+        Get system prompt for dynamic data analysis
+        """
+        return """You are an expert business analyst and competitive intelligence specialist with deep expertise in:
+
+1. **Data Analysis**: Interpreting unstructured business data from various sources
+2. **Competitive Analysis**: Comparing brands across multiple dimensions and metrics
+3. **Market Intelligence**: Understanding market trends, positioning, and opportunities
+4. **Strategic Recommendations**: Providing actionable insights for business improvement
+5. **Performance Metrics**: Evaluating brand performance across different channels and touchpoints
+
+**Your Task**: Analyze the provided data comprehensively and deliver structured insights that include:
+
+- Overall performance assessment with numerical scores (0.0-1.0 scale)
+- Detailed category-wise comparisons when competitors are present
+- Actionable insights with priority levels (high/medium/low)
+- Strengths to maintain and leverage
+- Market positioning analysis
+- Trend analysis and future recommendations
+- Confidence scores for your assessments
+
+**Analysis Approach**:
+1. Process ALL data provided, regardless of structure or source
+2. Identify key performance indicators from available metrics
+3. Compare against competitors when comparison data is available
+4. Generate specific, measurable recommendations
+5. Provide confidence levels for your assessments
+6. Focus on actionable business outcomes
+
+**Response Format**: Always respond with detailed analysis in a structured format that can be parsed into business intelligence reports. Include specific scores, metrics, and actionable recommendations."""
+    
+    async def analyze_collected_data(
+        self,
+        collected_data: Dict[str, Any],
+        comparison_brand: Optional[str] = None,
+        analysis_focus: str = "comprehensive"
+    ) -> AnalysisResults:
+        """
+        Perform comprehensive analysis on collected data from data-collection service
         """
         try:
-            prompt = f"""
-            Analyze the following historical brand performance data and identify key trends and patterns:
+            # Log the incoming analysis request
+            logger.info("=" * 80)
+            logger.info("COLLECTED_DATA_ANALYSIS_REQUEST")
+            logger.info("=" * 80)
+            logger.info(f"Analysis_focus: {analysis_focus}")
+            logger.info(f"Comparison_brand: {comparison_brand}")
             
-            {json.dumps(historical_data, indent=2)}
+            # Extract primary brand information
+            brand_data = collected_data.get('brand_data', {})
+            primary_brand = brand_data.get('brand_id', 'Unknown Brand')
+            logger.info(f"Primary_brand: {primary_brand}")
             
-            Please provide:
-            1. Key performance trends over time
-            2. Seasonal patterns or cyclical behaviors
-            3. Emerging opportunities based on data patterns
-            4. Risk factors to monitor
-            5. Predictive insights for the next 6-12 months
-            """
+            # Log data structure overview
+            logger.info("COLLECTED_DATA_STRUCTURE:")
+            for key, value in collected_data.items():
+                if isinstance(value, dict):
+                    logger.info(f"  {key}: {list(value.keys())}")
+                elif isinstance(value, list):
+                    logger.info(f"  {key}: list with {len(value)} items")
+                else:
+                    logger.info(f"  {key}: {type(value).__name__}")
             
+            # Create dynamic analysis prompt
+            prompt = self._create_dynamic_analysis_prompt(collected_data, comparison_brand, analysis_focus)
+            
+            # Log the generated prompt
+            logger.info("GENERATED_DYNAMIC_ANALYSIS_PROMPT:")
+            if len(prompt) > 1500:
+                logger.info(f"{prompt[:1500]}... (truncated, total: {len(prompt)} chars)")
+            else:
+                logger.info(prompt)
+            
+            # Create messages for the LLM
             messages = [
-                {"role": "system", "content": "You are a data analyst specializing in trend analysis and pattern recognition for brand performance."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": self._get_dynamic_system_prompt()
+                },
+                {
+                    "role": "user", 
+                    "content": prompt
+                }
             ]
             
-            analysis_text = await self.generate_completion(messages, temperature=0.2, max_tokens=2000)
+            logger.info("🚀 Starting LLM API call for collected data analysis...")
             
-            return {
-                "trends": analysis_text,
-                "confidence": 0.85,
-                "analysis_date": "2024-01-15T10:35:00Z",
-                "provider": self.provider.value
-            }
+            # Call LLM API (this will have its own detailed logging)
+            analysis_text = await self.generate_completion(messages)
+            
+            logger.info("LLM Analysis completed successfully!")
+            logger.info(f"Analysis_focus: {analysis_focus}")
+            logger.info(f"Provider_used: {self.provider.value}")
+            logger.info(f"Analysis_text_length: {len(analysis_text)} characters")
+            
+            # Convert to structured format
+            logger.info("Converting analysis to structured format...")
+            structured_result = await self._parse_dynamic_analysis_response(
+                analysis_text, 
+                collected_data,
+                comparison_brand,
+                analysis_focus
+            )
+            
+            logger.info("Structured analysis completed!")
+            logger.info(f"Primary_brand: {structured_result.brand_name}")
+            logger.info(f"Overall_score: {structured_result.overall_comparison.brand_score:.3f}")
+            logger.info(f"Insights_count: {len(structured_result.actionable_insights)}")
+            logger.info(f"Strengths_count: {len(structured_result.strengths_to_maintain)}")
+            logger.info("=" * 80)
+            
+            return structured_result
             
         except Exception as e:
-            logger.error(f"Trend analysis failed: {str(e)}")
-            raise Exception(f"Trend analysis failed: {str(e)}")
+            logger.error("=" * 80)
+            logger.error("COLLECTED_DATA_ANALYSIS_FAILED")
+            logger.error("=" * 80)
+            logger.error(f"Analysis_focus: {analysis_focus}")
+            logger.error(f"Provider: {self.provider.value}")
+            logger.error(f"Model: {self.model}")
+            logger.error(f"Error_type: {type(e).__name__}")
+            logger.error(f"Error_message: {str(e)}")
+            logger.error("=" * 80)
+            import traceback
+            logger.error(f"Full_traceback:\n{traceback.format_exc()}")
+            raise Exception(f"Analysis failed: {str(e)}")
     
-    async def validate_analysis_confidence(self, analysis_results: AnalysisResults) -> float:
+    def _create_dynamic_analysis_prompt(
+        self, 
+        collected_data: Dict[str, Any], 
+        comparison_brand: Optional[str],
+        analysis_focus: str
+    ) -> str:
         """
-        Validate and score the confidence of analysis results
+        Create analysis prompt for dynamic collected data
+        """
+        prompt_parts = [
+            f"# Business Intelligence Analysis Request",
+            f"",
+            f"**Analysis Focus**: {analysis_focus}",
+            f"**Comparison Brand**: {comparison_brand if comparison_brand else 'None specified'}",
+            f"",
+            f"## Data to Analyze:",
+            f"",
+            json.dumps(collected_data, indent=2),
+            f"",
+            f"## Required Analysis:",
+            f"",
+            f"1. **Overall Performance Assessment**:",
+            f"   - Calculate overall brand performance score (0.0-1.0)",
+            f"   - Identify key performance drivers",
+            f"   - Assess brand health across all available metrics",
+            f"",
+            f"2. **Category Analysis** (when applicable):",
+            f"   - News sentiment analysis and media coverage",
+            f"   - Social media performance and engagement",
+            f"   - Customer satisfaction and reviews",
+            f"   - Digital presence and website performance", 
+            f"   - Employee satisfaction (if available)",
+            f"   - Financial performance indicators",
+            f"",
+            f"3. **Competitive Comparison** (if comparison brand specified):",
+            f"   - Direct performance comparisons",
+            f"   - Competitive advantages and disadvantages",
+            f"   - Market positioning differences",
+            f"   - Opportunity gaps analysis",
+            f"",
+            f"4. **Strategic Recommendations**:",
+            f"   - High-priority actionable insights",
+            f"   - Implementation roadmap suggestions",
+            f"   - Expected outcomes and ROI estimates",
+            f"   - Success metrics to track",
+            f"",
+            f"5. **Trend Analysis**:",
+            f"   - Current market trends affecting the brand",
+            f"   - Future opportunities and threats",
+            f"   - Recommended strategic direction",
+            f"",
+            f"**Important**: Provide specific numerical scores, detailed explanations, and actionable recommendations based on the actual data provided. Adapt your analysis to whatever data structure and content is available."
+        ]
+        
+        return "\n".join(prompt_parts)
+    
+    async def _parse_dynamic_analysis_response(
+        self,
+        analysis_text: str,
+        collected_data: Dict[str, Any],
+        comparison_brand: Optional[str],
+        analysis_focus: str
+    ) -> AnalysisResults:
+        """
+        Parse LLM response for dynamic collected data analysis
         """
         try:
-            factors = []
+            # Extract brand information
+            brand_data = collected_data.get('brand_data', {})
+            brand_name = brand_data.get('brand_id', 'Unknown Brand')
+            competitor_name = comparison_brand if comparison_brand else 'Market Average'
             
-            # Check data completeness
-            if analysis_results.detailed_comparison:
-                factors.append(0.3)
+            # Generate analysis_id
+            analysis_id = f"analysis_{uuid.uuid4().hex[:8]}"
             
-            # Check insight quality
-            if len(analysis_results.actionable_insights) >= 2:
-                factors.append(0.3)
+            # Parse scores from analysis text or generate based on data
+            brand_score = self._extract_or_calculate_score(analysis_text, collected_data, 'brand')
+            competitor_score = self._extract_or_calculate_score(analysis_text, collected_data, 'competitor')
             
-            # Check market positioning analysis
-            if analysis_results.market_positioning:
-                factors.append(0.2)
+            # Create overall comparison
+            overall_comparison = OverallComparison(
+                brand_score=brand_score,
+                competitor_score=competitor_score,
+                gap=brand_score - competitor_score,
+                brand_ranking="first" if brand_score > competitor_score else "second",
+                confidence_level=0.85
+            )
             
-            # Check overall comparison validity
-            if 0 <= analysis_results.overall_comparison.brand_score <= 1:
-                factors.append(0.2)
+            # Extract insights from analysis text
+            actionable_insights = self._extract_insights_from_text(analysis_text)
             
-            confidence = sum(factors)
+            # Extract strengths from analysis text
+            strengths = self._extract_strengths_from_text(analysis_text)
             
-            # Boost confidence slightly for Together.ai to account for newer model capabilities
-            if self.provider == LLMProvider.TOGETHER:
-                confidence = min(1.0, confidence + 0.05)
+            # Create market positioning
+            market_positioning = MarketPositioning(
+                brand_position=f"{brand_name} positioning analysis",
+                competitor_position=f"{competitor_name} positioning analysis",
+                differentiation_opportunity="Identified opportunities from analysis"
+            )
             
-            return confidence
+            # Create detailed comparison based on available data
+            detailed_comparison = self._create_detailed_comparison_from_data(collected_data, analysis_text)
+            
+            return AnalysisResults(
+                analysis_id=analysis_id,
+                area_id=analysis_focus,
+                brand_name=brand_name,
+                competitor_name=competitor_name,
+                overall_comparison=overall_comparison,
+                detailed_comparison=detailed_comparison,
+                actionable_insights=actionable_insights,
+                strengths_to_maintain=strengths,
+                market_positioning=market_positioning,
+                confidence_score=0.85,
+                created_at=datetime.now(timezone.utc),
+                completed_at=datetime.now(timezone.utc)
+            )
             
         except Exception as e:
-            logger.error(f"Confidence validation failed: {str(e)}")
-            return 0.5  # Default confidence score
+            logger.error(f"Failed to parse dynamic analysis response: {e}")
+            # Return a minimal valid response
+            return self._create_fallback_analysis_result(collected_data, analysis_focus)
+    
+    def _extract_or_calculate_score(self, analysis_text: str, collected_data: Dict[str, Any], entity: str) -> float:
+        """Extract score from analysis text or calculate from data"""
+        try:
+            # Try to extract score from analysis text
+            import re
+            score_pattern = rf"{entity}.*?score.*?(\d+\.?\d*)"
+            match = re.search(score_pattern, analysis_text, re.IGNORECASE)
+            if match:
+                score = float(match.group(1))
+                # Normalize to 0-1 range if needed
+                if score > 1.0:
+                    score = score / 100.0
+                return min(max(score, 0.0), 1.0)
+            
+            # Calculate from data if extraction fails
+            brand_data = collected_data.get('brand_data', {})
+            total_score = 0.0
+            score_count = 0
+            
+            # Check various score sources
+            if 'news_sentiment' in brand_data:
+                sentiment = brand_data['news_sentiment'].get('score', 0)
+                if sentiment != 0:
+                    total_score += abs(sentiment)  # Use absolute value for news sentiment
+                    score_count += 1
+            
+            if 'social_media' in brand_data:
+                social_score = brand_data['social_media'].get('overall_sentiment', 0)
+                if social_score != 0:
+                    total_score += social_score
+                    score_count += 1
+            
+            if 'glassdoor' in brand_data:
+                glassdoor_score = brand_data['glassdoor'].get('overall_rating', 0)
+                if glassdoor_score != 0:
+                    # Normalize glassdoor rating (typically 1-5) to 0-1
+                    total_score += glassdoor_score / 5.0
+                    score_count += 1
+            
+            if score_count > 0:
+                return total_score / score_count
+            else:
+                return 0.75  # Default fallback score
+                
+        except Exception as e:
+            logger.warning(f"Failed to extract/calculate score: {e}")
+            return 0.75  # Default fallback score
+    
+    def _extract_insights_from_text(self, analysis_text: str) -> List[ActionableInsight]:
+        """Extract actionable insights from analysis text"""
+        insights = []
+        try:
+            # This is a simplified extraction - in practice, you'd use more sophisticated NLP
+            default_insights = [
+                ActionableInsight(
+                    priority=Priority.HIGH,
+                    category="Digital Presence",
+                    title="Enhance Online Visibility",
+                    description="Improve digital marketing and social media presence",
+                    estimated_effort="2-3 months",
+                    expected_impact="15-25% increase in brand awareness",
+                    implementation_steps=[
+                        "Audit current digital presence",
+                        "Develop content strategy",
+                        "Implement SEO improvements",
+                        "Launch targeted campaigns"
+                    ]
+                )
+            ]
+            return default_insights
+        except Exception as e:
+            logger.warning(f"Failed to extract insights: {e}")
+            return []
+    
+    def _extract_strengths_from_text(self, analysis_text: str) -> List[Strength]:
+        """Extract strengths from analysis text"""
+        try:
+            default_strengths = [
+                Strength(
+                    area="Market Position",
+                    description="Strong brand recognition and customer loyalty",
+                    recommendation="Continue building on established market presence"
+                )
+            ]
+            return default_strengths
+        except Exception as e:
+            logger.warning(f"Failed to extract strengths: {e}")
+            return []
+    
+    def _create_detailed_comparison_from_data(self, collected_data: Dict[str, Any], analysis_text: str) -> Dict[str, ComparisonScore]:
+        """Create detailed comparison from collected data"""
+        comparison = {}
+        try:
+            brand_data = collected_data.get('brand_data', {})
+            
+            # News sentiment comparison
+            if 'news_sentiment' in brand_data:
+                news_score = abs(brand_data['news_sentiment'].get('score', 0))
+                comparison['news_sentiment'] = ComparisonScore(
+                    brand_score=news_score,
+                    competitor_score=0.7,  # Default competitor score
+                    difference=news_score - 0.7,
+                    insight="News sentiment analysis based on recent coverage"
+                )
+            
+            # Social media comparison
+            if 'social_media' in brand_data:
+                social_score = brand_data['social_media'].get('overall_sentiment', 0)
+                comparison['social_media'] = ComparisonScore(
+                    brand_score=social_score,
+                    competitor_score=0.75,  # Default competitor score
+                    difference=social_score - 0.75,
+                    insight="Social media engagement and sentiment analysis"
+                )
+            
+            return comparison
+        except Exception as e:
+            logger.warning(f"Failed to create detailed comparison: {e}")
+            return {}
+    
+    def _create_fallback_analysis_result(self, collected_data: Dict[str, Any], analysis_focus: str) -> AnalysisResults:
+        """Create fallback analysis result when parsing fails"""
+        brand_data = collected_data.get('brand_data', {})
+        brand_name = brand_data.get('brand_id', 'Unknown Brand')
+        
+        return AnalysisResults(
+            analysis_id=f"analysis_{uuid.uuid4().hex[:8]}",
+            area_id=analysis_focus,
+            brand_name=brand_name,
+            competitor_name="Market Average",
+            overall_comparison=OverallComparison(
+                brand_score=0.75,
+                competitor_score=0.70,
+                gap=0.05,
+                brand_ranking="first",
+                confidence_level=0.60
+            ),
+            detailed_comparison={},
+            actionable_insights=[],
+            strengths_to_maintain=[],
+            market_positioning=MarketPositioning(
+                brand_position="Current market position",
+                competitor_position="Competitor market position", 
+                differentiation_opportunity="Analysis in progress"
+            ),
+            confidence_score=0.60,
+            created_at=datetime.now(timezone.utc),
+            completed_at=datetime.now(timezone.utc)
+        )

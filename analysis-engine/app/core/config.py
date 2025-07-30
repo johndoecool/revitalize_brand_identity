@@ -30,6 +30,16 @@ class Settings(BaseSettings):
     DATA_SERVICE_URL: str = os.getenv("DATA_SERVICE_URL", "http://localhost:8002")
     BRAND_SERVICE_URL: str = os.getenv("BRAND_SERVICE_URL", "http://localhost:8001")
     
+    # Database Configuration
+    DATABASE_JSON_PATH: str = os.getenv("DATABASE_JSON_PATH", "../shared/database.json")
+    
+    # PDF Report Configuration
+    SAVE_REPORTS_LOCALLY: bool = os.getenv("SAVE_REPORTS_LOCALLY", "true").lower() == "true"
+    REPORTS_DIRECTORY: str = os.getenv("REPORTS_DIRECTORY", "./reports")
+    
+    # Data Collection Configuration
+    DATA_COLLECTION_PATH: str = os.getenv("DATA_COLLECTION_PATH", "../data-collection/data/collected_data")
+    
     class Config:
         env_file = ".env"
         

@@ -74,10 +74,35 @@ class AnalysisResults(BaseModel):
 
 # Request Models
 class AnalysisRequest(BaseModel):
-    brand_data: Dict[str, Any]
-    competitor_data: Dict[str, Any]
-    area_id: str
-    analysis_type: str = "comprehensive"
+    collect_id: str = Field(..., description="Collection ID matching the filename in collected_data")
+    comparison_brand: Optional[str] = Field(None, description="Optional competitor brand for comparison")
+    analysis_focus: Optional[str] = Field("comprehensive", description="Focus area for analysis")
+
+class ChartData(BaseModel):
+    chart_type: str = Field(..., description="Type of chart (bar, line, pie, radar, etc.)")
+    title: str = Field(..., description="Chart title")
+    description: str = Field(..., description="Chart description")
+    data: Dict[str, Any] = Field(..., description="Chart data structure")
+    config: Dict[str, Any] = Field(default_factory=dict, description="Chart configuration options")
+
+class CompetitorInsight(BaseModel):
+    competitor_name: str
+    comparison_score: float = Field(..., ge=0.0, le=1.0)
+    strengths: List[str]
+    weaknesses: List[str] 
+    opportunities: List[str]
+    key_differences: List[str]
+
+class ImprovementArea(BaseModel):
+    area: str
+    current_score: float = Field(..., ge=0.0, le=1.0)
+    target_score: float = Field(..., ge=0.0, le=1.0)
+    priority: Priority
+    description: str
+    action_items: List[str]
+    expected_outcomes: List[str]
+    timeline: str
+    resources_needed: List[str]
 
 class AnalysisResponse(BaseModel):
     success: bool
@@ -88,6 +113,15 @@ class AnalysisResponse(BaseModel):
 class AnalysisStatusResponse(BaseModel):
     success: bool
     data: Dict[str, Any]
+    charts: Optional[List[ChartData]] = None
+    competitor_analysis: Optional[List[CompetitorInsight]] = None
+    improvement_areas: Optional[List[ImprovementArea]] = None
+
+class ReportResponse(BaseModel):
+    success: bool
+    report_base64: str = Field(..., description="Base64 encoded PDF report")
+    filename: str = Field(..., description="Suggested filename for the report")
+    generated_at: datetime = Field(default_factory=datetime.now)
 
 class AnalysisResultsResponse(BaseModel):
     success: bool
