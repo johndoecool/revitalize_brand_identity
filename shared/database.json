@@ -1,0 +1,36 @@
+[
+  {
+    "requestId": "test_req_97950205",
+    "brandId": "test_brand",
+    "dataCollectionId": "test_collect_a2383c45",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "test_analysis_009374a2",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-07-30T23:08:20.875528+00:00"
+  },
+  {
+    "requestId": "incomplete_req_b2cf8732",
+    "brandId": "test_brand",
+    "dataCollectionId": "incomplete_collect_59361305",
+    "dataCollectionStatus": "IN_PROGRESS",
+    "analysisEngineId": "",
+    "analysisEngineStatus": ""
+  },
+  {
+    "requestId": "test_req_f1b5b573",
+    "brandId": "test_brand",
+    "dataCollectionId": "test_collect_07d866ad",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "test_analysis_57290c51",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-07-30T23:13:36.563465+00:00"
+  },
+  {
+    "requestId": "incomplete_req_68658d13",
+    "brandId": "test_brand",
+    "dataCollectionId": "incomplete_collect_6bcb908f",
+    "dataCollectionStatus": "IN_PROGRESS",
+    "analysisEngineId": "",
+    "analysisEngineStatus": ""
+  }
+]

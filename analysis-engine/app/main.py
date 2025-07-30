@@ -7,7 +7,6 @@ import time
 import uuid
 
 from app.routers import analysis
-from app.services.analysis_engine import AnalysisEngine
 from app.models.analysis import HealthCheckResponse
 
 # Configure logging
@@ -122,16 +121,22 @@ app.add_middleware(
 # Include routers
 app.include_router(analysis.router)
 
-# Initialize analysis engine
-analysis_engine = AnalysisEngine()
-
 @app.get("/health", response_model=HealthCheckResponse)
 async def health_check():
     """
     Health check endpoint
     """
-    health_data = analysis_engine.get_service_health()
-    return HealthCheckResponse(**health_data)
+    # Import here to avoid circular imports
+    from app.routers.analysis import active_analyses
+    
+    return HealthCheckResponse(
+        status="healthy",
+        service="Analysis Engine",
+        timestamp=datetime.now(timezone.utc),
+        version="1.0.0",
+        llm_status="ready",
+        active_analyses=len(active_analyses)
+    )
 
 @app.get("/")
 async def root():
