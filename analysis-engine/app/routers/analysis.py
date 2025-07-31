@@ -107,9 +107,27 @@ async def start_analysis(request: AnalysisRequest, http_request: Request):
         # Database integration: Find and validate record
         logger.info(f"Looking for database record: request_id={request_id}, collect_id={request.collect_id}")
         
+        # Debug: Log database service configuration
+        logger.info(f"Database service path: {database_service.db_path}")
+        logger.info(f"Database absolute path: {os.path.abspath(database_service.db_path)}")
+        logger.info(f"Database file exists: {os.path.exists(os.path.abspath(database_service.db_path))}")
+        logger.info(f"Current working directory: {os.getcwd()}")
+        
         # Find matching record in database.json
         db_record = await database_service.find_record(request_id, request.collect_id)
         if not db_record:
+            logger.error(f"Database lookup failed - no record found")
+            logger.error(f"Searched for: request_id={request_id}, collect_id={request.collect_id}")
+            
+            # Debug: Try to read database directly to see what's there
+            try:
+                debug_data = await database_service._read_database()
+                logger.error(f"Database contains {len(debug_data)} records:")
+                for i, rec in enumerate(debug_data):
+                    logger.error(f"  Record {i}: requestId={rec.get('requestId')}, dataCollectionId={rec.get('dataCollectionId')}")
+            except Exception as debug_e:
+                logger.error(f"Failed to read database for debug: {debug_e}")
+            
             raise HTTPException(
                 status_code=404,
                 detail={
@@ -169,8 +187,7 @@ async def start_analysis(request: AnalysisRequest, http_request: Request):
             "request_id": request_id,
             "collect_id": request.collect_id,
             "collected_data": collected_data,
-            "analysis_focus": request.analysis_focus,
-            "comparison_brand": request.comparison_brand
+            "analysis_focus": request.analysis_focus
         }
         
         # Start analysis in background (fire and forget)

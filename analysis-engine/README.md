@@ -234,15 +234,31 @@ Start a new brand analysis using collected data from a specified collect_id.
 ```json
 {
   "collect_id": "collect_0ed18553",
-  "analysis_focus": "comprehensive",
-  "comparison_brand": "Apple"
+  "analysis_focus": "comprehensive"
 }
 ```
 
 **Request Parameters:**
 - `collect_id` (string, required): Collection ID matching the filename in the configured data collection directory
 - `analysis_focus` (string, optional): Focus area for analysis. Default: "comprehensive"
-- `comparison_brand` (string, optional): Optional competitor brand for comparison
+
+**Data Source:**
+The analysis engine automatically extracts brand and competitor information from the collected data file. The system looks for:
+- `brand_id` field in the collected data to identify the primary brand
+- Competitor data within the same collected data file
+- Creates market baseline comparison if no competitor data is available
+
+**Collected Data Structure Requirements:**
+The collected data should include a `brand_id` field and may contain competitor data:
+```json
+{
+  "brand_id": "YourBrand",
+  "brand_data": { ... },
+  "competitor_data": { ... },
+  "social_media": { ... },
+  "reviews": { ... }
+}
+```
 
 **Success Response (200):**
 ```json
