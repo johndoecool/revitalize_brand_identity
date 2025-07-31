@@ -13,6 +13,7 @@ A comprehensive brand analysis service with LLM provider toggle support for comp
 - **Request ID Tracking**: Custom request tracking via headers with auto-generation fallback
 - **Competitor Analysis**: Detailed competitor insights with strengths/weaknesses/opportunities
 - **Improvement Areas**: Actionable recommendations with priorities, timelines, and resources
+- **Competitive Roadmap**: Detailed quarterly action plans to outperform competitors
 - **Real-time Status**: Track analysis progress with comprehensive status endpoints
 - **Configurable Paths**: Customizable data collection and report storage directories
 - **Health Monitoring**: Service health and LLM connectivity checks
@@ -50,6 +51,7 @@ The analysis engine generates 8+ chart types for comprehensive data visualizatio
 - **Competitor Insights:** Strengths, weaknesses, opportunities, key differences
 - **Improvement Areas:** Priority recommendations, action plans, timelines, resources, expected outcomes
 - **Market Positioning:** Brand/competitor positioning, target audience, differentiation
+- **Competitive Roadmap:** Quarterly action plans with strategic goals, budget estimates, and success criteria
 
 ### PDF Report Features
 - **Executive Summary:** Overall scores, KPIs, recommendations
@@ -132,6 +134,336 @@ DATABASE_JSON_PATH=C:/data/brand_analysis/shared/database.json          # Window
 DATABASE_JSON_PATH=/opt/brand_analysis/shared/database.json             # Linux/Mac
 DATABASE_JSON_PATH=D:\\projects\\brand_system\\shared\\database.json    # Windows with backslashes
 ```
+
+## 🗺️ Competitive Roadmap Feature
+
+### Overview
+
+The analysis engine automatically generates a comprehensive **12-month competitive roadmap** as part of the analysis results. This roadmap provides detailed quarterly action plans designed to help brands outperform their competitors and achieve market leadership.
+
+### Roadmap Structure
+
+#### Strategic Framework
+- **Strategic Vision**: 12-month vision for market leadership
+- **Market Opportunity**: Key market gaps and opportunities identified
+- **Competitive Advantages**: Existing strengths to leverage
+- **Risk Assessment**: Potential challenges and mitigation strategies
+
+#### Quarterly Breakdown
+1. **Q1 - Foundation & Quick Wins**
+   - Establish competitive monitoring systems
+   - Address highest-priority performance gaps
+   - Implement foundational improvements
+
+2. **Q2 - Competitive Positioning**
+   - Differentiate from key competitors
+   - Strengthen market position
+   - Launch competitive initiatives
+
+3. **Q3 - Market Leadership**
+   - Establish thought leadership
+   - Scale successful initiatives
+   - Expand competitive advantages
+
+4. **Q4 - Optimization & Future Planning**
+   - Optimize all initiatives
+   - Plan next year strategy
+   - Consolidate market position
+
+### Action Details
+
+Each quarterly roadmap includes detailed actions with:
+- **Action ID & Title**: Unique identifier and descriptive title
+- **Category**: Strategic area (Digital Marketing, Product Development, etc.)
+- **Priority Level**: High, Medium, Low priority classification
+- **Timeline**: Estimated effort and duration
+- **Expected Impact**: Business outcomes and benefits
+- **Success Metrics**: Key performance indicators
+- **Budget Estimates**: Cost projections for implementation
+- **Dependencies**: Prerequisites and interdependencies
+
+### Budget Planning
+
+The roadmap includes comprehensive budget planning:
+- **Quarterly Budgets**: Cost estimates for each quarter
+- **Total Annual Budget**: 12-month investment projection
+- **Resource Requirements**: Team and tool requirements
+- **ROI Projections**: Expected return on investment
+
+### API Integration
+
+The competitive roadmap is automatically included in the `/status` endpoint response:
+
+```json
+{
+  "success": true,
+  "data": { "analysis_id": "...", "status": "completed" },
+  "roadmap": {
+    "roadmap_id": "roadmap_abc123",
+    "brand_name": "YourBrand",
+    "strategic_vision": "Transform YourBrand into market leader...",
+    "market_opportunity": "Capture market share through...",
+    "competitive_advantages": ["Proven strength in...", "Strategic positioning..."],
+    "quarterly_roadmaps": [
+      {
+        "quarter": "Q1",
+        "quarter_theme": "Foundation & Quick Wins",
+        "strategic_goals": ["Establish competitive monitoring", "..."],
+        "actions": [
+          {
+            "action_id": "q1_monitor_abc123",
+            "title": "Establish Competitive Intelligence System",
+            "category": "Strategic Intelligence",
+            "priority": "high",
+            "estimated_effort": "4-6 weeks",
+            "expected_impact": "Real-time competitive awareness",
+            "success_metrics": ["Daily competitor updates", "..."],
+            "budget_estimate": "$15,000 - $25,000"
+          }
+        ],
+        "quarter_budget": "$50,000 - $75,000",
+        "success_criteria": ["15% improvement in priority areas", "..."]
+      }
+    ],
+    "total_estimated_budget": "$200,000 - $300,000",
+    "risk_factors": ["Strong competitor response", "..."],
+    "confidence_score": 0.85
+  }
+}
+```
+
+### Implementation Benefits
+
+- **Strategic Direction**: Clear 12-month competitive strategy
+- **Actionable Plans**: Specific, measurable actions with timelines
+- **Budget Clarity**: Detailed cost projections for planning
+- **Risk Awareness**: Identified challenges and mitigation strategies
+- **Progress Tracking**: Built-in success metrics and milestones
+- **Competitive Focus**: Actions specifically designed to outperform competitors
+
+## 📄 Enhanced Report Generation
+
+### Report Types
+
+The analysis engine now supports two distinct report types optimized for different audiences:
+
+#### 1. Executive Summary (`reportType=executive_summary`)
+**Target Audience:** C-level executives, board members, senior management
+**Purpose:** High-level strategic overview with key findings and recommendations
+
+**Features:**
+- **Concise Format:** 2-4 pages focused on critical insights
+- **Executive Dashboard:** Key metrics and performance indicators
+- **Strategic Roadmap:** High-level quarterly themes and investment overview
+- **Risk Assessment:** Major risks and mitigation strategies
+- **Action-Oriented:** Clear recommendations with business impact
+- **Professional Layout:** Executive-friendly design with tables and highlights
+
+**Content Includes:**
+- Overall performance comparison and market position
+- Top 3 critical improvement areas requiring immediate attention
+- Competitive landscape analysis with primary threats/opportunities
+- 12-month strategic roadmap with quarterly themes and budget
+- Executive recommendations with clear action items
+
+#### 2. Detailed Report (`reportType=detailed_report`)
+**Target Audience:** Operations teams, marketing managers, analysts, implementation teams
+**Purpose:** Comprehensive analysis with detailed data and actionable plans
+
+**Features:**
+- **Comprehensive Coverage:** 8-15 pages with extensive analysis
+- **Detailed Data Tables:** Performance matrices, SWOT analysis, priority rankings
+- **Action Plans:** Specific implementation steps with timelines and resources
+- **Competitive Intelligence:** In-depth competitor analysis with strengths/weaknesses
+- **Quarterly Roadmap:** Detailed action items, budgets, and success metrics
+- **Data Appendix:** Sources, methodology, and analysis details
+
+**Content Includes:**
+- Complete performance analysis with category breakdowns
+- Detailed competitive intelligence with SWOT matrices
+- Priority improvement matrix with specific action plans
+- Comprehensive quarterly roadmap with budget breakdowns
+- Implementation timelines and resource requirements
+- Data sources and analysis methodology
+
+### API Usage
+
+#### Endpoint: `GET /api/v1/analyze/{analysis_id}/report`
+
+**Query Parameters:**
+- `reportType` (optional): Type of report to generate
+  - `executive_summary`: Executive summary report (default)
+  - `detailed_report`: Comprehensive detailed report
+
+**Examples:**
+```bash
+# Generate Executive Summary
+GET /api/v1/analyze/analysis_123/report?reportType=executive_summary
+
+# Generate Detailed Report  
+GET /api/v1/analyze/analysis_123/report?reportType=detailed_report
+
+# Default (Detailed Report)
+GET /api/v1/analyze/analysis_123/report
+```
+
+### Response Format
+
+**Binary PDF Download:**
+- **Content-Type:** `application/pdf`
+- **Content-Disposition:** `attachment; filename="BrandName_ReportType_YYYYMMDD_HHMMSS.pdf"`
+- **Direct Download:** Browsers and apps automatically recognize and handle PDF files
+
+**Headers Included:**
+```http
+Content-Type: application/pdf
+Content-Disposition: attachment; filename="TechBrand_Executive_Summary_20250731_143025.pdf"
+Content-Length: 4313
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+Expires: 0
+```
+
+### Client Integration
+
+**Mobile Apps (Android/iOS):**
+```javascript
+// The binary response triggers automatic download/open prompts
+fetch('/api/v1/analyze/123/report?reportType=executive_summary')
+  .then(response => response.blob())
+  .then(blob => {
+    // Mobile apps automatically detect PDF and offer save/open options
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'report.pdf';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+  });
+```
+
+**Postman/API Testing:**
+- Response automatically detected as PDF
+- "Save Response" option available in Postman
+- Default PDF viewer opens the file
+
+**Web Applications:**
+```javascript
+// Direct download with proper filename
+window.open('/api/v1/analyze/123/report?reportType=detailed_report');
+```
+
+### Report Content Intelligence
+
+#### Executive Summary Intelligence
+- **Performance Gap Analysis:** Automated insights on competitive positioning
+- **Strategic Priority Ranking:** AI-driven prioritization of improvement areas
+- **Risk Assessment:** Intelligent identification of market and execution risks
+- **ROI Projections:** Budget estimates with expected business impact
+- **Market Opportunity Sizing:** Quantified market capture potential
+
+#### Detailed Report Intelligence  
+- **Competitive SWOT Matrix:** Structured competitor strengths/weaknesses analysis
+- **Implementation Roadmap:** Quarter-by-quarter execution plans with dependencies
+- **Resource Planning:** Detailed team and tool requirements for each initiative
+- **Success Metrics Framework:** KPIs and measurement criteria for each action
+- **Timeline Optimization:** Intelligent sequencing of initiatives for maximum impact
+
+### Local Storage Configuration
+
+The enhanced report service automatically saves generated PDF reports to local storage for reference and backup purposes.
+
+#### Configuration Settings
+
+| Setting | Description | Default | Example |
+|---------|-------------|---------|---------|
+| `SAVE_REPORTS_LOCALLY` | Enable/disable local report storage | `true` | `true` or `false` |
+| `REPORTS_DIRECTORY` | Directory path for storing reports | `./reports` | `./reports` or `/opt/reports` |
+
+#### .env Configuration
+```bash
+# PDF Report Configuration
+SAVE_REPORTS_LOCALLY=true
+REPORTS_DIRECTORY=./reports
+```
+
+#### Storage Behavior
+
+**Automatic Directory Creation:**
+- The reports directory is automatically created if it doesn't exist
+- Supports both relative and absolute paths
+- Relative paths are resolved from the analysis-engine directory
+
+**File Naming:**
+- Executive Summary: `{BrandName}_Executive_Summary_{YYYYMMDD_HHMMSS}.pdf`
+- Detailed Report: `{BrandName}_Detailed_Analysis_{YYYYMMDD_HHMMSS}.pdf`
+
+**Dual Operation:**
+- Reports are **both** returned as binary data for API response **and** saved locally
+- Local save failure doesn't affect API response (graceful degradation)
+- Binary response is always prioritized for client functionality
+
+**Example Storage Locations:**
+```bash
+# Default relative path
+./reports/TechBrand_Executive_Summary_20250731_143025.pdf
+./reports/TechBrand_Detailed_Analysis_20250731_143530.pdf
+
+# Absolute path example
+C:\reports\brand_analysis\TechBrand_Executive_Summary_20250731_143025.pdf
+/opt/reports/brand_analysis/TechBrand_Detailed_Analysis_20250731_143530.pdf
+```
+
+#### Benefits of Local Storage
+
+- **Backup & Archive:** Permanent record of generated reports
+- **Audit Trail:** Historical tracking of analysis reports
+- **Offline Access:** Reports available even when API is down
+- **Reference Material:** Easy access for team members and stakeholders
+- **Debugging:** Ability to review generated reports for quality assurance
+
+#### File Management
+
+**Automatic Features:**
+- ✅ Directory creation on first use
+- ✅ Unique filename generation with timestamps
+- ✅ Graceful error handling (doesn't break API responses)
+- ✅ Cross-platform path support (Windows/Linux/Mac)
+
+**Manual Management:**
+- Clean up old reports periodically to manage disk space
+- Consider implementing rotation policies for long-running systems
+- Monitor disk usage in production environments
+
+#### .env Configuration
+
+```bash
+# Report generation and storage settings
+SAVE_REPORTS_LOCALLY=true
+REPORTS_DIRECTORY=./reports
+```
+
+### File Naming Convention
+
+**Executive Summary:**
+`{BrandName}_Executive_Summary_{YYYYMMDD_HHMMSS}.pdf`
+
+**Detailed Report:**
+`{BrandName}_Detailed_Analysis_{YYYYMMDD_HHMMSS}.pdf`
+
+**Examples:**
+- `TechBrand_Executive_Summary_20250731_143025.pdf`
+- `InnovateCorpn_Detailed_Analysis_20250731_143530.pdf`
+
+### Integration Benefits
+
+- **Multi-Platform Compatibility:** Works seamlessly across web, mobile, and API clients
+- **Automatic File Handling:** No custom file processing required by client applications
+- **Professional Presentation:** Publication-ready reports for stakeholder meetings
+- **Audience-Specific Content:** Tailored information density and focus for different roles
+- **Consistent Branding:** Professional layouts that reflect well on your organization
 
 ## �🔧 LLM Provider Configuration
 
@@ -917,3 +1249,41 @@ curl "http://localhost:8003/api/v1/analyze/analysis_test-req-67890_161545/status
 ##  License
 
 This service is part of the Brand Identity Revitalization project.
+
+## ✅ Local Storage Implementation Status
+
+**The local storage feature for PDF reports is fully implemented and operational.**
+
+### Current Status
+- ✅ **Implemented**: Automatic local storage for all generated PDF reports
+- ✅ **Configured**: Environment variables set in `.env` file
+- ✅ **Tested**: Comprehensive tests verify both report generation and local storage
+- ✅ **Production Ready**: Error handling, logging, and file management in place
+
+### Key Features Delivered
+1. **Dual Output**: Returns binary PDF data AND saves to local storage
+2. **Configurable**: Can be enabled/disabled via `SAVE_REPORTS_LOCALLY` setting
+3. **Intelligent Naming**: Automatic filename generation with timestamps and brand sanitization
+4. **Error Resilient**: Local storage failures don't affect API responses
+5. **Both Report Types**: Works for both executive_summary and detailed_report
+
+### Verification
+```bash
+# Current configuration
+SAVE_REPORTS_LOCALLY=true
+REPORTS_DIRECTORY=./reports
+
+# Test results show successful operation:
+✅ Report generated successfully: 3555 bytes
+✅ File saved locally: BrandName_Executive_Summary_20250731_200418.pdf (3555 bytes)
+✅ File size matches generated bytes
+🎉 LOCAL STORAGE TEST PASSED!
+```
+
+### Files Location
+All generated PDF reports are automatically saved to:
+- **Default Directory**: `./reports/` (relative to analysis-engine root)
+- **Absolute Path**: `C:\git\revitalize_brand_identity\analysis-engine\reports\`
+- **File Format**: `{BrandName}_{ReportType}_{Timestamp}.pdf`
+
+**No additional implementation is required - the feature is ready for use.**
