@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi.responses import Response
 from typing import Optional, Dict, Any
 from datetime import datetime, timezone
 from functools import partial
@@ -16,6 +17,8 @@ from app.models.analysis import (
 from app.services.llm_service import LLMService
 from app.services.chart_service import ChartService
 from app.services.database_service import database_service
+from app.services.roadmap_service import RoadmapService
+from app.services.enhanced_report_service import EnhancedReportService, ReportType
 from app.core.config import settings
 
 # Configure logger
@@ -26,6 +29,8 @@ router = APIRouter(prefix="/api/v1", tags=["analysis"])
 # Initialize services
 llm_service = LLMService()
 chart_service = ChartService()
+roadmap_service = RoadmapService()
+enhanced_report_service = EnhancedReportService()
 
 # Store active analyses and results
 active_analyses = {}
@@ -248,7 +253,8 @@ async def get_analysis_status(analysis_id: str):
                     },
                     charts=completed_data["charts"],
                     competitor_analysis=completed_data["competitor_insights"],
-                    improvement_areas=completed_data["improvement_areas"]
+                    improvement_areas=completed_data["improvement_areas"],
+                    roadmap=completed_data["roadmap"]
                 )
             else:
                 # Return processing status
@@ -278,7 +284,8 @@ async def get_analysis_status(analysis_id: str):
                 },
                 charts=completed_data["charts"],
                 competitor_analysis=completed_data["competitor_insights"],
-                improvement_areas=completed_data["improvement_areas"]
+                improvement_areas=completed_data["improvement_areas"],
+                roadmap=completed_data["roadmap"]
             )
         
         else:
@@ -400,10 +407,14 @@ async def get_analysis_results(analysis_id: str):
             }
         )
 
-@router.get("/analyze/{analysis_id}/report", response_model=ReportResponse)
-async def get_analysis_report(analysis_id: str):
+@router.get("/analyze/{analysis_id}/report")
+async def get_analysis_report(
+    analysis_id: str,
+    reportType: ReportType = Query(ReportType.DETAILED_REPORT, description="Type of report to generate")
+):
     """
-    Generate a PDF report of the analysis and return as base64-encoded string
+    Generate and download a PDF report of the analysis
+    Returns binary PDF data with proper headers for direct download
     """
     try:
         # Check if analysis is completed
@@ -439,25 +450,47 @@ async def get_analysis_report(analysis_id: str):
         
         # Get completed analysis data
         completed_data = completed_analyses[analysis_id]
+        analysis_result = completed_data["analysis_result"]
         
-        # Generate PDF report
-        report_base64 = chart_service.generate_pdf_report(
-            completed_data["analysis_result"],
-            completed_data["charts"],
-            completed_data["competitor_insights"],
-            completed_data["improvement_areas"],
-            completed_data["collected_data"]
+        logger.info(f"Generating {reportType} report for analysis {analysis_id}")
+        
+        # Generate PDF report using enhanced report service
+        # This will automatically save to local storage if SAVE_REPORTS_LOCALLY is enabled
+        pdf_bytes = enhanced_report_service.generate_report(
+            report_type=reportType,
+            analysis_result=analysis_result,
+            charts=completed_data["charts"],
+            competitor_insights=completed_data["competitor_insights"],
+            improvement_areas=completed_data["improvement_areas"],
+            roadmap=completed_data.get("roadmap"),
+            collected_data=completed_data["collected_data"]
         )
         
-        # Generate filename
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"brand_analysis_report_{analysis_id}_{timestamp}.pdf"
+        # Generate appropriate filename for response
+        filename = enhanced_report_service.get_filename(
+            reportType, analysis_id, analysis_result.brand_name
+        )
         
-        return ReportResponse(
-            success=True,
-            report_base64=report_base64,
-            filename=filename,
-            generated_at=datetime.now(timezone.utc)
+        logger.info(f"Generated {reportType} report: {filename} ({len(pdf_bytes)} bytes)")
+        
+        # Log local storage status
+        if settings.SAVE_REPORTS_LOCALLY:
+            logger.info(f"Report automatically saved to local storage: {settings.REPORTS_DIRECTORY}")
+        else:
+            logger.info("Local storage disabled - report not saved locally")
+        
+        # Return binary PDF data with proper headers for download
+        return Response(
+            content=pdf_bytes,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=\"{filename}\"",
+                "Content-Type": "application/pdf",
+                "Content-Length": str(len(pdf_bytes)),
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0"
+            }
         )
         
     except HTTPException:
@@ -569,6 +602,15 @@ async def _perform_analysis(analysis_id: str, collected_data: Dict[str, Any], re
         improvement_areas = chart_service.generate_improvement_areas(analysis_result, collected_data)
         
         # Update progress
+        active_analyses[analysis_id]["progress"] = 85
+        active_analyses[analysis_id]["current_step"] = "Generating competitive roadmap"
+        
+        # Generate competitive roadmap
+        roadmap = await roadmap_service.generate_competitive_roadmap(
+            analysis_result, competitor_insights, improvement_areas, collected_data
+        )
+        
+        # Update progress
         active_analyses[analysis_id]["progress"] = 100
         active_analyses[analysis_id]["current_step"] = "Completed"
         active_analyses[analysis_id]["status"] = AnalysisStatus.COMPLETED
@@ -580,6 +622,7 @@ async def _perform_analysis(analysis_id: str, collected_data: Dict[str, Any], re
             "charts": charts,
             "competitor_insights": competitor_insights,
             "improvement_areas": improvement_areas,
+            "roadmap": roadmap,
             "collected_data": collected_data
         }
         

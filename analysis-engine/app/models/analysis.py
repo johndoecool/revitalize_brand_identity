@@ -14,6 +14,45 @@ class AnalysisStatus(str, Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
+class RoadmapPhase(str, Enum):
+    Q1 = "Q1"
+    Q2 = "Q2"
+    Q3 = "Q3"
+    Q4 = "Q4"
+
+class RoadmapAction(BaseModel):
+    action_id: str = Field(..., description="Unique identifier for the action")
+    title: str = Field(..., description="Action title")
+    description: str = Field(..., description="Detailed description of the action")
+    category: str = Field(..., description="Category (e.g., 'Digital Marketing', 'Product Development')")
+    priority: Priority = Field(..., description="Action priority level")
+    estimated_effort: str = Field(..., description="Estimated effort required")
+    expected_impact: str = Field(..., description="Expected business impact")
+    success_metrics: List[str] = Field(..., description="Key performance indicators")
+    dependencies: Optional[List[str]] = Field(default=[], description="Dependencies on other actions")
+    budget_estimate: Optional[str] = Field(None, description="Estimated budget requirement")
+
+class QuarterlyRoadmap(BaseModel):
+    quarter: RoadmapPhase = Field(..., description="Quarter identifier")
+    quarter_theme: str = Field(..., description="Main theme/focus for the quarter")
+    strategic_goals: List[str] = Field(..., description="Key strategic goals for the quarter")
+    actions: List[RoadmapAction] = Field(..., description="Detailed actions for the quarter")
+    quarter_budget: Optional[str] = Field(None, description="Total estimated budget for the quarter")
+    success_criteria: List[str] = Field(..., description="Quarter success criteria")
+
+class CompetitiveRoadmap(BaseModel):
+    roadmap_id: str = Field(..., description="Unique roadmap identifier")
+    brand_name: str = Field(..., description="Brand name for the roadmap")
+    competitor_analysis_summary: str = Field(..., description="Summary of competitive analysis")
+    strategic_vision: str = Field(..., description="12-month strategic vision")
+    market_opportunity: str = Field(..., description="Key market opportunity identified")
+    competitive_advantages: List[str] = Field(..., description="Competitive advantages to leverage")
+    quarterly_roadmaps: List[QuarterlyRoadmap] = Field(..., description="Detailed quarterly plans")
+    total_estimated_budget: Optional[str] = Field(None, description="Total 12-month budget estimate")
+    risk_factors: List[str] = Field(..., description="Key risk factors and mitigation strategies")
+    generated_at: datetime = Field(default_factory=datetime.now)
+    confidence_score: float = Field(default=0.85, ge=0.0, le=1.0, description="Confidence in roadmap recommendations")
+
 class ComparisonScore(BaseModel):
     brand_score: float = Field(..., ge=0.0, le=1.0, description="Brand score (0.0-1.0)")
     competitor_score: float = Field(..., ge=0.0, le=1.0, description="Competitor score (0.0-1.0)")
@@ -115,6 +154,7 @@ class AnalysisStatusResponse(BaseModel):
     charts: Optional[List[ChartData]] = None
     competitor_analysis: Optional[List[CompetitorInsight]] = None
     improvement_areas: Optional[List[ImprovementArea]] = None
+    roadmap: Optional[CompetitiveRoadmap] = None
 
 class ReportResponse(BaseModel):
     success: bool
