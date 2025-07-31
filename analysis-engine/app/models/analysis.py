@@ -75,7 +75,6 @@ class AnalysisResults(BaseModel):
 # Request Models
 class AnalysisRequest(BaseModel):
     collect_id: str = Field(..., description="Collection ID matching the filename in collected_data")
-    comparison_brand: Optional[str] = Field(None, description="Optional competitor brand for comparison")
     analysis_focus: Optional[str] = Field("comprehensive", description="Focus area for analysis")
 
 class ChartData(BaseModel):

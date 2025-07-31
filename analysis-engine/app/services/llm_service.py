@@ -544,7 +544,6 @@ Provide numerical scores for all comparisons and be specific about implementatio
     async def analyze_collected_data(
         self,
         collected_data: Dict[str, Any],
-        comparison_brand: Optional[str] = None,
         analysis_focus: str = "comprehensive"
     ) -> AnalysisResults:
         """
@@ -556,12 +555,18 @@ Provide numerical scores for all comparisons and be specific about implementatio
             logger.info("COLLECTED_DATA_ANALYSIS_REQUEST")
             logger.info("=" * 80)
             logger.info(f"Analysis_focus: {analysis_focus}")
-            logger.info(f"Comparison_brand: {comparison_brand}")
             
-            # Extract primary brand information
-            brand_data = collected_data.get('brand_data', {})
-            primary_brand = brand_data.get('brand_id', 'Unknown Brand')
-            logger.info(f"Primary_brand: {primary_brand}")
+            # Extract brand information from collected data
+            brand_id = self._extract_brand_id_from_collected_data(collected_data)
+            logger.info(f"Primary_brand_id: {brand_id}")
+            
+            # Extract brand and competitor data based on brand_id
+            brand_data, competitor_data = self._extract_brand_and_competitor_data(collected_data, brand_id)
+            brand_name = self._extract_brand_name(brand_data) if brand_data else brand_id
+            competitor_name = self._extract_brand_name(competitor_data) if competitor_data else "Market Average"
+            
+            logger.info(f"Primary_brand: {brand_name}")
+            logger.info(f"Competitor: {competitor_name}")
             
             # Log data structure overview
             logger.info("COLLECTED_DATA_STRUCTURE:")
@@ -574,7 +579,7 @@ Provide numerical scores for all comparisons and be specific about implementatio
                     logger.info(f"  {key}: {type(value).__name__}")
             
             # Create dynamic analysis prompt
-            prompt = self._create_dynamic_analysis_prompt(collected_data, comparison_brand, analysis_focus)
+            prompt = self._create_dynamic_analysis_prompt(collected_data, brand_id, analysis_focus)
             
             # Log the generated prompt
             logger.info("GENERATED_DYNAMIC_ANALYSIS_PROMPT:")
@@ -610,7 +615,7 @@ Provide numerical scores for all comparisons and be specific about implementatio
             structured_result = await self._parse_dynamic_analysis_response(
                 analysis_text, 
                 collected_data,
-                comparison_brand,
+                brand_id,
                 analysis_focus
             )
             
@@ -640,7 +645,7 @@ Provide numerical scores for all comparisons and be specific about implementatio
     def _create_dynamic_analysis_prompt(
         self, 
         collected_data: Dict[str, Any], 
-        comparison_brand: Optional[str],
+        brand_id: str,
         analysis_focus: str
     ) -> str:
         """
@@ -650,7 +655,7 @@ Provide numerical scores for all comparisons and be specific about implementatio
             f"# Business Intelligence Analysis Request",
             f"",
             f"**Analysis Focus**: {analysis_focus}",
-            f"**Comparison Brand**: {comparison_brand if comparison_brand else 'None specified'}",
+            f"**Primary Brand**: {brand_id}",
             f"",
             f"## Data to Analyze:",
             f"",
@@ -671,8 +676,8 @@ Provide numerical scores for all comparisons and be specific about implementatio
             f"   - Employee satisfaction (if available)",
             f"   - Financial performance indicators",
             f"",
-            f"3. **Competitive Comparison** (if comparison brand specified):",
-            f"   - Direct performance comparisons",
+            f"3. **Competitive Analysis**:",
+            f"   - Compare against competitor data if available in the dataset",
             f"   - Competitive advantages and disadvantages",
             f"   - Market positioning differences",
             f"   - Opportunity gaps analysis",
@@ -697,7 +702,7 @@ Provide numerical scores for all comparisons and be specific about implementatio
         self,
         analysis_text: str,
         collected_data: Dict[str, Any],
-        comparison_brand: Optional[str],
+        brand_id: str,
         analysis_focus: str
     ) -> AnalysisResults:
         """
@@ -705,9 +710,9 @@ Provide numerical scores for all comparisons and be specific about implementatio
         """
         try:
             # Extract brand information
-            brand_data = collected_data.get('brand_data', {})
-            brand_name = brand_data.get('brand_id', 'Unknown Brand')
-            competitor_name = comparison_brand if comparison_brand else 'Market Average'
+            brand_data, competitor_data = self._extract_brand_and_competitor_data(collected_data, brand_id)
+            brand_name = self._extract_brand_name(brand_data) if brand_data else brand_id
+            competitor_name = self._extract_brand_name(competitor_data) if competitor_data else 'Market Average'
             
             # Generate analysis_id
             analysis_id = f"analysis_{uuid.uuid4().hex[:8]}"
@@ -910,3 +915,143 @@ Provide numerical scores for all comparisons and be specific about implementatio
             created_at=datetime.now(timezone.utc),
             completed_at=datetime.now(timezone.utc)
         )
+
+    def _extract_brand_id_from_collected_data(self, collected_data: Dict[str, Any]) -> str:
+        """
+        Extract the primary brand ID from collected data
+        Supports multiple possible data structures
+        """
+        # Try different possible locations for brand_id
+        brand_id_candidates = [
+            # Direct brand_id field
+            collected_data.get('brand_id'),
+            # Inside brand_data
+            collected_data.get('brand_data', {}).get('brand_id'),
+            # Inside metadata
+            collected_data.get('metadata', {}).get('brand_id'),
+            # Inside collection info
+            collected_data.get('collection_info', {}).get('brand_id'),
+            # Try brand_name as fallback
+            collected_data.get('brand_name'),
+            collected_data.get('brand_data', {}).get('brand_name'),
+        ]
+        
+        # Return the first non-empty candidate
+        for candidate in brand_id_candidates:
+            if candidate and isinstance(candidate, str) and candidate.strip():
+                return candidate.strip()
+        
+        # If no brand_id found, try to extract from first available brand data
+        logger.warning("No explicit brand_id found, attempting to extract from data structure")
+        
+        # Look for any brand-related data
+        for key, value in collected_data.items():
+            if 'brand' in key.lower() and isinstance(value, dict):
+                for sub_key, sub_value in value.items():
+                    if 'name' in sub_key.lower() or 'id' in sub_key.lower():
+                        if isinstance(sub_value, str) and sub_value.strip():
+                            return sub_value.strip()
+        
+        # Last resort: return a default value
+        logger.warning("Could not extract brand_id from collected data, using default")
+        return "Unknown Brand"
+
+    def _extract_brand_and_competitor_data(self, collected_data: Dict[str, Any], brand_id: str) -> tuple:
+        """
+        Extract brand and competitor data from collected data
+        Returns: (brand_data, competitor_data)
+        
+        This method is designed to be flexible for future expansion to support
+        multiple competitors by returning the most relevant competitor for comparison.
+        """
+        brand_data = {}
+        competitor_data = {}
+        
+        # Extract brand data - look for data that matches the brand_id
+        # This assumes the collected data contains separate sections for different brands
+        for key, value in collected_data.items():
+            if isinstance(value, dict):
+                # Check if this data belongs to our primary brand
+                data_brand_id = value.get('brand_id') or value.get('brand_name') or value.get('name')
+                
+                if data_brand_id and data_brand_id == brand_id:
+                    brand_data = value
+                    logger.info(f"Found brand data for {brand_id} in section: {key}")
+                    break
+        
+        # If no specific brand data found, use the entire collected_data as brand data
+        if not brand_data:
+            logger.info(f"No specific brand data section found, using entire collected data as brand data")
+            brand_data = collected_data
+        
+        # Extract competitor data
+        # Future enhancement: This could be expanded to handle multiple competitors
+        # For now, look for any competitor data in the collected data
+        competitor_candidates = []
+        
+        for key, value in collected_data.items():
+            if isinstance(value, dict):
+                # Look for competitor indicators
+                if any(keyword in key.lower() for keyword in ['competitor', 'rival', 'comparison']):
+                    competitor_candidates.append(value)
+                    continue
+                
+                # Check if this is a different brand than our primary brand
+                data_brand_id = value.get('brand_id') or value.get('brand_name') or value.get('name')
+                if data_brand_id and data_brand_id != brand_id:
+                    competitor_candidates.append(value)
+        
+        # Select the best competitor (for now, just take the first one)
+        # Future enhancement: Could implement logic to select the most relevant competitor
+        if competitor_candidates:
+            competitor_data = competitor_candidates[0]
+            competitor_name = (competitor_data.get('brand_id') or 
+                             competitor_data.get('brand_name') or 
+                             competitor_data.get('name') or 
+                             'Competitor')
+            logger.info(f"Found competitor data for: {competitor_name}")
+        else:
+            # If no competitor data found, create a synthetic competitor based on market averages
+            logger.info("No competitor data found, will use market baseline for comparison")
+            competitor_data = self._create_market_baseline_data(brand_data)
+        
+        return brand_data, competitor_data
+
+    def _create_market_baseline_data(self, brand_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Create synthetic market baseline data for comparison when no competitor data is available
+        This provides a baseline for comparison analysis
+        """
+        baseline_data = {
+            'brand_id': 'Market Baseline',
+            'brand_name': 'Market Average',
+            'metadata': {
+                'data_type': 'synthetic_baseline',
+                'created_for_comparison': True
+            }
+        }
+        
+        # Create baseline metrics based on typical industry averages
+        if 'social_media' in brand_data:
+            baseline_data['social_media'] = {
+                'overall_sentiment': 0.5,  # Neutral sentiment
+                'engagement_rate': 0.03,   # Average 3% engagement
+                'follower_growth': 0.1     # 10% annual growth
+            }
+        
+        if 'reviews' in brand_data:
+            baseline_data['reviews'] = {
+                'overall_rating': 3.5,     # Average rating
+                'total_reviews': 100,      # Baseline review count
+                'sentiment_score': 0.5     # Neutral sentiment
+            }
+        
+        if 'website_analysis' in brand_data:
+            baseline_data['website_analysis'] = {
+                'user_experience_score': 0.5,  # Average UX
+                'performance_score': 0.6,      # Decent performance
+                'seo_score': 0.5               # Average SEO
+            }
+        
+        logger.info("Created synthetic market baseline data for comparison")
+        return baseline_data
