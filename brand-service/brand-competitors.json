@@ -1272,5 +1272,495 @@
         "symbol": "V"
       }
     ]
+  },
+  {
+    "brand_id": "CTSH",
+    "area_id": "revenue_growth",
+    "cached_at": "2025-07-28T20:39:59.577462",
+    "success": true,
+    "data": [
+      {
+        "id": "ACN",
+        "name": "Accenture",
+        "logo_url": "https://img.logo.dev/ticker/ACN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "ACN"
+      },
+      {
+        "id": "INFY",
+        "name": "Infosys",
+        "logo_url": "https://img.logo.dev/ticker/INFY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.89,
+        "competition_level": "direct",
+        "symbol": "INFY"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "IBM"
+      },
+      {
+        "id": "WIT",
+        "name": "Wipro",
+        "logo_url": "https://img.logo.dev/ticker/WIT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.82,
+        "competition_level": "direct",
+        "symbol": "WIT"
+      },
+      {
+        "id": "HCLT",
+        "name": "HCL Technologies",
+        "logo_url": "https://img.logo.dev/ticker/HCLT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.79,
+        "competition_level": "direct",
+        "symbol": "HCLT"
+      },
+      {
+        "id": "TCS",
+        "name": "Tata Consultancy Services",
+        "logo_url": "https://img.logo.dev/ticker/TCS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.76,
+        "competition_level": "direct",
+        "symbol": "TCS"
+      },
+      {
+        "id": "EPAM",
+        "name": "EPAM Systems",
+        "logo_url": "https://img.logo.dev/ticker/EPAM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.73,
+        "competition_level": "indirect",
+        "symbol": "EPAM"
+      },
+      {
+        "id": "GLOB",
+        "name": "Globant",
+        "logo_url": "https://img.logo.dev/ticker/GLOB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "GLOB"
+      },
+      {
+        "id": "DXC",
+        "name": "DXC Technology",
+        "logo_url": "https://img.logo.dev/ticker/DXC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "DXC"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services",
+        "logo_url": "https://img.logo.dev/ticker/FIS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.61,
+        "competition_level": "indirect",
+        "symbol": "FIS"
+      }
+    ]
+  },
+  {
+    "brand_id": "DEMO_CTSH",
+    "area_id": "revenue_growth",
+    "cached_at": "2025-07-29T09:45:48.904320",
+    "success": true,
+    "data": [
+      {
+        "id": "ACN",
+        "name": "Accenture",
+        "logo_url": "https://img.logo.dev/ticker/ACN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "ACN"
+      },
+      {
+        "id": "INFY",
+        "name": "Infosys",
+        "logo_url": "https://img.logo.dev/ticker/INFY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.89,
+        "competition_level": "direct",
+        "symbol": "INFY"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "IBM"
+      },
+      {
+        "id": "HCLT",
+        "name": "HCL Technologies",
+        "logo_url": "https://img.logo.dev/ticker/HCLT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.82,
+        "competition_level": "direct",
+        "symbol": "HCLT"
+      },
+      {
+        "id": "WIT",
+        "name": "Wipro",
+        "logo_url": "https://img.logo.dev/ticker/WIT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.79,
+        "competition_level": "direct",
+        "symbol": "WIT"
+      },
+      {
+        "id": "TCS",
+        "name": "Tata Consultancy Services",
+        "logo_url": "https://img.logo.dev/ticker/TCS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.76,
+        "competition_level": "indirect",
+        "symbol": "TCS"
+      },
+      {
+        "id": "EPAM",
+        "name": "EPAM Systems",
+        "logo_url": "https://img.logo.dev/ticker/EPAM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.73,
+        "competition_level": "indirect",
+        "symbol": "EPAM"
+      },
+      {
+        "id": "GLOB",
+        "name": "Globant",
+        "logo_url": "https://img.logo.dev/ticker/GLOB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "GLOB"
+      },
+      {
+        "id": "DXC",
+        "name": "DXC Technology",
+        "logo_url": "https://img.logo.dev/ticker/DXC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "DXC"
+      },
+      {
+        "id": "CTSH",
+        "name": "Cognizant Technology Solutions",
+        "logo_url": "https://img.logo.dev/ticker/CTSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.62,
+        "competition_level": "indirect",
+        "symbol": "CTSH"
+      }
+    ]
+  },
+  {
+    "brand_id": "A",
+    "area_id": "public_sentiment",
+    "cached_at": "2025-07-29T11:19:07.131660",
+    "success": true,
+    "data": [
+      {
+        "id": "B",
+        "name": "Company B",
+        "logo_url": "https://img.logo.dev/ticker/B?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "B"
+      },
+      {
+        "id": "C",
+        "name": "Company C",
+        "logo_url": "https://img.logo.dev/ticker/C?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.9,
+        "competition_level": "direct",
+        "symbol": "C"
+      },
+      {
+        "id": "D",
+        "name": "Company D",
+        "logo_url": "https://img.logo.dev/ticker/D?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "D"
+      },
+      {
+        "id": "E",
+        "name": "Company E",
+        "logo_url": "https://img.logo.dev/ticker/E?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "E"
+      },
+      {
+        "id": "F",
+        "name": "Company F",
+        "logo_url": "https://img.logo.dev/ticker/F?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.82,
+        "competition_level": "indirect",
+        "symbol": "F"
+      },
+      {
+        "id": "G",
+        "name": "Company G",
+        "logo_url": "https://img.logo.dev/ticker/G?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.8,
+        "competition_level": "indirect",
+        "symbol": "G"
+      },
+      {
+        "id": "H",
+        "name": "Company H",
+        "logo_url": "https://img.logo.dev/ticker/H?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.78,
+        "competition_level": "indirect",
+        "symbol": "H"
+      },
+      {
+        "id": "I",
+        "name": "Company I",
+        "logo_url": "https://img.logo.dev/ticker/I?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.75,
+        "competition_level": "indirect",
+        "symbol": "I"
+      },
+      {
+        "id": "J",
+        "name": "Company J",
+        "logo_url": "https://img.logo.dev/ticker/J?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.72,
+        "competition_level": "indirect",
+        "symbol": "J"
+      },
+      {
+        "id": "K",
+        "name": "Company K",
+        "logo_url": "https://img.logo.dev/ticker/K?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.7,
+        "competition_level": "indirect",
+        "symbol": "K"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL",
+    "area_id": "employee_experience",
+    "cached_at": "2025-07-31T17:11:29.414917",
+    "success": true,
+    "data": [
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc.",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "E-commerce",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems, Inc.",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.9,
+        "competition_level": "direct",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines Corporation",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "SAP",
+        "name": "SAP SE",
+        "logo_url": "https://img.logo.dev/ticker/SAP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "SAP"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
+  },
+  {
+    "brand_id": "AAPL.NE",
+    "area_id": "market_position",
+    "cached_at": "2025-07-31T17:44:59.259795",
+    "success": true,
+    "data": [
+      {
+        "id": "GOOGL",
+        "name": "Alphabet Inc",
+        "logo_url": "https://img.logo.dev/ticker/GOOGL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "GOOGL"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft Corporation",
+        "logo_url": "https://img.logo.dev/ticker/MSFT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "MSFT"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon.com, Inc",
+        "logo_url": "https://img.logo.dev/ticker/AMZN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "E-commerce",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "AMZN"
+      },
+      {
+        "id": "FB",
+        "name": "Meta Platforms, Inc",
+        "logo_url": "https://img.logo.dev/ticker/FB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "FB"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel Corporation",
+        "logo_url": "https://img.logo.dev/ticker/INTC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.91,
+        "competition_level": "indirect",
+        "symbol": "INTC"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco Systems, Inc",
+        "logo_url": "https://img.logo.dev/ticker/CSCO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Networking",
+        "relevance_score": 0.9,
+        "competition_level": "indirect",
+        "symbol": "CSCO"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation",
+        "logo_url": "https://img.logo.dev/ticker/ORCL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Enterprise Software",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "ORCL"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines Corporation",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Technology",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "IBM"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/TXN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "TXN"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm Incorporated",
+        "logo_url": "https://img.logo.dev/ticker/QCOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Semiconductors",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "QCOM"
+      }
+    ]
   }
 ]

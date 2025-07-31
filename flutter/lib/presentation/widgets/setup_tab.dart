@@ -34,6 +34,17 @@ class _SetupTabState extends State<SetupTab> {
   BrandModel? _selectedBrand;
   Timer? _searchDebounce;
   
+  // Error handling state
+  Timer? _errorDebounce;
+  String? _lastErrorQuery;
+  int _consecutiveErrors = 0;
+  DateTime? _lastErrorTime;
+  
+  // Error tracking for different operations
+  DateTime? _lastAreasErrorTime;
+  DateTime? _lastCompetitorsErrorTime;
+  bool _hasSearchError = false;
+  
   // Areas state
   List<AnalysisAreaModel> _analysisAreas = [];
   bool _isLoadingAreas = false;
@@ -48,6 +59,7 @@ class _SetupTabState extends State<SetupTab> {
   void dispose() {
     _brandController.dispose();
     _searchDebounce?.cancel();
+    _errorDebounce?.cancel();
     super.dispose();
   }
 
@@ -58,12 +70,14 @@ class _SetupTabState extends State<SetupTab> {
         _brandSuggestions.clear();
         _showBrandSuggestions = false;
         _selectedBrand = null;
+        _hasSearchError = false;
       });
+      _cancelAllPendingOperations();
       return;
     }
 
-    // Cancel previous timer
-    _searchDebounce?.cancel();
+    // Cancel all pending operations when starting new search
+    _cancelAllPendingOperations();
     
     // Set up new timer with 500ms delay
     _searchDebounce = Timer(const Duration(milliseconds: 500), () async {
@@ -84,6 +98,8 @@ class _SetupTabState extends State<SetupTab> {
             _brandSuggestions = result.data!;
             _isLoadingBrands = false;
           });
+          // Reset error state on successful search
+          _resetErrorState();
         } else {
           // Show error dialog with retry option
           _handleBrandSearchError(result.error ?? 'Unknown error', query);
@@ -95,20 +111,103 @@ class _SetupTabState extends State<SetupTab> {
     });
   }
 
-  /// Handle brand search errors
+  /// Handle brand search errors with smart debouncing
   void _handleBrandSearchError(String error, String query) {
     setState(() {
       _isLoadingBrands = false;
       _brandSuggestions.clear();
+      _hasSearchError = true;
     });
 
-    ApiErrorDialog.show(
-      context: context,
-      title: 'Brand Search Failed',
-      message: 'Unable to search for brands: $error',
-      onRetry: () => _searchBrands(query),
-      onUseDemoData: () => _useDemoBrands(),
-    );
+    // Check if we should show this error
+    if (!_shouldShowError(query)) {
+      return;
+    }
+
+    // Cancel any pending error dialog
+    _errorDebounce?.cancel();
+    
+    // Debounce error dialogs to prevent spam
+    _errorDebounce = Timer(const Duration(milliseconds: 1500), () {
+      if (!mounted) return;
+      
+      // Update error tracking
+      _consecutiveErrors++;
+      _lastErrorTime = DateTime.now();
+      _lastErrorQuery = query;
+      
+      // Show error with appropriate message based on consecutive errors
+      final title = _consecutiveErrors > 2 
+          ? 'Repeated Search Issues' 
+          : 'Brand Search Failed';
+      
+      final message = _consecutiveErrors > 2
+          ? 'Multiple search attempts failed. Check your connection or try demo data.'
+          : 'Unable to search for brands: $error';
+      
+      ApiErrorDialog.show(
+        context: context,
+        title: title,
+        message: message,
+        onRetry: () {
+          _resetErrorState();
+          // Use current text field content, not the original failed query
+          final currentQuery = _brandController.text.trim();
+          if (currentQuery.isNotEmpty) {
+            _searchBrands(currentQuery);
+          }
+        },
+        onUseDemoData: () {
+          _resetErrorState();
+          _useDemoBrands();
+        },
+      );
+    });
+  }
+
+  /// Check if we should show an error dialog
+  bool _shouldShowError(String query) {
+    final now = DateTime.now();
+    final currentFieldText = _brandController.text.trim();
+    
+    // Don't show error if the query doesn't match current field content
+    // This prevents stale errors from old searches
+    if (query != currentFieldText) {
+      return false;
+    }
+    
+    // Don't show error if it's the same query as last error and within 3 seconds
+    if (_lastErrorQuery == query && 
+        _lastErrorTime != null && 
+        now.difference(_lastErrorTime!).inSeconds < 3) {
+      return false;
+    }
+    
+    // Don't show more than 3 errors in 10 seconds
+    if (_consecutiveErrors >= 3 && 
+        _lastErrorTime != null &&
+        now.difference(_lastErrorTime!).inSeconds < 10) {
+      return false;
+    }
+    
+    return true;
+  }
+
+  /// Reset error tracking state
+  void _resetErrorState() {
+    _consecutiveErrors = 0;
+    _lastErrorTime = null;
+    _lastErrorQuery = null;
+    _hasSearchError = false;
+  }
+
+  /// Cancel all pending operations (timers and error states)
+  void _cancelAllPendingOperations() {
+    _searchDebounce?.cancel();
+    _errorDebounce?.cancel();
+    setState(() {
+      _hasSearchError = false;
+    });
   }
 
   /// Use demo brands as fallback
@@ -184,11 +283,20 @@ class _SetupTabState extends State<SetupTab> {
     }
   }
 
-  /// Handle areas fetch errors
+  /// Handle areas fetch errors with debouncing
   void _handleAreasError(String error, String brandId) {
     setState(() {
       _isLoadingAreas = false;
     });
+
+    // Don't show areas error if one was shown recently (within 2 seconds)
+    final now = DateTime.now();
+    if (_lastAreasErrorTime != null && 
+        now.difference(_lastAreasErrorTime!).inSeconds < 2) {
+      return;
+    }
+
+    _lastAreasErrorTime = now;
 
     ApiErrorDialog.show(
       context: context,
@@ -270,11 +378,20 @@ class _SetupTabState extends State<SetupTab> {
     }
   }
 
-  /// Handle competitors fetch errors
+  /// Handle competitors fetch errors with debouncing
   void _handleCompetitorsError(String error, String brandId, String? areaId) {
     setState(() {
       _isLoadingCompetitors = false;
     });
+
+    // Don't show competitors error if one was shown recently (within 2 seconds)
+    final now = DateTime.now();
+    if (_lastCompetitorsErrorTime != null && 
+        now.difference(_lastCompetitorsErrorTime!).inSeconds < 2) {
+      return;
+    }
+
+    _lastCompetitorsErrorTime = now;
 
     ApiErrorDialog.show(
       context: context,
@@ -347,8 +464,15 @@ class _SetupTabState extends State<SetupTab> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.glassBorder),
-              color: AppColors.glassBackground,
+              border: Border.all(
+                color: _hasSearchError 
+                    ? AppColors.error.withOpacity(0.5) 
+                    : AppColors.glassBorder,
+                width: _hasSearchError ? 2 : 1,
+              ),
+              color: _hasSearchError 
+                  ? AppColors.error.withOpacity(0.05)
+                  : AppColors.glassBackground,
             ),
             child: TextField(
               controller: _brandController,
@@ -362,6 +486,12 @@ class _SetupTabState extends State<SetupTab> {
                 contentPadding: const EdgeInsets.all(16),
               ),
               onChanged: (value) {
+                // Clear error state immediately when user starts typing
+                if (_hasSearchError) {
+                  setState(() {
+                    _hasSearchError = false;
+                  });
+                }
                 _searchBrands(value);
               },
               onTap: () {
