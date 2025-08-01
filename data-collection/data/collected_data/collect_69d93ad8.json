@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.004,
+      "articles_count": 99,
+      "positive_articles": 2,
+      "negative_articles": 1,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "Show HN: Stateful AI API with OS Models",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.RogueFishMedia.com/",
+          "source": "Roguefishmedia.com"
+        },
+        {
+          "title": "Trump administration to launch private health tracking system to improve records access",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.13abc.com/2025/07/31/trump-administration-launch-private-health-tracking-system-improve-records-access/",
+          "source": "13abc Action News"
+        },
+        {
+          "title": "Trump administration to launch private health tracking system to improve records access",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.cleveland19.com/2025/07/31/trump-administration-launch-private-health-tracking-system-improve-records-access/",
+          "source": "Cleveland 19 News"
+        },
+        {
+          "title": "Google will soon fix a security loophole in Chrome’s password autofill",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.androidauthority.com/google-chrome-password-autofill-biometrics-3582675/",
+          "source": "Android Authority"
+        },
+        {
+          "title": "Galaxy Watch 8 vs. Apple Watch 10: Which Flagship Smartwatch Wins?",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.geeky-gadgets.com/galaxy-watch-8-vs-apple-watch-10/",
+          "source": "Geeky Gadgets"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.8,
+      "mentions_count": 725,
+      "engagement_rate": 0.0036,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.792,
+          "mentions": 503
+        },
+        "linkedin": {
+          "sentiment": 0.83,
+          "mentions": 216
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.5,
+      "reviews_count": 85,
+      "pros": [
+        "Flexible working hours",
+        "Collaborative team environment",
+        "Job security"
+      ],
+      "cons": [
+        "Limited career advancement",
+        "Outdated technology",
+        "Poor communication"
+      ],
+      "recommendation_rate": 0.85,
+      "ceo_approval": 0.95
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.2,
+      "security_score": 0.9,
+      "accessibility_score": 0.35,
+      "mobile_friendliness": 0.4,
+      "load_time": 0.11
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": -0.004,
+      "articles_count": 97,
+      "positive_articles": 0,
+      "negative_articles": 1,
+      "neutral_articles": 49,
+      "recent_articles": [
+        {
+          "title": "An Apple billboard is turning heads for all the wrong reasons",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.creativebloq.com/design/print-design-publishing/an-apple-billboard-is-turning-heads-for-all-the-wrong-reasons",
+          "source": "Creative Bloq"
+        },
+        {
+          "title": "5 things to know before the stock market opens on Thursday, July 31",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.cnbc.com/2025/07/31/5-things-to-know-before-the-stock-market-opens-on-thursday-july-31.html",
+          "source": "CNBC"
+        },
+        {
+          "title": "Trump administration to launch private health tracking system to improve records access",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.13abc.com/2025/07/31/trump-administration-launch-private-health-tracking-system-improve-records-access/",
+          "source": "13abc Action News"
+        },
+        {
+          "title": "Trump administration to launch private health tracking system to improve records access",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.cleveland19.com/2025/07/31/trump-administration-launch-private-health-tracking-system-improve-records-access/",
+          "source": "Cleveland 19 News"
+        },
+        {
+          "title": "Galaxy Watch 8 vs. Apple Watch 10: Which Flagship Smartwatch Wins?",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.geeky-gadgets.com/galaxy-watch-8-vs-apple-watch-10/",
+          "source": "Geeky Gadgets"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17873756,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.738,
+          "mentions": 459
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17873297
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.7,
+      "reviews_count": 267,
+      "pros": [
+        "Job security",
+        "Career growth opportunities",
+        "Good company culture"
+      ],
+      "cons": [
+        "Bureaucratic processes",
+        "Limited training opportunities",
+        "Inconsistent management"
+      ],
+      "recommendation_rate": 0.67,
+      "ceo_approval": 0.77
+    },
+    "website_analysis": {
+      "user_experience_score": 0.9,
+      "feature_completeness": 1.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.8,
+      "mobile_friendliness": 0.7,
+      "load_time": 0.06
+    }
+  }
+}
