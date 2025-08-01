@@ -4,7 +4,13 @@ import time
 from urllib.parse import urljoin, urlparse
 from datetime import datetime
 from loguru import logger
-from bs4 import BeautifulSoup
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    logger.error("❌ BeautifulSoup4 is not installed. Please run: pip install beautifulsoup4==4.12.2")
+    raise ImportError("Missing required dependency: beautifulsoup4. Run 'pip install beautifulsoup4==4.12.2' to fix this.")
+
 from src.collectors.base import BaseCollector
 from src.models.schemas import DataSource
 from src.config.settings import settings
@@ -380,10 +386,18 @@ class WebsiteCollector(BaseCollector):
     async def _fetch_html_content(self, website_url: str) -> Optional[str]:
         """Fetch HTML content from website"""
         try:
-            # For MVP, we'll simulate HTML content
-            # In production, you'd fetch actual HTML content
+            # Try to fetch real HTML content first
+            if self.session:
+                try:
+                    html_content = await self.make_web_request(website_url)
+                    if html_content and len(html_content) > 100:
+                        logger.info(f"Successfully fetched HTML content from {website_url}")
+                        return html_content
+                except Exception as e:
+                    logger.debug(f"Failed to fetch real HTML content: {str(e)}")
             
-            logger.info(f"Simulating HTML content fetch for {website_url}")
+            # Fallback to mock HTML content for analysis
+            logger.info(f"Using mock HTML content for {website_url}")
             
             # Return mock HTML content for analysis
             mock_html = f"""
@@ -444,28 +458,11 @@ class WebsiteCollector(BaseCollector):
         """Make a web request expecting HTML content, not JSON"""
         try:
             if not self.session:
+                logger.warning("Session not initialized, skipping web request")
                 return None
             
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9',
-            }
-            
-            async with self.session.get(url, headers=headers, timeout=10) as response:
-                if response.status == 200:
-                    content = await response.text()
-                    logger.debug(f"Retrieved {len(content)} chars from {url}")
-                    return content
-                elif response.status == 403:
-                    logger.warning(f"Access forbidden (403) for {url}")
-                    return None
-                elif response.status == 404:
-                    logger.warning(f"Page not found (404) for {url}")
-                    return None
-                else:
-                    logger.warning(f"HTTP {response.status} for {url}")
-                    return None
+            # Use the base class method which has better error handling
+            return await self.make_web_request(url)
                     
         except Exception as e:
             logger.debug(f"Web request failed for {url}: {str(e)}")

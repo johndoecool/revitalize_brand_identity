@@ -25,6 +25,7 @@ class CollectionRequest(BaseModel):
     competitor_id: str = Field(..., description="Unique identifier for the competitor")
     area_id: str = Field(..., description="Area of interest/segment")
     sources: Optional[List[DataSource]] = Field(None, description="List of data sources to collect from (optional - defaults to all sources)")
+    request_id: Optional[str] = Field(None, description="Optional request ID for tracking across services")
     
     @validator('sources')
     def validate_sources(cls, v):

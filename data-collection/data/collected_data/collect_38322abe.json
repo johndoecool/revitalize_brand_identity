@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.093,
+      "articles_count": 93,
+      "positive_articles": 25,
+      "negative_articles": 7,
+      "neutral_articles": 18,
+      "recent_articles": [
+        {
+          "title": "Before iOS 26, Don't Miss These iOS 18.2 iPhone Features",
+          "sentiment": "positive",
+          "published_date": "2025-07-31",
+          "url": "https://www.cnet.com/tech/services-and-software/before-ios-26-dont-miss-these-ios-18-2-iphone-features/",
+          "source": "CNET"
+        },
+        {
+          "title": "Can San Francisco Be Saved?",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.theatlantic.com/podcasts/archive/2025/07/can-san-francisco-be-saved/683594/",
+          "source": "The Atlantic"
+        },
+        {
+          "title": "‘Post with the desired post-post in mind’: A crowdsourced social playbook for 2025",
+          "sentiment": "positive",
+          "published_date": "2025-07-31",
+          "url": "https://www.thedrum.com/news/2025/07/31/post-with-the-desired-post-post-mind-crowdsourced-social-playbook-2025",
+          "source": "The Drum"
+        },
+        {
+          "title": "The US job market may be running low on gas",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://biztoc.com/x/5c4bc03d44cdb00a",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Tech salaries: Here's how much the biggest tech companies pay engineers and other key roles",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.businessinsider.com/tech-salaries-compensation-data-ai-talent-wars-silicon-valley",
+          "source": "Business Insider"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17873641,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.738,
+          "mentions": 459
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17873182
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.1,
+      "reviews_count": 321,
+      "pros": [
+        "Competitive salary",
+        "Great benefits package",
+        "Supportive management"
+      ],
+      "cons": [
+        "Poor communication",
+        "High workload",
+        "Bureaucratic processes"
+      ],
+      "recommendation_rate": 0.71,
+      "ceo_approval": 0.71
+    },
+    "website_analysis": {
+      "user_experience_score": 0.9,
+      "feature_completeness": 0.333,
+      "security_score": 0.9,
+      "accessibility_score": 0.8,
+      "mobile_friendliness": 0.7,
+      "load_time": 0.1
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.05,
+      "articles_count": 98,
+      "positive_articles": 17,
+      "negative_articles": 6,
+      "neutral_articles": 27,
+      "recent_articles": [
+        {
+          "title": "HR & Office Trainee",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "http://pr.euractiv.com/job/hr-office-trainee-270804",
+          "source": "EURACTIV"
+        },
+        {
+          "title": "HR & Office Trainee",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "http://agenda.euractiv.com/job/hr-office-trainee-270804",
+          "source": "EURACTIV"
+        },
+        {
+          "title": "Dominance of Amazon and Microsoft in cloud harming competition, UK says",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.channelnewsasia.com/business/dominance-amazon-and-microsoft-in-cloud-harming-competition-uk-says-5269766",
+          "source": "CNA"
+        },
+        {
+          "title": "Dominance of Amazon and Microsoft in cloud harming competition, UK says",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://finance.yahoo.com/news/dominance-amazon-microsoft-cloud-harming-100610050.html",
+          "source": "Yahoo Entertainment"
+        },
+        {
+          "title": "4 AI tools on Android I actually use and 3 I can’t stand",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.androidauthority.com/best-and-worst-ai-tools-android-3581183/",
+          "source": "Android Authority"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.8,
+      "mentions_count": 725,
+      "engagement_rate": 0.0036,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.792,
+          "mentions": 503
+        },
+        "linkedin": {
+          "sentiment": 0.83,
+          "mentions": 216
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 199,
+      "pros": [
+        "Good company culture",
+        "Good work-life balance",
+        "Competitive salary"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.99,
+      "ceo_approval": 0.89
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.111,
+      "security_score": 0.9,
+      "accessibility_score": 0.35,
+      "mobile_friendliness": 0.4,
+      "load_time": 1.53
+    }
+  }
+}

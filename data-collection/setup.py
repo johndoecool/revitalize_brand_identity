@@ -20,7 +20,7 @@ def check_python_version():
 
 def create_directories():
     """Create necessary directories"""
-    directories = ['data', 'logs', 'vector_db']
+    directories = ['data', 'logs']
     
     for directory in directories:
         path = Path(directory)
@@ -60,7 +60,11 @@ def install_requirements():
             "python-dotenv==1.0.0",
             "loguru==0.7.2",
             "aiohttp==3.9.1",
-            "requests==2.31.0"
+            "aiofiles==23.2.0",
+            "requests==2.31.0",
+            "beautifulsoup4==4.12.2",
+            "textblob==0.17.1",
+            "vaderSentiment==3.3.2"
         ]
         
         for package in key_packages:
@@ -102,6 +106,9 @@ def test_installation():
         import pydantic
         import uvicorn
         import loguru
+        import aiohttp
+        import aiofiles
+        from bs4 import BeautifulSoup
         print("✅ Core dependencies imported successfully")
         
         # Test if the main module can be imported
@@ -124,7 +131,7 @@ def test_installation():
         print("💡 Some dependencies may not be installed correctly")
         return False
     
-    return Truegis
+    return True
 
 def main():
     """Main setup function"""

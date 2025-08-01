@@ -3,7 +3,13 @@ import asyncio
 import re
 from datetime import datetime
 from loguru import logger
-from bs4 import BeautifulSoup
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    logger.error("❌ BeautifulSoup4 is not installed. Please run: pip install beautifulsoup4==4.12.2")
+    raise ImportError("Missing required dependency: beautifulsoup4. Run 'pip install beautifulsoup4==4.12.2' to fix this.")
+
 from src.collectors.base import BaseCollector
 from src.models.schemas import DataSource
 from src.config.settings import settings
@@ -41,18 +47,27 @@ class GlassdoorCollector(BaseCollector):
     async def _search_company(self, brand_name: str) -> Optional[str]:
         """Search for company on Glassdoor"""
         try:
-            # For demo purposes, we'll simulate finding a company
+            # For demo purposes, we'll simulate finding a company by trying to access the URL
             # In production, this would involve searching Glassdoor's search API or web scraping
             
             search_url = f"{self.base_url}/Reviews/company-reviews.htm"
-            params = {'sc.keyword': brand_name}
             
             # Note: Glassdoor has anti-scraping measures, so this is a simplified implementation
             # In production, you'd need to handle CAPTCHAs, rate limiting, and use proper scraping tools
             
             logger.info(f"Searching for {brand_name} on Glassdoor")
             
-            # Return mock URL for demonstration
+            # Try to verify the company exists (with proper session handling)
+            if self.session:
+                try:
+                    # Attempt a basic search to verify the domain is accessible
+                    response = await self.make_web_request(search_url)
+                    if response:
+                        logger.debug("Glassdoor is accessible, using mock company URL")
+                except Exception as e:
+                    logger.debug(f"Glassdoor access test failed: {str(e)}")
+            
+            # Return mock URL for demonstration (this works even without real web scraping)
             return f"{self.base_url}/Reviews/{brand_name.replace(' ', '-')}-Reviews-E123456.htm"
             
         except Exception as e:

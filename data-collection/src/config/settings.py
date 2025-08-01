@@ -12,8 +12,7 @@ class Settings(BaseSettings):
     
     # Database Configuration
     data_storage_path: str = "./data"
-    vector_db_path: str = "./vector_db"
-    use_vector_db: bool = True
+    use_vector_db: bool = False
     
     # API Keys
     news_api_key: Optional[str] = Field(default=None, env="NEWS_API_KEY")
@@ -56,9 +55,13 @@ class Settings(BaseSettings):
     # Data Sources Configuration
     available_sources: List[str] = ["news", "social_media", "glassdoor", "website"]
     
+    # Analysis Engine Configuration
+    ANALYSIS_FOCUS: str = Field(default="comprehensive", env="ANALYSIS_FOCUS")  # Configurable analysis focus
+    
     class Config:
         env_file = ".env"
         case_sensitive = False
+        extra = "ignore"  # Ignore extra fields from .env
 
 
 # Global settings instance
@@ -66,5 +69,4 @@ settings = Settings()
 
 # Ensure data directories exist
 os.makedirs(settings.data_storage_path, exist_ok=True)
-os.makedirs(settings.vector_db_path, exist_ok=True)
 os.makedirs("logs", exist_ok=True) 

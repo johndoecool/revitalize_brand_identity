@@ -35,8 +35,10 @@ venv.bak/
 *.swo
 *~
 
+# Environment variables
+.env.production
+
 # Data and logs
-data/
 logs/
 vector_db/
 *.log

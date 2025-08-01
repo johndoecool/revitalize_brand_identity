@@ -53,12 +53,13 @@ async def start_data_collection(request: CollectionRequest):
                 )
             )
         
-        # Create updated request with resolved sources
+        # Create updated request with resolved sources and preserve request_id
         updated_request = CollectionRequest(
             brand_id=request.brand_id,
             competitor_id=request.competitor_id,
             area_id=request.area_id,
-            sources=sources_to_use
+            sources=sources_to_use,
+            request_id=request.request_id  # Preserve the request_id for tracking
         )
         
         # Start the collection job
@@ -134,7 +135,8 @@ async def get_collection_status(job_id: str):
     "/api/v1/collect/{job_id}/data", 
     response_model=CollectionDataResponse,
     responses={
-        404: {"model": CollectionErrorResponse}
+        404: {"description": "Job not found"},
+        409: {"description": "Job not completed yet"}
     },
     summary="Get Collection Data",
     description="Get the collected data from a completed data collection job"
@@ -150,28 +152,24 @@ async def get_collection_data(job_id: str):
             # Check if job exists but is not completed
             job = await job_manager.get_job_status(job_id)
             if not job:
-                return CollectionErrorResponse(
-                    success=False,
-                    error=ErrorResponse(
-                        code="NOT_FOUND",
-                        message="Collection job not found",
-                        details=ErrorDetail(
-                            field="job_id",
-                            value=job_id
-                        )
-                    )
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail={
+                        "code": "NOT_FOUND",
+                        "message": "Collection job not found",
+                        "job_id": job_id
+                    }
                 )
             else:
-                return CollectionErrorResponse(
-                    success=False,
-                    error=ErrorResponse(
-                        code="JOB_NOT_COMPLETED",
-                        message=f"Collection job is not completed yet. Current status: {job.status}",
-                        details=ErrorDetail(
-                            field="status",
-                            value=job.status
-                        )
-                    )
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail={
+                        "code": "JOB_NOT_COMPLETED",
+                        "message": f"Collection job is not completed yet. Current status: {job.status.value}",
+                        "current_status": job.status.value,
+                        "progress": job.progress,
+                        "current_step": job.current_step
+                    }
                 )
         
         return CollectionDataResponse(
@@ -179,6 +177,9 @@ async def get_collection_data(job_id: str):
             data=collected_data
         )
         
+    except HTTPException:
+        # Re-raise HTTP exceptions
+        raise
     except Exception as e:
         logger.error(f"Error getting job data for {job_id}: {str(e)}")
         raise HTTPException(
