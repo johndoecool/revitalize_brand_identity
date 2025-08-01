@@ -49,22 +49,18 @@ class JobManager:
             # Save job to storage
             await storage.save_job(job)
             
-            # NOTE: Shared database record creation moved to consumer side
-            # The consumer (test_consumer.py, UI, etc.) should create the initial database record
-            # This ensures proper separation of concerns - data collection service only handles collection
-            # 
-            # # Create record in shared database
-            # request_id = getattr(request, 'request_id', f"req_{job_id}")  # Use request_id if available, otherwise generate one
-            # try:
-            #     await shared_database.add_job_record(
-            #         request_id=request_id,
-            #         brand_id=request.brand_id,
-            #         data_collection_id=job_id
-            #     )
-            #     logger.info(f"Created shared database record: {request_id} -> {job_id}")
-            # except Exception as e:
-            #     logger.error(f"Failed to create shared database record: {e}")
-            #     # Continue with job execution even if database record creation fails
+            # Create record in shared database
+            request_id = getattr(request, 'request_id', f"req_{job_id}")  # Use request_id if available, otherwise generate one
+            try:
+                await shared_database.add_job_record(
+                    request_id=request_id,
+                    brand_id=request.brand_id,
+                    data_collection_id=job_id
+                )
+                logger.info(f"Created shared database record: {request_id} -> {job_id}")
+            except Exception as e:
+                logger.error(f"Failed to create shared database record: {e}")
+                # Continue with job execution even if database record creation fails
             
             # Start background task
             task = asyncio.create_task(self._run_collection_job(job))

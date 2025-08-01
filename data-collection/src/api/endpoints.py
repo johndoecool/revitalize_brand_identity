@@ -312,6 +312,45 @@ async def cancel_collection_job(job_id: str):
 
 
 @router.get(
+    "/api/v1/shared-data/{request_id}",
+    summary="Get Shared Database Record",
+    description="Get the shared database record for a specific request ID"
+)
+async def get_shared_data_record(request_id: str):
+    """Get shared database record by request ID"""
+    try:
+        logger.info(f"Getting shared database record for request {request_id}")
+        
+        # Import shared database service
+        from src.services.shared_database_service import shared_database
+        
+        # Get the record from shared database using request_id
+        record = await shared_database.get_record_status(request_id)
+        
+        if record is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"No shared database record found for request ID: {request_id}"
+            )
+        
+        return {
+            "success": True,
+            "data": record,
+            "timestamp": datetime.utcnow()
+        }
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
+    except Exception as e:
+        logger.error(f"Error getting shared database record for request {request_id}: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal server error occurred while getting shared database record"
+        )
+
+
+@router.get(
     "/api/v1/stats",
     summary="Get Service Statistics",
     description="Get statistics about the data collection service"
