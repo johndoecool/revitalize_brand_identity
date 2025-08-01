@@ -7,5 +7,23 @@
     "analysisEngineId": "analysis_req_f0f1a27f_203508",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-07-31T23:36:08.974453+00:00"
+  },
+  {
+    "requestId": "req_test123",
+    "brandId": "Apple",
+    "dataCollectionId": "collect_38322abe",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_req_test123_065536",
+    "analysisEngineStatus": "FAILED",
+    "lastUpdated": "2025-08-01T10:55:36.902261+00:00"
+  },
+  {
+    "requestId": "req_test456",
+    "brandId": "Apple",
+    "dataCollectionId": "collect_38322abe",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_req_test456_070852",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-01T11:09:23.979928+00:00"
   }
 ]

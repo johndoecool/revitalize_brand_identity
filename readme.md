@@ -32,6 +32,7 @@ revitalize_brand_identity/
 ## 🚀 Quick Start
 
 ### Frontend (Flutter)
+
 ```bash
 cd flutter
 flutter pub get
@@ -39,6 +40,7 @@ flutter run -d web-server --web-port 8080
 ```
 
 ### Backend Services
+
 ```bash
 cd services
 # Each service has its own setup instructions
@@ -56,6 +58,7 @@ cd services
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Framework**: Flutter 3.32+
 - **Language**: Dart
 - **UI**: Custom glassmorphism design system
@@ -63,6 +66,7 @@ cd services
 - **State Management**: Provider pattern
 
 ### Backend
+
 - **Architecture**: Microservices
 - **API Gateway**: Frontend service
 - **Data Processing**: Analysis engine
@@ -71,6 +75,7 @@ cd services
 ## 📋 Development Status
 
 ✅ **Completed**:
+
 - Flutter frontend with complete 5-tab interface
 - Interactive chart visualizations
 - PDF generation and export functionality
@@ -78,6 +83,7 @@ cd services
 - Demo data integration
 
 🚧 **In Progress**:
+
 - Backend microservices implementation
 - API integration
 - Mobile platform builds
@@ -92,6 +98,7 @@ cd services
 ## 🤝 Team Collaboration
 
 This monorepo structure supports:
+
 - **Frontend Team**: Work in `flutter/` directory
 - **Backend Teams**: Each service team works in respective `services/` subdirectory
 - **Shared Resources**: Documentation, demo data, and API contracts at root level
@@ -99,6 +106,7 @@ This monorepo structure supports:
 ## 🏆 VibeCoding Hackathon 2025
 
 Built for maximum "wow factor" demonstrating:
+
 - Rapid cross-platform development
 - Professional UI/UX design
 - Scalable architecture
@@ -107,3 +115,20 @@ Built for maximum "wow factor" demonstrating:
 ---
 
 For specific setup instructions, see the README in each component directory.
+
+## For analysis engine service
+
+API to get roadmap, analysis, etc. hit below api
+GET - http:..localhost:8003/api/v1/analyze/{analyze_id}/status
+
+API to download report
+http://localhost:8003/api/v1/analyze/{analyze_id}/report?reportType=executive_summary
+http://localhost:8003/api/v1/analyze/{analyze_id}/report?reportType=detailed_report
+
+Postman collection with examples is available in postman folder under analysis-engine folder
+
+## For data-collection service
+
+API to trigger data collection
+POST "http://localhost:8002/api/v1/collect"
+Request Body: {"brand_id": "Google", "competitor_id": "Apple", area_id: "Best place to work"}

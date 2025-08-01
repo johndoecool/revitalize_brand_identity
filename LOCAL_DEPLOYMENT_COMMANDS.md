@@ -37,3 +37,17 @@ curl -s -w "%{http_code}" http://10.0.0.70:8001/ -o /dev/null
 # Check app on device
 xcrun devicectl device info apps --device "00008110-0005556C2281801E" | grep -A 5 "brandIntelligenceHub"
 ```
+
+## run analysis-engine
+
+cd analysis-engine
+Create virtual environment with referring requirements.txt file
+cp .env.example .env
+python -m uvcorn app.main:app --reload --host 0.0.0.0 --port 8003
+
+## run data-collection
+
+cd data-collection
+Create virtual environment with referring requirements.txt file
+create .env file
+python run.py
