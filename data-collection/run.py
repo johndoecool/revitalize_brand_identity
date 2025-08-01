@@ -20,7 +20,10 @@ def check_dependencies():
         ('uvicorn', 'Uvicorn'),
         ('pydantic', 'Pydantic'),
         ('loguru', 'Loguru'),
-        ('dotenv', 'python-dotenv')
+        ('dotenv', 'python-dotenv'),
+        ('aiohttp', 'aiohttp'),
+        ('bs4', 'beautifulsoup4'),
+        ('asyncio', 'asyncio (built-in)')
     ]
     
     missing_packages = []
@@ -35,11 +38,12 @@ def check_dependencies():
         print("❌ Missing required packages:")
         for package in missing_packages:
             print(f"   - {package}")
-        print("\n💡 To fix this, run one of:")
-        print("   - python setup.py (recommended)")
+        print("\n🚀 QUICK FIX - Run this command:")
+        print("   python setup.py")
+        print("\n💡 Alternative methods:")
+        print("   - pip install beautifulsoup4==4.12.2 aiohttp==3.9.1")
         print("   - pip install -r requirements.txt")
-        print("   - ./install.sh (Linux/Mac)")
-        print("   - install.bat (Windows)")
+        print("   - python install_dependencies.py")
         return False
     
     return True
@@ -68,7 +72,7 @@ def load_environment():
 
 def create_directories():
     """Create necessary directories"""
-    directories = ['data', 'logs', 'vector_db']
+    directories = ['data', 'logs']
     
     for directory in directories:
         path = Path(directory)

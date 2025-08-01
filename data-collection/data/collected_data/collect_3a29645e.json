@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.004,
+      "articles_count": 92,
+      "positive_articles": 3,
+      "negative_articles": 2,
+      "neutral_articles": 45,
+      "recent_articles": [
+        {
+          "title": "macOS 15.6 Sequoia Is Out: What’s New and Why You Should Update",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.geeky-gadgets.com/macos-15-6-sequoia/",
+          "source": "Geeky Gadgets"
+        },
+        {
+          "title": "Female Sexual Dysfunction",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://nutritionfacts.org/audio/female-sexual-dysfunction/",
+          "source": "Nutritionfacts.org"
+        },
+        {
+          "title": "I found a cheap Android tablet worthy of replacing my iPad (and better in some ways)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.zdnet.com/article/i-found-a-cheap-android-tablet-worthy-of-replacing-my-ipad-and-better-in-some-ways/",
+          "source": "ZDNet"
+        },
+        {
+          "title": "iOS 18.6: Did Apple Fix It, or Break It?",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.geeky-gadgets.com/ios-18-6-review/",
+          "source": "Geeky Gadgets"
+        },
+        {
+          "title": "Video: Prime Video Debuts Official Trailer and Key Art for \"The Terminal List: Dark Wolf,\" Starring Taylor Kitsch, Chris Pratt, and Tom Hopper",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "http://www.thefutoncritic.com/video/2025/07/31/video-prime-video-debuts-official-trailer-and-key-art-for-the-terminal-list-dark-wolf-starring-taylor-kitsch-chris-pratt-and-tom-hopper-115413/20250731amazon01/",
+          "source": "Thefutoncritic.com"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17873359,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.738,
+          "mentions": 459
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17872900
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 79,
+      "pros": [
+        "Good company culture",
+        "Good work-life balance",
+        "Competitive salary"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.79,
+      "ceo_approval": 0.69
+    },
+    "website_analysis": {
+      "user_experience_score": 0.9,
+      "feature_completeness": 0.333,
+      "security_score": 0.9,
+      "accessibility_score": 0.8,
+      "mobile_friendliness": 0.7,
+      "load_time": 0.12
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 99,
+      "positive_articles": 2,
+      "negative_articles": 2,
+      "neutral_articles": 46,
+      "recent_articles": [
+        {
+          "title": "Meta shares jump 11% on big revenue forecast",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.rte.ie/news/business/2025/0731/1526250-meta-platforms-quarterly-results/",
+          "source": "RTE"
+        },
+        {
+          "title": "17 acting careers ruined by a single role: ‘I lost everything’",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.the-independent.com/arts-entertainment/films/features/movies-destroyed-actor-careers-bad-reviews-b2799382.html",
+          "source": "The-independent.com"
+        },
+        {
+          "title": "Why Every Marketer Should Know How to Write an Essay",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://radaronline.com/p/why-every-marketer-should-know-how-to-write-an-essay/",
+          "source": "Radaronline.com"
+        },
+        {
+          "title": "Gaming PC: 5070 Ti OC, 750W Gold, 32GB 6400/C32, 2TB 7400MBs, 9600X $2288 7800X3D $2499 + Delivery ($0 VIC C&C) @ Evatech",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.ozbargain.com.au/node/917730",
+          "source": "Ozbargain.com.au"
+        },
+        {
+          "title": "Why women are wary of the AI rush - Salon.com",
+          "sentiment": "negative",
+          "published_date": "2025-07-31",
+          "url": "https://www.salon.com/2025/07/28/why-women-are-wary-of-the-ai-rush/",
+          "source": "Salon"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.8,
+      "mentions_count": 725,
+      "engagement_rate": 0.0036,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.792,
+          "mentions": 503
+        },
+        "linkedin": {
+          "sentiment": 0.83,
+          "mentions": 216
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.4,
+      "reviews_count": 294,
+      "pros": [
+        "Learning opportunities",
+        "Flexible working hours",
+        "Collaborative team environment"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.94,
+      "ceo_approval": 0.64
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.111,
+      "security_score": 0.9,
+      "accessibility_score": 0.35,
+      "mobile_friendliness": 0.4,
+      "load_time": 1.5
+    }
+  }
+}
