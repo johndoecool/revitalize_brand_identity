@@ -1,0 +1,150 @@
+{
+  "job_id": "collect_6a32cdac",
+  "brand_id": "test-brand-123",
+  "competitor_id": "test-competitor-456",
+  "area_id": "tech-segment",
+  "sources": [
+    "news",
+    "social_media"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-01T22:17:42.947899",
+  "started_at": null,
+  "completed_at": "2025-08-01T22:18:27.867103",
+  "estimated_completion": "2025-08-01T22:20:42.947882",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "test-brand-123",
+      "news_sentiment": {
+        "score": 0.0,
+        "articles_count": 17,
+        "positive_articles": 0,
+        "negative_articles": 0,
+        "neutral_articles": 17,
+        "recent_articles": [
+          {
+            "title": "Casino Group: Q2 SALES AND H1 2025 RESULTS",
+            "sentiment": "neutral",
+            "published_date": "2025-07-30",
+            "url": "https://www.globenewswire.com/news-release/2025/07/30/3123774/0/en/Casino-Group-Q2-SALES-AND-H1-2025-RESULTS.html",
+            "source": "GlobeNewswire"
+          },
+          {
+            "title": "Show HN: Made a boilerplate for SaaS and Freelancers to deploy in 24h",
+            "sentiment": "neutral",
+            "published_date": "2025-07-25",
+            "url": "https://github.com/FujinEbisu/HACKER_BP_STARTER",
+            "source": "Github.com"
+          },
+          {
+            "title": "If you’re with Verizon, you’re on the most awarded network – again",
+            "sentiment": "neutral",
+            "published_date": "2025-07-24",
+            "url": "https://www.phonearena.com/news/if-you-with-verizon-you-are-on-most-awarded-network_id172580",
+            "source": "PhoneArena"
+          },
+          {
+            "title": "We’ve Been Tracking Prime Day Deals For Over 58 Hours—Here Are The 137 Best To Shop Before It’s Over",
+            "sentiment": "neutral",
+            "published_date": "2025-07-11",
+            "url": "https://www.forbes.com/sites/forbes-personal-shopper/2025/07/11/best-prime-day-deals-2025/",
+            "source": "Forbes"
+          },
+          {
+            "title": "The 100+ best Prime Day deals under $100",
+            "sentiment": "neutral",
+            "published_date": "2025-07-11",
+            "url": "https://www.theverge.com/tech/697310/amazon-prime-day-best-cheap-tech-deals-under-100-2025",
+            "source": "The Verge"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.663,
+        "mentions_count": 237,
+        "engagement_rate": 0.0012,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.553,
+            "mentions": 4
+          },
+          "facebook": {
+            "sentiment": 0.73,
+            "mentions": 92
+          },
+          "linkedin": {
+            "sentiment": 0.622,
+            "mentions": 141
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": null,
+      "website_analysis": null
+    },
+    "competitor_data": {
+      "brand_id": "test-competitor-456",
+      "news_sentiment": {
+        "score": 0.0,
+        "articles_count": 2,
+        "positive_articles": 0,
+        "negative_articles": 0,
+        "neutral_articles": 2,
+        "recent_articles": [
+          {
+            "title": "Show HN: A WordPress MCP Server – Connect Claude Desktop to WordPress via AI",
+            "sentiment": "neutral",
+            "published_date": "2025-07-27",
+            "url": "https://github.com/docdyhr/mcp-wordpress",
+            "source": "Github.com"
+          },
+          {
+            "title": "Lenovo LOQ 15 laptop review: The mobile RTX 5060 celebrates its debut",
+            "sentiment": "neutral",
+            "published_date": "2025-07-04",
+            "url": "https://www.notebookcheck.net/Lenovo-LOQ-15-laptop-review-The-mobile-RTX-5060-celebrates-its-debut.1050248.0.html",
+            "source": "Notebookcheck.net"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.573,
+        "mentions_count": 346,
+        "engagement_rate": 0.0017,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.519,
+            "mentions": 13
+          },
+          "facebook": {
+            "sentiment": 0.539,
+            "mentions": 263
+          },
+          "linkedin": {
+            "sentiment": 0.71,
+            "mentions": 70
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": null,
+      "website_analysis": null
+    }
+  },
+  "error_message": null
+}

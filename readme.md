@@ -129,6 +129,55 @@ Postman collection with examples is available in postman folder under analysis-e
 
 ## For data-collection service
 
-API to trigger data collection
+**Available Endpoints:**
+
+| Method | Endpoint                          | Description                        |
+| ------ | --------------------------------- | ---------------------------------- |
+| POST   | `/api/v1/collect`                 | Start data collection job          |
+| GET    | `/api/v1/collect/{job_id}/status` | Get job status and progress        |
+| GET    | `/api/v1/collect/{job_id}/data`   | Get collected data (when complete) |
+| DELETE | `/api/v1/collect/{job_id}`        | Cancel running job                 |
+| GET    | `/api/v1/sources/config`          | Get data sources configuration     |
+| GET    | `/api/v1/stats`                   | Get service statistics             |
+| GET    | `/health`                         | Health check endpoint              |
+| GET    | `/docs`                           | API documentation (Swagger UI)     |
+| GET    | `/redoc`                          | Alternative API documentation      |
+
+**Example Usage:**
+
+Trigger data collection:
+
+```bash
 POST "http://localhost:8002/api/v1/collect"
-Request Body: {"brand_id": "Google", "competitor_id": "Apple", area_id: "Best place to work"}
+Content-Type: application/json
+
+{
+  "request_id": "213434324234dsfdsf223",
+  "brand_id": "Google",
+  "competitor_id": "Apple",
+  "area_id": "Best place to work",
+  "sources": ["news", "social_media", "glassdoor", "website"]
+}
+```
+
+Get job status:
+
+```bash
+GET "http://localhost:8002/api/v1/collect/{job_id}/status"
+```
+
+Get collected data:
+
+```bash
+GET "http://localhost:8002/api/v1/collect/{job_id}/data"
+```
+
+**Data Sources:** News APIs, Social Media, Glassdoor Reviews, Website Analysis
+
+**Service Configuration:**
+
+- Port: 8002
+- Real-time progress tracking
+- Comprehensive logging
+- Rate limiting per data source
+- Asynchronous job processing

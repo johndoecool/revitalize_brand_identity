@@ -1,0 +1,4 @@
+# Test Requirements for Brand Intelligence Hub
+# Minimal dependencies for integration testing
+
+aiohttp>=3.8.0

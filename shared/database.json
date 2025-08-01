@@ -25,5 +25,14 @@
     "analysisEngineId": "analysis_req_test456_070852",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-08-01T11:09:23.979928+00:00"
+  },
+  {
+    "requestId": null,
+    "brandId": "test-brand-123",
+    "dataCollectionId": "collect_6a32cdac",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "",
+    "analysisEngineStatus": "",
+    "lastUpdated": "2025-08-01T22:18:27.867999+00:00"
   }
 ]
