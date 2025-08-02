@@ -1,0 +1,219 @@
+{
+  "job_id": "collect_486d9459",
+  "brand_id": "Apple Inc",
+  "competitor_id": "Alphabet Inc.",
+  "area_id": "Product Innovation",
+  "sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-02T12:12:40.659230",
+  "started_at": null,
+  "completed_at": "2025-08-02T12:13:26.814002",
+  "estimated_completion": "2025-08-02T12:15:40.659115",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "Apple Inc",
+      "news_sentiment": {
+        "score": 0.004,
+        "articles_count": 99,
+        "positive_articles": 1,
+        "negative_articles": 0,
+        "neutral_articles": 49,
+        "recent_articles": [
+          {
+            "title": "Google loses appeal in antitrust battle with Fortnite maker",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://abcnews.go.com/Technology/wireStory/google-loses-appeal-antitrust-battle-fortnite-maker-124272730",
+            "source": "ABC News"
+          },
+          {
+            "title": "Google loses appeal in antitrust battle with Fortnite maker",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://financialpost.com/pmn/google-loses-appeal-in-antitrust-battle-with-fortnite-maker",
+            "source": "Financial Post"
+          },
+          {
+            "title": "5 things to know before the stock market opens Friday",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.cnbc.com/2025/08/01/5-things-to-know-before-the-stock-market-opens-friday-august-1.html",
+            "source": "CNBC"
+          },
+          {
+            "title": "Delayed AI Software Rollout and Tariff Related Uncertainty Put Pressure on Apple (AAPL)",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://finance.yahoo.com/news/delayed-ai-software-rollout-tariff-112857914.html",
+            "source": "Yahoo Entertainment"
+          },
+          {
+            "title": "10 finance companies that made the biggest leaps on the 2025 Fortune Global 500 list",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://fortune.com/2025/08/01/10-finance-companies-biggest-leaps-2025-fortune-global-500-list-cfo/",
+            "source": "Fortune"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.779,
+        "mentions_count": 299,
+        "engagement_rate": 0.0015,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.592,
+            "mentions": 13
+          },
+          "facebook": {
+            "sentiment": 0.834,
+            "mentions": 186
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 100
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.7,
+        "reviews_count": 327,
+        "pros": [
+          "Job security",
+          "Career growth opportunities",
+          "Good company culture"
+        ],
+        "cons": [
+          "Bureaucratic processes",
+          "Limited training opportunities",
+          "Inconsistent management"
+        ],
+        "recommendation_rate": 0.77,
+        "ceo_approval": 0.77
+      },
+      "website_analysis": {
+        "user_experience_score": 0.2,
+        "feature_completeness": 0.0,
+        "security_score": 0.9,
+        "accessibility_score": 0.7,
+        "mobile_friendliness": 0.3,
+        "load_time": 0.07
+      }
+    },
+    "competitor_data": {
+      "brand_id": "Alphabet Inc.",
+      "news_sentiment": {
+        "score": 0.0,
+        "articles_count": 98,
+        "positive_articles": 0,
+        "negative_articles": 0,
+        "neutral_articles": 50,
+        "recent_articles": [
+          {
+            "title": "Google loses appeal in antitrust battle with Fortnite maker",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://abcnews.go.com/Technology/wireStory/google-loses-appeal-antitrust-battle-fortnite-maker-124272730",
+            "source": "ABC News"
+          },
+          {
+            "title": "Google loses appeal in antitrust battle with Fortnite maker",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://financialpost.com/pmn/google-loses-appeal-in-antitrust-battle-with-fortnite-maker",
+            "source": "Financial Post"
+          },
+          {
+            "title": "Wells Fargo & Company Raises Alphabet (NASDAQ:GOOGL) Price Target to $187.00",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.etfdailynews.com/2025/08/01/wells-fargo-company-raises-alphabet-nasdaqgoogl-price-target-to-187-00/",
+            "source": "ETF Daily News"
+          },
+          {
+            "title": "Top Space Stocks To Follow Now – July 30th",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.etfdailynews.com/2025/08/01/top-space-stocks-to-follow-now-july-30th/",
+            "source": "ETF Daily News"
+          },
+          {
+            "title": "Sen. John Boozman Sells Off Shares of Valero Energy Corporation (NYSE:VLO)",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.etfdailynews.com/2025/08/01/sen-john-boozman-sells-off-shares-of-valero-energy-corporation-nysevlo/",
+            "source": "ETF Daily News"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.694,
+        "mentions_count": 233,
+        "engagement_rate": 0.0012,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.443,
+            "mentions": 14
+          },
+          "facebook": {
+            "sentiment": 0.636,
+            "mentions": 97
+          },
+          "linkedin": {
+            "sentiment": 0.769,
+            "mentions": 122
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.1,
+        "reviews_count": 291,
+        "pros": [
+          "Competitive salary",
+          "Great benefits package",
+          "Supportive management"
+        ],
+        "cons": [
+          "Poor communication",
+          "High workload",
+          "Bureaucratic processes"
+        ],
+        "recommendation_rate": 0.91,
+        "ceo_approval": 0.81
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 3.01
+      }
+    }
+  },
+  "error_message": null
+}

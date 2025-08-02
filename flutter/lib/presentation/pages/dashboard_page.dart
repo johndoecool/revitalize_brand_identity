@@ -403,6 +403,8 @@ class _DashboardPageState extends State<DashboardPage>
       );
       
       if (result.isSuccess) {
+        print('[Dashboard] Analysis completed successfully, setting result');
+        print('[Dashboard] Analysis result data keys: ${result.data!.data.keys}');
         setState(() {
           _analysisResult = result.data;
           // Request ID is already stored from before the analysis started
@@ -526,6 +528,10 @@ class _DashboardPageState extends State<DashboardPage>
           onAnalysisLaunched: _onAnalysisLaunched,
         );
       case 1:
+        print('[Dashboard] Creating AnalysisTab with analysisResult: ${_analysisResult != null ? "PRESENT" : "NULL"}');
+        if (_analysisResult != null) {
+          print('[Dashboard] AnalysisResult data keys: ${_analysisResult!.data.keys}');
+        }
         return AnalysisTab(
           key: ValueKey('analysis'),
           brandName: _analysisData_brandName,

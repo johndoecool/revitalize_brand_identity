@@ -115,5 +115,149 @@
     "analysisEngineId": "analysis_b41eb704-b089-45ea-9165-c86ca53c7c00_002930",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-08-02T04:29:51.667680+00:00"
+  },
+  {
+    "requestId": "17549500-036a-4430-b9c5-d5e0a3f7ef32",
+    "brandId": "Colgate-Palmolive Company",
+    "dataCollectionId": "collect_730033cd",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_17549500-036a-4430-b9c5-d5e0a3f7ef32_003852",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:39:17.149003+00:00"
+  },
+  {
+    "requestId": "test-radar-api",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_11104a3b",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-radar-api_004315",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:43:36.322221+00:00"
+  },
+  {
+    "requestId": "211c86ca-ec19-49fc-8cf0-177916fcba26",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_f937ae28",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_211c86ca-ec19-49fc-8cf0-177916fcba26_004759",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:48:26.318311+00:00"
+  },
+  {
+    "requestId": "394744c2-cfa3-4ee8-b75d-899b2523a4fa",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_12fe867b",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_394744c2-cfa3-4ee8-b75d-899b2523a4fa_075046",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T11:51:05.208561+00:00"
+  },
+  {
+    "requestId": "1a12f53a-e00c-48c9-8ae7-676d670ff489",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_35716ada",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_1a12f53a-e00c-48c9-8ae7-676d670ff489_075913",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T11:59:43.683252+00:00"
+  },
+  {
+    "requestId": "c8c250a8-b4c9-4aee-8daf-947dbb0fd9c8",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_184b7a3b",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_c8c250a8-b4c9-4aee-8daf-947dbb0fd9c8_080852",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:09:10.916702+00:00"
+  },
+  {
+    "requestId": "7a736747-3782-4f3d-bbae-380f65d1e759",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_486d9459",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_7a736747-3782-4f3d-bbae-380f65d1e759_081326",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:13:46.695259+00:00"
+  },
+  {
+    "requestId": "5e8962d5-fbe9-4a88-89dd-643abd486c98",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_8692884f",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_5e8962d5-fbe9-4a88-89dd-643abd486c98_082056",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:21:18.583056+00:00"
+  },
+  {
+    "requestId": "b71b7bf4-2813-4f38-a2e9-067f1605c44f",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_8569935f",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_b71b7bf4-2813-4f38-a2e9-067f1605c44f_082630",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:26:54.353802+00:00"
+  },
+  {
+    "requestId": "d19217c1-400e-4219-82f8-a2065bf0aa58",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_51e6adbc",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_d19217c1-400e-4219-82f8-a2065bf0aa58_083804",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:38:21.749039+00:00"
+  },
+  {
+    "requestId": "3716ad16-bc73-4c74-b00b-b3ea6eed013b",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_36455848",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_3716ad16-bc73-4c74-b00b-b3ea6eed013b_084240",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:43:04.791454+00:00"
+  },
+  {
+    "requestId": "c4554f6e-ba4a-4c19-a23a-8fe71d48d92b",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_a3dd48dc",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_c4554f6e-ba4a-4c19-a23a-8fe71d48d92b_084850",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T12:49:12.937866+00:00"
+  },
+  {
+    "requestId": "56e15753-67d2-4752-89cf-3492c8860b86",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_350c8259",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_56e15753-67d2-4752-89cf-3492c8860b86_090134",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T13:02:01.047945+00:00"
+  },
+  {
+    "requestId": "6aa178c8-7e9b-4e34-bd49-044ed7d75e73",
+    "brandId": "Colgate-Palmolive Company",
+    "dataCollectionId": "collect_7ac9283f",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_6aa178c8-7e9b-4e34-bd49-044ed7d75e73_090404",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T13:04:26.721748+00:00"
+  },
+  {
+    "requestId": "e7a3056f-dcd8-4e45-ad17-ac72cca4bfb3",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_6e0073e4",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_e7a3056f-dcd8-4e45-ad17-ac72cca4bfb3_092553",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T13:26:19.260142+00:00"
+  },
+  {
+    "requestId": "91c13b1d-3ec6-41bc-87bf-d8e61042847d",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_055af112",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_91c13b1d-3ec6-41bc-87bf-d8e61042847d_094634",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T13:46:58.001198+00:00"
   }
 ]

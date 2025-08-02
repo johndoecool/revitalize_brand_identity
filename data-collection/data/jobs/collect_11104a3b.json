@@ -1,0 +1,219 @@
+{
+  "job_id": "collect_11104a3b",
+  "brand_id": "AAPL",
+  "competitor_id": "MSFT",
+  "area_id": "market_position",
+  "sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-02T04:42:40.803197",
+  "started_at": null,
+  "completed_at": "2025-08-02T04:43:15.695877",
+  "estimated_completion": "2025-08-02T04:45:40.803083",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "AAPL",
+      "news_sentiment": {
+        "score": 0.0,
+        "articles_count": 100,
+        "positive_articles": 1,
+        "negative_articles": 1,
+        "neutral_articles": 48,
+        "recent_articles": [
+          {
+            "title": "Cook Says to Remember Section 232 When It Comes to Tariffs",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/fdea262ab5397bcb",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Apple Talks About Search As AI Changes Internet Landscape",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/df1f15206eec20ff",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Apple Earnings Call Begins. Listen for Updates on Tariffs and Guidance",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/64068e57bc9a5868",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Apple surpasses Wall Street expectations as iPhone sales soar",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/0d6311f85b66951e",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "A 13% Dividends From AI? Here Are The Tickers",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://www.forbes.com/sites/michaelfoster/2025/07/31/a-13-dividends-from-ai-here-are-the-tickers/",
+            "source": "Forbes"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.681,
+        "mentions_count": 851,
+        "engagement_rate": 0.0043,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.576,
+            "mentions": 14
+          },
+          "facebook": {
+            "sentiment": 0.586,
+            "mentions": 130
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 707
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 5.0,
+        "reviews_count": 109,
+        "pros": [
+          "Good company culture",
+          "Good work-life balance",
+          "Competitive salary"
+        ],
+        "cons": [
+          "Long working hours",
+          "Lack of recognition",
+          "Limited career advancement"
+        ],
+        "recommendation_rate": 0.59,
+        "ceo_approval": 0.99
+      },
+      "website_analysis": {
+        "user_experience_score": 0.2,
+        "feature_completeness": 0.0,
+        "security_score": 0.9,
+        "accessibility_score": 0.7,
+        "mobile_friendliness": 0.3,
+        "load_time": 0.04
+      }
+    },
+    "competitor_data": {
+      "brand_id": "MSFT",
+      "news_sentiment": {
+        "score": 0.012,
+        "articles_count": 100,
+        "positive_articles": 3,
+        "negative_articles": 0,
+        "neutral_articles": 47,
+        "recent_articles": [
+          {
+            "title": "Microsoft Surges Past $4T Market Cap After Blowout Earnings",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "http://www.etf.com/sections/news/microsoft-surges-past-4t-market-cap-after-blowout-earnings?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss",
+            "source": "Etf.com"
+          },
+          {
+            "title": "Stellar Earnings as AI Investment Accelerates",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/170cffdc119a7a78",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Stock Market News Today: Market mixed, Figma soars in debut (SP500)",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/7329c0d1a8387181",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "A 13% Dividends From AI? Here Are The Tickers",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://www.forbes.com/sites/michaelfoster/2025/07/31/a-13-dividends-from-ai-here-are-the-tickers/",
+            "source": "Forbes"
+          },
+          {
+            "title": "Apple Shares Rise On Top- & Bottom-Line Beat; China Returns To Growth",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://biztoc.com/x/64a756b7549a6443",
+            "source": "Biztoc.com"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.784,
+        "mentions_count": 188,
+        "engagement_rate": 0.0009,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.421,
+            "mentions": 6
+          },
+          "facebook": {
+            "sentiment": 0.809,
+            "mentions": 160
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 22
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 5.0,
+        "reviews_count": 259,
+        "pros": [
+          "Good company culture",
+          "Good work-life balance",
+          "Competitive salary"
+        ],
+        "cons": [
+          "Long working hours",
+          "Lack of recognition",
+          "Limited career advancement"
+        ],
+        "recommendation_rate": 0.59,
+        "ceo_approval": 0.69
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.4,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 1.0,
+        "load_time": 0.14
+      }
+    }
+  },
+  "error_message": null
+}

@@ -248,7 +248,13 @@ class DataCollectionService {
         final data = response.data;
         if (data['success'] == true) {
           print('[AnalysisEngine] Results retrieved successfully');
-          return ApiResult.success(data['data'] ?? {});
+          // Include both the data and charts in the result
+          final result = Map<String, dynamic>.from(data['data'] ?? {});
+          if (data['charts'] != null) {
+            result['charts'] = data['charts'];
+            print('[AnalysisEngine] Including ${(data['charts'] as List).length} charts in result');
+          }
+          return ApiResult.success(result);
         } else {
           return ApiResult.error('API returned success: false');
         }

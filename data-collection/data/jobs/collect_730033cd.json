@@ -1,0 +1,219 @@
+{
+  "job_id": "collect_730033cd",
+  "brand_id": "Colgate-Palmolive Company",
+  "competitor_id": "Procter & Gamble",
+  "area_id": "Market Position",
+  "sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-02T04:38:11.324421",
+  "started_at": null,
+  "completed_at": "2025-08-02T04:38:52.291102",
+  "estimated_completion": "2025-08-02T04:41:11.323544",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "Colgate-Palmolive Company",
+      "news_sentiment": {
+        "score": 0.016,
+        "articles_count": 52,
+        "positive_articles": 4,
+        "negative_articles": 0,
+        "neutral_articles": 46,
+        "recent_articles": [
+          {
+            "title": "Share Market Highlights: Nifty ends below 24,600 as global worries, pharma rout drag markets",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.thehindubusinessline.com/markets/stock-market-highlights-1-august-2025/article69879345.ece",
+            "source": "BusinessLine"
+          },
+          {
+            "title": "Stocks Erase Early Gains as Chip Makers and Big Pharma Retreat",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://www.barchart.com/story/news/33792613/stocks-erase-early-gains-as-chip-makers-and-big-pharma-retreat",
+            "source": "Barchart.com"
+          },
+          {
+            "title": "Five Dead After New York Midtown Shooting: US Media",
+            "sentiment": "neutral",
+            "published_date": "2025-07-29",
+            "url": "https://www.ibtimes.com/five-dead-after-new-york-midtown-shooting-us-media-3779664",
+            "source": "International Business Times"
+          },
+          {
+            "title": "Earnings live: Whirlpool, Tilray stocks tumble, with Spotify earnings on deck",
+            "sentiment": "neutral",
+            "published_date": "2025-07-28",
+            "url": "https://finance.yahoo.com/news/live/earnings-live-whirlpool-tilray-stocks-tumble-with-spotify-earnings-on-deck-213334403.html",
+            "source": "Yahoo Entertainment"
+          },
+          {
+            "title": "Earnings live: Spotify, Novo, UnitedHealth stocks slide after results; Boeing beats",
+            "sentiment": "neutral",
+            "published_date": "2025-07-28",
+            "url": "https://finance.yahoo.com/news/live/earnings-live-spotify-novo-unitedhealth-stocks-slide-after-results-boeing-beats-213334016.html",
+            "source": "Yahoo Entertainment"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.696,
+        "mentions_count": 356,
+        "engagement_rate": 0.0018,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.466,
+            "mentions": 15
+          },
+          "facebook": {
+            "sentiment": 0.719,
+            "mentions": 241
+          },
+          "linkedin": {
+            "sentiment": 0.674,
+            "mentions": 100
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.9,
+        "reviews_count": 239,
+        "pros": [
+          "Good company culture",
+          "Good work-life balance",
+          "Competitive salary"
+        ],
+        "cons": [
+          "Long working hours",
+          "Lack of recognition",
+          "Limited career advancement"
+        ],
+        "recommendation_rate": 0.89,
+        "ceo_approval": 0.69
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 3.02
+      }
+    },
+    "competitor_data": {
+      "brand_id": "Procter & Gamble",
+      "news_sentiment": {
+        "score": 0.032,
+        "articles_count": 99,
+        "positive_articles": 11,
+        "negative_articles": 3,
+        "neutral_articles": 36,
+        "recent_articles": [
+          {
+            "title": "Dotdash, By The People, For The People; Mopping Up Social",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "http://www.adexchanger.com/daily-news-roundup/friday-01082025/",
+            "source": "AdExchanger"
+          },
+          {
+            "title": "Q1 Results Live: ITC, Adani Power, Tata Power, Godrej Properties, UPL, Delhivery, MCX Q1 results today, Adani Enterprises, Maruti, HUL, Dabur, Vedanta shares in focus post Q1 results",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.thehindubusinessline.com/markets/stock-markets/q1-results-today-live-itc-adani-power-tata-power-godrej-properties-upl-delhivery-multi-commodity-exchange-of-india-01-august-2025-adani-enterprises-maruti-sun-pharma-dabur-vedanta-hul/article69877851.ece",
+            "source": "BusinessLine"
+          },
+          {
+            "title": "Q1 Results Highlights: Delhivery profit up 67%, UPL trims loss, ITC steady at ₹4,912 cr; Adani Power, Graphite India slip; Tata Power, Godrej Properties rise",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.thehindubusinessline.com/markets/stock-markets/q1-results-today-highlights-itc-adani-power-tata-power-godrej-properties-upl-delhivery-multi-commodity-exchange-of-india-01-august-2025-adani-enterprises-maruti-sun-pharma-dabur-vedanta-hul/article69877851.ece",
+            "source": "BusinessLine"
+          },
+          {
+            "title": "Trump just revealed his new tariff plan. Here’s what you need to know | CNN Business",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.cnn.com/2025/07/31/business/tariffs-trade-trump-deadline",
+            "source": "CNN"
+          },
+          {
+            "title": "Share Market Highlights: Nifty ends below 24,600 as global worries, pharma rout drag markets",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.thehindubusinessline.com/markets/stock-market-highlights-1-august-2025/article69879345.ece",
+            "source": "BusinessLine"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.7,
+        "mentions_count": 8429539,
+        "engagement_rate": 0.1,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.44,
+            "mentions": 11
+          },
+          "facebook": {
+            "sentiment": 0.754,
+            "mentions": 84
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 8429444
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.5,
+        "reviews_count": 175,
+        "pros": [
+          "Flexible working hours",
+          "Collaborative team environment",
+          "Job security"
+        ],
+        "cons": [
+          "Limited career advancement",
+          "Outdated technology",
+          "Poor communication"
+        ],
+        "recommendation_rate": 0.75,
+        "ceo_approval": 0.65
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 3.02
+      }
+    }
+  },
+  "error_message": null
+}

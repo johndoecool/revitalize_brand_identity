@@ -1519,5 +1519,239 @@
         ]
       }
     ]
+  },
+  {
+    "brand_id": "MGM",
+    "cached_at": "2025-08-02T00:37:07.360737",
+    "success": true,
+    "data": [
+      {
+        "id": "market_position",
+        "name": "Market Position",
+        "description": "Company's position in the market relative to competitors",
+        "relevance_score": 0.95,
+        "metrics": [
+          "market_share",
+          "revenue_growth",
+          "customer_base"
+        ]
+      },
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Company's financial health and stability",
+        "relevance_score": 0.92,
+        "metrics": [
+          "revenue",
+          "profit_margin",
+          "debt_to_equity_ratio"
+        ]
+      },
+      {
+        "id": "customer_sentiment",
+        "name": "Customer Sentiment",
+        "description": "Public perception and sentiment towards the company",
+        "relevance_score": 0.89,
+        "metrics": [
+          "customer_satisfaction",
+          "net_promoter_score",
+          "social_media_sentiment"
+        ]
+      },
+      {
+        "id": "employee_experience",
+        "name": "Employee Experience",
+        "description": "Company culture and employee satisfaction",
+        "relevance_score": 0.85,
+        "metrics": [
+          "employee_satisfaction",
+          "compensation",
+          "work_life_balance"
+        ]
+      },
+      {
+        "id": "operational_efficiency",
+        "name": "Operational Efficiency",
+        "description": "Company's ability to manage resources and optimize processes",
+        "relevance_score": 0.82,
+        "metrics": [
+          "operating_expenses",
+          "supply_chain_management",
+          "inventory_turnover"
+        ]
+      },
+      {
+        "id": "innovation_and_rnd",
+        "name": "Innovation and R&D",
+        "description": "Company's investment in research and development",
+        "relevance_score": 0.79,
+        "metrics": [
+          "rnd_expenses",
+          "patent_filings",
+          "innovation_pipeline"
+        ]
+      },
+      {
+        "id": "esg_performance",
+        "name": "ESG Performance",
+        "description": "Company's environmental, social, and governance performance",
+        "relevance_score": 0.76,
+        "metrics": [
+          "carbon_footprint",
+          "diversity_and_inclusion",
+          "corporate_governance"
+        ]
+      },
+      {
+        "id": "digital_transformation",
+        "name": "Digital Transformation",
+        "description": "Company's adoption of digital technologies",
+        "relevance_score": 0.73,
+        "metrics": [
+          "digital_revenue",
+          "it_expenses",
+          "digital_maturity"
+        ]
+      },
+      {
+        "id": "global_presence",
+        "name": "Global Presence",
+        "description": "Company's international operations and expansion",
+        "relevance_score": 0.69,
+        "metrics": [
+          "international_revenue",
+          "global_employees",
+          "country_presence"
+        ]
+      },
+      {
+        "id": "regulatory_compliance",
+        "name": "Regulatory Compliance",
+        "description": "Company's adherence to laws and regulations",
+        "relevance_score": 0.65,
+        "metrics": [
+          "regulatory_fines",
+          "compliance_expenses",
+          "audit_findings"
+        ]
+      }
+    ]
+  },
+  {
+    "brand_id": "CL",
+    "cached_at": "2025-08-02T00:37:49.553080",
+    "success": true,
+    "data": [
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Revenue, profitability, and growth metrics",
+        "relevance_score": 0.95,
+        "metrics": [
+          "revenue_growth",
+          "net_income",
+          "return_on_equity"
+        ]
+      },
+      {
+        "id": "market_position",
+        "name": "Market Position",
+        "description": "Competitive landscape and market share",
+        "relevance_score": 0.92,
+        "metrics": [
+          "market_share",
+          "competitor_analysis",
+          "customer_base"
+        ]
+      },
+      {
+        "id": "employee_experience",
+        "name": "Employee Experience",
+        "description": "Work environment, benefits, and employee satisfaction",
+        "relevance_score": 0.88,
+        "metrics": [
+          "employee_satisfaction",
+          "compensation",
+          "work_life_balance"
+        ]
+      },
+      {
+        "id": "public_sentiment",
+        "name": "Public Sentiment",
+        "description": "Social media and news sentiment analysis",
+        "relevance_score": 0.85,
+        "metrics": [
+          "social_media_sentiment",
+          "news_sentiment",
+          "brand_reputation"
+        ]
+      },
+      {
+        "id": "product_quality",
+        "name": "Product Quality",
+        "description": "Quality and reliability of products or services",
+        "relevance_score": 0.82,
+        "metrics": [
+          "product_reliability",
+          "customer_support",
+          "feature_completeness"
+        ]
+      },
+      {
+        "id": "innovation",
+        "name": "Innovation",
+        "description": "Research and development, innovation pipeline",
+        "relevance_score": 0.79,
+        "metrics": [
+          "research_and_development",
+          "innovation_pipeline",
+          "patent_portfolio"
+        ]
+      },
+      {
+        "id": "customer_service",
+        "name": "Customer Service",
+        "description": "Quality and responsiveness of customer support",
+        "relevance_score": 0.76,
+        "metrics": [
+          "customer_support",
+          "response_time",
+          "resolution_rate"
+        ]
+      },
+      {
+        "id": "supply_chain",
+        "name": "Supply Chain",
+        "description": "Efficiency and resilience of supply chain operations",
+        "relevance_score": 0.73,
+        "metrics": [
+          "supply_chain_efficiency",
+          "supplier_quality",
+          "inventory_management"
+        ]
+      },
+      {
+        "id": "environmental_sustainability",
+        "name": "Environmental Sustainability",
+        "description": "Environmental impact and sustainability initiatives",
+        "relevance_score": 0.69,
+        "metrics": [
+          "carbon_footprint",
+          "sustainability_initiatives",
+          "environmental_compliance"
+        ]
+      },
+      {
+        "id": "corporate_governance",
+        "name": "Corporate Governance",
+        "description": "Board composition, executive compensation, and audit practices",
+        "relevance_score": 0.65,
+        "metrics": [
+          "board_composition",
+          "executive_compensation",
+          "audit_practices"
+        ]
+      }
+    ]
   }
 ]
