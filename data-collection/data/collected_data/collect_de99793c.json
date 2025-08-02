@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Apple Inc",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 99,
+      "positive_articles": 1,
+      "negative_articles": 1,
+      "neutral_articles": 48,
+      "recent_articles": [
+        {
+          "title": "Apple Stock Is Trading Lower Friday: What's Going On?",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/b2a75368cd7b4b37",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "South Africa’s Fixed-Investment Plans Fall 47% on State Pullback",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://financialpost.com/pmn/business-pmn/south-africas-fixed-investment-plans-fall-47-on-state-pullback",
+          "source": "Financial Post"
+        },
+        {
+          "title": "Apple growth rebounds on strength of iPhone 16 line, China",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/a31f8cfc68b2e6b8",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Tariffs and Economic Jitters Hammer Stocks",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.barchart.com/story/news/33817575/tariffs-and-economic-jitters-hammer-stocks",
+          "source": "Barchart.com"
+        },
+        {
+          "title": "Dow plunges 770 points, VIX shoots up 28% on Black Friday. 3 factors why US stocks are falling today",
+          "sentiment": "negative",
+          "published_date": "2025-08-01",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/dow-plunges-770-points-vix-shoots-up-28-on-black-friday-3-factors-why-us-stocks-are-falling-today/articleshow/123046699.cms",
+          "source": "The Times of India"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.779,
+      "mentions_count": 299,
+      "engagement_rate": 0.0015,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.592,
+          "mentions": 13
+        },
+        "facebook": {
+          "sentiment": 0.834,
+          "mentions": 186
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 100
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.7,
+      "reviews_count": 327,
+      "pros": [
+        "Job security",
+        "Career growth opportunities",
+        "Good company culture"
+      ],
+      "cons": [
+        "Bureaucratic processes",
+        "Limited training opportunities",
+        "Inconsistent management"
+      ],
+      "recommendation_rate": 0.77,
+      "ceo_approval": 0.77
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.7,
+      "mobile_friendliness": 0.3,
+      "load_time": 0.1
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Alphabet Inc.",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 98,
+      "positive_articles": 0,
+      "negative_articles": 0,
+      "neutral_articles": 50,
+      "recent_articles": [
+        {
+          "title": "Big Tech’s bet on AI drives US$344 billion in 2025 spending",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://financialpost.com/news/big-techs-big-bet-ai-driving-spending",
+          "source": "Financial Post"
+        },
+        {
+          "title": "Google rolls out powerful creative problem-solving AI model Deep Think to the Gemini app",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://siliconangle.com/2025/08/01/google-rolls-powerful-creative-problem-solving-ai-model-deep-think-gemini-app/",
+          "source": "SiliconANGLE News"
+        },
+        {
+          "title": "Cloud Computing on the Rise: Market Projected to Reach $1.6 Trillion by 2030",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.prnewswire.co.uk/news-releases/cloud-computing-on-the-rise-market-projected-to-reach-1-6-trillion-by-2030--302519713.html",
+          "source": "PR Newswire UK"
+        },
+        {
+          "title": "Industry 4.0 Technologies Market Report 2025 | Digital Transformation in Industry 4.0 Markets Surges with 19.4% CAGR Through 2030",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.globenewswire.com/news-release/2025/08/01/3125952/28124/en/Industry-4-0-Technologies-Market-Report-2025-Digital-Transformation-in-Industry-4-0-Markets-Surges-with-19-4-CAGR-Through-2030.html",
+          "source": "GlobeNewswire"
+        },
+        {
+          "title": "The hidden influence: Medical students’ knowledge and attitude of conflict of interest–A cross-sectional study in Jeddah, Saudi Arabia",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0328884",
+          "source": "Plos.org"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.694,
+      "mentions_count": 233,
+      "engagement_rate": 0.0012,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.443,
+          "mentions": 14
+        },
+        "facebook": {
+          "sentiment": 0.636,
+          "mentions": 97
+        },
+        "linkedin": {
+          "sentiment": 0.769,
+          "mentions": 122
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.1,
+      "reviews_count": 291,
+      "pros": [
+        "Competitive salary",
+        "Great benefits package",
+        "Supportive management"
+      ],
+      "cons": [
+        "Poor communication",
+        "High workload",
+        "Bureaucratic processes"
+      ],
+      "recommendation_rate": 0.91,
+      "ceo_approval": 0.81
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 3.01
+    }
+  }
+}

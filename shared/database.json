@@ -340,5 +340,41 @@
     "analysisEngineId": "analysis_6ee79564-8e79-48cd-9727-583c9949ab18_134903",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-08-02T17:49:24.526781+00:00"
+  },
+  {
+    "requestId": "94692431-9051-40d6-a0f6-7d81666ca4e7",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_de99793c",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_94692431-9051-40d6-a0f6-7d81666ca4e7_142647",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T18:27:05.222611+00:00"
+  },
+  {
+    "requestId": "fffe7a09-80e8-4577-8170-57f6b844af1a",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_3d27cddd",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_fffe7a09-80e8-4577-8170-57f6b844af1a_143141",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T18:32:13.059357+00:00"
+  },
+  {
+    "requestId": "19f4ce9f-1a56-4cbf-90dc-80c473e82ace",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_e5abcfd4",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_19f4ce9f-1a56-4cbf-90dc-80c473e82ace_143608",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T18:36:38.673915+00:00"
+  },
+  {
+    "requestId": "a117c881-10b0-4daa-93a9-f7fdd56e3998",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_1db39a1f",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_a117c881-10b0-4daa-93a9-f7fdd56e3998_143931",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T18:40:03.566163+00:00"
   }
 ]
