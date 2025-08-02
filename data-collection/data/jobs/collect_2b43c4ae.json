@@ -1,0 +1,219 @@
+{
+  "job_id": "collect_2b43c4ae",
+  "brand_id": "Apple Inc",
+  "competitor_id": "Microsoft Corporation",
+  "area_id": "Product Innovation",
+  "sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-02T23:30:16.612252",
+  "started_at": null,
+  "completed_at": "2025-08-02T23:35:33.964479",
+  "estimated_completion": "2025-08-02T23:33:16.611011",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "Apple Inc",
+      "news_sentiment": {
+        "score": 0.004,
+        "articles_count": 99,
+        "positive_articles": 2,
+        "negative_articles": 1,
+        "neutral_articles": 47,
+        "recent_articles": [
+          {
+            "title": "Apple CEO Tells Staff AI Is ‘Ours to Grab’ in Hourlong Pep Talk",
+            "sentiment": "positive",
+            "published_date": "2025-08-01",
+            "url": "https://financialpost.com/pmn/business-pmn/apple-ceo-tells-staff-ai-is-ours-to-grab-in-hourlong-pep-talk",
+            "source": "Financial Post"
+          },
+          {
+            "title": "Apple CEO Tells Staff AI Is ‘Ours to Grab’ in Hourlong Pep Talk",
+            "sentiment": "positive",
+            "published_date": "2025-08-01",
+            "url": "https://www.livemint.com/companies/company-results/apple-ceo-tells-staff-ai-is-ours-to-grab-in-hourlong-pep-talk-11754083117090.html",
+            "source": "Livemint"
+          },
+          {
+            "title": "Apple CEO Tells Staff AI Is ‘Ours to Grab’ in Hourlong Pep Talk",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://finance.yahoo.com/news/apple-ceo-tells-staff-ai-205354502.html",
+            "source": "Yahoo Entertainment"
+          },
+          {
+            "title": "Apple Stock Is Trading Lower Friday: What's Going On?",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://biztoc.com/x/b2a75368cd7b4b37",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "South Africa’s Fixed-Investment Plans Fall 47% on State Pullback",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://financialpost.com/pmn/business-pmn/south-africas-fixed-investment-plans-fall-47-on-state-pullback",
+            "source": "Financial Post"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.779,
+        "mentions_count": 299,
+        "engagement_rate": 0.0015,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.592,
+            "mentions": 13
+          },
+          "facebook": {
+            "sentiment": 0.834,
+            "mentions": 186
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 100
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.7,
+        "reviews_count": 327,
+        "pros": [
+          "Job security",
+          "Career growth opportunities",
+          "Good company culture"
+        ],
+        "cons": [
+          "Bureaucratic processes",
+          "Limited training opportunities",
+          "Inconsistent management"
+        ],
+        "recommendation_rate": 0.77,
+        "ceo_approval": 0.77
+      },
+      "website_analysis": {
+        "user_experience_score": 0.2,
+        "feature_completeness": 0.0,
+        "security_score": 0.9,
+        "accessibility_score": 0.7,
+        "mobile_friendliness": 0.3,
+        "load_time": 0.04
+      }
+    },
+    "competitor_data": {
+      "brand_id": "Microsoft Corporation",
+      "news_sentiment": {
+        "score": 0.0,
+        "articles_count": 99,
+        "positive_articles": 1,
+        "negative_articles": 1,
+        "neutral_articles": 48,
+        "recent_articles": [
+          {
+            "title": "Microsoft Inherited Call Of Duty’s Worst Mistake – And They’ve Finally Fixed It",
+            "sentiment": "negative",
+            "published_date": "2025-08-01",
+            "url": "http://comicbook.com/gaming/news/call-of-duty-hq-worst-mistake-fixed/",
+            "source": "ComicBook.com"
+          },
+          {
+            "title": "As the July jobs report paints a grim picture, 114 companies plan layoffs in August - is yours on the list?",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://economictimes.indiatimes.com/news/international/us/august-2025-layoffs-full-list-warn-notices-job-cuts-as-the-july-jobs-report-paints-a-grim-picture-114-companies-plan-layoffs-in-august-is-yours-on-list/articleshow/123047638.cms",
+            "source": "The Times of India"
+          },
+          {
+            "title": "Earnings Beat Expectations—Analysts See More Upside",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://biztoc.com/x/e6ddaa56bce9744a",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Microsoft Corporation (MSFT) Restructures Workforce to Power $80B AI Investment",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://biztoc.com/x/6eab12bbcae6e2bc",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Microsoft Corporation (MSFT) Restructures Workforce to Power $80B AI Investment",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-restructures-workforce-151636903.html",
+            "source": "Yahoo Entertainment"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.756,
+        "mentions_count": 537,
+        "engagement_rate": 0.0027,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.532,
+            "mentions": 1
+          },
+          "facebook": {
+            "sentiment": 0.761,
+            "mentions": 389
+          },
+          "linkedin": {
+            "sentiment": 0.744,
+            "mentions": 147
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.6,
+        "reviews_count": 326,
+        "pros": [
+          "Collaborative team environment",
+          "Job security",
+          "Career growth opportunities"
+        ],
+        "cons": [
+          "Poor communication",
+          "High workload",
+          "Bureaucratic processes"
+        ],
+        "recommendation_rate": 0.76,
+        "ceo_approval": 0.76
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 95.65
+      }
+    }
+  },
+  "error_message": null
+}

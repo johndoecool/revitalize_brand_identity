@@ -1195,27 +1195,54 @@ class _SetupTabState extends State<SetupTab> {
                       });
                       Navigator.pop(context);
                     },
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
                       margin: const EdgeInsets.only(bottom: 12),
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: isSelected 
-                            ? AppColors.glowBlue.withOpacity(0.15)
-                            : AppColors.darkCardBackground.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: isSelected 
+                            ? LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  AppColors.glowBlue.withOpacity(0.2),
+                                  AppColors.glowPurple.withOpacity(0.1),
+                                ],
+                              )
+                            : LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  AppColors.glassBackground,
+                                  AppColors.glassBackground.withOpacity(0.5),
+                                ],
+                              ),
                         border: Border.all(
                           color: isSelected 
-                              ? AppColors.glowBlue.withOpacity(0.5)
-                              : AppColors.glassBorder.withOpacity(0.3),
+                              ? AppColors.glowBlue.withOpacity(0.6)
+                              : AppColors.glassBorder,
                           width: isSelected ? 2 : 1,
                         ),
                         boxShadow: [
-                          if (isSelected)
+                          if (isSelected) ...[
                             BoxShadow(
-                              color: AppColors.glowBlue.withOpacity(0.2),
+                              color: AppColors.glowBlue.withOpacity(0.3),
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                            BoxShadow(
+                              color: AppColors.glowBlue.withOpacity(0.1),
+                              blurRadius: 20,
+                              offset: const Offset(0, 8),
+                            ),
+                          ] else ...[
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
                               blurRadius: 8,
                               offset: const Offset(0, 2),
                             ),
+                          ],
                         ],
                       ),
                       child: _buildCompetitorListItem(competitor),
@@ -1236,11 +1263,23 @@ class _SetupTabState extends State<SetupTab> {
     Color getRelevanceColor() {
       switch (competitor.relevanceLevel) {
         case 'high':
-          return Colors.green;
+          return AppColors.glowGreen;
         case 'medium':
-          return Colors.orange;
+          return AppColors.glowBlue;
         case 'low':
-          return Colors.red;
+          return Colors.orange;
+        default:
+          return AppColors.textSecondary;
+      }
+    }
+
+    // Get competition level color with better contrast
+    Color getCompetitionLevelColor() {
+      switch (competitor.competitionLevel.toLowerCase()) {
+        case 'direct':
+          return AppColors.glowRed;
+        case 'indirect':
+          return AppColors.glowBlue; // Changed from purple to blue for better visibility
         default:
           return AppColors.textSecondary;
       }
@@ -1248,43 +1287,64 @@ class _SetupTabState extends State<SetupTab> {
 
     return Row(
       children: [
-        // Logo or initial
-        competitor.logoUrl.isNotEmpty
-            ? ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  competitor.logoUrl,
-                  width: 40,
-                  height: 40,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return CircleAvatar(
-                      radius: 20,
-                      backgroundColor: AppColors.glowBlue.withOpacity(0.2),
-                      child: Text(
-                        competitor.name.isNotEmpty ? competitor.name[0].toUpperCase() : '?',
-                        style: TextStyle(
-                          color: AppColors.glowBlue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+        // Enhanced logo with gradient border
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                getRelevanceColor().withOpacity(0.3),
+                getRelevanceColor().withOpacity(0.1),
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: getRelevanceColor().withOpacity(0.2),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.all(2),
+          child: competitor.logoUrl.isNotEmpty
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(22),
+                  child: Image.network(
+                    competitor.logoUrl,
+                    width: 44,
+                    height: 44,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return CircleAvatar(
+                        radius: 22,
+                        backgroundColor: AppColors.glassBackground,
+                        child: Text(
+                          competitor.name.isNotEmpty ? competitor.name[0].toUpperCase() : '?',
+                          style: TextStyle(
+                            color: getRelevanceColor(),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
-              )
-            : CircleAvatar(
-                radius: 20,
-                backgroundColor: AppColors.glowBlue.withOpacity(0.2),
-                child: Text(
-                  competitor.name.isNotEmpty ? competitor.name[0].toUpperCase() : '?',
-                  style: TextStyle(
-                    color: AppColors.glowBlue,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                      );
+                    },
+                  ),
+                )
+              : CircleAvatar(
+                  radius: 22,
+                  backgroundColor: AppColors.glassBackground,
+                  child: Text(
+                    competitor.name.isNotEmpty ? competitor.name[0].toUpperCase() : '?',
+                    style: TextStyle(
+                      color: getRelevanceColor(),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
-              ),
+        ),
         
         const SizedBox(width: 16),
         
@@ -1293,64 +1353,126 @@ class _SetupTabState extends State<SetupTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Company name and competition level
               Row(
                 children: [
                   Expanded(
                     child: Text(
                       competitor.name,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                         color: AppColors.textPrimary,
+                        fontSize: 16,
                       ),
                     ),
                   ),
-                  // Competition level badge
+                  // Enhanced competition level badge
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color: competitor.isDirectCompetitor 
-                          ? Colors.red.withOpacity(0.1)
-                          : Colors.blue.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(4),
-                      border: Border.all(
-                        color: competitor.isDirectCompetitor 
-                            ? Colors.red.withOpacity(0.3)
-                            : Colors.blue.withOpacity(0.3),
+                      gradient: LinearGradient(
+                        colors: [
+                          getCompetitionLevelColor().withOpacity(0.3), // Increased opacity for better visibility
+                          getCompetitionLevelColor().withOpacity(0.2), // Increased opacity for better visibility
+                        ],
                       ),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: getCompetitionLevelColor().withOpacity(0.6), // Increased border opacity
+                        width: 1.5, // Slightly thicker border
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: getCompetitionLevelColor().withOpacity(0.3), // Stronger shadow
+                          blurRadius: 4,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
                     ),
                     child: Text(
                       competitor.competitionLevel.toUpperCase(),
                       style: TextStyle(
-                        color: competitor.isDirectCompetitor ? Colors.red : Colors.blue,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
+                        color: getCompetitionLevelColor(),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800, // Increased font weight for better visibility
+                        letterSpacing: 0.5,
+                        shadows: [
+                          // Add text shadow for better contrast against background
+                          Shadow(
+                            color: Colors.black.withOpacity(0.3),
+                            offset: const Offset(0, 1),
+                            blurRadius: 2,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
+              // Industry and relevance information
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      competitor.industry,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppColors.textSecondary,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '${competitor.relevancePercentage}%',
+                    style: TextStyle(
+                      color: getRelevanceColor(),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              // Enhanced relevance progress bar
               Row(
                 children: [
                   Text(
-                    competitor.industry,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    'Relevance',
+                    style: TextStyle(
                       color: AppColors.textSecondary,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: getRelevanceColor().withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Text(
-                      '${competitor.relevancePercentage}% relevance',
-                      style: TextStyle(
-                        color: getRelevanceColor(),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Container(
+                      height: 4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: AppColors.glassBorder,
+                      ),
+                      child: FractionallySizedBox(
+                        alignment: Alignment.centerLeft,
+                        widthFactor: competitor.relevanceScore,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(2),
+                            gradient: LinearGradient(
+                              colors: [
+                                getRelevanceColor(),
+                                getRelevanceColor().withOpacity(0.7),
+                              ],
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: getRelevanceColor().withOpacity(0.3),
+                                blurRadius: 2,
+                                offset: const Offset(0, 1),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
