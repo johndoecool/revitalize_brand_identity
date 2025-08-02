@@ -1958,5 +1958,103 @@
         "symbol": "FIS"
       }
     ]
+  },
+  {
+    "brand_id": "DOOO",
+    "area_id": "market_share",
+    "cached_at": "2025-08-02T00:28:25.939916",
+    "success": true,
+    "data": [
+      {
+        "id": "VMW",
+        "name": "VMware",
+        "logo_url": "https://img.logo.dev/ticker/VMW?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cloud Computing",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "VMW"
+      },
+      {
+        "id": "CRWD",
+        "name": "CrowdStrike",
+        "logo_url": "https://img.logo.dev/ticker/CRWD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cybersecurity",
+        "relevance_score": 0.9,
+        "competition_level": "direct",
+        "symbol": "CRWD"
+      },
+      {
+        "id": "OKTA",
+        "name": "Okta",
+        "logo_url": "https://img.logo.dev/ticker/OKTA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Identity and Access Management",
+        "relevance_score": 0.88,
+        "competition_level": "direct",
+        "symbol": "OKTA"
+      },
+      {
+        "id": "ZS",
+        "name": "Zscaler",
+        "logo_url": "https://img.logo.dev/ticker/ZS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cloud Security",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "ZS"
+      },
+      {
+        "id": "PANW",
+        "name": "Palo Alto Networks",
+        "logo_url": "https://img.logo.dev/ticker/PANW?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cybersecurity",
+        "relevance_score": 0.82,
+        "competition_level": "direct",
+        "symbol": "PANW"
+      },
+      {
+        "id": "FTNT",
+        "name": "Fortinet",
+        "logo_url": "https://img.logo.dev/ticker/FTNT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cybersecurity",
+        "relevance_score": 0.8,
+        "competition_level": "indirect",
+        "symbol": "FTNT"
+      },
+      {
+        "id": "CHKP",
+        "name": "Check Point",
+        "logo_url": "https://img.logo.dev/ticker/CHKP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cybersecurity",
+        "relevance_score": 0.78,
+        "competition_level": "indirect",
+        "symbol": "CHKP"
+      },
+      {
+        "id": "CYBR",
+        "name": "Cyberark",
+        "logo_url": "https://img.logo.dev/ticker/CYBR?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Identity and Access Management",
+        "relevance_score": 0.75,
+        "competition_level": "indirect",
+        "symbol": "CYBR"
+      },
+      {
+        "id": "S",
+        "name": "SentinelOne",
+        "logo_url": "https://img.logo.dev/ticker/S?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Cybersecurity",
+        "relevance_score": 0.72,
+        "competition_level": "indirect",
+        "symbol": "S"
+      },
+      {
+        "id": "TUFN",
+        "name": "Tufin",
+        "logo_url": "https://img.logo.dev/ticker/TUFN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Network Security",
+        "relevance_score": 0.7,
+        "competition_level": "indirect",
+        "symbol": "TUFN"
+      }
+    ]
   }
 ]

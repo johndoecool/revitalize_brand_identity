@@ -1,14 +1,19 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/foundation.dart';
 import '../services/brand_api_service.dart';
 
 class DataCollectionService {
-  static const String baseUrl = 'http://10.0.0.70:8002/api/v1';
-  static const String analysisEngineUrl = 'http://10.0.0.70:8003/api/v1';
+  // Use localhost for web, network IP for mobile devices
+  static String get baseUrl => kIsWeb 
+    ? 'http://localhost:8002/api/v1'
+    : 'http://10.0.0.70:8002/api/v1';
+  
+  static String get analysisEngineUrl => kIsWeb 
+    ? 'http://localhost:8003/api/v1'
+    : 'http://10.0.0.70:8003/api/v1';
   static const Duration requestTimeout = Duration(minutes: 5);
   static const Duration pollingInterval = Duration(seconds: 8);
   
@@ -19,7 +24,7 @@ class DataCollectionService {
 
   DataCollectionService._() {
     _dio = Dio(BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: DataCollectionService.baseUrl,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 60),
       headers: {
@@ -28,7 +33,7 @@ class DataCollectionService {
     ));
 
     _analysisEngineDio = Dio(BaseOptions(
-      baseUrl: analysisEngineUrl,
+      baseUrl: DataCollectionService.analysisEngineUrl,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 60),
       headers: {
@@ -61,11 +66,18 @@ class DataCollectionService {
     required String competitorId,
     required String areaId,
     List<String>? sources,
+    String? existingRequestId, // Optional: reuse existing request ID for retry
     Function(String)? onStatusUpdate,
   }) async {
     try {
-      // Generate unique request ID
-      final requestId = _uuid.v4();
+      // Use existing request ID for retry, or generate new one for first attempt
+      final requestId = existingRequestId ?? _uuid.v4();
+      
+      if (existingRequestId != null) {
+        print('[DataCollection] Retrying with existing request ID: $requestId');
+      } else {
+        print('[DataCollection] Starting new analysis with request ID: $requestId');
+      }
       
       onStatusUpdate?.call('Starting data collection...');
       
@@ -123,7 +135,7 @@ class DataCollectionService {
     List<String>? sources,
   }) async {
     try {
-      final requestData = {
+      final requestData = <String, dynamic>{
         'request_id': requestId,
         'brand_id': brandId,
         'competitor_id': competitorId,
@@ -254,7 +266,7 @@ class DataCollectionService {
   Future<String?> getReportUrl(String analysisId, String reportType) async {
     try {
       // For PDF reports, we return the direct URL
-      final url = '$analysisEngineUrl/analyze/$analysisId/report?reportType=$reportType';
+      final url = '${DataCollectionService.analysisEngineUrl}/analyze/$analysisId/report?reportType=$reportType';
       print('[AnalysisEngine] Report URL generated: $url');
       return url;
     } catch (e) {
@@ -304,13 +316,19 @@ class DataCollectionService {
   /// Check if services are healthy
   Future<bool> checkServicesHealth() async {
     try {
-      // Check data collection service
-      final dataCollectionResponse = await _dio.get('/health', 
+      // Check data collection service - health endpoint is at root level, not /api/v1/health
+      final dataCollectionHealthUrl = kIsWeb 
+        ? 'http://localhost:8002/health'
+        : 'http://10.0.0.70:8002/health';
+      final dataCollectionResponse = await Dio().get(dataCollectionHealthUrl, 
         options: Options(sendTimeout: const Duration(seconds: 5))
       );
       
-      // Check analysis engine service  
-      final analysisEngineResponse = await _analysisEngineDio.get('/health',
+      // Check analysis engine service - health endpoint is at root level, not /api/v1/health  
+      final analysisEngineHealthUrl = kIsWeb 
+        ? 'http://localhost:8003/health'
+        : 'http://10.0.0.70:8003/health';
+      final analysisEngineResponse = await Dio().get(analysisEngineHealthUrl,
         options: Options(sendTimeout: const Duration(seconds: 5))
       );
       

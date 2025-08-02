@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "BRP Inc.",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 12,
+      "positive_articles": 0,
+      "negative_articles": 0,
+      "neutral_articles": 12,
+      "recent_articles": [
+        {
+          "title": "Comparing BRP (NASDAQ:DOOO) & Mingteng International (NASDAQ:MTEN)",
+          "sentiment": "neutral",
+          "published_date": "2025-07-30",
+          "url": "https://www.etfdailynews.com/2025/07/30/comparing-brp-nasdaqdooo-mingteng-international-nasdaqmten/",
+          "source": "ETF Daily News"
+        },
+        {
+          "title": "10 Economic Facts That Nobody Can Deny",
+          "sentiment": "neutral",
+          "published_date": "2025-07-28",
+          "url": "https://www.activistpost.com/10-economic-facts-that-nobody-can-deny/",
+          "source": "Activistpost.com"
+        },
+        {
+          "title": "Baldwin Insurance Group (NASDAQ:BWIN) versus Reinsurance Group of America (NYSE:RGA) Head to Head Review",
+          "sentiment": "neutral",
+          "published_date": "2025-07-27",
+          "url": "https://www.etfdailynews.com/2025/07/27/baldwin-insurance-group-nasdaqbwin-versus-reinsurance-group-of-america-nyserga-head-to-head-review/",
+          "source": "ETF Daily News"
+        },
+        {
+          "title": "UAV Propulsion Market Forecast to Reach $11.3 Billion by 2030: Projections by Technology, Component, Platform, MTOW and Region Featuring Profiles of Industry Leaders",
+          "sentiment": "neutral",
+          "published_date": "2025-07-25",
+          "url": "https://www.globenewswire.com/news-release/2025/07/25/3121632/28124/en/UAV-Propulsion-Market-Forecast-to-Reach-11-3-Billion-by-2030-Projections-by-Technology-Component-Platform-MTOW-and-Region-Featuring-Profiles-of-Industry-Leaders.html",
+          "source": "GlobeNewswire"
+        },
+        {
+          "title": "10 Economic Facts That Nobody Can Deny",
+          "sentiment": "neutral",
+          "published_date": "2025-07-23",
+          "url": "http://theeconomiccollapseblog.com/10-economic-facts-that-nobody-can-deny/",
+          "source": "Theeconomiccollapseblog.com"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.792,
+      "mentions_count": 199,
+      "engagement_rate": 0.001,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.555,
+          "mentions": 2
+        },
+        "facebook": {
+          "sentiment": 0.833,
+          "mentions": 76
+        },
+        "linkedin": {
+          "sentiment": 0.77,
+          "mentions": 121
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 5.0,
+      "reviews_count": 319,
+      "pros": [
+        "Good company culture",
+        "Good work-life balance",
+        "Competitive salary"
+      ],
+      "cons": [
+        "Long working hours",
+        "Lack of recognition",
+        "Limited career advancement"
+      ],
+      "recommendation_rate": 0.69,
+      "ceo_approval": 0.89
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 3.01
+    }
+  },
+  "competitor_data": {
+    "brand_id": "VMware",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 100,
+      "positive_articles": 0,
+      "negative_articles": 0,
+      "neutral_articles": 50,
+      "recent_articles": [
+        {
+          "title": "Rimini Street Announces Fiscal Second Quarter 2025 Financial and Operating Results",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/rimini-street-announces-fiscal-second-quarter-2025-financial-and-operating-results",
+          "source": "Financial Post"
+        },
+        {
+          "title": "Exploring The Human Side Of AI",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.forbes.com/sites/johnwerner/2025/07/31/exploring-the-human-side-of-ai/",
+          "source": "Forbes"
+        },
+        {
+          "title": "Cloud Computing in Film and TV Strategic Intelligence Report 2025 | Streamline Production Workflows, Simplify Live Broadcasting, and Foster Global Collaboration",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.globenewswire.com/news-release/2025/07/31/3125097/28124/en/Cloud-Computing-in-Film-and-TV-Strategic-Intelligence-Report-2025-Streamline-Production-Workflows-Simplify-Live-Broadcasting-and-Foster-Global-Collaboration.html",
+          "source": "GlobeNewswire"
+        },
+        {
+          "title": "VCF 9.0 Volume Service – Consuming static volumes via VKS",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://cormachogan.com/2025/07/31/vcf-9-0-volume-service-consuming-static-volumes-via-vks/",
+          "source": "Cormachogan.com"
+        },
+        {
+          "title": "How to fully set up a thin client environment",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.techtarget.com/searchvirtualdesktop/tip/How-to-fully-set-up-a-thin-client-environment",
+          "source": "Techtarget.com"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.645,
+      "mentions_count": 205,
+      "engagement_rate": 0.001,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.423,
+          "mentions": 13
+        },
+        "facebook": {
+          "sentiment": 0.629,
+          "mentions": 66
+        },
+        "linkedin": {
+          "sentiment": 0.676,
+          "mentions": 126
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.8,
+      "reviews_count": 268,
+      "pros": [
+        "Career growth opportunities",
+        "Good company culture",
+        "Good work-life balance"
+      ],
+      "cons": [
+        "Inconsistent management",
+        "Low pay increases",
+        "Long working hours"
+      ],
+      "recommendation_rate": 0.68,
+      "ceo_approval": 0.98
+    },
+    "website_analysis": {
+      "user_experience_score": 0.35,
+      "feature_completeness": 0.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.7,
+      "mobile_friendliness": 0.7,
+      "load_time": 0.05
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Apple Inc",
+    "news_sentiment": {
+      "score": 0.012,
+      "articles_count": 100,
+      "positive_articles": 3,
+      "negative_articles": 0,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "Dotdash, By The People, For The People; Mopping Up Social",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "http://www.adexchanger.com/daily-news-roundup/friday-01082025/",
+          "source": "AdExchanger"
+        },
+        {
+          "title": "Tim Cook Says Apple Is 'Very Open' To AI Acquisitions Amid Mounting Pressure To Catch Up With Google, Meta And Microsoft",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/f75c0c8e764e1e46",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Asian stocks decline, Swiss Franc dips on tariffs",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/asian-stocks-decline-swiss-franc-dips-on-tariffs/articleshow/123032575.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Apple’s revenue growth hits four-year high as iPhone sales soar",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://siliconangle.com/2025/07/31/apples-revenue-growth-hits-four-year-high-iphone-sales-soar/",
+          "source": "SiliconANGLE News"
+        },
+        {
+          "title": "Stocks Under Pressure as US Sets New Tariff Rates: Markets Wrap",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://financialpost.com/pmn/business-pmn/stocks-under-pressure-as-us-sets-new-tariff-rates-markets-wrap",
+          "source": "Financial Post"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.779,
+      "mentions_count": 299,
+      "engagement_rate": 0.0015,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.592,
+          "mentions": 13
+        },
+        "facebook": {
+          "sentiment": 0.834,
+          "mentions": 186
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 100
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.7,
+      "reviews_count": 327,
+      "pros": [
+        "Job security",
+        "Career growth opportunities",
+        "Good company culture"
+      ],
+      "cons": [
+        "Bureaucratic processes",
+        "Limited training opportunities",
+        "Inconsistent management"
+      ],
+      "recommendation_rate": 0.77,
+      "ceo_approval": 0.77
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.7,
+      "mobile_friendliness": 0.3,
+      "load_time": 0.03
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Microsoft Corporation",
+    "news_sentiment": {
+      "score": 0.016,
+      "articles_count": 100,
+      "positive_articles": 4,
+      "negative_articles": 0,
+      "neutral_articles": 46,
+      "recent_articles": [
+        {
+          "title": "ギブリーのAIエンジニアが「Microsoft Top Partner Engineer Award」を受賞",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://prtimes.jp/main/html/rd/p/000000352.000002454.html",
+          "source": "Prtimes.jp"
+        },
+        {
+          "title": "株式会社オルターブースのエンジニア3名が、パートナー企業の中でも活躍するエンジニアを表彰する「Microsoft Top Partner Engineer Award」を受賞いたしました。",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://prtimes.jp/main/html/rd/p/000000137.000043685.html",
+          "source": "Prtimes.jp"
+        },
+        {
+          "title": "Microsoft follows Nvidia's lead, surpasses $4 trillion market capitalization on soaring demand for cloud services, multi-front AI endeavors",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-follows-nvidias-lead-surpasses-usd4-trillion-market-capitalization-on-soaring-demand-for-cloud-services-multi-front-ai-endeavors",
+          "source": "Tom's Hardware UK"
+        },
+        {
+          "title": "Meta To Rally More Than 56%? Here Are 10 Top Analyst Forecasts For Thursday",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://biztoc.com/x/1b4f14617773cc9e",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Matthew Garrett: Secure boot certificate rollover is real but probably won't hurt you",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.dreamwidth.org/captcha?returnto=https://mjg59.dreamwidth.org/72892.html",
+          "source": "Dreamwidth.org"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.756,
+      "mentions_count": 537,
+      "engagement_rate": 0.0027,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.532,
+          "mentions": 1
+        },
+        "facebook": {
+          "sentiment": 0.761,
+          "mentions": 389
+        },
+        "linkedin": {
+          "sentiment": 0.744,
+          "mentions": 147
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.6,
+      "reviews_count": 326,
+      "pros": [
+        "Collaborative team environment",
+        "Job security",
+        "Career growth opportunities"
+      ],
+      "cons": [
+        "Poor communication",
+        "High workload",
+        "Bureaucratic processes"
+      ],
+      "recommendation_rate": 0.76,
+      "ceo_approval": 0.76
+    },
+    "website_analysis": {
+      "user_experience_score": 0.55,
+      "feature_completeness": 0.8,
+      "security_score": 0.9,
+      "accessibility_score": 1.0,
+      "mobile_friendliness": 0.8,
+      "load_time": 95.71
+    }
+  }
+}

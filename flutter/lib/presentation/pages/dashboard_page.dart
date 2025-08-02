@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/constants/app_constants.dart';
 import '../widgets/glassmorphism_card.dart';
@@ -9,6 +10,8 @@ import '../widgets/insights_tab.dart';
 import '../widgets/roadmap_tab.dart';
 import '../widgets/report_tab.dart';
 import '../widgets/theme_toggle.dart';
+import '../widgets/api_error_dialog.dart';
+import '../../data/services/data_collection_service.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -28,11 +31,16 @@ class _DashboardPageState extends State<DashboardPage>
   String? _analysisData_brandName;
   String? _analysisData_selectedArea;
   String? _analysisData_competitor;
+  String? _analysisData_requestId; // Store request ID for retry functionality
+  AnalysisResult? _analysisResult;
   
   // Loading state
   bool _isLoadingAnalysis = false;
   String _loadingStatus = '';
   String _loadingDetail = '';
+  
+  // Services
+  final DataCollectionService _dataCollectionService = DataCollectionService.instance;
   
   final List<TabItem> _tabs = [
     TabItem(icon: '🎯', title: 'Setup', id: 'setup'),
@@ -325,17 +333,148 @@ class _DashboardPageState extends State<DashboardPage>
     );
   }
 
-  void _onAnalysisLaunched(String brandName, String selectedArea, String competitor) {
+  void _onAnalysisLaunched(String brandName, String selectedArea, String competitor) async {
+    // Check if this is a new analysis (different parameters) - if so, clear request ID
+    if (_analysisData_brandName != brandName || 
+        _analysisData_selectedArea != selectedArea || 
+        _analysisData_competitor != competitor) {
+      _analysisData_requestId = null; // Clear request ID for new analysis
+      print('[Dashboard] New analysis detected - clearing request ID');
+    }
+    
     setState(() {
       _analysisData_brandName = brandName;
       _analysisData_selectedArea = selectedArea;
       _analysisData_competitor = competitor;
       _isLoadingAnalysis = true;
+      _loadingStatus = 'Checking services...';
+      _loadingDetail = 'Verifying backend services are running';
     });
     
-    _simulateAnalysisProgress();
+    await _startRealAnalysis(brandName, selectedArea, competitor);
   }
 
+  Future<void> _startRealAnalysis(String brandName, String selectedArea, String competitor) async {
+    try {
+      // Check services health first
+      final servicesHealthy = await _dataCollectionService.checkServicesHealth();
+      
+      if (!servicesHealthy) {
+        setState(() {
+          _loadingStatus = 'Service Error';
+          _loadingDetail = 'Backend services are not responding';
+        });
+        
+        await Future.delayed(const Duration(seconds: 2));
+        setState(() {
+          _isLoadingAnalysis = false;
+        });
+        await _showErrorAndFallback(
+          'Backend services are not available.',
+          'Please ensure all services are running on ports 8001, 8002, 8003'
+        );
+        return;
+      }
+      
+      // Generate or reuse request ID before starting analysis
+      if (_analysisData_requestId == null) {
+        // First attempt - generate new request ID
+        _analysisData_requestId = const Uuid().v4();
+        print('[Dashboard] Starting new analysis with request ID: $_analysisData_requestId');
+      } else {
+        // Retry attempt - reuse existing request ID
+        print('[Dashboard] Retrying analysis with existing request ID: $_analysisData_requestId');
+      }
+      
+      // Start real analysis (use stored request ID for both first attempt and retry)
+      final result = await _dataCollectionService.startAnalysis(
+        brandId: brandName,
+        competitorId: competitor,
+        areaId: selectedArea,
+        existingRequestId: _analysisData_requestId,
+        onStatusUpdate: (status) {
+          if (mounted) {
+            setState(() {
+              _loadingStatus = status;
+              _loadingDetail = _getDetailForStatus(status);
+            });
+          }
+        },
+      );
+      
+      if (result.isSuccess) {
+        setState(() {
+          _analysisResult = result.data;
+          // Request ID is already stored from before the analysis started
+        });
+        _completeAnalysis();
+      } else {
+        setState(() {
+          _isLoadingAnalysis = false;
+        });
+        await _showErrorAndFallback(
+          result.error ?? 'Analysis failed',
+          'Falling back to demo data for demonstration'
+        );
+      }
+      
+    } catch (e) {
+      setState(() {
+        _isLoadingAnalysis = false;
+      });
+      await _showErrorAndFallback(
+        'Unexpected error: $e',
+        'Using demo data instead'
+      );
+    }
+  }
+  
+  String _getDetailForStatus(String status) {
+    switch (status.toLowerCase()) {
+      case 'starting data collection...':
+        return 'Initializing data collection pipelines';
+      case 'collecting data from multiple sources...':
+        return 'Gathering news, social media, and review data';
+      case 'data collection complete, starting analysis...':
+        return 'Processing collected data with AI analysis';
+      case 'running ai analysis...':
+        return 'Generating insights with GPT-4 and competitive analysis';
+      case 'retrieving analysis results...':
+        return 'Preparing comprehensive dashboard and reports';
+      case 'analysis complete!':
+        return 'Ready to view results and actionable recommendations';
+      default:
+        return 'Processing analysis pipeline...';
+    }
+  }
+  
+  Future<void> _showErrorAndFallback(String error, String fallbackMessage) async {
+    if (!mounted) return;
+    
+    await ApiErrorDialog.show(
+      context: context,
+      title: 'Analysis Service Error',
+      message: '$error\n\n$fallbackMessage',
+      onRetry: () {
+        // Retry the analysis with the same parameters
+        if (_analysisData_brandName != null && 
+            _analysisData_selectedArea != null && 
+            _analysisData_competitor != null) {
+          _onAnalysisLaunched(
+            _analysisData_brandName!,
+            _analysisData_selectedArea!,
+            _analysisData_competitor!,
+          );
+        }
+      },
+      onUseDemoData: () {
+        // Continue with demo data
+        _simulateAnalysisProgress();
+      },
+      showRetry: true, // Enable retry option
+    );
+  }
+  
   void _simulateAnalysisProgress() {
     final steps = [
       {'status': 'Initializing AI Analysis...', 'detail': 'Setting up data collection pipelines', 'duration': 800},
@@ -392,6 +531,7 @@ class _DashboardPageState extends State<DashboardPage>
           brandName: _analysisData_brandName,
           selectedArea: _analysisData_selectedArea,
           competitor: _analysisData_competitor,
+          analysisResult: _analysisResult,
         );
       case 2:
         return InsightsTab(
@@ -399,6 +539,7 @@ class _DashboardPageState extends State<DashboardPage>
           brandName: _analysisData_brandName,
           selectedArea: _analysisData_selectedArea,
           competitor: _analysisData_competitor,
+          analysisResult: _analysisResult,
         );
       case 3:
         return RoadmapTab(
@@ -406,6 +547,7 @@ class _DashboardPageState extends State<DashboardPage>
           brandName: _analysisData_brandName,
           selectedArea: _analysisData_selectedArea,
           competitor: _analysisData_competitor,
+          analysisResult: _analysisResult,
         );
       case 4:
         return ReportTab(
@@ -413,6 +555,7 @@ class _DashboardPageState extends State<DashboardPage>
           brandName: _analysisData_brandName,
           selectedArea: _analysisData_selectedArea,
           competitor: _analysisData_competitor,
+          analysisResult: _analysisResult,
         );
       default:
         return SetupTab(
