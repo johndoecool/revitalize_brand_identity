@@ -347,3 +347,116 @@ class RoadmapItem {
     this.dependencies,
   });
 }
+
+// Enhanced Analysis Models for New API Data
+class CompetitorAnalysis {
+  final String competitorName;
+  final double comparisonScore;
+  final List<String> strengths;
+  final List<String> weaknesses;
+  final List<String> opportunities;
+  final List<String> keyDifferences;
+
+  CompetitorAnalysis({
+    required this.competitorName,
+    required this.comparisonScore,
+    required this.strengths,
+    required this.weaknesses,
+    required this.opportunities,
+    required this.keyDifferences,
+  });
+
+  factory CompetitorAnalysis.fromJson(Map<String, dynamic> json) {
+    return CompetitorAnalysis(
+      competitorName: json['competitor_name'] ?? '',
+      comparisonScore: (json['comparison_score'] ?? 0.0).toDouble(),
+      strengths: List<String>.from(json['strengths'] ?? []),
+      weaknesses: List<String>.from(json['weaknesses'] ?? []),
+      opportunities: List<String>.from(json['opportunities'] ?? []),
+      keyDifferences: List<String>.from(json['key_differences'] ?? []),
+    );
+  }
+}
+
+class ImprovementArea {
+  final String area;
+  final double currentScore;
+  final double targetScore;
+  final String priority;
+  final String description;
+  final List<String> actionItems;
+  final List<String> expectedOutcomes;
+  final String timeline;
+  final List<String> resourcesNeeded;
+
+  ImprovementArea({
+    required this.area,
+    required this.currentScore,
+    required this.targetScore,
+    required this.priority,
+    required this.description,
+    required this.actionItems,
+    required this.expectedOutcomes,
+    required this.timeline,
+    required this.resourcesNeeded,
+  });
+
+  factory ImprovementArea.fromJson(Map<String, dynamic> json) {
+    return ImprovementArea(
+      area: json['area'] ?? '',
+      currentScore: (json['current_score'] ?? 0.0).toDouble(),
+      targetScore: (json['target_score'] ?? 0.0).toDouble(),
+      priority: json['priority'] ?? 'medium',
+      description: json['description'] ?? '',
+      actionItems: List<String>.from(json['action_items'] ?? []),
+      expectedOutcomes: List<String>.from(json['expected_outcomes'] ?? []),
+      timeline: json['timeline'] ?? '',
+      resourcesNeeded: List<String>.from(json['resources_needed'] ?? []),
+    );
+  }
+
+  // Calculate improvement gap percentage
+  double get improvementGap => targetScore - currentScore;
+  
+  // Calculate progress percentage (current score as percentage of target)
+  double get progressPercentage => targetScore > 0 ? (currentScore / targetScore).clamp(0.0, 1.0) : 0.0;
+  
+  // Get priority level for UI styling
+  InsightPriority get priorityLevel {
+    switch (priority.toLowerCase()) {
+      case 'high':
+        return InsightPriority.high;
+      case 'medium':
+        return InsightPriority.medium;
+      case 'low':
+        return InsightPriority.low;
+      default:
+        return InsightPriority.medium;
+    }
+  }
+}
+
+// Enhanced Analysis Results with new data
+class EnhancedAnalysisResults {
+  final AnalysisResults baseResults;
+  final List<CompetitorAnalysis> competitorAnalyses;
+  final List<ImprovementArea> improvementAreas;
+
+  EnhancedAnalysisResults({
+    required this.baseResults,
+    required this.competitorAnalyses,
+    required this.improvementAreas,
+  });
+
+  // Convenience getters to access base results
+  OverallComparison get overallComparison => baseResults.overallComparison;
+  Map<String, DetailedComparison> get detailedComparison => baseResults.detailedComparison;
+  List<ActionableInsight> get actionableInsights => baseResults.actionableInsights;
+  List<StrengthToMaintain> get strengthsToMaintain => baseResults.strengthsToMaintain;
+  MarketPositioning get marketPositioning => baseResults.marketPositioning;
+
+  // Check if enhanced data is available
+  bool get hasCompetitorAnalysis => competitorAnalyses.isNotEmpty;
+  bool get hasImprovementAreas => improvementAreas.isNotEmpty;
+  bool get hasEnhancedData => hasCompetitorAnalysis || hasImprovementAreas;
+}
