@@ -266,17 +266,53 @@ class RoadmapTimeline {
   });
 }
 
+// Enhanced roadmap timeline with full API data
+class EnhancedRoadmapTimeline extends RoadmapTimeline {
+  final String roadmapId;
+  final String competitorAnalysisSummary;
+  final String strategicVision;
+  final String marketOpportunity;
+  final List<String> competitiveAdvantages;
+  final String totalEstimatedBudget;
+  final List<String> riskFactors;
+  final double confidenceScore;
+  final String generatedAt;
+
+  EnhancedRoadmapTimeline({
+    required super.quarters,
+    required super.brandName,
+    required super.competitorName,
+    required this.roadmapId,
+    required this.competitorAnalysisSummary,
+    required this.strategicVision,
+    required this.marketOpportunity,
+    required this.competitiveAdvantages,
+    required this.totalEstimatedBudget,
+    required this.riskFactors,
+    required this.confidenceScore,
+    required this.generatedAt,
+  });
+}
+
 class RoadmapQuarter {
   final String quarter;
   final String year;
   final List<RoadmapItem> items;
   final double progressPercentage;
+  final String? quarterTheme;
+  final List<String>? strategicGoals;
+  final String? quarterBudget;
+  final List<String>? successCriteria;
 
   RoadmapQuarter({
     required this.quarter,
     required this.year,
     required this.items,
     this.progressPercentage = 0.0,
+    this.quarterTheme,
+    this.strategicGoals,
+    this.quarterBudget,
+    this.successCriteria,
   });
 
   String get displayName => '$quarter $year';
@@ -289,6 +325,12 @@ class RoadmapItem {
   final List<String> tasks;
   final String expectedImpact;
   final bool isCompleted;
+  final String? actionId;
+  final String? category;
+  final String? estimatedEffort;
+  final String? budgetEstimate;
+  final List<String>? successMetrics;
+  final List<String>? dependencies;
 
   RoadmapItem({
     required this.title,
@@ -297,5 +339,11 @@ class RoadmapItem {
     required this.tasks,
     required this.expectedImpact,
     this.isCompleted = false,
+    this.actionId,
+    this.category,
+    this.estimatedEffort,
+    this.budgetEstimate,
+    this.successMetrics,
+    this.dependencies,
   });
 }
