@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Apple Inc",
+    "news_sentiment": {
+      "score": 0.012,
+      "articles_count": 100,
+      "positive_articles": 3,
+      "negative_articles": 0,
+      "neutral_articles": 47,
+      "recent_articles": [
+        {
+          "title": "Dotdash, By The People, For The People; Mopping Up Social",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "http://www.adexchanger.com/daily-news-roundup/friday-01082025/",
+          "source": "AdExchanger"
+        },
+        {
+          "title": "Tim Cook Says Apple Is 'Very Open' To AI Acquisitions Amid Mounting Pressure To Catch Up With Google, Meta And Microsoft",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/f75c0c8e764e1e46",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Asian stocks decline, Swiss Franc dips on tariffs",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/asian-stocks-decline-swiss-franc-dips-on-tariffs/articleshow/123032575.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Apple’s revenue growth hits four-year high as iPhone sales soar",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://siliconangle.com/2025/07/31/apples-revenue-growth-hits-four-year-high-iphone-sales-soar/",
+          "source": "SiliconANGLE News"
+        },
+        {
+          "title": "Stocks Under Pressure as US Sets New Tariff Rates: Markets Wrap",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://financialpost.com/pmn/business-pmn/stocks-under-pressure-as-us-sets-new-tariff-rates-markets-wrap",
+          "source": "Financial Post"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.779,
+      "mentions_count": 299,
+      "engagement_rate": 0.0015,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.592,
+          "mentions": 13
+        },
+        "facebook": {
+          "sentiment": 0.834,
+          "mentions": 186
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 100
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.7,
+      "reviews_count": 327,
+      "pros": [
+        "Job security",
+        "Career growth opportunities",
+        "Good company culture"
+      ],
+      "cons": [
+        "Bureaucratic processes",
+        "Limited training opportunities",
+        "Inconsistent management"
+      ],
+      "recommendation_rate": 0.77,
+      "ceo_approval": 0.77
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.7,
+      "mobile_friendliness": 0.3,
+      "load_time": 0.04
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Alphabet Inc",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 99,
+      "positive_articles": 0,
+      "negative_articles": 0,
+      "neutral_articles": 50,
+      "recent_articles": [
+        {
+          "title": "Gloomy guidance and increased cloud competition weigh on Amazon’s stock, despite solid earnings beat",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://siliconangle.com/2025/07/31/gloomy-guidance-increased-cloud-competition-weigh-amazons-stock-despite-solid-earnings-beat/",
+          "source": "SiliconANGLE News"
+        },
+        {
+          "title": "Meta Surges on Blowout Q2 Earnings, Boosting Related ETFs",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "http://www.etf.com/sections/news/meta-surges-blowout-q2-earnings-boosting-related-etfs?utm_source=yahoo-finance&amp;utm_medium=rss&amp;utm_campaign=yahoo-finance-rss",
+          "source": "Etf.com"
+        },
+        {
+          "title": "Epic Games' Win Over Google In Fortnite Fight Upheld On Appeal",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://www.ndtvprofit.com/business/epic-games-win-over-google-in-fortnite-fight-upheld-on-appeal",
+          "source": "Ndtvprofit.com"
+        },
+        {
+          "title": "Apple Rebound Looks Elusive as AI Woes Draw Investor Scrutiny",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://finance.yahoo.com/news/apple-rebound-looks-elusive-ai-174359452.html",
+          "source": "Yahoo Entertainment"
+        },
+        {
+          "title": "Google DeepMind releases highly accurate AI model map of Earth",
+          "sentiment": "neutral",
+          "published_date": "2025-07-31",
+          "url": "https://siliconangle.com/2025/07/31/google-deepmind-releases-highly-accurate-ai-model-map-earth/",
+          "source": "SiliconANGLE News"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 244480,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.516,
+          "mentions": 12
+        },
+        "facebook": {
+          "sentiment": 0.559,
+          "mentions": 187
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 244281
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.3,
+      "reviews_count": 203,
+      "pros": [
+        "Supportive management",
+        "Learning opportunities",
+        "Flexible working hours"
+      ],
+      "cons": [
+        "Inconsistent management",
+        "Low pay increases",
+        "Long working hours"
+      ],
+      "recommendation_rate": 0.53,
+      "ceo_approval": 0.73
+    },
+    "website_analysis": {
+      "user_experience_score": 0.65,
+      "feature_completeness": 0.2,
+      "security_score": 0.9,
+      "accessibility_score": 0.893,
+      "mobile_friendliness": 0.7,
+      "load_time": 2.98
+    }
+  }
+}

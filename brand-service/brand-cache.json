@@ -6001,5 +6001,131 @@
     "total_results": 4,
     "cached_at": "2025-08-02T00:28:01.803563",
     "expires_at": null
+  },
+  {
+    "query": "MGM",
+    "success": true,
+    "data": [
+      {
+        "id": "MGM",
+        "name": "MGM Resorts International",
+        "full_name": "MGM Resorts International",
+        "industry": "HOTELS & MOTELS",
+        "logo_url": "https://img.logo.dev/ticker/MGM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "MGM Resorts International is an American global hospitality and entertainment company operating destination resorts globally.",
+        "confidence_score": 1.0
+      }
+    ],
+    "total_results": 1,
+    "cached_at": "2025-08-02T00:36:55.028632",
+    "expires_at": null
+  },
+  {
+    "query": "COL",
+    "success": true,
+    "data": [
+      {
+        "id": "COLA",
+        "name": "Columbus Acquisition Corp Ordinary Shares",
+        "full_name": "Columbus Acquisition Corp Ordinary Shares",
+        "industry": "GENERAL",
+        "logo_url": "https://img.logo.dev/ticker/COLA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "None",
+        "confidence_score": 0.8571
+      },
+      {
+        "id": "COLB",
+        "name": "Columbia Banking System Inc",
+        "full_name": "Columbia Banking System Inc",
+        "industry": "STATE COMMERCIAL BANKS",
+        "logo_url": "https://img.logo.dev/ticker/COLB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Columbia Banking System, Inc. is the banking holding company for Columbia State Bank providing a range of banking services to small and medium-sized businesses, professionals, and individuals in Washington, Oregon, and Idaho. The company is headquartered in Tacoma, Washington.",
+        "confidence_score": 0.8571
+      },
+      {
+        "id": "COLD",
+        "name": "Americold Realty Trust",
+        "full_name": "Americold Realty Trust",
+        "industry": "REAL ESTATE INVESTMENT TRUSTS",
+        "logo_url": "https://img.logo.dev/ticker/COLD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Americold is the world's largest publicly traded REIT, focusing on the ownership, operation, acquisition and development of temperature controlled warehouses. ",
+        "confidence_score": 0.8571
+      },
+      {
+        "id": "COLAR",
+        "name": "Columbus Acquisition Corp Rights",
+        "full_name": "Columbus Acquisition Corp Rights",
+        "industry": "GENERAL",
+        "logo_url": "https://img.logo.dev/ticker/COLAR?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "None",
+        "confidence_score": 0.75
+      },
+      {
+        "id": "COLAU",
+        "name": "Columbus Acquisition Corp Unit",
+        "full_name": "Columbus Acquisition Corp Unit",
+        "industry": "GENERAL",
+        "logo_url": "https://img.logo.dev/ticker/COLAU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "None",
+        "confidence_score": 0.75
+      }
+    ],
+    "total_results": 5,
+    "cached_at": "2025-08-02T00:37:31.673442",
+    "expires_at": null
+  },
+  {
+    "query": "COLGA",
+    "success": true,
+    "data": [
+      {
+        "id": "CL",
+        "name": "Colgate-Palmolive Company",
+        "full_name": "Colgate-Palmolive Company",
+        "industry": "PERFUMES, COSMETICS & OTHER TOILET PREPARATIONS",
+        "logo_url": "https://img.logo.dev/ticker/CL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Colgate-Palmolive Company is an American multinational consumer products company headquartered on Park Avenue in Midtown Manhattan, New York City. It specializes in the production, distribution and provision of household, health care, personal care and veterinary products.",
+        "confidence_score": 0.5714
+      }
+    ],
+    "total_results": 1,
+    "cached_at": "2025-08-02T00:37:33.002883",
+    "expires_at": null
+  },
+  {
+    "query": "COLGATE",
+    "success": true,
+    "data": [
+      {
+        "id": "CL",
+        "name": "Colgate-Palmolive Company",
+        "full_name": "Colgate-Palmolive Company",
+        "industry": "PERFUMES, COSMETICS & OTHER TOILET PREPARATIONS",
+        "logo_url": "https://img.logo.dev/ticker/CL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Colgate-Palmolive Company is an American multinational consumer products company headquartered on Park Avenue in Midtown Manhattan, New York City. It specializes in the production, distribution and provision of household, health care, personal care and veterinary products.",
+        "confidence_score": 0.4444
+      }
+    ],
+    "total_results": 1,
+    "cached_at": "2025-08-02T09:02:54.725967",
+    "expires_at": null
+  },
+  {
+    "query": "O",
+    "success": true,
+    "data": [
+      {
+        "id": "O",
+        "name": "Realty Income Corporation",
+        "full_name": "Realty Income Corporation",
+        "industry": "REAL ESTATE INVESTMENT TRUSTS",
+        "logo_url": "https://img.logo.dev/ticker/O?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Realty Income Corporation is a real estate investment trust that invests in free-standing, single-tenant commercial properties in the United States, Puerto Rico, and the United Kingdom that are subject to NNN Leases. The company is organized in Maryland with its headquarters in San Diego, California.",
+        "confidence_score": 1.0
+      }
+    ],
+    "total_results": 1,
+    "cached_at": "2025-08-02T09:24:49.937217",
+    "expires_at": null
   }
 ]

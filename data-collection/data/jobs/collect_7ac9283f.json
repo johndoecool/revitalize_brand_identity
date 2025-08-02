@@ -1,0 +1,219 @@
+{
+  "job_id": "collect_7ac9283f",
+  "brand_id": "Colgate-Palmolive Company",
+  "competitor_id": "Procter & Gamble",
+  "area_id": "Financial Performance",
+  "sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "status": "completed",
+  "progress": 100,
+  "completed_sources": [
+    "news",
+    "social_media",
+    "glassdoor",
+    "website"
+  ],
+  "remaining_sources": [],
+  "created_at": "2025-08-02T13:03:22.975217",
+  "started_at": null,
+  "completed_at": "2025-08-02T13:04:04.253695",
+  "estimated_completion": "2025-08-02T13:06:22.975136",
+  "current_step": "Data collection completed successfully",
+  "collected_data": {
+    "brand_data": {
+      "brand_id": "Colgate-Palmolive Company",
+      "news_sentiment": {
+        "score": 0.016,
+        "articles_count": 55,
+        "positive_articles": 4,
+        "negative_articles": 0,
+        "neutral_articles": 46,
+        "recent_articles": [
+          {
+            "title": "Colgate-Palmolive's Q2 net sales up 1% to $5.1B",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://biztoc.com/x/2d9cf8501ab0b89a",
+            "source": "Biztoc.com"
+          },
+          {
+            "title": "Stock Index Futures Plunge on Trump’s Tariffs & A Weak US Jobs Report",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.barchart.com/story/news/33807636/stock-index-futures-plunge-on-trumps-tariffs-u-s-jobs-report-in-focus",
+            "source": "Barchart.com"
+          },
+          {
+            "title": "Retirement Dividend Stocks to Watch: The Case for Colgate-Palmolive Company (CL)",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_3cedf4de-c067-434b-8af9-f6c8357319cd",
+            "source": "Yahoo Entertainment"
+          },
+          {
+            "title": "Share Market Highlights: Nifty ends below 24,600 as global worries, pharma rout drag markets",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.thehindubusinessline.com/markets/stock-market-highlights-1-august-2025/article69879345.ece",
+            "source": "BusinessLine"
+          },
+          {
+            "title": "Stocks Erase Early Gains as Chip Makers and Big Pharma Retreat",
+            "sentiment": "neutral",
+            "published_date": "2025-07-31",
+            "url": "https://www.barchart.com/story/news/33792613/stocks-erase-early-gains-as-chip-makers-and-big-pharma-retreat",
+            "source": "Barchart.com"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.696,
+        "mentions_count": 356,
+        "engagement_rate": 0.0018,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.466,
+            "mentions": 15
+          },
+          "facebook": {
+            "sentiment": 0.719,
+            "mentions": 241
+          },
+          "linkedin": {
+            "sentiment": 0.674,
+            "mentions": 100
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.9,
+        "reviews_count": 239,
+        "pros": [
+          "Good company culture",
+          "Good work-life balance",
+          "Competitive salary"
+        ],
+        "cons": [
+          "Long working hours",
+          "Lack of recognition",
+          "Limited career advancement"
+        ],
+        "recommendation_rate": 0.89,
+        "ceo_approval": 0.69
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 3.02
+      }
+    },
+    "competitor_data": {
+      "brand_id": "Procter & Gamble",
+      "news_sentiment": {
+        "score": 0.012,
+        "articles_count": 99,
+        "positive_articles": 7,
+        "negative_articles": 4,
+        "neutral_articles": 39,
+        "recent_articles": [
+          {
+            "title": "US employers slash hiring as Trump advances a punishing trade agenda",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.denverpost.com/2025/08/01/us-economy-jobs-report-july/",
+            "source": "The Denver Post"
+          },
+          {
+            "title": "Trump’s trade tantrum leaves American economy needing more",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.salon.com/2025/08/01/trumps-trade-tantrum-leaves-american-economy-needing-more/",
+            "source": "Salon"
+          },
+          {
+            "title": "Trump’s trade war has only just begun to hit Americans’ wallets",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.msnbc.com/opinion/msnbc-opinion/trump-tariff-deadline-trade-war-inflation-prices-rcna222221",
+            "source": "MSNBC"
+          },
+          {
+            "title": "Wells Fargo & Company Has Lowered Expectations for Procter & Gamble (NYSE:PG) Stock Price",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.etfdailynews.com/2025/08/01/wells-fargo-company-has-lowered-expectations-for-procter-gamble-nysepg-stock-price/",
+            "source": "ETF Daily News"
+          },
+          {
+            "title": "Trump is ‘weaponizing tariffs’ – Indian economist",
+            "sentiment": "neutral",
+            "published_date": "2025-08-01",
+            "url": "https://www.rt.com/india/622333-trump-is-weaponizing-tariffs-indian/",
+            "source": "RT"
+          }
+        ]
+      },
+      "social_media": {
+        "overall_sentiment": 0.7,
+        "mentions_count": 8430279,
+        "engagement_rate": 0.1,
+        "platforms": {
+          "twitter": {
+            "sentiment": 0.44,
+            "mentions": 11
+          },
+          "facebook": {
+            "sentiment": 0.754,
+            "mentions": 84
+          },
+          "linkedin": {
+            "sentiment": 0.7,
+            "mentions": 8430184
+          }
+        },
+        "trending_topics": [
+          "customer service",
+          "digital transformation",
+          "user experience"
+        ]
+      },
+      "glassdoor": {
+        "overall_rating": 3.5,
+        "reviews_count": 175,
+        "pros": [
+          "Flexible working hours",
+          "Collaborative team environment",
+          "Job security"
+        ],
+        "cons": [
+          "Limited career advancement",
+          "Outdated technology",
+          "Poor communication"
+        ],
+        "recommendation_rate": 0.75,
+        "ceo_approval": 0.65
+      },
+      "website_analysis": {
+        "user_experience_score": 0.55,
+        "feature_completeness": 0.8,
+        "security_score": 0.9,
+        "accessibility_score": 1.0,
+        "mobile_friendliness": 0.8,
+        "load_time": 3.01
+      }
+    }
+  },
+  "error_message": null
+}

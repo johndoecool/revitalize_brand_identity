@@ -2056,5 +2056,299 @@
         "symbol": "TUFN"
       }
     ]
+  },
+  {
+    "brand_id": "MGM",
+    "area_id": "market_position",
+    "cached_at": "2025-08-02T00:37:27.122206",
+    "success": true,
+    "data": [
+      {
+        "id": "CZR",
+        "name": "Caesars Entertainment",
+        "logo_url": "https://img.logo.dev/ticker/CZR?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.95,
+        "competition_level": "Direct",
+        "symbol": "CZR"
+      },
+      {
+        "id": "WYNN",
+        "name": "Wynn Resorts",
+        "logo_url": "https://img.logo.dev/ticker/WYNN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.94,
+        "competition_level": "Direct",
+        "symbol": "WYNN"
+      },
+      {
+        "id": "LVS",
+        "name": "Las Vegas Sands",
+        "logo_url": "https://img.logo.dev/ticker/LVS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.93,
+        "competition_level": "Direct",
+        "symbol": "LVS"
+      },
+      {
+        "id": "BYD",
+        "name": "Boyd Gaming",
+        "logo_url": "https://img.logo.dev/ticker/BYD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.92,
+        "competition_level": "Direct",
+        "symbol": "BYD"
+      },
+      {
+        "id": "PNK",
+        "name": "Pinnacle Entertainment",
+        "logo_url": "https://img.logo.dev/ticker/PNK?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.91,
+        "competition_level": "Direct",
+        "symbol": "PNK"
+      },
+      {
+        "id": "SGMS",
+        "name": "Scientific Games",
+        "logo_url": "https://img.logo.dev/ticker/SGMS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Gaming",
+        "relevance_score": 0.85,
+        "competition_level": "Indirect",
+        "symbol": "SGMS"
+      },
+      {
+        "id": "IGT",
+        "name": "International Game Technology",
+        "logo_url": "https://img.logo.dev/ticker/IGT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Gaming",
+        "relevance_score": 0.83,
+        "competition_level": "Indirect",
+        "symbol": "IGT"
+      },
+      {
+        "id": "MCRI",
+        "name": "Monarch Casino & Resort",
+        "logo_url": "https://img.logo.dev/ticker/MCRI?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.82,
+        "competition_level": "Indirect",
+        "symbol": "MCRI"
+      },
+      {
+        "id": "ISLE",
+        "name": "Isle of Capri Casinos",
+        "logo_url": "https://img.logo.dev/ticker/ISLE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.81,
+        "competition_level": "Indirect",
+        "symbol": "ISLE"
+      },
+      {
+        "id": "GDEN",
+        "name": "Golden Entertainment",
+        "logo_url": "https://img.logo.dev/ticker/GDEN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Hospitality",
+        "relevance_score": 0.8,
+        "competition_level": "Indirect",
+        "symbol": "GDEN"
+      }
+    ]
+  },
+  {
+    "brand_id": "CL",
+    "area_id": "market_position",
+    "cached_at": "2025-08-02T00:37:59.689772",
+    "success": true,
+    "data": [
+      {
+        "id": "PG",
+        "name": "Procter & Gamble",
+        "logo_url": "https://img.logo.dev/ticker/PG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "PG"
+      },
+      {
+        "id": "CHD",
+        "name": "Church & Dwight",
+        "logo_url": "https://img.logo.dev/ticker/CHD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.88,
+        "competition_level": "direct",
+        "symbol": "CHD"
+      },
+      {
+        "id": "KMB",
+        "name": "Kimberly-Clark",
+        "logo_url": "https://img.logo.dev/ticker/KMB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "KMB"
+      },
+      {
+        "id": "EL",
+        "name": "Estee Lauder",
+        "logo_url": "https://img.logo.dev/ticker/EL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.82,
+        "competition_level": "indirect",
+        "symbol": "EL"
+      },
+      {
+        "id": "COTY",
+        "name": "Coty Inc",
+        "logo_url": "https://img.logo.dev/ticker/COTY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.78,
+        "competition_level": "indirect",
+        "symbol": "COTY"
+      },
+      {
+        "id": "REV",
+        "name": "Revlon Inc",
+        "logo_url": "https://img.logo.dev/ticker/REV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.75,
+        "competition_level": "indirect",
+        "symbol": "REV"
+      },
+      {
+        "id": "AVP",
+        "name": "Avon Products",
+        "logo_url": "https://img.logo.dev/ticker/AVP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.72,
+        "competition_level": "indirect",
+        "symbol": "AVP"
+      },
+      {
+        "id": "NUS",
+        "name": "Nu Skin Enterprises",
+        "logo_url": "https://img.logo.dev/ticker/NUS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "NUS"
+      },
+      {
+        "id": "HUGS",
+        "name": "Hugues",
+        "logo_url": "https://img.logo.dev/ticker/HUGS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "HUGS"
+      },
+      {
+        "id": "IPAR",
+        "name": "Inter Parfums",
+        "logo_url": "https://img.logo.dev/ticker/IPAR?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.62,
+        "competition_level": "indirect",
+        "symbol": "IPAR"
+      }
+    ]
+  },
+  {
+    "brand_id": "CL",
+    "area_id": "financial_performance",
+    "cached_at": "2025-08-02T09:03:16.617791",
+    "success": true,
+    "data": [
+      {
+        "id": "PG",
+        "name": "Procter & Gamble",
+        "logo_url": "https://img.logo.dev/ticker/PG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "PG"
+      },
+      {
+        "id": "CHD",
+        "name": "Church & Dwight",
+        "logo_url": "https://img.logo.dev/ticker/CHD?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "CHD"
+      },
+      {
+        "id": "KMB",
+        "name": "Kimberly-Clark",
+        "logo_url": "https://img.logo.dev/ticker/KMB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "KMB"
+      },
+      {
+        "id": "COTY",
+        "name": "Coty Inc.",
+        "logo_url": "https://img.logo.dev/ticker/COTY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.91,
+        "competition_level": "indirect",
+        "symbol": "COTY"
+      },
+      {
+        "id": "EL",
+        "name": "Estee Lauder",
+        "logo_url": "https://img.logo.dev/ticker/EL?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.9,
+        "competition_level": "indirect",
+        "symbol": "EL"
+      },
+      {
+        "id": "CLX",
+        "name": "Clorox",
+        "logo_url": "https://img.logo.dev/ticker/CLX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "CLX"
+      },
+      {
+        "id": "REV",
+        "name": "Revlon Inc.",
+        "logo_url": "https://img.logo.dev/ticker/REV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "REV"
+      },
+      {
+        "id": "AVP",
+        "name": "Avon Products",
+        "logo_url": "https://img.logo.dev/ticker/AVP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "AVP"
+      },
+      {
+        "id": "NUS",
+        "name": "Nu Skin Enterprises",
+        "logo_url": "https://img.logo.dev/ticker/NUS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "NUS"
+      },
+      {
+        "id": "HPC",
+        "name": "Henkel AG & Co. KGaA",
+        "logo_url": "https://img.logo.dev/ticker/HPC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Consumer Goods",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "HPC"
+      }
+    ]
   }
 ]

@@ -164,16 +164,74 @@ clear_port() {
 stop_existing_flutter() {
     print_status "Stopping any existing Flutter processes..."
     
+    # Find and list existing Flutter processes first
+    local flutter_pids=($(pgrep -f "flutter.*run" 2>/dev/null || true))
+    local dart_pids=($(pgrep -f "dart.*web" 2>/dev/null || true))
+    local dart_frontend_pids=($(pgrep -f "dart.*frontend_server" 2>/dev/null || true))
+    local flutter_tools_pids=($(pgrep -f "flutter_tools" 2>/dev/null || true))
+    
+    local total_processes=$((${#flutter_pids[@]} + ${#dart_pids[@]} + ${#dart_frontend_pids[@]} + ${#flutter_tools_pids[@]}))
+    
+    if [ $total_processes -eq 0 ]; then
+        print_success "No existing Flutter processes found"
+        return 0
+    fi
+    
+    print_info "Found $total_processes Flutter-related processes to stop"
+    
     # Kill Flutter processes gracefully
-    pkill -f "flutter run" 2>/dev/null || true
-    pkill -f "dart.*web" 2>/dev/null || true
-    sleep 2
+    if [ ${#flutter_pids[@]} -gt 0 ]; then
+        print_status "Stopping ${#flutter_pids[@]} Flutter run processes..."
+        for pid in "${flutter_pids[@]}"; do
+            kill $pid 2>/dev/null || true
+        done
+    fi
     
-    # Force kill if needed
-    pkill -9 -f "flutter run" 2>/dev/null || true
-    pkill -9 -f "dart.*web" 2>/dev/null || true
+    if [ ${#dart_pids[@]} -gt 0 ]; then
+        print_status "Stopping ${#dart_pids[@]} Dart web processes..."
+        for pid in "${dart_pids[@]}"; do
+            kill $pid 2>/dev/null || true
+        done
+    fi
     
-    print_success "Existing Flutter processes stopped"
+    if [ ${#dart_frontend_pids[@]} -gt 0 ]; then
+        print_status "Stopping ${#dart_frontend_pids[@]} Dart frontend server processes..."
+        for pid in "${dart_frontend_pids[@]}"; do
+            kill $pid 2>/dev/null || true
+        done
+    fi
+    
+    if [ ${#flutter_tools_pids[@]} -gt 0 ]; then
+        print_status "Stopping ${#flutter_tools_pids[@]} Flutter tools processes..."
+        for pid in "${flutter_tools_pids[@]}"; do
+            kill $pid 2>/dev/null || true
+        done
+    fi
+    
+    # Give processes time to shutdown gracefully
+    sleep 3
+    
+    # Check if any processes are still running and force kill if needed
+    local remaining_pids=($(pgrep -f "flutter.*run|dart.*web|dart.*frontend_server|flutter_tools" 2>/dev/null || true))
+    
+    if [ ${#remaining_pids[@]} -gt 0 ]; then
+        print_warning "${#remaining_pids[@]} processes still running, force killing..."
+        for pid in "${remaining_pids[@]}"; do
+            kill -9 $pid 2>/dev/null || true
+        done
+        sleep 1
+    fi
+    
+    # Also kill any processes using the web port specifically
+    local port_pids=($(lsof -ti:$WEB_PORT 2>/dev/null || true))
+    if [ ${#port_pids[@]} -gt 0 ]; then
+        print_status "Killing ${#port_pids[@]} processes using port $WEB_PORT..."
+        for pid in "${port_pids[@]}"; do
+            kill -9 $pid 2>/dev/null || true
+        done
+    fi
+    
+    print_success "All Flutter processes stopped successfully"
 }
 
 # Function to clean Flutter project
