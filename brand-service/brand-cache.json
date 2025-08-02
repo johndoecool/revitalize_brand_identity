@@ -4714,5 +4714,617 @@
     "total_results": 1,
     "cached_at": "2025-07-31T17:10:32.216204",
     "expires_at": null
+  },
+  {
+    "query": "COGN",
+    "success": true,
+    "data": [
+      {
+        "id": "CGNX",
+        "name": "Cognex Corporation",
+        "full_name": "Cognex Corporation",
+        "industry": "Hardware, Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/CGNX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognex Corporation provides machine vision products that capture and analyze visual information in order to automate manufacturing and distribution tasks worldwide. Its machine vision products are used to automate the manufacturing and tracking of discrete items, including mobile phones, aspirin bottles, and automobile tires by locating, identifying, inspecting, and measuring them during the manufacturing or distribution process. The company offers VisionPro software, a suite of patented vision tools for advanced programming; QuickBuild that allows customers to build vision applications with a graphical, flowchart-based programming interface; and Cognex deep learning vision software. It also provides a range of inspection tasks, including part location, identification, measurement, assembly verification, and robotic guidance; vision sensors for vision applications, such as checking the presence and size of parts; and the In-Sight product line of vision systems and sensors. In addition, the company offers DataMan, an image-based barcode readers and barcode verifiers. It sells its products to consumer electronics, automotive, consumer products, food and beverage, pharmaceuticals, and medical devices industries, as well as through a network of distributors and integrators. Cognex Corporation was incorporated in 1981 and is headquartered in Natick, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "0I14.L",
+        "name": "Cognex Corporation",
+        "full_name": "Cognex Corporation",
+        "industry": "Hardware, Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/0I14.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognex Corporation provides machine vision products that capture and analyze visual information in order to automate manufacturing and distribution tasks worldwide. Its machine vision products are used to automate the manufacturing and tracking of discrete items, including mobile phones, aspirin bottles, and automobile tires by locating, identifying, inspecting, and measuring them during the manufacturing or distribution process. The company offers VisionPro software, a suite of patented vision tools for advanced programming; QuickBuild that allows customers to build vision applications with a graphical, flowchart-based programming interface; and Cognex deep learning vision software. It also provides a range of inspection tasks, including part location, identification, measurement, assembly verification, and robotic guidance; vision sensors for vision applications, such as checking the presence and size of parts; and the In-Sight product line of vision systems and sensors. In addition, the company offers DataMan, an image-based barcode readers and barcode verifiers. It sells its products to consumer electronics, automotive, consumer products, food and beverage, pharmaceuticals, and medical devices industries, as well as through a network of distributors and integrators. Cognex Corporation was incorporated in 1981 and is headquartered in Natick, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COG.WA",
+        "name": "Cognor Holding S.A.",
+        "full_name": "Cognor Holding S.A.",
+        "industry": "Steel",
+        "logo_url": "https://img.logo.dev/ticker/COG.WA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognor Holding S.A. engages in the production and distribution of steel products in Poland and internationally. The company offers flat plates and bars, slabs, round and square bars, reinforcing bars, T-profiles, equal and unequal side angles, billets with rounded edger for forgings, metal sheets, carbon and medium-alloy steels, and high-alloy and special steels, as well as products from non-ferrous metals and non-ferrous metal scrap. It also purchases, processes, treats, and sells steel scrap; processes steel scrap into billets, as well as billets into steel products; and provides financial services. The company also exports its products primarily to Germany and other European countries. The company was formerly known as Cognor S A and changed its name to Cognor Holding S.A. in November 2016. Cognor Holding S.A. was founded in 1946 and is based in Poraj, Poland. Cognor Holding S.A. is a subsidiary of PS HoldCo Sp. z o.o.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGNY",
+        "name": "Cogna Educação S.A.",
+        "full_name": "Cogna Educação S.A.",
+        "industry": "Education & Training Services",
+        "logo_url": "https://img.logo.dev/ticker/COGNY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogna Educação S.A. operates as a private educational organization in Brazil and internationally. The company operates through three segments: In-Class Higher Education, Distance Learning Higher Education, and Basic Education. It offers in-class and distance-learning higher education, and undergraduate and graduate courses; publishes, sells, and distributes textbooks, support materials, and workbooks with educational, literary, and informative content and teaching systems; and educational solutions for professional and higher education, and other supplementary activities, such as developing education technology with management and other education services. The company also provides K-12 education, pre-college preparatory, language courses for children and teenagers; management of child, primary, and secondary education activities; technical and preparatory courses for civil service examinations and Brazilian Bar Association; advises on and/or facilitates direct and indirect student loans; and develops software for adaptive teaching and academic management optimization. Its services include primary, secondary, and postsecondary education services with on-campus undergraduate and graduate programs, and distance learning, as well as graduate programs; preparatory courses under the brand LFG; and unregulated programs. The company operates 176 college education units in 24 Brazilian states and 132 Brazilian cities; and 1,510 distance-learning graduation centers in various Brazilian states and in the Federal District, as well as operates 54 own K-12 education schools, 125 Red Balloon units, and approximately 5,600 associated schools in Brazil. Cogna Educação S.A. was founded in 1998 and is headquartered in Belo Horizonte, Brazil.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGN3.SA",
+        "name": "Cogna Educação S.A.",
+        "full_name": "Cogna Educação S.A.",
+        "industry": "Education & Training Services",
+        "logo_url": "https://img.logo.dev/ticker/COGN3.SA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogna Educação S.A. operates as a private educational organization in Brazil and internationally. The company operates through three segments: In-Class Higher Education, Distance Learning Higher Education, and Basic Education. It offers in-class and distance-learning higher education, and undergraduate and graduate courses; publishes, sells, and distributes textbooks, support materials, and workbooks with educational, literary, and informative content and teaching systems; and educational solutions for professional and higher education, and other supplementary activities, such as developing education technology with management and other education services. The company also provides K-12 education, pre-college preparatory, language courses for children and teenagers; management of child, primary, and secondary education activities; technical and preparatory courses for civil service examinations and Brazilian Bar Association; advises on and/or facilitates direct and indirect student loans; and develops software for adaptive teaching and academic management optimization. Its services include primary, secondary, and postsecondary education services with on-campus undergraduate and graduate programs, and distance learning, as well as graduate programs; preparatory courses under the brand LFG; and unregulated programs. The company operates 176 college education units in 24 Brazilian states and 132 Brazilian cities; and 1,510 distance-learning graduation centers in various Brazilian states and in the Federal District, as well as operates 54 own K-12 education schools, 125 Red Balloon units, and approximately 5,600 associated schools in Brazil. Cogna Educação S.A. was founded in 1998 and is headquartered in Belo Horizonte, Brazil.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGNT",
+        "name": "Cognyte Software Ltd.",
+        "full_name": "Cognyte Software Ltd.",
+        "industry": "Software - Infrastructure",
+        "logo_url": "https://img.logo.dev/ticker/CGNT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognyte Software Ltd. provides an investigative analytics software to governments and enterprises worldwide. Its Actionable Intelligence for a Safer World, an open software designed to help governments and enterprises accelerate and enhance the effectiveness of investigations. The company also offers network intelligence analytics, open source and threat intelligence analytics, and operational intelligence analytics solutions. Its solutions are designed to support various use cases and support a range of users, including data analysts, investigation managers, and security operations center operators, as well as operational field teams. In addition, the company provides customer support, professional, and integration services. Its government customers include national, regional, and local government agencies; and enterprise customers consist of commercial and physical security customers. The company was incorporated in 2020 and is headquartered in Herzliya, Israel.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGN.JO",
+        "name": "Cognition Holdings Limited",
+        "full_name": "Cognition Holdings Limited",
+        "industry": "Consulting Services",
+        "logo_url": "https://img.logo.dev/ticker/CGN.JO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognition Holdings Limited, together with its subsidiaries, provides active data exchange, and knowledge creation and management services primarily in South Africa. The company's active data exchange services include short message, interactive voice response, Vmail one-on-one marketing, mobi, fulfillment, call center, bespoke, and unstructured supplementary data, as well as advertising, promotion, direct marketing, and CRM services; and conference call, IM, email, airtime sales, fax2email, email2fax, corporate fax, and auto receptionist services. It also provides Knowledge 350°, a 15 step business process, which creates an integrated and logical process that assists companies to build databases and to move from segmenting customers to single customer profiles with detailed demographics and psychographics. In addition, the company offers MyPoint that enables panellists to complete surveys and rewards them with points, prizes, and benefits; Community Builds, an interactive relationship-building program; qualitative and quantitative market research services; and omnibus/syndicated studies. Further, it provides web development services, as well as associated search engine optimization input services; SecurDox, a document exchange service; and annual quantifications, reports tracking, in-store, in-store observation, and liquor in-store pricing, as well as print ad tracking, and commissioned and consumer research services. The company was formerly known as FoneWorx Holdings Limited and changed its name to Cognition Holdings Limited in January 2015. Cognition Holdings Limited is headquartered in Randburg, South Africa.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGTX",
+        "name": "Cognition Therapeutics, Inc.",
+        "full_name": "Cognition Therapeutics, Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/CGTX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognition Therapeutics, Inc., a clinical-stage biopharmaceutical company, engages in the discovery and development of small molecule therapeutics targeting age-related degenerative diseases and disorders of the central nervous system and retina. Its lead product candidate is CT1812, a sigma-2 receptor antagonist, which is in Phase II clinical trial for the treatment of mild-to-moderate Alzheimer's disease, as well as has completed Phase I clinical trial to treat early-stage Alzheimer's disease; in Phase II clinical trial for the treatment of dementia with Lewy bodies (DLB); and in preclinical trial to treat dry age-related macular degeneration (AMD). The company is also developing CT2168 for the treatment of synucleinopathies, which include DLB and Parkinson's disease; and CT2074 to treat dry AMD. Cognition Therapeutics, Inc. was incorporated in 2007 and is headquartered in Purchase, New York.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGNSF",
+        "name": "Cognetivity Neurosciences Ltd.",
+        "full_name": "Cognetivity Neurosciences Ltd.",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/CGNSF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognetivity Neurosciences Ltd. operates as a healthcare company. It develops an integrated cognitive assessment, a cognitive testing platform for use in medical, commercial, and consumer environments that helps to detect the earliest signs of impairment by testing the performance of large areas of the brain to support the diagnosis of dementia; and offers OptiMind, a wellness app. The company was formerly known as Utor Capital Corp. and changed its name to Cognetivity Neurosciences Ltd. in December 2017. Cognetivity Neurosciences Ltd. was incorporated in 2015 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGN.CN",
+        "name": "Cognetivity Neurosciences Ltd.",
+        "full_name": "Cognetivity Neurosciences Ltd.",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/CGN.CN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognetivity Neurosciences Ltd. operates as a healthcare company. It develops an integrated cognitive assessment, a cognitive testing platform for use in medical, commercial, and consumer environments that helps to detect the earliest signs of impairment by testing the performance of large areas of the brain to support the diagnosis of dementia; and offers OptiMind, a wellness app. The company was formerly known as Utor Capital Corp. and changed its name to Cognetivity Neurosciences Ltd. in December 2017. Cognetivity Neurosciences Ltd. was incorporated in 2015 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CTSH",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Information Technology Services",
+        "logo_url": "https://img.logo.dev/ticker/CTSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COZ.DE",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Information Technology Services",
+        "logo_url": "https://img.logo.dev/ticker/COZ.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "0QZ5.L",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Software - Services",
+        "logo_url": "https://img.logo.dev/ticker/0QZ5.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ALBI.PA",
+        "name": "Gascogne S.A.",
+        "full_name": "Gascogne S.A.",
+        "industry": "Packaging & Containers",
+        "logo_url": "https://img.logo.dev/ticker/ALBI.PA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Gascogne SA engages in the production and sale of wood, paper, industrial and consumer sacks, and laminates in France and internationally. It operates through Wood and Packaging divisions. The company offers decorative wood, wood frame walls, and wood siding products; and machine glazed natural kraft papers, natural sack kraft papers, and technical coated papers for packaging and industrial uses. It also provides paper, plastic, and hybrid sacks used for packing human and animal feed, construction materials, pet food, chemicals seeds, and mineral products; and multilayer laminates, release liners, gummed products, and printed materials used for packing insulation and construction, envelopes and secure parcels, health and medical, composite materials, adhesives and bands, and flexible packaging products. The company was formerly known as Groupe Gascogne SA and changed its name to Gascogne SA in 2006. The company was founded in 1925 and is headquartered in Mimizan, France.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ACOGF",
+        "name": "Alpha Cognition Inc.",
+        "full_name": "Alpha Cognition Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/ACOGF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Alpha Cognition Inc., a clinical stage biopharmaceutical company, focuses on developing treatments for Alzheimer's disease and amyotrophic lateral sclerosis (ALS). It develops ALPHA-1062, an acetylcholine esterase inhibitor for the treatment of dementia of the Alzheimer's type and mild traumatic brain injury; and ALPHA-0602, a gene therapy for the treatment of ALS. The company was formerly known as Crystal Bridge Enterprises Inc. and changed its name to Alpha Cognition Inc. in March 2021. Alpha Cognition Inc. was founded in 2000 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ACOG",
+        "name": "Alpha Cognition Inc. Common Stock",
+        "full_name": "Alpha Cognition Inc. Common Stock",
+        "industry": "Financial - Conglomerates",
+        "logo_url": "https://img.logo.dev/ticker/ACOG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Alpha Cognition Inc., a clinical stage biopharmaceutical company, engages in the development of treatments for Alzheimer's disease and amyotrophic lateral sclerosis (ALS). The company offers ZUNVEYL (benzgalantamine) for the treatment of mild-to-moderate Alzheimer's disease and mild traumatic brain injury. It also develops ALPHA-0602, a gene therapy for the treatment of ALS; and ALPHA-0702 and ALPHA-0802, a granulin epithelin motifs for the treatment of neurodegenerative diseases. The company was formerly known as Crystal Bridge Enterprises Inc. and changed its name to Alpha Cognition Inc. in March 2021. Alpha Cognition Inc. was founded in 2000 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COG.L",
+        "name": "Cambridge Cognition Holdings Plc",
+        "full_name": "Cambridge Cognition Holdings Plc",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/COG.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cambridge Cognition Holdings Plc, a neuroscience technology company, develops and markets near-patient cognitive testing techniques in the United States, United Kingdom, the European Union, and internationally. The company offers CANTAB Recruit, an online trial recruitment platform for pharmaceutical and biotechnology companies to identify qualified clinical trial participants in high-need indications, such as Alzheimer's disease; CANTAB Connect that provides digital cognitive assessment solutions for pharmaceutical clinical trials in various therapeutic areas from Phases IIV; and Cognition Kit, a digital health platform, which delivers wearable and smartphone apps for data collection to provide engaging digital health solutions for the enhancement of patient engagement, demonstration of treatment efficacy, and understanding of a disease and a patient's response to medication. It also provides CANTAB Connect Research, a research software that offers sensitive digital measures of cognitive function for various areas of brain research; CANTAB Mobile, a touchscreen memory test used in clinical research of Alzheimer's disease; CANTAB BrainHealth, an online digital health assessment tool to measure and monitor mental wellbeing and cognitive performance in the workplace; CANTAB Insight, a medical device that helps to determine an individual's cognitive health; and NeuroVocalix for an automated administration and scoring of well-validated verbal cognitive assessments?on a secure platform. In addition, the company offers a range of expert consultancy and operational management services to optimize clinical trials and cognitive research, which include neuroscience and technical consultancy, study design, data analysis, study and data management, and reports and interpretation. Cambridge Cognition Holdings Plc was incorporated in 2012 and is based in Cambridge, the United Kingdom.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "AVOI",
+        "name": "Advanced Voice Recognition Systems, Inc.",
+        "full_name": "Advanced Voice Recognition Systems, Inc.",
+        "industry": "Software - Application",
+        "logo_url": "https://img.logo.dev/ticker/AVOI?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Advanced Voice Recognition Systems, Inc., a software development company, specializes in creating interface and application solutions for speech recognition technologies in the United States. Its principal proposed product or service includes speech recognition software and related firmware, which allows for dictation into a range of applications comprising DOS applications running in Windows; UNIX and mainframe applications accessed through terminal emulation programs; various custom applications; and Windows 3.x, 95, 98, 2000, XP, Vista, Windows 7, and Windows 10 programs. The company also focuses on offering AVRS Enterprise solutions that are applicable to various primary stream speech enabled applications, such as traditional desktop applications, as well as mobile and web-based, and cloud solutions. It focuses on serving corporations, hospitals, medical product and service providers, governmental entities, legal professionals, sales and service organizations, law enforcement agencies, and mobile search and voicemail to text markets that require individuals and organizations to create reports, letters, email, data entry, manuals, books, and other documents or end products involving written data. The company was founded in 1994 and is headquartered in Scottsdale, Arizona.",
+        "confidence_score": 0.9
+      }
+    ],
+    "total_results": 18,
+    "cached_at": "2025-08-01T20:02:22.694697",
+    "expires_at": null
+  },
+  {
+    "query": "COG",
+    "success": true,
+    "data": [
+      {
+        "id": "8HC.DU",
+        "name": "Cogia AG",
+        "full_name": "Cogia AG",
+        "industry": "Internet Content & Information",
+        "logo_url": "https://img.logo.dev/ticker/8HC.DU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogia AG provides monitoring and analysis technologies using AI-based and patented semantic solutions in the areas of customer experience and big data analytics. The company is based in Frankfurt, Germany.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGO.TO",
+        "name": "Cogeco Inc.",
+        "full_name": "Cogeco Inc.",
+        "industry": "Telecommunications Services",
+        "logo_url": "https://img.logo.dev/ticker/CGO.TO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogeco Inc., through its subsidiaries, operates in the communications and media sectors in Canada and the United States. The company operates in two segments, Communications and Other. The Communications segment provides a range of Internet, video, and telephony services through its two-way broadband fiber networks primarily to residential customers, as well as to small and medium sized businesses under the Cogeco Connexion name in Quebec and Ontario; and Atlantic Broadband brand in the United States. The Other segment owns and operates 23 radio stations with complementary radio formats and coverage serving a range of audiences primarily across the province of Québec; and Cogeco News, a news agency. It serves primary service units, Internet, video, and telephony service customers. The company was incorporated in 1957 and is headquartered in Montreal, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGECF",
+        "name": "Cogeco Inc.",
+        "full_name": "Cogeco Inc.",
+        "industry": "Telecommunications Services",
+        "logo_url": "https://img.logo.dev/ticker/CGECF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogeco Inc., through its subsidiaries, operates in the communications and media sectors in Canada and the United States. The company operates in two segments, Communications and Other. The Communications segment provides a range of Internet, video, and telephony services through its two-way broadband fiber networks primarily to residential customers, as well as to small and medium sized businesses under the Cogeco Connexion name in Quebec and Ontario; and Atlantic Broadband brand in the United States. The Other segment owns and operates 23 radio stations with complementary radio formats and coverage serving a range of audiences primarily across the province of Québec; and Cogeco News, a news agency. It serves primary service units, Internet, video, and telephony service customers. The company was incorporated in 1957 and is headquartered in Montreal, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ALLEC.PA",
+        "name": "Cogelec S.A.",
+        "full_name": "Cogelec S.A.",
+        "industry": "Communication Equipment",
+        "logo_url": "https://img.logo.dev/ticker/ALLEC.PA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogelec SA engages in the manufacture and sale of wireless intercom systems and access control solutions for residential apartment buildings and single-family dwellings in Europe. It serves collective housing, such as social or private, parking, etc.; individual housing; tertiary sector; and local authorities under the Hexact, Intratone, Kibolt, and Rozoh brands. The company also exports its products. Cogelec SA was incorporated in 2000 and is based in Mortagne-sur-Sèvre, France. Cogelec SA is a subsidiary of SAS S.R.C.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ALCOG.PA",
+        "name": "Cogra 48 S.A.",
+        "full_name": "Cogra 48 S.A.",
+        "industry": "Paper, Lumber & Forest Products",
+        "logo_url": "https://img.logo.dev/ticker/ALCOG.PA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogra 48 Société Anonyme produces and sells wood pellets and stoves. It also provides consulting, project planning, and assistance services in project management; and technical advice, boiler room layout, stoves, project design and dimensioning, power and distribution study, silo design study, and guaranteed supply services. The company distributes its pellets through a network of retailers in France and other European countries. Cogra 48 Société Anonyme was founded in 1982 and is headquartered in Mende, France.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGZF",
+        "name": "Cogstate Limited",
+        "full_name": "Cogstate Limited",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/COGZF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogstate Limited, a neuroscience technology company, provides computerized cognitive tests and electronic clinical outcome assessment solutions. The company's cognitive services include project management, data management, scientific consulting, statistical analysis, scales procurement, rater training, and monitoring solutions. It operates in Clinical Trials and Healthcare segments. The Clinical Trials segment provides technology and associated services that are used to quantify the effect of diseases and drugs, and devices or other interventions on human subjects participating in clinical trials primarily conducted by pharmaceutical and biotechnology companies. The Healthcare segment provides Cognigram, a system for regular and standardized testing to assist primary care physicians and/or hospitals in the early detection of cognitive decline. As of June 30, 2022, it had participated in approximately 1,800 academic research. Cogstate Limited was incorporated in 1999 and is based in Melbourne, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGS.AX",
+        "name": "Cogstate Limited",
+        "full_name": "Cogstate Limited",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/CGS.AX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogstate Limited, a neuroscience technology company, provides computerized cognitive tests and electronic clinical outcome assessment solutions. The company's cognitive services include project management, data management, scientific consulting, statistical analysis, scales procurement, rater training, and monitoring solutions. It operates in Clinical Trials and Healthcare segments. The Clinical Trials segment provides technology and associated services that are used to quantify the effect of diseases and drugs, and devices or other interventions on human subjects participating in clinical trials primarily conducted by pharmaceutical and biotechnology companies. The Healthcare segment provides Cognigram, a system for regular and standardized testing to assist primary care physicians and/or hospitals in the early detection of cognitive decline. As of June 30, 2022, it had participated in approximately 1,800 academic research. Cogstate Limited was incorporated in 1999 and is based in Melbourne, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGNX",
+        "name": "Cognex Corporation",
+        "full_name": "Cognex Corporation",
+        "industry": "Hardware, Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/CGNX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognex Corporation provides machine vision products that capture and analyze visual information in order to automate manufacturing and distribution tasks worldwide. Its machine vision products are used to automate the manufacturing and tracking of discrete items, including mobile phones, aspirin bottles, and automobile tires by locating, identifying, inspecting, and measuring them during the manufacturing or distribution process. The company offers VisionPro software, a suite of patented vision tools for advanced programming; QuickBuild that allows customers to build vision applications with a graphical, flowchart-based programming interface; and Cognex deep learning vision software. It also provides a range of inspection tasks, including part location, identification, measurement, assembly verification, and robotic guidance; vision sensors for vision applications, such as checking the presence and size of parts; and the In-Sight product line of vision systems and sensors. In addition, the company offers DataMan, an image-based barcode readers and barcode verifiers. It sells its products to consumer electronics, automotive, consumer products, food and beverage, pharmaceuticals, and medical devices industries, as well as through a network of distributors and integrators. Cognex Corporation was incorporated in 1981 and is headquartered in Natick, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "0I14.L",
+        "name": "Cognex Corporation",
+        "full_name": "Cognex Corporation",
+        "industry": "Hardware, Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/0I14.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognex Corporation provides machine vision products that capture and analyze visual information in order to automate manufacturing and distribution tasks worldwide. Its machine vision products are used to automate the manufacturing and tracking of discrete items, including mobile phones, aspirin bottles, and automobile tires by locating, identifying, inspecting, and measuring them during the manufacturing or distribution process. The company offers VisionPro software, a suite of patented vision tools for advanced programming; QuickBuild that allows customers to build vision applications with a graphical, flowchart-based programming interface; and Cognex deep learning vision software. It also provides a range of inspection tasks, including part location, identification, measurement, assembly verification, and robotic guidance; vision sensors for vision applications, such as checking the presence and size of parts; and the In-Sight product line of vision systems and sensors. In addition, the company offers DataMan, an image-based barcode readers and barcode verifiers. It sells its products to consumer electronics, automotive, consumer products, food and beverage, pharmaceuticals, and medical devices industries, as well as through a network of distributors and integrators. Cognex Corporation was incorporated in 1981 and is headquartered in Natick, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COG.WA",
+        "name": "Cognor Holding S.A.",
+        "full_name": "Cognor Holding S.A.",
+        "industry": "Steel",
+        "logo_url": "https://img.logo.dev/ticker/COG.WA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognor Holding S.A. engages in the production and distribution of steel products in Poland and internationally. The company offers flat plates and bars, slabs, round and square bars, reinforcing bars, T-profiles, equal and unequal side angles, billets with rounded edger for forgings, metal sheets, carbon and medium-alloy steels, and high-alloy and special steels, as well as products from non-ferrous metals and non-ferrous metal scrap. It also purchases, processes, treats, and sells steel scrap; processes steel scrap into billets, as well as billets into steel products; and provides financial services. The company also exports its products primarily to Germany and other European countries. The company was formerly known as Cognor S A and changed its name to Cognor Holding S.A. in November 2016. Cognor Holding S.A. was founded in 1946 and is based in Poraj, Poland. Cognor Holding S.A. is a subsidiary of PS HoldCo Sp. z o.o.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGNY",
+        "name": "Cogna Educação S.A.",
+        "full_name": "Cogna Educação S.A.",
+        "industry": "Education & Training Services",
+        "logo_url": "https://img.logo.dev/ticker/COGNY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogna Educação S.A. operates as a private educational organization in Brazil and internationally. The company operates through three segments: In-Class Higher Education, Distance Learning Higher Education, and Basic Education. It offers in-class and distance-learning higher education, and undergraduate and graduate courses; publishes, sells, and distributes textbooks, support materials, and workbooks with educational, literary, and informative content and teaching systems; and educational solutions for professional and higher education, and other supplementary activities, such as developing education technology with management and other education services. The company also provides K-12 education, pre-college preparatory, language courses for children and teenagers; management of child, primary, and secondary education activities; technical and preparatory courses for civil service examinations and Brazilian Bar Association; advises on and/or facilitates direct and indirect student loans; and develops software for adaptive teaching and academic management optimization. Its services include primary, secondary, and postsecondary education services with on-campus undergraduate and graduate programs, and distance learning, as well as graduate programs; preparatory courses under the brand LFG; and unregulated programs. The company operates 176 college education units in 24 Brazilian states and 132 Brazilian cities; and 1,510 distance-learning graduation centers in various Brazilian states and in the Federal District, as well as operates 54 own K-12 education schools, 125 Red Balloon units, and approximately 5,600 associated schools in Brazil. Cogna Educação S.A. was founded in 1998 and is headquartered in Belo Horizonte, Brazil.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGN3.SA",
+        "name": "Cogna Educação S.A.",
+        "full_name": "Cogna Educação S.A.",
+        "industry": "Education & Training Services",
+        "logo_url": "https://img.logo.dev/ticker/COGN3.SA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogna Educação S.A. operates as a private educational organization in Brazil and internationally. The company operates through three segments: In-Class Higher Education, Distance Learning Higher Education, and Basic Education. It offers in-class and distance-learning higher education, and undergraduate and graduate courses; publishes, sells, and distributes textbooks, support materials, and workbooks with educational, literary, and informative content and teaching systems; and educational solutions for professional and higher education, and other supplementary activities, such as developing education technology with management and other education services. The company also provides K-12 education, pre-college preparatory, language courses for children and teenagers; management of child, primary, and secondary education activities; technical and preparatory courses for civil service examinations and Brazilian Bar Association; advises on and/or facilitates direct and indirect student loans; and develops software for adaptive teaching and academic management optimization. Its services include primary, secondary, and postsecondary education services with on-campus undergraduate and graduate programs, and distance learning, as well as graduate programs; preparatory courses under the brand LFG; and unregulated programs. The company operates 176 college education units in 24 Brazilian states and 132 Brazilian cities; and 1,510 distance-learning graduation centers in various Brazilian states and in the Federal District, as well as operates 54 own K-12 education schools, 125 Red Balloon units, and approximately 5,600 associated schools in Brazil. Cogna Educação S.A. was founded in 1998 and is headquartered in Belo Horizonte, Brazil.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGNT",
+        "name": "Cognyte Software Ltd.",
+        "full_name": "Cognyte Software Ltd.",
+        "industry": "Software - Infrastructure",
+        "logo_url": "https://img.logo.dev/ticker/CGNT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognyte Software Ltd. provides an investigative analytics software to governments and enterprises worldwide. Its Actionable Intelligence for a Safer World, an open software designed to help governments and enterprises accelerate and enhance the effectiveness of investigations. The company also offers network intelligence analytics, open source and threat intelligence analytics, and operational intelligence analytics solutions. Its solutions are designed to support various use cases and support a range of users, including data analysts, investigation managers, and security operations center operators, as well as operational field teams. In addition, the company provides customer support, professional, and integration services. Its government customers include national, regional, and local government agencies; and enterprise customers consist of commercial and physical security customers. The company was incorporated in 2020 and is headquartered in Herzliya, Israel.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COGT",
+        "name": "Cogent Biosciences, Inc.",
+        "full_name": "Cogent Biosciences, Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/COGT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogent Biosciences, Inc., a biotechnology company, focuses on developing precision therapies for genetically defined diseases. Its lead product candidate includes CGT9486, a selective tyrosine kinase inhibitor designed to inhibit the KIT D816V mutation that drives systemic mastocytosis, as well as other mutations in KIT exon 17, which are found in patients with advanced gastrointestinal stromal tumors. It has a licensing agreement with Plexxikon Inc. for the research, development, and commercialization of bezuclastinib. The company was formerly known as Unum Therapeutics Inc. and changed its name to Cogent Biosciences, Inc. in October 2020. Cogent Biosciences, Inc. was incorporated in 2014 and is headquartered in Cambridge, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGN.JO",
+        "name": "Cognition Holdings Limited",
+        "full_name": "Cognition Holdings Limited",
+        "industry": "Consulting Services",
+        "logo_url": "https://img.logo.dev/ticker/CGN.JO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognition Holdings Limited, together with its subsidiaries, provides active data exchange, and knowledge creation and management services primarily in South Africa. The company's active data exchange services include short message, interactive voice response, Vmail one-on-one marketing, mobi, fulfillment, call center, bespoke, and unstructured supplementary data, as well as advertising, promotion, direct marketing, and CRM services; and conference call, IM, email, airtime sales, fax2email, email2fax, corporate fax, and auto receptionist services. It also provides Knowledge 350°, a 15 step business process, which creates an integrated and logical process that assists companies to build databases and to move from segmenting customers to single customer profiles with detailed demographics and psychographics. In addition, the company offers MyPoint that enables panellists to complete surveys and rewards them with points, prizes, and benefits; Community Builds, an interactive relationship-building program; qualitative and quantitative market research services; and omnibus/syndicated studies. Further, it provides web development services, as well as associated search engine optimization input services; SecurDox, a document exchange service; and annual quantifications, reports tracking, in-store, in-store observation, and liquor in-store pricing, as well as print ad tracking, and commissioned and consumer research services. The company was formerly known as FoneWorx Holdings Limited and changed its name to Cognition Holdings Limited in January 2015. Cognition Holdings Limited is headquartered in Randburg, South Africa.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGEAF",
+        "name": "Cogeco Communications Inc.",
+        "full_name": "Cogeco Communications Inc.",
+        "industry": "Telecommunications Services",
+        "logo_url": "https://img.logo.dev/ticker/CGEAF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogeco Communications Inc. operates as a communications corporation in North America. It operates in two segments, Canadian Broadband Services and American Broadband Services. The company offers Internet, video, and telephony services to residential and business customers through its two-way broadband fiber networks. It provides Internet services using modems, Wi-Fi gateways, and extenders either on a rental basis or as part of the Internet service package; video services on a subscription basis; home phone services using Internet protocol (IP); local and long-distance calling services; broadband Internet services; and IP based telephony services and other network connectivity services delivered over fiber optic connection to larger businesses. The company serves the primary service units, Internet, video, and telephony service customers. It offers cable operator services under the Cogeco Connexion name in Québec and Ontario, and in the United States under the Atlantic Broadband brand. The company was formerly known as Cogeco Cable Inc. and changed its name to Cogeco Communications Inc. in January 2016. Cogeco Communications Inc. was founded in 1972 and is headquartered in Montreal, Canada. Cogeco Communications Inc. operates as a subsidiary of Cogeco Inc.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CCA.TO",
+        "name": "Cogeco Communications Inc.",
+        "full_name": "Cogeco Communications Inc.",
+        "industry": "Telecommunications Services",
+        "logo_url": "https://img.logo.dev/ticker/CCA.TO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogeco Communications Inc. operates as a communications corporation in North America. It operates in two segments, Canadian Broadband Services and American Broadband Services. The company offers Internet, video, and telephony services to residential and business customers through its two-way broadband fiber networks. It provides Internet services using modems, Wi-Fi gateways, and extenders either on a rental basis or as part of the Internet service package; video services on a subscription basis; home phone services using Internet protocol (IP); local and long-distance calling services; broadband Internet services; and IP based telephony services and other network connectivity services delivered over fiber optic connection to larger businesses. The company serves the primary service units, Internet, video, and telephony service customers. It offers cable operator services under the Cogeco Connexion name in Québec and Ontario, and in the United States under the Atlantic Broadband brand. The company was formerly known as Cogeco Cable Inc. and changed its name to Cogeco Communications Inc. in January 2016. Cogeco Communications Inc. was founded in 1972 and is headquartered in Montreal, Canada. Cogeco Communications Inc. operates as a subsidiary of Cogeco Inc.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGTX",
+        "name": "Cognition Therapeutics, Inc.",
+        "full_name": "Cognition Therapeutics, Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/CGTX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognition Therapeutics, Inc., a clinical-stage biopharmaceutical company, engages in the discovery and development of small molecule therapeutics targeting age-related degenerative diseases and disorders of the central nervous system and retina. Its lead product candidate is CT1812, a sigma-2 receptor antagonist, which is in Phase II clinical trial for the treatment of mild-to-moderate Alzheimer's disease, as well as has completed Phase I clinical trial to treat early-stage Alzheimer's disease; in Phase II clinical trial for the treatment of dementia with Lewy bodies (DLB); and in preclinical trial to treat dry age-related macular degeneration (AMD). The company is also developing CT2168 for the treatment of synucleinopathies, which include DLB and Parkinson's disease; and CT2074 to treat dry AMD. Cognition Therapeutics, Inc. was incorporated in 2007 and is headquartered in Purchase, New York.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COG.AX",
+        "name": "COG Financial Services Limited",
+        "full_name": "COG Financial Services Limited",
+        "industry": "Financial - Capital Markets",
+        "logo_url": "https://img.logo.dev/ticker/COG.AX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "COG Financial Services Limited, together with its subsidiaries, engages in equipment financing and broking, aggregation, insurance broking, and novated leasing activities in Australia. The company operates through three segments: Finance Broking and Aggregation; Funds Management and Lending; and All Other/Intersegment. It also provides management of investment funds; provides financing arrangements to commercial customers for essential business assets; and managed IT services. The company was formerly known as Consolidated Operations Group Limited and changed its name to COG Financial Services Limited in November 2020. COG Financial Services Limited was incorporated in 2002 and is based in Chatswood, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGNSF",
+        "name": "Cognetivity Neurosciences Ltd.",
+        "full_name": "Cognetivity Neurosciences Ltd.",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/CGNSF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognetivity Neurosciences Ltd. operates as a healthcare company. It develops an integrated cognitive assessment, a cognitive testing platform for use in medical, commercial, and consumer environments that helps to detect the earliest signs of impairment by testing the performance of large areas of the brain to support the diagnosis of dementia; and offers OptiMind, a wellness app. The company was formerly known as Utor Capital Corp. and changed its name to Cognetivity Neurosciences Ltd. in December 2017. Cognetivity Neurosciences Ltd. was incorporated in 2015 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CGN.CN",
+        "name": "Cognetivity Neurosciences Ltd.",
+        "full_name": "Cognetivity Neurosciences Ltd.",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/CGN.CN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognetivity Neurosciences Ltd. operates as a healthcare company. It develops an integrated cognitive assessment, a cognitive testing platform for use in medical, commercial, and consumer environments that helps to detect the earliest signs of impairment by testing the performance of large areas of the brain to support the diagnosis of dementia; and offers OptiMind, a wellness app. The company was formerly known as Utor Capital Corp. and changed its name to Cognetivity Neurosciences Ltd. in December 2017. Cognetivity Neurosciences Ltd. was incorporated in 2015 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CCOI",
+        "name": "Cogent Communications Holdings, Inc.",
+        "full_name": "Cogent Communications Holdings, Inc.",
+        "industry": "Telecommunications Services",
+        "logo_url": "https://img.logo.dev/ticker/CCOI?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cogent Communications Holdings, Inc., through its subsidiaries, provides high-speed Internet access, private network, and data center colocation space services in North America, Europe, Asia, South America, Australia, and Africa. The company offers on-net Internet access and private network services to law firms, financial services firms, and advertising and marketing firms, as well as heath care providers, educational institutions and other professional services businesses, other Internet service providers, telephone companies, cable television companies, Web hosting companies, media service providers, mobile phone operators, content delivery network companies, and commercial content and application service providers. It also provides Internet access and private network services to customers that are not located in buildings directly connected to its network; and on-net services to customers located in buildings that are physically connected to its network. In addition, the company offers off-net services to corporate customers using other carriers' circuits to provide the last mile portion of the link from the customers' premises to the network. Further, it operates data centers that allow its customers to collocate their equipment and access the network. The company operates 54 data centers and provides facilities to 3,035 buildings and on-net services to 1,817 to multi-tenant office buildings. It serves primarily to small and medium-sized businesses, communications service providers, and other bandwidth-intensive organizations. Cogent Communications Holdings, Inc. was founded in 1999 and is headquartered in Washington, the District of Columbia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "CTSH",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Information Technology Services",
+        "logo_url": "https://img.logo.dev/ticker/CTSH?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COZ.DE",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Information Technology Services",
+        "logo_url": "https://img.logo.dev/ticker/COZ.DE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "0QZ5.L",
+        "name": "Cognizant Technology Solutions Corporation",
+        "full_name": "Cognizant Technology Solutions Corporation",
+        "industry": "Software - Services",
+        "logo_url": "https://img.logo.dev/ticker/0QZ5.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Healthcare; Products and Resources; and Communications, Media and Technology. The company offers customer experience enhancement, robotic process automation, analytics, and AI services in areas, such as digital lending, fraud detection, and next generation payments; the shift towards consumerism, outcome-based contracting, digital health, delivering integrated seamless, omni-channel, and patient-centered experience; and services that drive operational improvements in areas, such as clinical development, pharmacovigilance, and manufacturing, as well as claims processing, enrollment, membership, and billing to healthcare providers and payers, and life sciences companies, including pharmaceutical, biotech, and medical device companies. It also provides solution to manufacturers, retailers and travel and hospitality companies, as well as companies providing logistics, energy and utility services; and digital content, the creation of personalized user experience, and acceleration of digital engineering services to information, media and entertainment, and communications and technology companies. The company was founded in 1994 and is headquartered in Teaneck, New Jersey.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "FMK.MU",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Other Precious Metals",
+        "logo_url": "https://img.logo.dev/ticker/FMK.MU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Ltd. engages in the business of building a vertically integrated battery anode materials business to produce high purity graphite products for the lithium-ion battery and advanced manufacturing markets. It operates under the Australia and Tanzania geographical segments. The company was founded on December 22, 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "FMK.HM",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Other Precious Metals",
+        "logo_url": "https://img.logo.dev/ticker/FMK.HM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Ltd. engages in the business of building a vertically integrated battery anode materials business to produce high purity graphite products for the lithium-ion battery and advanced manufacturing markets. It operates under the Australia and Tanzania geographical segments. The company was founded on December 22, 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "FMK.DU",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Other Precious Metals",
+        "logo_url": "https://img.logo.dev/ticker/FMK.DU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Ltd. engages in the business of building a vertically integrated battery anode materials business to produce high purity graphite products for the lithium-ion battery and advanced manufacturing markets. It operates under the Australia and Tanzania geographical segments. The company was founded on December 22, 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "FMK.BE",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Other Precious Metals",
+        "logo_url": "https://img.logo.dev/ticker/FMK.BE?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Ltd. engages in the business of building a vertically integrated battery anode materials business to produce high purity graphite products for the lithium-ion battery and advanced manufacturing markets. It operates under the Australia and Tanzania geographical segments. The company was founded on December 22, 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "EGR.AX",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Industrial Materials",
+        "logo_url": "https://img.logo.dev/ticker/EGR.AX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Limited engages in building a diversified battery anode material business that produces graphite products for the clean energy and lithium-ion battery markets in Asia, Europe, and North America. It develops HFfree purification technology, which produces battery anode material to support electric vehicle, battery, and anode manufacturers. The company also provides EcoGraf purification process that enables battery supply chain customers to reduce their CO2 emissions and lower battery costs. In addition, it is involved in the developing of TanzGraphite natural flake graphite business through its Epanko Graphite Project in Tanzania, which offers flake graphite products for industrial applications. The company was formerly known as Kibaran Resources Limited and changed its name to EcoGraf Limited in December 2019. EcoGraf Limited was incorporated in 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ECGFF",
+        "name": "Ecograf Ltd",
+        "full_name": "Ecograf Ltd",
+        "industry": "Industrial Materials",
+        "logo_url": "https://img.logo.dev/ticker/ECGFF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Limited engages in building a diversified battery anode material business that produces graphite products for the clean energy and lithium-ion battery markets in Asia, Europe, and North America. It develops HFfree purification technology, which produces battery anode material to support electric vehicle, battery, and anode manufacturers. The company also provides EcoGraf purification process that enables battery supply chain customers to reduce their CO2 emissions and lower battery costs. In addition, it is involved in the developing of TanzGraphite natural flake graphite business through its Epanko Graphite Project in Tanzania, which offers flake graphite products for industrial applications. The company was formerly known as Kibaran Resources Limited and changed its name to EcoGraf Limited in December 2019. EcoGraf Limited was incorporated in 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "FMK.F",
+        "name": "EcoGraf Limited",
+        "full_name": "EcoGraf Limited",
+        "industry": "Other Precious Metals",
+        "logo_url": "https://img.logo.dev/ticker/FMK.F?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGraf Limited engages in the exploration and production of graphite products for the lithium-ion battery and advanced manufacturing markets in Tanzania and Australia. Its flagship property is 84% interest in the Epanko Graphite projects located in Tanzania. It is also involved in the recycle and manufacture battery anode materials offered to electric vehicle, battery, and anode manufacturers. The company was formerly known as Kibaran Resources Limited and changed its name to EcoGraf Limited in December 2019. EcoGraf Limited was incorporated in 2005 and is headquartered in West Perth, Australia.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ECOCF",
+        "name": "EcoGreen International Group Ltd",
+        "full_name": "EcoGreen International Group Ltd",
+        "industry": "",
+        "logo_url": "https://img.logo.dev/ticker/ECOCF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": null,
+        "confidence_score": 0.9
+      },
+      {
+        "id": "2341.HK",
+        "name": "EcoGreen International Group Limited",
+        "full_name": "EcoGreen International Group Limited",
+        "industry": "Chemicals",
+        "logo_url": "https://img.logo.dev/ticker/2341.HK?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "EcoGreen International Group Limited, an investment holding company, produces and trades in fine chemicals from natural resources for use in aroma chemicals and pharmaceutical products. It operates through Scent and Taste, Naturals, and Specialties and Others segments. The company offers components of flavors and fragrances in food and beverage, tobacco, pharmaceuticals, and hygienic products. It also provides natural extracts, such as botanic essential oils and herbal extracts for flavor and fragrance, and pharmaceutical industries; components for Chinese medicine and functional food products; and natural food ingredients for the food industry. In addition, the company manufactures and sells chiral fine chemicals, pharmaceutical intermediates, and agrochemicals for pharmacies and farm chemical industries; and food additives and seasonings, as well as sells forestry products. It operates in Mainland China, Europe, rest of Asia, North America, and internationally. The company was formerly known as EcoGreen Fine Chemicals Group Limited and changed its name to EcoGreen International Group Limited in February 2015. EcoGreen International Group Limited was founded in 1994 and is headquartered in Wanchai, Hong Kong.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "TGEN",
+        "name": "Tecogen Inc.",
+        "full_name": "Tecogen Inc.",
+        "industry": "Electrical Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/TGEN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Tecogen Inc. designs, manufactures, markets, and maintains industrial and commercial cogeneration systems for residential, commercial, recreational, and industrial use in the United States and internationally. It operates through three segments: Products, Services, and Energy Production. The company offers InVerde e+ and TecoPower, a cogeneration product that supplies electricity and hot water; TECOCHILL air-conditioning and refrigeration chillers; Tecofrost gas engine-driven refrigeration compressors; and water heaters under the Ilios brand name, as well as emissions control technology under the Ultera brand name. It also provides long-term maintenance contracts, parts sales, and turnkey installation services through a network of eleven field service centers in California, the Midwest, the Northeast, and the Southeast, as well as in Ontario, Canada. In addition, the company installs, owns, operates, and maintains distributed generation of electricity, energy, and other complementary systems. It serves hospitals and nursing homes, colleges, universities, health clubs, spas, hotels, motels, office and retail buildings, food and beverage processors, multi-unit residential buildings, laundries, ice rinks, swimming pools, factories, municipal buildings, military installations, and indoor growing facilities. The company was incorporated in 2000 and is headquartered in Waltham, Massachusetts.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ALBI.PA",
+        "name": "Gascogne S.A.",
+        "full_name": "Gascogne S.A.",
+        "industry": "Packaging & Containers",
+        "logo_url": "https://img.logo.dev/ticker/ALBI.PA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Gascogne SA engages in the production and sale of wood, paper, industrial and consumer sacks, and laminates in France and internationally. It operates through Wood and Packaging divisions. The company offers decorative wood, wood frame walls, and wood siding products; and machine glazed natural kraft papers, natural sack kraft papers, and technical coated papers for packaging and industrial uses. It also provides paper, plastic, and hybrid sacks used for packing human and animal feed, construction materials, pet food, chemicals seeds, and mineral products; and multilayer laminates, release liners, gummed products, and printed materials used for packing insulation and construction, envelopes and secure parcels, health and medical, composite materials, adhesives and bands, and flexible packaging products. The company was formerly known as Groupe Gascogne SA and changed its name to Gascogne SA in 2006. The company was founded in 1925 and is headquartered in Mimizan, France.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "092040.KQ",
+        "name": "Amicogen, Inc.",
+        "full_name": "Amicogen, Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/092040.KQ?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Amicogen, Inc. operates as an industrial biotechnology company in South Korea and internationally. The company offers specialty enzymes, including CX, SP, etc. for pharmaceutical, food, chemical, and energy industries. It also provides new bio-ingredients, such as N-acetylglucosamine for skin moisturizing and joint health; pinitol/D-chiro-inositol; collagen peptide and collagen tripeptide for skin and health; chitoslim and chitosan oligosaccharides; and lactic acid bacteria, as well as fucoxanthin, curezyme, food enzyme, and bamboo salt. In addition, the company offers K-nutra, a healthcare brand; and KeyClean, a disinfectant brand. Further, it provides protein purification resins. The company was founded in 2000 and is headquartered in Jinju-si, South Korea.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "VBOCW",
+        "name": "Viscogliosi Brothers Acquisition Corp.",
+        "full_name": "Viscogliosi Brothers Acquisition Corp.",
+        "industry": "Shell Companies",
+        "logo_url": "https://img.logo.dev/ticker/VBOCW?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Viscogliosi Brothers Acquisition Corp. focuses on effecting a merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization, or other similar business combination with one or more businesses or entities. It intends to focus on businesses in the neuro-musculoskeletal industry primarily in North America and Europe. The company was incorporated in 2020 and is based in New York, New York.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "VBOCU",
+        "name": "Viscogliosi Brothers Acquisition Corp.",
+        "full_name": "Viscogliosi Brothers Acquisition Corp.",
+        "industry": "Shell Companies",
+        "logo_url": "https://img.logo.dev/ticker/VBOCU?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Viscogliosi Brothers Acquisition Corp. does not have significant operations. It intends to effect a merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization, or other similar business combination with one or more businesses or entities in the neuro-musculoskeletal industry primarily in North America and Europe. The company was incorporated in 2020 and is based in New York, New York.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "VBOC",
+        "name": "Viscogliosi Brothers Acquisition Corp.",
+        "full_name": "Viscogliosi Brothers Acquisition Corp.",
+        "industry": "Shell Companies",
+        "logo_url": "https://img.logo.dev/ticker/VBOC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Viscogliosi Brothers Acquisition Corp. does not have significant operations. It intends to effect a merger, share exchange, asset acquisition, stock purchase, recapitalization, reorganization, or other similar business combination with one or more businesses or entities in the neuro-musculoskeletal industry primarily in North America and Europe. The company was incorporated in 2020 and is based in New York, New York.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "SCG.BK",
+        "name": "Sahacogen (Chonburi) Public Company Limited",
+        "full_name": "Sahacogen (Chonburi) Public Company Limited",
+        "industry": "Regulated Electric",
+        "logo_url": "https://img.logo.dev/ticker/SCG.BK?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Sahacogen (Chonburi) Public Company Limited produces and distributes electricity and steam in Thailand. It operates a cogeneration power plant with a capacity to produce approximately 215 megawatts of electricity and 96 tons of steam per hour. The company was incorporated in 1996 and is headquartered in Chonburi, Thailand.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ACOGF",
+        "name": "Alpha Cognition Inc.",
+        "full_name": "Alpha Cognition Inc.",
+        "industry": "Biotechnology",
+        "logo_url": "https://img.logo.dev/ticker/ACOGF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Alpha Cognition Inc., a clinical stage biopharmaceutical company, focuses on developing treatments for Alzheimer's disease and amyotrophic lateral sclerosis (ALS). It develops ALPHA-1062, an acetylcholine esterase inhibitor for the treatment of dementia of the Alzheimer's type and mild traumatic brain injury; and ALPHA-0602, a gene therapy for the treatment of ALS. The company was formerly known as Crystal Bridge Enterprises Inc. and changed its name to Alpha Cognition Inc. in March 2021. Alpha Cognition Inc. was founded in 2000 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "ACOG",
+        "name": "Alpha Cognition Inc. Common Stock",
+        "full_name": "Alpha Cognition Inc. Common Stock",
+        "industry": "Financial - Conglomerates",
+        "logo_url": "https://img.logo.dev/ticker/ACOG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Alpha Cognition Inc., a clinical stage biopharmaceutical company, engages in the development of treatments for Alzheimer's disease and amyotrophic lateral sclerosis (ALS). The company offers ZUNVEYL (benzgalantamine) for the treatment of mild-to-moderate Alzheimer's disease and mild traumatic brain injury. It also develops ALPHA-0602, a gene therapy for the treatment of ALS; and ALPHA-0702 and ALPHA-0802, a granulin epithelin motifs for the treatment of neurodegenerative diseases. The company was formerly known as Crystal Bridge Enterprises Inc. and changed its name to Alpha Cognition Inc. in March 2021. Alpha Cognition Inc. was founded in 2000 and is headquartered in Vancouver, Canada.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "8926.TW",
+        "name": "Taiwan Cogeneration Corporation",
+        "full_name": "Taiwan Cogeneration Corporation",
+        "industry": "Engineering & Construction",
+        "logo_url": "https://img.logo.dev/ticker/8926.TW?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Taiwan Cogeneration Corporation, together with its subsidiaries, operates and manages cogeneration plants in Taiwan. The company invests in independent power plants (IPPs), cogeneration plants, and renewable energy power plants utilizing solar, wind, geothermal, and biomass energy. It also offers engineering planning, design, procurement, project development, installation, construction, financing, commissioning, operation, maintenance, and management for IPPs, cogeneration plants, and transmission projects. In addition, the company provides technical support and consulting services for power project investment, project development, construction execution, and power plant operation and maintenance, as well as ancillary services. Further, it engages in electricity retailing activities. Taiwan Cogeneration Corporation was founded in 1992 and is headquartered in Taipei, Taiwan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "8931.TWO",
+        "name": "Ta-Yuan Cogeneration Company Ltd.",
+        "full_name": "Ta-Yuan Cogeneration Company Ltd.",
+        "industry": "Regulated Electric",
+        "logo_url": "https://img.logo.dev/ticker/8931.TWO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Ta-Yuan Cogeneration Company Ltd. engages in the cogeneration business in Taiwan. It also engages in operating and repairing equipment, processing waste disposal, managing incinerators, and processing refuse derived fuel. The company was incorporated in 1993 and is based in Taoyuan City, Taiwan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "605011.SS",
+        "name": "Hangzhou Cogeneration Group Co., Ltd.",
+        "full_name": "Hangzhou Cogeneration Group Co., Ltd.",
+        "industry": "Renewable Utilities",
+        "logo_url": "https://img.logo.dev/ticker/605011.SS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Hangzhou Cogeneration Group Co., Ltd. engages in the operation of coal-fired power plants in China. The company was founded in 1997 and is based in Hangzhou, China.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "COG.L",
+        "name": "Cambridge Cognition Holdings Plc",
+        "full_name": "Cambridge Cognition Holdings Plc",
+        "industry": "Medical - Healthcare Information Services",
+        "logo_url": "https://img.logo.dev/ticker/COG.L?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Cambridge Cognition Holdings Plc, a neuroscience technology company, develops and markets near-patient cognitive testing techniques in the United States, United Kingdom, the European Union, and internationally. The company offers CANTAB Recruit, an online trial recruitment platform for pharmaceutical and biotechnology companies to identify qualified clinical trial participants in high-need indications, such as Alzheimer's disease; CANTAB Connect that provides digital cognitive assessment solutions for pharmaceutical clinical trials in various therapeutic areas from Phases IIV; and Cognition Kit, a digital health platform, which delivers wearable and smartphone apps for data collection to provide engaging digital health solutions for the enhancement of patient engagement, demonstration of treatment efficacy, and understanding of a disease and a patient's response to medication. It also provides CANTAB Connect Research, a research software that offers sensitive digital measures of cognitive function for various areas of brain research; CANTAB Mobile, a touchscreen memory test used in clinical research of Alzheimer's disease; CANTAB BrainHealth, an online digital health assessment tool to measure and monitor mental wellbeing and cognitive performance in the workplace; CANTAB Insight, a medical device that helps to determine an individual's cognitive health; and NeuroVocalix for an automated administration and scoring of well-validated verbal cognitive assessments?on a secure platform. In addition, the company offers a range of expert consultancy and operational management services to optimize clinical trials and cognitive research, which include neuroscience and technical consultancy, study design, data analysis, study and data management, and reports and interpretation. Cambridge Cognition Holdings Plc was incorporated in 2012 and is based in Cambridge, the United Kingdom.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "AVOI",
+        "name": "Advanced Voice Recognition Systems, Inc.",
+        "full_name": "Advanced Voice Recognition Systems, Inc.",
+        "industry": "Software - Application",
+        "logo_url": "https://img.logo.dev/ticker/AVOI?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Advanced Voice Recognition Systems, Inc., a software development company, specializes in creating interface and application solutions for speech recognition technologies in the United States. Its principal proposed product or service includes speech recognition software and related firmware, which allows for dictation into a range of applications comprising DOS applications running in Windows; UNIX and mainframe applications accessed through terminal emulation programs; various custom applications; and Windows 3.x, 95, 98, 2000, XP, Vista, Windows 7, and Windows 10 programs. The company also focuses on offering AVRS Enterprise solutions that are applicable to various primary stream speech enabled applications, such as traditional desktop applications, as well as mobile and web-based, and cloud solutions. It focuses on serving corporations, hospitals, medical product and service providers, governmental entities, legal professionals, sales and service organizations, law enforcement agencies, and mobile search and voicemail to text markets that require individuals and organizations to create reports, letters, email, data entry, manuals, books, and other documents or end products involving written data. The company was founded in 1994 and is headquartered in Scottsdale, Arizona.",
+        "confidence_score": 0.9
+      }
+    ],
+    "total_results": 48,
+    "cached_at": "2025-08-01T20:02:33.665069",
+    "expires_at": null
   }
 ]

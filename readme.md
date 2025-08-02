@@ -181,3 +181,120 @@ GET "http://localhost:8002/api/v1/collect/{job_id}/data"
 - Comprehensive logging
 - Rate limiting per data source
 - Asynchronous job processing
+
+## 🔄 Next Integration Steps - Data Collection Service
+
+### Current Status
+✅ **Brand Service Integration**: Complete - Brand selection, area selection, and competitor discovery fully functional  
+🚧 **Data Collection Service Integration**: Next - Connect Flutter app to data collection and analysis workflow  
+
+### Integration Flow Overview
+The next integration follows this workflow:
+1. **User Action**: Click "LAUNCH ANALYSIS" button after selecting brand, area, and competitor
+2. **POST Request**: Frontend calls `POST /api/v1/collect` with request data
+3. **Polling Loop**: Frontend polls `GET /api/v1/shared-data/{request_id}` until analysis completes
+4. **Data Retrieval**: Frontend fetches analysis results and displays real data
+5. **Report Generation**: Frontend enables report download functionality
+
+### Required API Integration
+
+#### 1. Start Data Collection
+```bash
+POST http://localhost:8002/api/v1/collect
+Content-Type: application/json
+
+{
+  "request_id": "generated-uuid-v4",
+  "brand_id": "Google", 
+  "competitor_id": "Apple",
+  "area_id": "Best place to work",
+  "sources": ["news", "social_media", "glassdoor", "website"]  // Optional
+}
+```
+
+#### 2. Poll Job Status (Every 5-10 seconds)
+```bash
+GET http://localhost:8002/api/v1/shared-data/{request_id}
+
+Response Structure:
+{
+  "success": true,
+  "data": {
+    "requestId": "uuid",
+    "brandId": "Google",
+    "dataCollectionId": "job_uuid", 
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_uuid",
+    "analysisEngineStatus": "COMPLETED",  // Poll until this is "COMPLETED"
+    "lastUpdated": "2025-08-02T..."
+  },
+  "timestamp": "2025-08-02T..."
+}
+```
+
+#### 3. Get Analysis Results (When analysisEngineStatus = "COMPLETED")
+```bash
+GET http://localhost:8003/api/v1/analyze/{analysisEngineId}/status
+
+Response: Full analysis results for Analysis, Insights, Roadmap tabs
+```
+
+#### 4. Generate Reports (For Report tab)
+```bash
+GET http://localhost:8003/api/v1/analyze/{analysisEngineId}/report?reportType=executive_summary
+GET http://localhost:8003/api/v1/analyze/{analysisEngineId}/report?reportType=detailed_report
+```
+
+### Flutter Implementation Requirements
+
+#### 1. UUID Generation
+```dart
+import 'package:uuid/uuid.dart';
+
+final uuid = Uuid();
+final requestId = uuid.v4();
+```
+
+#### 2. Data Collection Service Class
+Create `lib/services/data_collection_service.dart`:
+- Method to start data collection job
+- Polling mechanism with exponential backoff
+- Error handling with 5-minute timeout
+- Status tracking and progress updates
+
+#### 3. Integration Points
+- **Analysis Tab**: Replace dummy charts with real API data
+- **Insights Tab**: Display AI-generated insights from analysis results  
+- **Roadmap Tab**: Show actionable recommendations from analysis
+- **Report Tab**: Enable real PDF report downloads
+- **Error Handling**: Fallback to dummy data if APIs fail (like brand service)
+
+#### 4. UI/UX Updates
+- Single loader during entire process (data collection + analysis)
+- Progress indicator showing current stage
+- Success/error states with appropriate messaging
+- Timeout handling with user-friendly error messages
+
+### Error Handling Strategy
+- **5-minute timeout**: If polling exceeds timeout, show error with option to use dummy data
+- **API failures**: Graceful degradation to existing dummy data with notification
+- **Network issues**: Retry mechanism with exponential backoff
+- **Service unavailable**: Clear error messages with retry options
+
+### Testing Strategy
+1. **Service Health**: Verify all backend services running on ports 8001, 8002, 8003
+2. **End-to-End Flow**: Test complete workflow with real API calls
+3. **Error Scenarios**: Test timeout, service failures, network issues
+4. **Fallback Behavior**: Verify dummy data fallback works correctly
+
+### Development Sequence
+1. Create data collection service class in Flutter
+2. Implement UUID generation and API calls
+3. Add polling mechanism with status updates
+4. Update Analysis tab with real data integration
+5. Update Insights tab with AI-generated content
+6. Update Roadmap tab with recommendations
+7. Implement Report tab with PDF downloads
+8. Add comprehensive error handling and fallbacks
+9. Test end-to-end integration
+10. Polish UI/UX and loading states

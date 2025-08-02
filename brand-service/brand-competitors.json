@@ -1762,5 +1762,201 @@
         "symbol": "QCOM"
       }
     ]
+  },
+  {
+    "brand_id": "APC.F",
+    "area_id": "market_position",
+    "cached_at": "2025-08-01T19:46:38.733464",
+    "success": true,
+    "data": [
+      {
+        "id": "RDS.A",
+        "name": "Royal Dutch Shell",
+        "logo_url": "https://img.logo.dev/ticker/RDS.A?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "RDS.A"
+      },
+      {
+        "id": "XOM",
+        "name": "Exxon Mobil",
+        "logo_url": "https://img.logo.dev/ticker/XOM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.94,
+        "competition_level": "direct",
+        "symbol": "XOM"
+      },
+      {
+        "id": "CVX",
+        "name": "Chevron",
+        "logo_url": "https://img.logo.dev/ticker/CVX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "CVX"
+      },
+      {
+        "id": "BP",
+        "name": "BP",
+        "logo_url": "https://img.logo.dev/ticker/BP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "BP"
+      },
+      {
+        "id": "COP",
+        "name": "ConocoPhillips",
+        "logo_url": "https://img.logo.dev/ticker/COP?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "COP"
+      },
+      {
+        "id": "EOG",
+        "name": "EOG Resources",
+        "logo_url": "https://img.logo.dev/ticker/EOG?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "EOG"
+      },
+      {
+        "id": "OXY",
+        "name": "Occidental Petroleum",
+        "logo_url": "https://img.logo.dev/ticker/OXY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "OXY"
+      },
+      {
+        "id": "MRO",
+        "name": "Marathon Oil",
+        "logo_url": "https://img.logo.dev/ticker/MRO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "MRO"
+      },
+      {
+        "id": "HES",
+        "name": "Hess",
+        "logo_url": "https://img.logo.dev/ticker/HES?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "HES"
+      },
+      {
+        "id": "PSX",
+        "name": "Phillips 66",
+        "logo_url": "https://img.logo.dev/ticker/PSX?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Energy",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "PSX"
+      }
+    ]
+  },
+  {
+    "brand_id": "CTSH",
+    "area_id": "employee_experience",
+    "cached_at": "2025-08-01T20:02:59.946922",
+    "success": true,
+    "data": [
+      {
+        "id": "ACN",
+        "name": "Accenture",
+        "logo_url": "https://img.logo.dev/ticker/ACN?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "ACN"
+      },
+      {
+        "id": "INFY",
+        "name": "Infosys",
+        "logo_url": "https://img.logo.dev/ticker/INFY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.89,
+        "competition_level": "direct",
+        "symbol": "INFY"
+      },
+      {
+        "id": "IBM",
+        "name": "International Business Machines",
+        "logo_url": "https://img.logo.dev/ticker/IBM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.85,
+        "competition_level": "direct",
+        "symbol": "IBM"
+      },
+      {
+        "id": "WIT",
+        "name": "Wipro",
+        "logo_url": "https://img.logo.dev/ticker/WIT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.83,
+        "competition_level": "direct",
+        "symbol": "WIT"
+      },
+      {
+        "id": "HCLT",
+        "name": "HCL Technologies",
+        "logo_url": "https://img.logo.dev/ticker/HCLT?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.81,
+        "competition_level": "direct",
+        "symbol": "HCLT"
+      },
+      {
+        "id": "TCS",
+        "name": "Tata Consultancy Services",
+        "logo_url": "https://img.logo.dev/ticker/TCS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.79,
+        "competition_level": "direct",
+        "symbol": "TCS"
+      },
+      {
+        "id": "EPAM",
+        "name": "EPAM Systems",
+        "logo_url": "https://img.logo.dev/ticker/EPAM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.75,
+        "competition_level": "indirect",
+        "symbol": "EPAM"
+      },
+      {
+        "id": "GLOB",
+        "name": "Globant",
+        "logo_url": "https://img.logo.dev/ticker/GLOB?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.72,
+        "competition_level": "indirect",
+        "symbol": "GLOB"
+      },
+      {
+        "id": "DXC",
+        "name": "DXC Technology",
+        "logo_url": "https://img.logo.dev/ticker/DXC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.69,
+        "competition_level": "indirect",
+        "symbol": "DXC"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services",
+        "logo_url": "https://img.logo.dev/ticker/FIS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "IT Consulting",
+        "relevance_score": 0.65,
+        "competition_level": "indirect",
+        "symbol": "FIS"
+      }
+    ]
   }
 ]
