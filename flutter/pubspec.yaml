@@ -59,6 +59,9 @@ dependencies:
   
   # Enhanced Animations
   shimmer: ^3.0.0
+  
+  # URL Launcher for cross-platform downloads
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
