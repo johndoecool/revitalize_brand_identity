@@ -1402,5 +1402,122 @@
         ]
       }
     ]
+  },
+  {
+    "brand_id": "DOOO",
+    "cached_at": "2025-08-02T00:28:09.352383",
+    "success": true,
+    "data": [
+      {
+        "id": "revenue_growth",
+        "name": "Revenue Growth",
+        "description": "Year-over-year revenue increase",
+        "relevance_score": 0.95,
+        "metrics": [
+          "annual_revenue",
+          "quarterly_revenue",
+          "growth_rate"
+        ]
+      },
+      {
+        "id": "market_share",
+        "name": "Market Share",
+        "description": "Percentage of market controlled by the company",
+        "relevance_score": 0.92,
+        "metrics": [
+          "market_size",
+          "competitor_analysis",
+          "customer_base"
+        ]
+      },
+      {
+        "id": "employee_engagement",
+        "name": "Employee Engagement",
+        "description": "Level of employee involvement and motivation",
+        "relevance_score": 0.88,
+        "metrics": [
+          "employee_satisfaction",
+          "retention_rate",
+          "training_opportunities"
+        ]
+      },
+      {
+        "id": "public_sentiment",
+        "name": "Public Sentiment",
+        "description": "Overall opinion of the company by the general public",
+        "relevance_score": 0.85,
+        "metrics": [
+          "social_media_analysis",
+          "customer_reviews",
+          "media_coverage"
+        ]
+      },
+      {
+        "id": "product_innovation",
+        "name": "Product Innovation",
+        "description": "Ability to develop and launch new products",
+        "relevance_score": 0.82,
+        "metrics": [
+          "research_and_development",
+          "patent_filings",
+          "product_launches"
+        ]
+      },
+      {
+        "id": "customer_satisfaction",
+        "name": "Customer Satisfaction",
+        "description": "Level of satisfaction among customers",
+        "relevance_score": 0.79,
+        "metrics": [
+          "customer_surveys",
+          "net_promoter_score",
+          "complaint_resolution"
+        ]
+      },
+      {
+        "id": "operational_efficiency",
+        "name": "Operational Efficiency",
+        "description": "Ability to manage resources and minimize waste",
+        "relevance_score": 0.76,
+        "metrics": [
+          "cost_reduction",
+          "process_improvement",
+          "supply_chain_management"
+        ]
+      },
+      {
+        "id": "financial_health",
+        "name": "Financial Health",
+        "description": "Stability and security of the company's financial situation",
+        "relevance_score": 0.73,
+        "metrics": [
+          "debt_to_equity_ratio",
+          "return_on_investment",
+          "cash_flow"
+        ]
+      },
+      {
+        "id": "environmental_sustainability",
+        "name": "Environmental Sustainability",
+        "description": "Impact of the company on the environment",
+        "relevance_score": 0.69,
+        "metrics": [
+          "carbon_footprint",
+          "energy_efficiency",
+          "waste_management"
+        ]
+      },
+      {
+        "id": "social_responsibility",
+        "name": "Social Responsibility",
+        "description": "Commitment to social causes and community involvement",
+        "relevance_score": 0.65,
+        "metrics": [
+          "charitable_donations",
+          "community_involvement",
+          "diversity_and_inclusion"
+        ]
+      }
+    ]
   }
 ]

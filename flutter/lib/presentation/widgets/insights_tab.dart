@@ -9,12 +9,14 @@ class InsightsTab extends StatefulWidget {
   final String? brandName;
   final String? selectedArea;
   final String? competitor;
+  final dynamic analysisResult; // Using dynamic for now
 
   const InsightsTab({
     Key? key,
     this.brandName,
     this.selectedArea,
     this.competitor,
+    this.analysisResult,
   }) : super(key: key);
 
   @override

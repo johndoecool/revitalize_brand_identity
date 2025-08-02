@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/chart_data.dart';
 import '../../data/services/demo_data_service.dart';
+import '../../data/services/data_collection_service.dart';
 import 'charts/radar_chart_widget.dart';
 import 'charts/doughnut_chart_widget.dart';
 import 'charts/line_chart_widget.dart';
@@ -12,12 +13,14 @@ class AnalysisTab extends StatefulWidget {
   final String? brandName;
   final String? selectedArea;
   final String? competitor;
+  final AnalysisResult? analysisResult;
 
   const AnalysisTab({
     Key? key,
     this.brandName,
     this.selectedArea,
     this.competitor,
+    this.analysisResult,
   }) : super(key: key);
 
   @override

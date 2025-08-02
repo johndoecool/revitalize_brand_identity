@@ -1,0 +1,192 @@
+{
+  "brand_data": {
+    "brand_id": "Google",
+    "news_sentiment": {
+      "score": 0.004,
+      "articles_count": 99,
+      "positive_articles": 1,
+      "negative_articles": 0,
+      "neutral_articles": 49,
+      "recent_articles": [
+        {
+          "title": "Stocks Struggle As Trump Unveils New Tariff Sweep Offsets Earnings",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.ibtimes.com/stocks-struggle-trump-unveils-new-tariff-sweep-offsets-earnings-3779982",
+          "source": "International Business Times"
+        },
+        {
+          "title": "21YO Spends Her Hard-Earned Money On Family Vacation, Aunt Is Upset She’s Making Her Cousins Jealous",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.boredpanda.com/mother-lets-daughter-flaunt-expensive-items/",
+          "source": "Boredpanda.com"
+        },
+        {
+          "title": "17 Y.O. Athlete In The Dark About Ivy League Scholarships, Parents Tell Him Only 7 Years Later",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.boredpanda.com/parents-hide-scholarships-son/",
+          "source": "Boredpanda.com"
+        },
+        {
+          "title": "OpenAI Removes ChatGPT Feature Amid Privacy Concerns",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://nextbigwhat.com/openai-removes-chatgpt-feature-amid-privacy-concerns/",
+          "source": "Nextbigwhat.com"
+        },
+        {
+          "title": "Trump Imposes 35% Tariff on Canada and Grants Mexico a 90-Day Extension - The New York Times",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://slashdot.org/firehose.pl?op=view&amp;id=178529994",
+          "source": "Slashdot.org"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 38226654,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.414,
+          "mentions": 6
+        },
+        "facebook": {
+          "sentiment": 0.792,
+          "mentions": 503
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 38226145
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.8,
+      "reviews_count": 238,
+      "pros": [
+        "Career growth opportunities",
+        "Good company culture",
+        "Good work-life balance"
+      ],
+      "cons": [
+        "Inconsistent management",
+        "Low pay increases",
+        "Long working hours"
+      ],
+      "recommendation_rate": 0.88,
+      "ceo_approval": 0.88
+    },
+    "website_analysis": {
+      "user_experience_score": 0.2,
+      "feature_completeness": 0.2,
+      "security_score": 0.9,
+      "accessibility_score": 0.35,
+      "mobile_friendliness": 0.4,
+      "load_time": 0.11
+    }
+  },
+  "competitor_data": {
+    "brand_id": "Apple",
+    "news_sentiment": {
+      "score": 0.0,
+      "articles_count": 99,
+      "positive_articles": 1,
+      "negative_articles": 1,
+      "neutral_articles": 48,
+      "recent_articles": [
+        {
+          "title": "Stocks Struggle As Trump Unveils New Tariff Sweep Offsets Earnings",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://www.ibtimes.com/stocks-struggle-trump-unveils-new-tariff-sweep-offsets-earnings-3779982",
+          "source": "International Business Times"
+        },
+        {
+          "title": "China Says US Exploited Old Microsoft Flaw to Wage Cyberattacks",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/4dbf915016ff5ca7",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Japan to Seek Car Tariff Cut, Secure Automakers’ Competitiveness",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://biztoc.com/x/80bf7e7bb562b7d6",
+          "source": "Biztoc.com"
+        },
+        {
+          "title": "Apple logs India revenue record, new stores lined up",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://economictimes.indiatimes.com/industry/cons-products/electronics/apple-logs-india-revenue-record-new-stores-lined-up/articleshow/123033948.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Apple's Q3 2025 report card: Record iPhone growth, services hit new highs, and AI spending ramps up",
+          "sentiment": "neutral",
+          "published_date": "2025-08-01",
+          "url": "https://timesofindia.indiatimes.com/technology/tech-news/apples-q3-2025-report-card-record-iphone-growth-services-hit-new-highs-and-ai-spending-ramps-up/articleshow/123033961.cms",
+          "source": "The Times of India"
+        }
+      ]
+    },
+    "social_media": {
+      "overall_sentiment": 0.7,
+      "mentions_count": 17874790,
+      "engagement_rate": 0.1,
+      "platforms": {
+        "twitter": {
+          "sentiment": 0.464,
+          "mentions": 0
+        },
+        "facebook": {
+          "sentiment": 0.738,
+          "mentions": 459
+        },
+        "linkedin": {
+          "sentiment": 0.7,
+          "mentions": 17874331
+        }
+      },
+      "trending_topics": [
+        "customer service",
+        "digital transformation",
+        "user experience"
+      ]
+    },
+    "glassdoor": {
+      "overall_rating": 3.3,
+      "reviews_count": 173,
+      "pros": [
+        "Supportive management",
+        "Learning opportunities",
+        "Flexible working hours"
+      ],
+      "cons": [
+        "Inconsistent management",
+        "Low pay increases",
+        "Long working hours"
+      ],
+      "recommendation_rate": 0.73,
+      "ceo_approval": 0.83
+    },
+    "website_analysis": {
+      "user_experience_score": 0.9,
+      "feature_completeness": 1.0,
+      "security_score": 0.9,
+      "accessibility_score": 0.8,
+      "mobile_friendliness": 0.7,
+      "load_time": 0.09
+    }
+  }
+}

@@ -34,5 +34,86 @@
     "analysisEngineId": "",
     "analysisEngineStatus": "",
     "lastUpdated": "2025-08-01T22:18:27.867999+00:00"
+  },
+  {
+    "requestId": "test-123",
+    "brandId": "Google",
+    "dataCollectionId": "collect_c25850f3",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-123_233836",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T03:38:54.249010+00:00"
+  },
+  {
+    "requestId": "test-12345",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_7ed56347",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-12345_000127",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:01:50.524305+00:00"
+  },
+  {
+    "requestId": "test-debug-001",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_662e888f",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-debug-001_000156",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:02:16.317290+00:00"
+  },
+  {
+    "requestId": "web-test-001",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_5d601cf6",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_web-test-001_000744",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:08:05.059481+00:00"
+  },
+  {
+    "requestId": "a71d19b4-86e9-4e3c-b75a-672202a29402",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_6dfaef5b",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_a71d19b4-86e9-4e3c-b75a-672202a29402_001746",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:18:08.994983+00:00"
+  },
+  {
+    "requestId": "3b00cb2e-45f0-422c-8a5d-18301e0f8a46",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_78d7dfaf",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_3b00cb2e-45f0-422c-8a5d-18301e0f8a46_002304",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:23:26.602066+00:00"
+  },
+  {
+    "requestId": "test-retry-same-id",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_5f13c51e",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-retry-same-id_002418",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:24:43.256292+00:00"
+  },
+  {
+    "requestId": "test-retry-same-id",
+    "brandId": "AAPL",
+    "dataCollectionId": "collect_c79c07d4",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_test-retry-same-id_002430",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:24:59.065248+00:00"
+  },
+  {
+    "requestId": "b41eb704-b089-45ea-9165-c86ca53c7c00",
+    "brandId": "BRP Inc.",
+    "dataCollectionId": "collect_ff60448a",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_b41eb704-b089-45ea-9165-c86ca53c7c00_002930",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T04:29:51.667680+00:00"
   }
 ]
