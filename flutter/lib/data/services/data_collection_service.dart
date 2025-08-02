@@ -248,12 +248,34 @@ class DataCollectionService {
         final data = response.data;
         if (data['success'] == true) {
           print('[AnalysisEngine] Results retrieved successfully');
-          // Include both the data and charts in the result
+          // Include all root-level fields from the API response
           final result = Map<String, dynamic>.from(data['data'] ?? {});
+          
+          // Add charts if available
           if (data['charts'] != null) {
             result['charts'] = data['charts'];
             print('[AnalysisEngine] Including ${(data['charts'] as List).length} charts in result');
           }
+          
+          // Add roadmap if available
+          if (data['roadmap'] != null) {
+            result['roadmap'] = data['roadmap'];
+            print('[AnalysisEngine] Including roadmap in result');
+          }
+          
+          // Add competitor_analysis if available
+          if (data['competitor_analysis'] != null) {
+            result['competitor_analysis'] = data['competitor_analysis'];
+            print('[AnalysisEngine] Including competitor_analysis in result');
+          }
+          
+          // Add improvement_areas if available
+          if (data['improvement_areas'] != null) {
+            result['improvement_areas'] = data['improvement_areas'];
+            print('[AnalysisEngine] Including improvement_areas in result');
+          }
+          
+          print('[AnalysisEngine] Final result keys: ${result.keys}');
           return ApiResult.success(result);
         } else {
           return ApiResult.error('API returned success: false');
