@@ -556,6 +556,15 @@ class _DashboardPageState extends State<DashboardPage>
           analysisResult: _analysisResult,
         );
       case 4:
+        print('[Dashboard] Creating ReportTab with:');
+        print('[Dashboard] brandName: $_analysisData_brandName');
+        print('[Dashboard] selectedArea: $_analysisData_selectedArea');
+        print('[Dashboard] competitor: $_analysisData_competitor');
+        print('[Dashboard] analysisResult != null: ${_analysisResult != null}');
+        if (_analysisResult != null) {
+          print('[Dashboard] analysisResult.analysisId: ${_analysisResult!.analysisId}');
+          print('[Dashboard] analysisResult.data keys: ${_analysisResult!.data.keys}');
+        }
         return ReportTab(
           key: ValueKey('report'),
           brandName: _analysisData_brandName,
