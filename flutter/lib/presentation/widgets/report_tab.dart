@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:file_saver/file_saver.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/insights_models.dart';
 import '../../data/services/insights_service.dart';
@@ -783,20 +784,36 @@ class _ReportTabState extends State<ReportTab>
 
   Future<void> _exportData() async {
     try {
+      print('[ReportTab] Starting data export...');
+      
       Map<String, dynamic> dataExport;
+      String fileName;
       
       if (widget.analysisResult != null) {
-        // For real analysis results, export the raw data
-        print('[ReportTab] Exporting real analysis data');
+        // For real analysis results, export the complete /status API response
+        print('[ReportTab] Exporting complete /status API response');
+        
+        // Create a comprehensive export with metadata and the complete API response
         dataExport = {
-          'brand_name': widget.brandName,
-          'competitor': widget.competitor,
-          'analysis_area': widget.selectedArea,
-          'analysis_id': widget.analysisResult!.analysisId,
-          'request_id': widget.analysisResult!.requestId,
-          'export_timestamp': DateTime.now().toIso8601String(),
-          'data': widget.analysisResult!.data,
+          'export_info': {
+            'export_timestamp': DateTime.now().toIso8601String(),
+            'export_version': '1.0',
+            'brand_name': widget.brandName,
+            'competitor': widget.competitor,
+            'analysis_area': widget.selectedArea,
+            'analysis_id': widget.analysisResult!.analysisId,
+            'request_id': widget.analysisResult!.requestId,
+          },
+          'complete_analysis_response': widget.analysisResult!.data,
+          'shared_data': widget.analysisResult!.sharedData,
         };
+        
+        // Generate filename with timestamp
+        final timestamp = DateTime.now().toIso8601String().replaceAll(':', '-').replaceAll('.', '-');
+        final brandSafe = widget.brandName?.replaceAll(' ', '-').toLowerCase() ?? 'unknown';
+        final competitorSafe = widget.competitor?.replaceAll(' ', '-').toLowerCase() ?? 'unknown';
+        fileName = 'analysis-export-$brandSafe-vs-$competitorSafe-$timestamp';
+        
       } else if (_analysisResults != null && _roadmapTimeline != null) {
         // For demo data, use the PdfService method
         print('[ReportTab] Exporting demo data');
@@ -807,18 +824,25 @@ class _ReportTabState extends State<ReportTab>
           analysisResults: _analysisResults!,
           roadmapTimeline: _roadmapTimeline!,
         );
+        
+        final timestamp = DateTime.now().toIso8601String().replaceAll(':', '-').replaceAll('.', '-');
+        fileName = 'demo-export-$timestamp';
+        
       } else {
         throw Exception('No data available for export');
       }
 
       final jsonString = JsonEncoder.withIndent('  ').convert(dataExport);
-      await _saveJson(jsonString);
+      print('[ReportTab] JSON generated with ${jsonString.length} characters');
+      
+      await _saveJsonFile(jsonString, fileName);
       
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Data exported successfully!'),
+            content: Text('Analysis data exported successfully as $fileName.json'),
             backgroundColor: Colors.green,
+            duration: Duration(seconds: 3),
           ),
         );
       }
@@ -829,6 +853,7 @@ class _ReportTabState extends State<ReportTab>
           SnackBar(
             content: Text('Error exporting data: $e'),
             backgroundColor: Colors.red,
+            duration: Duration(seconds: 4),
           ),
         );
       }
@@ -911,6 +936,44 @@ class _ReportTabState extends State<ReportTab>
     }
   }
 
+  /// Cross-platform JSON file download using file_saver package
+  Future<void> _saveJsonFile(String jsonString, String fileName) async {
+    try {
+      print('[ReportTab] Saving JSON file: $fileName.json');
+      
+      // Convert JSON string to bytes
+      final bytes = Uint8List.fromList(utf8.encode(jsonString));
+      
+      // Use file_saver for cross-platform download
+      await FileSaver.instance.saveFile(
+        name: fileName,
+        bytes: bytes,
+        ext: 'json',
+        mimeType: MimeType.json,
+      );
+      
+      print('[ReportTab] File saved successfully: $fileName.json');
+      
+    } catch (e) {
+      print('[ReportTab] Error saving JSON file: $e');
+      
+      // Fallback: Log the information for debugging
+      if (kIsWeb) {
+        print('[ReportTab] Web fallback: JSON file would be downloaded');
+        print('[ReportTab] Filename: $fileName.json');
+        print('[ReportTab] Size: ${jsonString.length} characters');
+      } else {
+        print('[ReportTab] Mobile fallback: JSON file would be saved to device storage');
+        print('[ReportTab] Filename: $fileName.json');
+        print('[ReportTab] Size: ${jsonString.length} characters');
+      }
+      
+      // Re-throw the error so the calling method can handle it
+      throw e;
+    }
+  }
+
+  /// Legacy method kept for PDF downloads
   Future<void> _saveJson(String jsonString) async {
     if (kIsWeb) {
       // For web, trigger download

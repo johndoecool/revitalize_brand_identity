@@ -412,5 +412,14 @@
     "analysisEngineId": "analysis_9727a501-cfef-45d4-aa9c-e357605e26cf_172117",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-08-02T21:21:35.489289+00:00"
+  },
+  {
+    "requestId": "4801900e-d6f5-4744-af0e-4aaca8fc5fcf",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_2ffe8735",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_4801900e-d6f5-4744-af0e-4aaca8fc5fcf_190516",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-02T23:05:44.647711+00:00"
   }
 ]
