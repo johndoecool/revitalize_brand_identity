@@ -339,7 +339,6 @@ class _DashboardPageState extends State<DashboardPage>
         _analysisData_selectedArea != selectedArea || 
         _analysisData_competitor != competitor) {
       _analysisData_requestId = null; // Clear request ID for new analysis
-      print('[Dashboard] New analysis detected - clearing request ID');
     }
     
     setState(() {
@@ -380,10 +379,8 @@ class _DashboardPageState extends State<DashboardPage>
       if (_analysisData_requestId == null) {
         // First attempt - generate new request ID
         _analysisData_requestId = const Uuid().v4();
-        print('[Dashboard] Starting new analysis with request ID: $_analysisData_requestId');
       } else {
         // Retry attempt - reuse existing request ID
-        print('[Dashboard] Retrying analysis with existing request ID: $_analysisData_requestId');
       }
       
       // Start real analysis (use stored request ID for both first attempt and retry)
@@ -403,8 +400,6 @@ class _DashboardPageState extends State<DashboardPage>
       );
       
       if (result.isSuccess) {
-        print('[Dashboard] Analysis completed successfully, setting result');
-        print('[Dashboard] Analysis result data keys: ${result.data!.data.keys}');
         setState(() {
           _analysisResult = result.data;
           // Request ID is already stored from before the analysis started
@@ -528,9 +523,7 @@ class _DashboardPageState extends State<DashboardPage>
           onAnalysisLaunched: _onAnalysisLaunched,
         );
       case 1:
-        print('[Dashboard] Creating AnalysisTab with analysisResult: ${_analysisResult != null ? "PRESENT" : "NULL"}');
         if (_analysisResult != null) {
-          print('[Dashboard] AnalysisResult data keys: ${_analysisResult!.data.keys}');
         }
         return AnalysisTab(
           key: ValueKey('analysis'),
@@ -556,14 +549,7 @@ class _DashboardPageState extends State<DashboardPage>
           analysisResult: _analysisResult,
         );
       case 4:
-        print('[Dashboard] Creating ReportTab with:');
-        print('[Dashboard] brandName: $_analysisData_brandName');
-        print('[Dashboard] selectedArea: $_analysisData_selectedArea');
-        print('[Dashboard] competitor: $_analysisData_competitor');
-        print('[Dashboard] analysisResult != null: ${_analysisResult != null}');
         if (_analysisResult != null) {
-          print('[Dashboard] analysisResult.analysisId: ${_analysisResult!.analysisId}');
-          print('[Dashboard] analysisResult.data keys: ${_analysisResult!.data.keys}');
         }
         return ReportTab(
           key: ValueKey('report'),

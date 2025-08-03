@@ -25,11 +25,13 @@ class BrandApiService {
       },
     ));
 
-    // Add interceptor for logging
+    // Add minimal logging for errors only
     _dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (obj) => print('[API] $obj'),
+      requestBody: false,
+      responseBody: false,
+      logPrint: (obj) {
+        // Suppress all logs - errors will still be handled via exceptions
+      },
     ));
   }
 
@@ -53,11 +55,8 @@ class BrandApiService {
       );
       
       if (cachedResult.isSuccess) {
-        print('[BrandAPI] Cache HIT for search: $upperQuery');
         return cachedResult;
       }
-
-      print('[BrandAPI] Cache MISS - calling API for search: $upperQuery');
       
       final response = await _dio.post('/brands/search', data: {
         'query': upperQuery,
@@ -77,7 +76,6 @@ class BrandApiService {
           // Cache the result
           await _cacheData(cacheKey, brands.map((b) => b.toJson()).toList());
           
-          print('[BrandAPI] Search successful: ${brands.length} brands found');
           return ApiResult.success(brands);
         } else {
           return ApiResult.error('API returned success: false');
@@ -105,11 +103,8 @@ class BrandApiService {
       );
       
       if (cachedResult.isSuccess) {
-        print('[BrandAPI] Cache HIT for areas: $brandId');
         return cachedResult;
       }
-
-      print('[BrandAPI] Cache MISS - calling API for areas: $brandId');
       
       final response = await _dio.get('/brands/$brandId/areas');
 
@@ -126,7 +121,6 @@ class BrandApiService {
           // Cache the result
           await _cacheData(cacheKey, areas.map((a) => a.toJson()).toList());
           
-          print('[BrandAPI] Areas retrieval successful: ${areas.length} areas found');
           return ApiResult.success(areas);
         } else {
           return ApiResult.error('API returned success: false');
@@ -154,11 +148,8 @@ class BrandApiService {
       );
       
       if (cachedResult.isSuccess) {
-        print('[BrandAPI] Cache HIT for competitors: $brandId (area: $areaId)');
         return cachedResult;
       }
-
-      print('[BrandAPI] Cache MISS - calling API for competitors: $brandId (area: $areaId)');
       
       final queryParams = areaId != null ? {'area': areaId} : <String, dynamic>{};
       final response = await _dio.get('/brands/$brandId/competitors', queryParameters: queryParams);
@@ -182,7 +173,6 @@ class BrandApiService {
           // Cache the result
           await _cacheData(cacheKey, competitors.map((c) => c.toJson()).toList());
           
-          print('[BrandAPI] Competitors retrieval successful: ${competitors.length} competitors found');
           return ApiResult.success(competitors);
         } else {
           return ApiResult.error('API returned success: false');
@@ -231,7 +221,7 @@ class BrandApiService {
       await prefs.setString(cacheKey, jsonEncode(data));
       await prefs.setInt('${cacheKey}_timestamp', DateTime.now().millisecondsSinceEpoch);
     } catch (e) {
-      print('[BrandAPI] Cache write error: $e');
+      // Cache write failed - continue without caching
     }
   }
 
@@ -288,10 +278,8 @@ class BrandApiService {
         await prefs.remove(key);
         await prefs.remove('${key}_timestamp');
       }
-      
-      print('[BrandAPI] Cache cleared');
     } catch (e) {
-      print('[BrandAPI] Cache clear error: $e');
+      // Cache clear failed - continue
     }
   }
 }

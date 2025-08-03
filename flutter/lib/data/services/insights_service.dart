@@ -36,7 +36,6 @@ class DemoInsightsService implements InsightsService {
 
       return AnalysisResults.fromJson(analysisResultsJson);
     } catch (e) {
-      print('Error getting analysis results: $e');
       return null;
     }
   }

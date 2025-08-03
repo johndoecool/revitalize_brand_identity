@@ -95,15 +95,7 @@ class _ReportTabState extends State<ReportTab>
       widget.brandName != null && widget.selectedArea != null && widget.competitor != null;
 
   Future<void> _loadReportData() async {
-    print('[ReportTab] _loadReportData called');
-    print('[ReportTab] hasAnalysisData: $hasAnalysisData');
-    print('[ReportTab] widget.analysisResult != null: ${widget.analysisResult != null}');
-    print('[ReportTab] widget.brandName: ${widget.brandName}');
-    print('[ReportTab] widget.selectedArea: ${widget.selectedArea}');
-    print('[ReportTab] widget.competitor: ${widget.competitor}');
-    
     if (!hasAnalysisData) {
-      print('[ReportTab] No analysis data available, returning early');
       return;
     }
 
@@ -114,9 +106,6 @@ class _ReportTabState extends State<ReportTab>
     try {
       // If we have real analysis results, we don't need to load demo data for reports
       if (widget.analysisResult != null) {
-        print('[ReportTab] Using real analysis result data for reports');
-        print('[ReportTab] Analysis result has data keys: ${widget.analysisResult!.data.keys}');
-        
         // For real analysis results, we don't need _analysisResults and _roadmapTimeline
         // The report generation will use widget.analysisResult directly
         setState(() {
@@ -127,7 +116,6 @@ class _ReportTabState extends State<ReportTab>
       }
 
       // Only load demo data if no real analysis result is available
-      print('[ReportTab] No real analysis result available, loading demo data');
       String industry;
       switch (widget.selectedArea?.toLowerCase()) {
         case 'self service portal':
@@ -170,26 +158,16 @@ class _ReportTabState extends State<ReportTab>
           _isLoading = false;
         });
       }
-      print('[ReportTab] Error loading report data: $e');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    print('[ReportTab] build() called');
-    print('[ReportTab] hasAnalysisData: $hasAnalysisData');
-    print('[ReportTab] _isLoading: $_isLoading');
-    print('[ReportTab] widget.analysisResult != null: ${widget.analysisResult != null}');
-    print('[ReportTab] _analysisResults != null: ${_analysisResults != null}');
-    print('[ReportTab] _roadmapTimeline != null: ${_roadmapTimeline != null}');
-    
     if (!hasAnalysisData) {
-      print('[ReportTab] Showing empty state - no analysis data');
       return _buildEmptyState(context);
     }
 
     if (_isLoading) {
-      print('[ReportTab] Showing loading state');
       return _buildLoadingState(context);
     }
 
@@ -199,14 +177,8 @@ class _ReportTabState extends State<ReportTab>
                           (_analysisResults != null && _roadmapTimeline != null);
     
     if (!hasRequiredData) {
-      print('[ReportTab] Showing error state - no required data available');
-      print('[ReportTab] widget.analysisResult: ${widget.analysisResult}');
-      print('[ReportTab] _analysisResults: $_analysisResults');
-      print('[ReportTab] _roadmapTimeline: $_roadmapTimeline');
       return _buildErrorState(context);
     }
-
-    print('[ReportTab] Showing report content');
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -548,7 +520,6 @@ class _ReportTabState extends State<ReportTab>
     try {
       // Try backend API first if analysisResult is available
       if (widget.analysisResult != null && widget.analysisResult!.analysisId.isNotEmpty) {
-        print('[ReportTab] Attempting to download executive summary from backend API');
         setState(() {
           _isUsingBackendApi = true;
         });
@@ -564,7 +535,6 @@ class _ReportTabState extends State<ReportTab>
           }
           return;
         } else {
-          print('[ReportTab] Backend download failed, falling back to local generation');
           setState(() {
             _isUsingBackendApi = false;
           });
@@ -582,7 +552,6 @@ class _ReportTabState extends State<ReportTab>
 
       // Fallback to local PDF generation
       if (_analysisResults != null) {
-        print('[ReportTab] Generating executive summary locally with demo data');
         setState(() {
           _isUsingBackendApi = false;
         });
@@ -605,7 +574,6 @@ class _ReportTabState extends State<ReportTab>
         }
       } else {
         // For real analysis results without backend API, show message that local generation isn't implemented
-        print('[ReportTab] No demo data available and backend API failed');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -617,7 +585,6 @@ class _ReportTabState extends State<ReportTab>
         }
       }
     } catch (e) {
-      print('[ReportTab] Error generating executive summary: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -644,7 +611,6 @@ class _ReportTabState extends State<ReportTab>
     try {
       // Try backend API first if analysisResult is available
       if (widget.analysisResult != null && widget.analysisResult!.analysisId.isNotEmpty) {
-        print('[ReportTab] Attempting to download detailed report from backend API');
         setState(() {
           _isUsingBackendApi = true;
         });
@@ -660,7 +626,6 @@ class _ReportTabState extends State<ReportTab>
           }
           return;
         } else {
-          print('[ReportTab] Backend download failed, falling back to local generation');
           setState(() {
             _isUsingBackendApi = false;
           });
@@ -678,7 +643,6 @@ class _ReportTabState extends State<ReportTab>
 
       // Fallback to local PDF generation
       if (_analysisResults != null && _roadmapTimeline != null) {
-        print('[ReportTab] Generating detailed report locally with demo data');
         setState(() {
           _isUsingBackendApi = false;
         });
@@ -702,7 +666,6 @@ class _ReportTabState extends State<ReportTab>
         }
       } else {
         // For real analysis results without backend API, show message that local generation isn't implemented
-        print('[ReportTab] No demo data available and backend API failed');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -714,7 +677,6 @@ class _ReportTabState extends State<ReportTab>
         }
       }
     } catch (e) {
-      print('[ReportTab] Error generating detailed report: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -736,24 +698,20 @@ class _ReportTabState extends State<ReportTab>
   Future<bool> _downloadReportFromBackend(String reportType, String reportName) async {
     try {
       final analysisId = widget.analysisResult!.analysisId;
-      print('[ReportTab] Getting report URL for analysisId: $analysisId, reportType: $reportType');
       
       // Get the report URL from the data collection service
       final reportUrl = await DataCollectionService.instance.getReportUrl(analysisId, reportType);
       
       if (reportUrl == null) {
-        print('[ReportTab] Failed to get report URL from backend');
         return false;
       }
       
-      print('[ReportTab] Report URL generated: $reportUrl');
       
       // Create a URI object for cross-platform launch
       final uri = Uri.parse(reportUrl);
       
       // Check if the URL can be launched
       if (await canLaunchUrl(uri)) {
-        print('[ReportTab] Launching download URL for $reportName');
         
         // Launch the URL - this will trigger download on web and open in browser/PDF viewer on mobile
         final launched = await launchUrl(
@@ -766,32 +724,26 @@ class _ReportTabState extends State<ReportTab>
         );
         
         if (launched) {
-          print('[ReportTab] Successfully launched download URL for $reportName');
           return true;
         } else {
-          print('[ReportTab] Failed to launch download URL for $reportName');
           return false;
         }
       } else {
-        print('[ReportTab] Cannot launch URL: $reportUrl');
         return false;
       }
     } catch (e) {
-      print('[ReportTab] Error downloading report from backend: $e');
       return false;
     }
   }
 
   Future<void> _exportData() async {
     try {
-      print('[ReportTab] Starting data export...');
       
       Map<String, dynamic> dataExport;
       String fileName;
       
       if (widget.analysisResult != null) {
         // For real analysis results, export the complete /status API response
-        print('[ReportTab] Exporting complete /status API response');
         
         // Create a comprehensive export with metadata and the complete API response
         dataExport = {
@@ -816,7 +768,6 @@ class _ReportTabState extends State<ReportTab>
         
       } else if (_analysisResults != null && _roadmapTimeline != null) {
         // For demo data, use the PdfService method
-        print('[ReportTab] Exporting demo data');
         dataExport = PdfService().generateDataExport(
           brandName: widget.brandName!,
           competitorName: widget.competitor!,
@@ -833,7 +784,6 @@ class _ReportTabState extends State<ReportTab>
       }
 
       final jsonString = JsonEncoder.withIndent('  ').convert(dataExport);
-      print('[ReportTab] JSON generated with ${jsonString.length} characters');
       
       await _saveJsonFile(jsonString, fileName);
       
@@ -847,7 +797,6 @@ class _ReportTabState extends State<ReportTab>
         );
       }
     } catch (e) {
-      print('[ReportTab] Error exporting data: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -929,17 +878,14 @@ class _ReportTabState extends State<ReportTab>
     if (kIsWeb) {
       // For web, trigger download
       // This would need additional web-specific implementation
-      print('PDF generated with ${pdfBytes.length} bytes. Download would trigger on web.');
     } else {
       // For mobile/desktop, save to downloads or documents
-      print('PDF generated with ${pdfBytes.length} bytes. Would save to device storage.');
     }
   }
 
   /// Cross-platform JSON file download using file_saver package
   Future<void> _saveJsonFile(String jsonString, String fileName) async {
     try {
-      print('[ReportTab] Saving JSON file: $fileName.json');
       
       // Convert JSON string to bytes
       final bytes = Uint8List.fromList(utf8.encode(jsonString));
@@ -952,20 +898,12 @@ class _ReportTabState extends State<ReportTab>
         mimeType: MimeType.json,
       );
       
-      print('[ReportTab] File saved successfully: $fileName.json');
       
     } catch (e) {
-      print('[ReportTab] Error saving JSON file: $e');
       
       // Fallback: Log the information for debugging
       if (kIsWeb) {
-        print('[ReportTab] Web fallback: JSON file would be downloaded');
-        print('[ReportTab] Filename: $fileName.json');
-        print('[ReportTab] Size: ${jsonString.length} characters');
       } else {
-        print('[ReportTab] Mobile fallback: JSON file would be saved to device storage');
-        print('[ReportTab] Filename: $fileName.json');
-        print('[ReportTab] Size: ${jsonString.length} characters');
       }
       
       // Re-throw the error so the calling method can handle it
@@ -977,10 +915,8 @@ class _ReportTabState extends State<ReportTab>
   Future<void> _saveJson(String jsonString) async {
     if (kIsWeb) {
       // For web, trigger download
-      print('JSON generated with ${jsonString.length} characters. Download would trigger on web.');
     } else {
       // For mobile/desktop, save to downloads or documents
-      print('JSON generated with ${jsonString.length} characters. Would save to device storage.');
     }
   }
 
