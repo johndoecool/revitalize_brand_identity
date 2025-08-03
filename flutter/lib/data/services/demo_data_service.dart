@@ -218,7 +218,6 @@ class DemoDataService {
       
       return brandData;
     } catch (e) {
-      print('Error loading demo data for $industry: $e');
       return null;
     }
   }

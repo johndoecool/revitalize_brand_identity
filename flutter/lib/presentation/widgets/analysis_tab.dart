@@ -65,16 +65,11 @@ class _AnalysisTabState extends State<AnalysisTab> {
     try {
       // Check if we have real analysis result first
       if (widget.analysisResult != null) {
-        print('[AnalysisTab] Using real analysis result data');
-        print('[AnalysisTab] Analysis result contains: ${widget.analysisResult!.data.keys}');
         
         // Check if charts exist in the analysis result
         final charts = widget.analysisResult!.data['charts'];
         if (charts != null) {
-          print('[AnalysisTab] Found ${(charts as List).length} charts in analysis result');
         } else {
-          print('[AnalysisTab] No charts found in analysis result data');
-          print('[AnalysisTab] Available keys in analysis result: ${widget.analysisResult!.data.keys}');
         }
         
         // We have real data, no need to load anything else
@@ -89,11 +84,9 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
       // Fallback to demo data if no real analysis result
-      print('[AnalysisTab] No real analysis result, loading demo data');
       await _loadDemoData();
       
     } catch (e) {
-      print('[AnalysisTab] Error loading data: $e');
       if (mounted) {
         setState(() {
           _isLoading = false;
@@ -142,7 +135,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
           _isLoading = false;
         });
       }
-      print('Error loading demo data: $e');
     }
   }
 
@@ -396,31 +388,24 @@ class _AnalysisTabState extends State<AnalysisTab> {
   RadarChartData _getRadarChartData() {
     // Try to get real data from analysis result first
     if (widget.analysisResult != null) {
-      print('[RadarChart] Attempting to extract radar data from analysis result');
       final realRadarData = _extractRadarChartFromAnalysis(widget.analysisResult!);
       if (realRadarData != null) {
-        print('[RadarChart] Successfully using real radar data');
         return realRadarData;
       } else {
-        print('[RadarChart] Failed to extract real radar data, using demo data');
       }
     } else {
-      print('[RadarChart] No analysis result available, using demo data');
     }
     
     // Fallback to demo data if no real data available
     if (_brandData != null) {
       try {
         final demoData = DemoDataService.generateRadarChartData(_brandData!);
-        print('[RadarChart] Successfully generated demo radar data with ${demoData.labels.length} labels');
         return demoData;
       } catch (e) {
-        print('[RadarChart] Error generating demo radar data: $e');
       }
     }
     
     // Return safe fallback data if nothing available - with exactly 3 points as required by fl_chart
-    print('[RadarChart] Using fallback radar data with minimum 3 points');
     return RadarChartData(
       dataPoints: [
         RadarDataPoint(
@@ -445,7 +430,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
       // Charts are at the root level of the API response, stored in analysisResult.data
       final charts = analysisResult.data['charts'] as List<dynamic>?;
       if (charts == null) {
-        print('[RadarChart] No charts found in analysis result data');
         return null;
       }
 
@@ -473,7 +457,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
 
       // fl_chart radar chart requires at least 3 data points
       if (labels.length < 3) {
-        print('[RadarChart] Radar chart needs at least 3 data points, got ${labels.length}. Falling back to demo data.');
         return null;
       }
 
@@ -488,7 +471,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
           
           // Validate that values length matches labels length
           if (values == null || values.length != labels.length) {
-            print('[RadarChart] Values length (${values?.length}) does not match labels length (${labels.length})');
             continue;
           }
           
@@ -499,7 +481,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
             try {
               color = int.parse('0xFF${borderColor.substring(1)}');
             } catch (e) {
-              print('[RadarChart] Failed to parse color: $borderColor, using default');
             }
           }
 
@@ -512,7 +493,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
       if (dataPoints.isNotEmpty) {
-        print('[RadarChart] Successfully extracted real radar data with ${dataPoints.length} datasets');
         return RadarChartData(
           dataPoints: dataPoints,
           labels: labels,
@@ -520,7 +500,6 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
     } catch (e) {
-      print('[RadarChart] Error extracting radar chart data: $e');
     }
 
     return null;
@@ -629,12 +608,10 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
       if (segments.isNotEmpty) {
-        print('[DoughnutChart] Successfully extracted real doughnut data with ${segments.length} segments');
         return DoughnutChartData(segments: segments);
       }
 
     } catch (e) {
-      print('[DoughnutChart] Error extracting doughnut chart data: $e');
     }
 
     return null;
@@ -693,12 +670,10 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
       if (series.isNotEmpty) {
-        print('[LineChart] Successfully extracted real line data with ${series.length} series');
         return LineChartData(series: series, xLabels: labels);
       }
 
     } catch (e) {
-      print('[LineChart] Error extracting line chart data: $e');
     }
 
     return null;
@@ -710,19 +685,16 @@ class _AnalysisTabState extends State<AnalysisTab> {
     if (widget.analysisResult != null) {
       final realLineData = _extractLineChartFromAnalysis(widget.analysisResult!);
       if (realLineData != null) {
-        print('[LineChart] Using real line chart data');
         return realLineData;
       }
     }
     
     // Fallback to demo data 
     if (_brandData != null) {
-      print('[LineChart] Using demo line chart data');
       return DemoDataService.generateLineChartData(_brandData!);
     }
     
     // Return basic fallback if no data available
-    print('[LineChart] Using fallback line chart data');
     return LineChartData(
       series: [
         LineDataSeries(
@@ -746,19 +718,16 @@ class _AnalysisTabState extends State<AnalysisTab> {
     if (widget.analysisResult != null) {
       final realBarData = _extractBarChartFromAnalysis(widget.analysisResult!);
       if (realBarData != null) {
-        print('[BarChart] Using real bar chart data');
         return realBarData;
       }
     }
     
     // Fallback to demo data
     if (_brandData != null) {
-      print('[BarChart] Using demo bar chart data');
       return DemoDataService.generateBarChartData(_brandData!);
     }
     
     // Return basic fallback if no data available
-    print('[BarChart] Using fallback bar chart data');
     return BarChartData(
       categories: ['Performance', 'Quality', 'Innovation', 'Customer Satisfaction'],
       series: [
@@ -832,12 +801,10 @@ class _AnalysisTabState extends State<AnalysisTab> {
       }
 
       if (series.isNotEmpty) {
-        print('[BarChart] Successfully extracted real bar data with ${series.length} series');
         return BarChartData(categories: labels, series: series);
       }
 
     } catch (e) {
-      print('[BarChart] Error extracting bar chart data: $e');
     }
 
     return null;

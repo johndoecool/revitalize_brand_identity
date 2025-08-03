@@ -90,10 +90,8 @@ class _RoadmapTabState extends State<RoadmapTab>
     try {
       // Layer 1: Try to extract real roadmap data from analysis result first
       if (widget.analysisResult != null) {
-        print('[RoadmapTab] Attempting to extract roadmap from real analysis result');
         final realRoadmap = _extractRoadmapFromAnalysis(widget.analysisResult!);
         if (realRoadmap != null) {
-          print('[RoadmapTab] Successfully using real roadmap data');
           if (mounted) {
             setState(() {
               _roadmapTimeline = realRoadmap;
@@ -105,17 +103,14 @@ class _RoadmapTabState extends State<RoadmapTab>
           }
           return;
         } else {
-          print('[RoadmapTab] Failed to extract real roadmap data, falling back to demo data');
         }
       } else {
-        print('[RoadmapTab] No analysis result available, using demo data');
       }
 
       // Layer 2: Fallback to demo data
       await _loadDemoRoadmapData();
       
     } catch (e) {
-      print('[RoadmapTab] Error loading roadmap data: $e');
       if (mounted) {
         setState(() {
           _isLoading = false;
@@ -145,7 +140,6 @@ class _RoadmapTabState extends State<RoadmapTab>
           industry = 'banking';
       }
 
-      print('[RoadmapTab] Loading demo roadmap data for industry: $industry');
       final insightsService = DemoInsightsService();
       final results = await insightsService.getAnalysisResults(industry);
       
@@ -178,7 +172,6 @@ class _RoadmapTabState extends State<RoadmapTab>
         }
       }
     } catch (e) {
-      print('[RoadmapTab] Error loading demo roadmap data: $e');
       if (mounted) {
         setState(() {
           _roadmapTimeline = _createFallbackRoadmap();
@@ -195,19 +188,11 @@ class _RoadmapTabState extends State<RoadmapTab>
   RoadmapTimeline? _extractRoadmapFromAnalysis(AnalysisResult analysisResult) {
     try {
       // Debug: Print the exact structure we're receiving
-      print('[RoadmapTab] ===== DEBUGGING ROADMAP EXTRACTION =====');
-      print('[RoadmapTab] analysisResult type: ${analysisResult.runtimeType}');
-      print('[RoadmapTab] analysisResult.data type: ${analysisResult.data.runtimeType}');
-      print('[RoadmapTab] Analysis result data keys: ${analysisResult.data.keys}');
       
       // Check each key individually
       for (final key in analysisResult.data.keys) {
-        print('[RoadmapTab] Key "$key": ${analysisResult.data[key]?.runtimeType}');
         if (key == 'roadmap') {
-          print('[RoadmapTab] *** FOUND ROADMAP KEY! ***');
           final roadmapValue = analysisResult.data[key];
-          print('[RoadmapTab] Roadmap value type: ${roadmapValue.runtimeType}');
-          print('[RoadmapTab] Roadmap value: $roadmapValue');
         }
       }
       
@@ -215,29 +200,19 @@ class _RoadmapTabState extends State<RoadmapTab>
       var roadmapData = analysisResult.data['roadmap'] as Map<String, dynamic>?;
       
       if (roadmapData != null) {
-        print('[RoadmapTab] ✅ Found roadmap at root level');
-        print('[RoadmapTab] Roadmap keys: ${roadmapData.keys}');
       } else {
-        print('[RoadmapTab] ❌ No roadmap at root level');
         
         // Try different approaches to access roadmap
         final roadmapDynamic = analysisResult.data['roadmap'];
-        print('[RoadmapTab] roadmapDynamic: $roadmapDynamic');
-        print('[RoadmapTab] roadmapDynamic type: ${roadmapDynamic.runtimeType}');
         
         if (roadmapDynamic != null) {
-          print('[RoadmapTab] 🎉 roadmapDynamic is not null, trying to cast...');
           try {
             roadmapData = roadmapDynamic as Map<String, dynamic>;
-            print('[RoadmapTab] ✅ Successfully cast roadmapDynamic to Map<String, dynamic>');
           } catch (e) {
-            print('[RoadmapTab] ❌ Failed to cast roadmapDynamic: $e');
           }
         }
         
         // Add comprehensive logging for debugging
-        print('[RoadmapTab] 🔍 Complete data structure investigation:');
-        print('[RoadmapTab] Full analysisResult.data content: ${analysisResult.data}');
         
         // Check if roadmap exists in any nested location
         void checkForRoadmap(dynamic obj, String path) {
@@ -245,7 +220,6 @@ class _RoadmapTabState extends State<RoadmapTab>
             obj.forEach((key, value) {
               final currentPath = path.isEmpty ? key : '$path.$key';
               if (key.toLowerCase().contains('roadmap')) {
-                print('[RoadmapTab] 🎯 Found roadmap-related key at $currentPath: $value');
               }
               if (value is Map || value is List) {
                 checkForRoadmap(value, currentPath);
@@ -259,43 +233,34 @@ class _RoadmapTabState extends State<RoadmapTab>
         }
         
         checkForRoadmap(analysisResult.data, '');
-        print('[RoadmapTab] 🔍 Investigation complete.');
         // Fallback: try inside analysis_result for compatibility
         final analysisData = analysisResult.data['analysis_result'] as Map<String, dynamic>?;
         if (analysisData != null) {
           roadmapData = analysisData['roadmap'] as Map<String, dynamic>?;
           if (roadmapData != null) {
-            print('[RoadmapTab] Found roadmap inside analysis_result');
           }
         }
       }
       
       if (roadmapData == null) {
-        print('[RoadmapTab] No roadmap found in API response');
-        print('[RoadmapTab] Available top-level keys: ${analysisResult.data.keys}');
         
         // Try to generate roadmap from actionable_insights as fallback
         final analysisData = analysisResult.data['analysis_result'] as Map<String, dynamic>?;
         if (analysisData != null) {
           final actionableInsights = analysisData['actionable_insights'] as List<dynamic>?;
           if (actionableInsights != null && actionableInsights.isNotEmpty) {
-            print('[RoadmapTab] Generating roadmap from ${actionableInsights.length} actionable insights');
             return _generateRoadmapFromInsights(actionableInsights, analysisData);
           }
         }
         
-        print('[RoadmapTab] No actionable insights found either, cannot generate roadmap');
         return null;
       }
 
       final quarterlyRoadmaps = roadmapData['quarterly_roadmaps'] as List<dynamic>?;
       if (quarterlyRoadmaps == null || quarterlyRoadmaps.isEmpty) {
-        print('[RoadmapTab] No quarterly_roadmaps found in roadmap data');
         return null;
       }
 
-      print('[RoadmapTab] Successfully found roadmap with ${quarterlyRoadmaps.length} quarters');
-      print('[RoadmapTab] Available roadmap fields: ${roadmapData.keys}');
 
       // Convert quarterly roadmaps to RoadmapQuarter objects
       final quarters = <RoadmapQuarter>[];
@@ -310,14 +275,12 @@ class _RoadmapTabState extends State<RoadmapTab>
       }
 
       if (quarters.isEmpty) {
-        print('[RoadmapTab] No valid quarters could be mapped');
         return null;
       }
 
       final brandName = roadmapData['brand_name']?.toString() ?? widget.brandName ?? 'Brand';
       final competitorName = widget.competitor ?? 'Competitor';
 
-      print('[RoadmapTab] Successfully created roadmap timeline with ${quarters.length} quarters');
 
       return EnhancedRoadmapTimeline(
         quarters: quarters,
@@ -337,7 +300,6 @@ class _RoadmapTabState extends State<RoadmapTab>
       );
 
     } catch (e) {
-      print('[RoadmapTab] Error extracting roadmap from analysis result: $e');
       return null;
     }
   }
@@ -422,7 +384,6 @@ class _RoadmapTabState extends State<RoadmapTab>
       );
 
     } catch (e) {
-      print('[RoadmapTab] Error mapping quarter data: $e');
       return null;
     }
   }
@@ -466,7 +427,6 @@ class _RoadmapTabState extends State<RoadmapTab>
       );
 
     } catch (e) {
-      print('[RoadmapTab] Error mapping action data: $e');
       return null;
     }
   }
@@ -521,7 +481,6 @@ class _RoadmapTabState extends State<RoadmapTab>
       final brandName = analysisData['brand_name']?.toString() ?? widget.brandName ?? 'Brand';
       final competitorName = analysisData['competitor_name']?.toString() ?? widget.competitor ?? 'Competitor';
       
-      print('[RoadmapTab] Generated roadmap with ${quarters.where((q) => q.items.isNotEmpty).length} active quarters');
       
       return RoadmapTimeline(
         quarters: quarters,
@@ -530,7 +489,6 @@ class _RoadmapTabState extends State<RoadmapTab>
       );
       
     } catch (e) {
-      print('[RoadmapTab] Error generating roadmap from insights: $e');
       return null;
     }
   }
@@ -574,14 +532,12 @@ class _RoadmapTabState extends State<RoadmapTab>
       );
       
     } catch (e) {
-      print('[RoadmapTab] Error mapping insight to roadmap item: $e');
       return null;
     }
   }
 
   /// Create safe fallback roadmap when all else fails
   RoadmapTimeline _createFallbackRoadmap() {
-    print('[RoadmapTab] Using fallback roadmap data');
     
     final currentYear = _getCurrentYear();
     final quarters = <RoadmapQuarter>[];

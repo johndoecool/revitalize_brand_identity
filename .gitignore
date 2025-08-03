@@ -247,3 +247,7 @@ frontend-test/working.spec.ts
 frontend-test/*.png
 frontend-test/*.webm
 frontend-test/*.mp4
+
+# Service data directories
+analysis-engine/reports/
+data-collection/data/

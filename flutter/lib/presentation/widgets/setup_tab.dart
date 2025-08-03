@@ -808,7 +808,7 @@ class _SetupTabState extends State<SetupTab> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -882,14 +882,14 @@ class _SetupTabState extends State<SetupTab> {
                   ],
                 ),
                 const SizedBox(height: 6),
-                Flexible(
+                Expanded(
                   child: Text(
                     area.description,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textSecondary,
                       height: 1.3,
                     ),
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -1491,11 +1491,6 @@ class _SetupTabState extends State<SetupTab> {
                      _selectedCompetitor != null;
     
     // Debug info
-    print('Launch button state:');
-    print('  Brand: ${_selectedBrand?.name ?? "None"} (${_selectedBrand != null})');
-    print('  Area: $_selectedArea (${_selectedArea != null})');
-    print('  Competitor: ${_selectedCompetitor?.name ?? "None"} (${_selectedCompetitor != null})');
-    print('  Can launch: $canLaunch');
     
     return Column(
       children: [
@@ -1532,7 +1527,6 @@ class _SetupTabState extends State<SetupTab> {
         Center(
           child: GlassmorphismButton(
             onPressed: canLaunch ? _launchAnalysis : () {
-              print('Button pressed but launch disabled');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('Please complete all required fields'),
@@ -1575,14 +1569,8 @@ class _SetupTabState extends State<SetupTab> {
 
   void _launchAnalysis() {
     if (_selectedBrand == null || _selectedArea == null || _selectedCompetitor == null) {
-      print('Cannot launch: missing required selections');
       return;
     }
-
-    print('Launching analysis...');
-    print('  Brand: ${_selectedBrand!.name}');
-    print('  Area: $_selectedArea');
-    print('  Competitor: ${_selectedCompetitor!.name}');
     
     final selectedAreaData = _analysisAreas.firstWhere(
       (area) => area.id == _selectedArea,
@@ -1593,7 +1581,6 @@ class _SetupTabState extends State<SetupTab> {
       ),
     );
     
-    print('  Selected area data: ${selectedAreaData.name}');
     
     // Call the callback if provided
     if (widget.onAnalysisLaunched != null) {
@@ -1617,9 +1604,7 @@ class _SetupTabState extends State<SetupTab> {
             ),
           ),
         ),
-      ).then((_) {
-        print('Returned from analysis page');
-      });
+      );
     }
   }
 

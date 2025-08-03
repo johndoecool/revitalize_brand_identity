@@ -96,10 +96,8 @@ class _InsightsTabState extends State<InsightsTab>
     try {
       // Layer 1: Try to extract real data from analysis result first
       if (widget.analysisResult != null) {
-        print('[InsightsTab] Attempting to extract enhanced insights from real analysis result');
         final enhancedInsights = _extractEnhancedInsightsFromAnalysis(widget.analysisResult!);
         if (enhancedInsights != null) {
-          print('[InsightsTab] Successfully using enhanced insights data');
           if (mounted) {
             setState(() {
               _enhancedResults = enhancedInsights;
@@ -109,17 +107,14 @@ class _InsightsTabState extends State<InsightsTab>
           }
           return;
         } else {
-          print('[InsightsTab] Failed to extract enhanced insights data, falling back to demo data');
         }
       } else {
-        print('[InsightsTab] No analysis result available, using demo data');
       }
 
       // Layer 2: Fallback to demo data
       await _loadDemoData();
       
     } catch (e) {
-      print('[InsightsTab] Error loading insights data: $e');
       if (mounted) {
         setState(() {
           _isLoading = false;
@@ -149,7 +144,6 @@ class _InsightsTabState extends State<InsightsTab>
           industry = 'banking';
       }
 
-      print('[InsightsTab] Loading demo insights data for industry: $industry');
       final results = await DemoInsightsService().getAnalysisResults(industry);
       if (mounted) {
         setState(() {
@@ -166,7 +160,6 @@ class _InsightsTabState extends State<InsightsTab>
         }
       }
     } catch (e) {
-      print('[InsightsTab] Error loading demo data: $e');
       if (mounted) {
         setState(() {
           _enhancedResults = EnhancedAnalysisResults(
@@ -193,13 +186,11 @@ class _InsightsTabState extends State<InsightsTab>
         bool hasAllFields = true;
         for (final field in requiredFields) {
           if (!analysisData.containsKey(field)) {
-            print('[InsightsTab] Missing required field: $field');
             hasAllFields = false;
           }
         }
 
         if (hasAllFields) {
-          print('[InsightsTab] Successfully found all required insights fields');
           baseResults = AnalysisResults.fromJson(analysisData);
         }
       }
@@ -209,14 +200,12 @@ class _InsightsTabState extends State<InsightsTab>
       final competitorAnalyses = <CompetitorAnalysis>[];
       
       if (competitorAnalysisData != null) {
-        print('[InsightsTab] Found competitor_analysis data with ${competitorAnalysisData.length} competitors');
         for (final competitorData in competitorAnalysisData) {
           if (competitorData is Map<String, dynamic>) {
             competitorAnalyses.add(CompetitorAnalysis.fromJson(competitorData));
           }
         }
       } else {
-        print('[InsightsTab] No competitor_analysis found in API response');
       }
 
       // Extract improvement areas data
@@ -224,22 +213,16 @@ class _InsightsTabState extends State<InsightsTab>
       final improvementAreas = <ImprovementArea>[];
       
       if (improvementAreasData != null) {
-        print('[InsightsTab] Found improvement_areas data with ${improvementAreasData.length} areas');
         for (final improvementData in improvementAreasData) {
           if (improvementData is Map<String, dynamic>) {
             improvementAreas.add(ImprovementArea.fromJson(improvementData));
           }
         }
       } else {
-        print('[InsightsTab] No improvement_areas found in API response');
       }
 
       // Create enhanced results if we have at least base results or enhanced data
       if (baseResults != null || competitorAnalyses.isNotEmpty || improvementAreas.isNotEmpty) {
-        print('[InsightsTab] Successfully extracted enhanced insights data');
-        print('[InsightsTab] Base results: ${baseResults != null}');
-        print('[InsightsTab] Competitor analyses: ${competitorAnalyses.length}');
-        print('[InsightsTab] Improvement areas: ${improvementAreas.length}');
         
         return EnhancedAnalysisResults(
           baseResults: baseResults ?? _createFallbackInsights(),
@@ -251,14 +234,12 @@ class _InsightsTabState extends State<InsightsTab>
       return null;
 
     } catch (e) {
-      print('[InsightsTab] Error extracting enhanced insights from analysis result: $e');
       return null;
     }
   }
 
   /// Create safe fallback insights data when all else fails
   AnalysisResults _createFallbackInsights() {
-    print('[InsightsTab] Using fallback insights data');
     
     return AnalysisResults(
       overallComparison: OverallComparison(

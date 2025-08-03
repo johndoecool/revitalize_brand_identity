@@ -41,17 +41,21 @@ class DataCollectionService {
       },
     ));
 
-    // Add interceptor for logging
+    // Add minimal logging for errors only
     _dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (obj) => print('[DataCollection] $obj'),
+      requestBody: false,
+      responseBody: false,
+      logPrint: (obj) {
+        // Suppress all logs - errors will still be handled via exceptions
+      },
     ));
 
     _analysisEngineDio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (obj) => print('[AnalysisEngine] $obj'),
+      requestBody: false,
+      responseBody: false,
+      logPrint: (obj) {
+        // Suppress all logs - errors will still be handled via exceptions
+      },
     ));
   }
 
@@ -73,11 +77,7 @@ class DataCollectionService {
       // Use existing request ID for retry, or generate new one for first attempt
       final requestId = existingRequestId ?? _uuid.v4();
       
-      if (existingRequestId != null) {
-        print('[DataCollection] Retrying with existing request ID: $requestId');
-      } else {
-        print('[DataCollection] Starting new analysis with request ID: $requestId');
-      }
+      // Use existing request ID for retry, or generate new one for first attempt
       
       onStatusUpdate?.call('Starting data collection...');
       
@@ -147,14 +147,12 @@ class DataCollectionService {
         requestData['sources'] = sources;
       }
 
-      print('[DataCollection] Starting collection with request: $requestData');
 
       final response = await _dio.post('/collect', data: requestData);
 
       if (response.statusCode == 200) {
         final data = response.data;
         if (data['success'] == true) {
-          print('[DataCollection] Collection started successfully');
           return ApiResult.success(data['data'] ?? {});
         } else {
           return ApiResult.error('API returned success: false');
@@ -178,7 +176,6 @@ class DataCollectionService {
     
     while (DateTime.now().difference(startTime) < requestTimeout) {
       try {
-        print('[DataCollection] Polling status for request: $requestId');
         
         final response = await _dio.get('/shared-data/$requestId');
         
@@ -240,42 +237,35 @@ class DataCollectionService {
   /// Get analysis results from analysis engine
   Future<ApiResult<Map<String, dynamic>>> _getAnalysisResults(String analysisId) async {
     try {
-      print('[AnalysisEngine] Getting results for analysis: $analysisId');
       
       final response = await _analysisEngineDio.get('/analyze/$analysisId/status');
       
       if (response.statusCode == 200) {
         final data = response.data;
         if (data['success'] == true) {
-          print('[AnalysisEngine] Results retrieved successfully');
           // Include all root-level fields from the API response
           final result = Map<String, dynamic>.from(data['data'] ?? {});
           
           // Add charts if available
           if (data['charts'] != null) {
             result['charts'] = data['charts'];
-            print('[AnalysisEngine] Including ${(data['charts'] as List).length} charts in result');
           }
           
           // Add roadmap if available
           if (data['roadmap'] != null) {
             result['roadmap'] = data['roadmap'];
-            print('[AnalysisEngine] Including roadmap in result');
           }
           
           // Add competitor_analysis if available
           if (data['competitor_analysis'] != null) {
             result['competitor_analysis'] = data['competitor_analysis'];
-            print('[AnalysisEngine] Including competitor_analysis in result');
           }
           
           // Add improvement_areas if available
           if (data['improvement_areas'] != null) {
             result['improvement_areas'] = data['improvement_areas'];
-            print('[AnalysisEngine] Including improvement_areas in result');
           }
           
-          print('[AnalysisEngine] Final result keys: ${result.keys}');
           return ApiResult.success(result);
         } else {
           return ApiResult.error('API returned success: false');
@@ -295,10 +285,8 @@ class DataCollectionService {
     try {
       // For PDF reports, we return the direct URL
       final url = '${DataCollectionService.analysisEngineUrl}/analyze/$analysisId/report?reportType=$reportType';
-      print('[AnalysisEngine] Report URL generated: $url');
       return url;
     } catch (e) {
-      print('[AnalysisEngine] Error generating report URL: $e');
       return null;
     }
   }
@@ -363,7 +351,6 @@ class DataCollectionService {
       return dataCollectionResponse.statusCode == 200 && 
              analysisEngineResponse.statusCode == 200;
     } catch (e) {
-      print('[Services] Health check failed: $e');
       return false;
     }
   }

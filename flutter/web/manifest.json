@@ -1,11 +1,11 @@
 {
-    "name": "brand_intelligence_hub",
-    "short_name": "brand_intelligence_hub",
+    "name": "Brand Intelligence Hub",
+    "short_name": "Brand Intel",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0A0A0A",
+    "theme_color": "#1A1A1A",
+    "description": "AI-Powered Brand Reputation Analysis & Competitive Intelligence Platform",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
