@@ -15,8 +15,9 @@ class BaseCollector(ABC):
         self.source_type = source_type
         self.session: Optional[aiohttp.ClientSession] = None
         self.rate_limit = getattr(settings, f"{source_type.value}_rate_limit", settings.default_rate_limit)
-        self.request_timeout = settings.request_timeout
-        self.max_retries = settings.max_retries
+        # OPTIMIZATION: Reduce timeouts for faster failover
+        self.request_timeout = getattr(settings, 'optimized_request_timeout', 15)  # Reduced from 30s
+        self.max_retries = getattr(settings, 'optimized_max_retries', 2)  # Reduced from 3
     
     async def __aenter__(self):
         """Async context manager entry"""
@@ -26,16 +27,35 @@ class BaseCollector(ABC):
         # Create SSL context based on configuration
         if settings.verify_ssl:
             # Production: Use default SSL verification
-            connector = aiohttp.TCPConnector()
+            connector = aiohttp.TCPConnector(
+                limit=100,  # OPTIMIZATION: Connection pool limit
+                limit_per_host=30,  # OPTIMIZATION: Per-host connection limit
+                ttl_dns_cache=300,  # OPTIMIZATION: DNS cache TTL
+                use_dns_cache=True,
+                keepalive_timeout=30,
+                enable_cleanup_closed=True
+            )
         else:
             # Development: Disable SSL verification for problematic certificates
             ssl_context = ssl.create_default_context()
             ssl_context.check_hostname = False
             ssl_context.verify_mode = ssl.CERT_NONE
-            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            connector = aiohttp.TCPConnector(
+                ssl=ssl_context,
+                limit=100,  # OPTIMIZATION: Connection pool limit
+                limit_per_host=30,  # OPTIMIZATION: Per-host connection limit
+                ttl_dns_cache=300,  # OPTIMIZATION: DNS cache TTL
+                use_dns_cache=True,
+                keepalive_timeout=30,
+                enable_cleanup_closed=True
+            )
         
         self.session = aiohttp.ClientSession(
-            timeout=aiohttp.ClientTimeout(total=self.request_timeout),
+            timeout=aiohttp.ClientTimeout(
+                total=self.request_timeout,  # OPTIMIZATION: Reduced timeout
+                connect=5,  # OPTIMIZATION: Fast connection timeout
+                sock_read=10  # OPTIMIZATION: Socket read timeout
+            ),
             headers={"User-Agent": settings.user_agent},
             connector=connector
         )
@@ -73,15 +93,17 @@ class BaseCollector(ABC):
                             logger.error(f"Forbidden (403) for URL: {url}. Check API permissions.")
                             return None  # Don't retry permission failures
                         elif response.status == 429:  # Rate limited
-                            retry_after = response.headers.get('retry-after', 2 ** attempt)
+                            # OPTIMIZATION: Faster retry with maximum cap
+                            retry_after = min(int(response.headers.get('retry-after', 1)), 5)  # Max 5 seconds
                             logger.warning(f"Rate limited (429). Retrying after {retry_after}s...")
-                            await asyncio.sleep(int(retry_after))
+                            await asyncio.sleep(retry_after)
                             continue
                         else:
                             response_text = await response.text()
                             logger.warning(f"Request failed with status {response.status}: {url}. Response: {response_text[:200]}...")
                             if attempt < self.max_retries - 1:
-                                await asyncio.sleep(2 ** attempt)
+                                # OPTIMIZATION: Reduced retry delay
+                                await asyncio.sleep(min(2 ** attempt, 3))  # Max 3 seconds
                                 continue
                             return None
                 elif method.upper() == "POST":
@@ -99,15 +121,17 @@ class BaseCollector(ABC):
                             logger.error(f"Forbidden (403) for URL: {url}. Check API permissions.")
                             return None  # Don't retry permission failures
                         elif response.status == 429:  # Rate limited
-                            retry_after = response.headers.get('retry-after', 2 ** attempt)
+                            # OPTIMIZATION: Faster retry with maximum cap
+                            retry_after = min(int(response.headers.get('retry-after', 1)), 5)  # Max 5 seconds
                             logger.warning(f"Rate limited (429). Retrying after {retry_after}s...")
-                            await asyncio.sleep(int(retry_after))
+                            await asyncio.sleep(retry_after)
                             continue
                         else:
                             response_text = await response.text()
                             logger.warning(f"Request failed with status {response.status}: {url}. Response: {response_text[:200]}...")
                             if attempt < self.max_retries - 1:
-                                await asyncio.sleep(2 ** attempt)
+                                # OPTIMIZATION: Reduced retry delay  
+                                await asyncio.sleep(min(2 ** attempt, 3))  # Max 3 seconds
                                 continue
                             return None
             except asyncio.TimeoutError:
@@ -163,15 +187,17 @@ class BaseCollector(ABC):
                             logger.warning(f"Page not found (404) for URL: {url}")
                             return None
                         elif response.status == 429:  # Rate limited
-                            retry_after = response.headers.get('retry-after', 2 ** attempt)
+                            # OPTIMIZATION: Faster retry with maximum cap for web scraping
+                            retry_after = min(int(response.headers.get('retry-after', 1)), 5)  # Max 5 seconds
                             logger.warning(f"Rate limited (429). Retrying after {retry_after}s...")
-                            await asyncio.sleep(int(retry_after))
+                            await asyncio.sleep(retry_after)
                             continue
                         else:
                             response_text = await response.text()
                             logger.warning(f"Web request failed with status {response.status}: {url}. Response: {response_text[:200]}...")
                             if attempt < self.max_retries - 1:
-                                await asyncio.sleep(2 ** attempt)
+                                # OPTIMIZATION: Reduced retry delay for web scraping
+                                await asyncio.sleep(min(2 ** attempt, 3))  # Max 3 seconds
                                 continue
                             return None
             except asyncio.TimeoutError:

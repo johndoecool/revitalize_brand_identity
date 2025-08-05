@@ -69,7 +69,7 @@ async def start_data_collection(request: CollectionRequest):
             success=True,
             job_id=job_id,
             status="started",
-            estimated_duration=180  # 3 minutes
+            estimated_duration=90  # 1.5 minutes (optimized with parallel collection)
         )
         
     except Exception as e:
