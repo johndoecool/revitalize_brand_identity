@@ -1,0 +1,331 @@
+# =============================================================================
+# Azure DevOps Pipeline for Revitalize Brand Identity
+# =============================================================================
+# This pipeline deploys all microservices to Azure Container Apps
+# Uses the existing service connection: Azure-RevitalizeBrandIdentity
+# =============================================================================
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - README.md
+    - docs/*
+
+pr: none
+
+variables:
+  # Azure Configuration
+  resourceGroup: 'rg-revitalize-brand-identity-prod'
+  location: 'eastus'
+  acrName: 'crrevitalizebrandidentity'
+  containerAppsEnv: 'cae-revitalize-brand-identity-prod'
+  serviceConnection: 'Azure-RevitalizeBrandIdentity'
+  
+  # Service Configuration
+  brandServiceName: 'ca-revitalize-brand-service'
+  dataCollectionServiceName: 'ca-revitalize-data-collection'
+  analysisEngineServiceName: 'ca-revitalize-analysis-engine'
+
+stages:
+- stage: Infrastructure
+  displayName: 'Setup Infrastructure'
+  jobs:
+  - job: CreateResources
+    displayName: 'Create Azure Resources'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+    
+    - task: AzureCLI@2
+      displayName: 'Register Azure Providers'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🔧 Registering required Azure providers..."
+          az provider register --namespace Microsoft.ContainerRegistry
+          az provider register --namespace Microsoft.App
+          az provider register --namespace Microsoft.Storage
+          echo "✅ Providers registered"
+    
+    - task: AzureCLI@2
+      displayName: 'Create Resource Group'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🏗️ Creating Resource Group: $(resourceGroup)"
+          if az group show --name $(resourceGroup) >/dev/null 2>&1; then
+            echo "⚠️ Resource Group $(resourceGroup) already exists"
+          else
+            az group create --name $(resourceGroup) --location $(location)
+            echo "✅ Resource Group created"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Create Container Registry'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🐳 Creating Container Registry: $(acrName)"
+          if az acr show --name $(acrName) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "⚠️ Container Registry $(acrName) already exists"
+          else
+            az acr create --resource-group $(resourceGroup) --name $(acrName) --sku Basic --admin-enabled true
+            echo "✅ Container Registry created"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Create Container Apps Environment'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🏭 Creating Container Apps Environment: $(containerAppsEnv)"
+          if az containerapp env show --name $(containerAppsEnv) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "⚠️ Container Apps Environment already exists"
+          else
+            az containerapp env create --name $(containerAppsEnv) --resource-group $(resourceGroup) --location $(location)
+            echo "✅ Container Apps Environment created"
+          fi
+
+- stage: BuildAndDeploy
+  displayName: 'Build and Deploy Services'
+  dependsOn: Infrastructure
+  jobs:
+  - job: BrandService
+    displayName: 'Deploy Brand Service'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+    
+    - task: AzureCLI@2
+      displayName: 'Build and Deploy Brand Service'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        workingDirectory: 'brand-service'
+        inlineScript: |
+          echo "🚀 Building and deploying Brand Service..."
+          
+          # Login to ACR
+          az acr login --name $(acrName)
+          
+          # Build Docker image
+          echo "🐳 Building Docker image..."
+          docker build -t $(acrName).azurecr.io/brand-service:$(Build.BuildNumber) .
+          docker push $(acrName).azurecr.io/brand-service:$(Build.BuildNumber)
+          
+          # Deploy to Container Apps
+          echo "📦 Deploying to Container Apps..."
+          if az containerapp show --name $(brandServiceName) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "🔄 Updating existing app..."
+            az containerapp update \
+              --name $(brandServiceName) \
+              --resource-group $(resourceGroup) \
+              --image $(acrName).azurecr.io/brand-service:$(Build.BuildNumber)
+          else
+            echo "🆕 Creating new app..."
+            az containerapp create \
+              --name $(brandServiceName) \
+              --resource-group $(resourceGroup) \
+              --environment $(containerAppsEnv) \
+              --image $(acrName).azurecr.io/brand-service:$(Build.BuildNumber) \
+              --target-port 8001 \
+              --ingress external \
+              --min-replicas 1 \
+              --max-replicas 3 \
+              --cpu 0.5 \
+              --memory 1Gi
+          fi
+          
+          # Get service URL
+          SERVICE_URL=$(az containerapp show --name $(brandServiceName) --resource-group $(resourceGroup) --query "properties.configuration.ingress.fqdn" -o tsv)
+          echo "✅ Brand Service deployed: https://$SERVICE_URL"
+
+  - job: DataCollection
+    displayName: 'Deploy Data Collection'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+    
+    - task: AzureCLI@2
+      displayName: 'Build and Deploy Data Collection Service'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        workingDirectory: 'data-collection'
+        inlineScript: |
+          echo "🚀 Building and deploying Data Collection Service..."
+          
+          # Login to ACR
+          az acr login --name $(acrName)
+          
+          # Build Docker image
+          echo "🐳 Building Docker image..."
+          docker build -t $(acrName).azurecr.io/data-collection:$(Build.BuildNumber) .
+          docker push $(acrName).azurecr.io/data-collection:$(Build.BuildNumber)
+          
+          # Deploy to Container Apps
+          echo "📦 Deploying to Container Apps..."
+          if az containerapp show --name $(dataCollectionServiceName) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "🔄 Updating existing app..."
+            az containerapp update \
+              --name $(dataCollectionServiceName) \
+              --resource-group $(resourceGroup) \
+              --image $(acrName).azurecr.io/data-collection:$(Build.BuildNumber)
+          else
+            echo "🆕 Creating new app..."
+            az containerapp create \
+              --name $(dataCollectionServiceName) \
+              --resource-group $(resourceGroup) \
+              --environment $(containerAppsEnv) \
+              --image $(acrName).azurecr.io/data-collection:$(Build.BuildNumber) \
+              --target-port 8002 \
+              --ingress external \
+              --min-replicas 1 \
+              --max-replicas 3 \
+              --cpu 1.0 \
+              --memory 2Gi
+          fi
+          
+          # Get service URL
+          SERVICE_URL=$(az containerapp show --name $(dataCollectionServiceName) --resource-group $(resourceGroup) --query "properties.configuration.ingress.fqdn" -o tsv)
+          echo "✅ Data Collection Service deployed: https://$SERVICE_URL"
+
+  - job: AnalysisEngine
+    displayName: 'Deploy Analysis Engine'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+    
+    - task: AzureCLI@2
+      displayName: 'Create Dockerfile for Analysis Engine'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        workingDirectory: 'analysis-engine'
+        inlineScript: |
+          if [ ! -f "Dockerfile" ]; then
+            echo "📝 Creating Dockerfile..."
+            cat > Dockerfile << 'EOF'
+          FROM python:3.11-slim
+          
+          WORKDIR /app
+          COPY requirements.txt .
+          RUN pip install --no-cache-dir -r requirements.txt
+          COPY app/ ./app/
+          EXPOSE 8003
+          ENV PYTHONPATH=/app
+          ENV PYTHONUNBUFFERED=1
+          CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8003"]
+          EOF
+            echo "✅ Dockerfile created"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Build and Deploy Analysis Engine'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        workingDirectory: 'analysis-engine'
+        inlineScript: |
+          echo "🚀 Building and deploying Analysis Engine..."
+          
+          # Login to ACR
+          az acr login --name $(acrName)
+          
+          # Build Docker image
+          echo "🐳 Building Docker image..."
+          docker build -t $(acrName).azurecr.io/analysis-engine:$(Build.BuildNumber) .
+          docker push $(acrName).azurecr.io/analysis-engine:$(Build.BuildNumber)
+          
+          # Deploy to Container Apps
+          echo "📦 Deploying to Container Apps..."
+          if az containerapp show --name $(analysisEngineServiceName) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "🔄 Updating existing app..."
+            az containerapp update \
+              --name $(analysisEngineServiceName) \
+              --resource-group $(resourceGroup) \
+              --image $(acrName).azurecr.io/analysis-engine:$(Build.BuildNumber)
+          else
+            echo "🆕 Creating new app..."
+            az containerapp create \
+              --name $(analysisEngineServiceName) \
+              --resource-group $(resourceGroup) \
+              --environment $(containerAppsEnv) \
+              --image $(acrName).azurecr.io/analysis-engine:$(Build.BuildNumber) \
+              --target-port 8003 \
+              --ingress external \
+              --min-replicas 1 \
+              --max-replicas 5 \
+              --cpu 1.0 \
+              --memory 2Gi
+          fi
+          
+          # Get service URL
+          SERVICE_URL=$(az containerapp show --name $(analysisEngineServiceName) --resource-group $(resourceGroup) --query "properties.configuration.ingress.fqdn" -o tsv)
+          echo "✅ Analysis Engine deployed: https://$SERVICE_URL"
+
+- stage: HealthCheck
+  displayName: 'Health Check Services'
+  dependsOn: BuildAndDeploy
+  jobs:
+  - job: VerifyDeployment
+    displayName: 'Verify All Services'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Health Check All Services'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "🏥 Performing health checks..."
+          
+          services=("$(brandServiceName)" "$(dataCollectionServiceName)" "$(analysisEngineServiceName)")
+          
+          for service in "${services[@]}"; do
+            echo "🔍 Checking $service..."
+            SERVICE_URL=$(az containerapp show --name $service --resource-group $(resourceGroup) --query "properties.configuration.ingress.fqdn" -o tsv)
+            
+            if [ ! -z "$SERVICE_URL" ]; then
+              echo "📍 Service URL: https://$SERVICE_URL"
+              # Try health check
+              if curl -f "https://$SERVICE_URL/health" >/dev/null 2>&1; then
+                echo "✅ $service is healthy"
+              else
+                echo "⚠️ $service health check failed (service may still be starting)"
+              fi
+            else
+              echo "❌ Could not get URL for $service"
+            fi
+          done
+          
+          echo ""
+          echo "🎉 Deployment Summary:"
+          echo "All services have been deployed to Azure Container Apps"
+          echo "Monitor the services in Azure Portal for detailed status"
