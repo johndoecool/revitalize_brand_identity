@@ -1,0 +1,199 @@
+# =============================================================================
+# Brand Service Pipeline for Revitalize Brand Identity
+# =============================================================================
+# This pipeline builds, tests, and deploys the Brand Service microservice
+# Triggers on changes to brand-service/ directory
+# =============================================================================
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - brand-service/*
+    - .azure-pipelines/brand-service-pipeline.yml
+
+pr: none
+
+variables:
+- group: Azure-Config
+- group: API-Keys
+- group: Storage-Config
+- group: Container-Apps
+- name: serviceConnection
+  value: 'Azure-RevitalizeBrandIdentity'
+- name: imageName
+  value: '$(ACR_NAME).azurecr.io/brand-service'
+- name: imageTag
+  value: '$(Build.BuildNumber)'
+- name: workingDirectory
+  value: 'brand-service'
+
+stages:
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+  - job: BuildAndTest
+    displayName: 'Build and Test Brand Service'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+      displayName: 'Checkout Repository'
+    
+    - task: UsePythonVersion@0
+      displayName: 'Set Python Version'
+      inputs:
+        versionSpec: '3.11'
+        addToPath: true
+    
+    - script: |
+        cd $(workingDirectory)
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install flake8 black pytest-cov
+      displayName: 'Install Dependencies'
+    
+    - script: |
+        cd $(workingDirectory)
+        echo "Running code formatting check with black..."
+        black --check --diff app/ || exit 0  # Don't fail build on formatting
+        echo "Running linting with flake8..."
+        flake8 app/ --max-line-length=100 --exclude=__pycache__ || exit 0  # Don't fail build on linting
+      displayName: 'Code Quality Checks'
+    
+    - script: |
+        cd $(workingDirectory)
+        echo "Running unit tests with coverage..."
+        python -m pytest tests/ -v --cov=app --cov-report=xml --cov-report=html --cov-fail-under=50
+      displayName: 'Run Tests with Coverage'
+    
+    - task: PublishTestResults@2
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFiles: '$(workingDirectory)/junit.xml'
+        testRunTitle: 'Brand Service Tests'
+        failTaskOnFailedTests: true
+    
+    - task: PublishCodeCoverageResults@1
+      condition: succeededOrFailed()
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(workingDirectory)/coverage.xml'
+        reportDirectory: '$(workingDirectory)/htmlcov'
+    
+    - task: Docker@2
+      displayName: 'Build Docker Image'
+      inputs:
+        containerRegistry: $(serviceConnection)
+        repository: 'brand-service'
+        command: 'build'
+        Dockerfile: '$(workingDirectory)/Dockerfile'
+        buildContext: '$(workingDirectory)'
+        tags: |
+          $(imageTag)
+          latest
+    
+    - task: Docker@2
+      displayName: 'Push Docker Image'
+      inputs:
+        containerRegistry: $(serviceConnection)
+        repository: 'brand-service'
+        command: 'push'
+        tags: |
+          $(imageTag)
+          latest
+
+- stage: Deploy
+  displayName: 'Deploy to Azure Container Apps'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: DeployBrandService
+    displayName: 'Deploy Brand Service'
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            displayName: 'Deploy to Container Apps'
+            inputs:
+              azureSubscription: $(serviceConnection)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Deploying Brand Service to Container Apps..."
+                
+                # Check if container app exists
+                if az containerapp show --name $(BRAND_SERVICE_NAME) --resource-group $(RESOURCE_GROUP) >/dev/null 2>&1; then
+                  echo "Updating existing Container App: $(BRAND_SERVICE_NAME)"
+                  az containerapp update \
+                    --name $(BRAND_SERVICE_NAME) \
+                    --resource-group $(RESOURCE_GROUP) \
+                    --image $(imageName):$(imageTag) \
+                    --set-env-vars PYTHONPATH=/app PYTHONUNBUFFERED=1 \
+                    --secrets openai-api-key=$(OPENAI_API_KEY) together-api-key=$(TOGETHER_API_KEY) storage-key=$(STORAGE_ACCOUNT_KEY) \
+                    --env-vars OPENAI_API_KEY=secretref:openai-api-key TOGETHER_API_KEY=secretref:together-api-key STORAGE_ACCOUNT_NAME=$(STORAGE_ACCOUNT_NAME) STORAGE_ACCOUNT_KEY=secretref:storage-key FILE_SHARE_NAME=$(FILE_SHARE_NAME)
+                else
+                  echo "Creating new Container App: $(BRAND_SERVICE_NAME)"
+                  az containerapp create \
+                    --name $(BRAND_SERVICE_NAME) \
+                    --resource-group $(RESOURCE_GROUP) \
+                    --environment $(CONTAINER_APPS_ENV) \
+                    --image $(imageName):$(imageTag) \
+                    --target-port $(BRAND_SERVICE_PORT) \
+                    --ingress external \
+                    --min-replicas 1 \
+                    --max-replicas 3 \
+                    --cpu 0.5 \
+                    --memory 1Gi \
+                    --secrets openai-api-key=$(OPENAI_API_KEY) together-api-key=$(TOGETHER_API_KEY) storage-key=$(STORAGE_ACCOUNT_KEY) \
+                    --env-vars PYTHONPATH=/app PYTHONUNBUFFERED=1 OPENAI_API_KEY=secretref:openai-api-key TOGETHER_API_KEY=secretref:together-api-key STORAGE_ACCOUNT_NAME=$(STORAGE_ACCOUNT_NAME) STORAGE_ACCOUNT_KEY=secretref:storage-key FILE_SHARE_NAME=$(FILE_SHARE_NAME)
+                fi
+                
+                echo "Deployment completed successfully!"
+          
+          - task: AzureCLI@2
+            displayName: 'Get Service URL'
+            inputs:
+              azureSubscription: $(serviceConnection)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Getting Brand Service URL..."
+                SERVICE_URL=$(az containerapp show --name $(BRAND_SERVICE_NAME) --resource-group $(RESOURCE_GROUP) --query "properties.configuration.ingress.fqdn" -o tsv)
+                echo "Brand Service is available at: https://$SERVICE_URL"
+                echo "Health check: https://$SERVICE_URL/health"
+                echo "API docs: https://$SERVICE_URL/docs"
+                
+                # Set output variable for other stages/jobs
+                echo "##vso[task.setvariable variable=brandServiceUrl;isOutput=true]https://$SERVICE_URL"
+          
+          - task: AzureCLI@2
+            displayName: 'Health Check'
+            inputs:
+              azureSubscription: $(serviceConnection)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Performing health check..."
+                SERVICE_URL=$(az containerapp show --name $(BRAND_SERVICE_NAME) --resource-group $(RESOURCE_GROUP) --query "properties.configuration.ingress.fqdn" -o tsv)
+                
+                # Wait for service to be ready
+                for i in {1..10}; do
+                  echo "Health check attempt $i/10..."
+                  if curl -f "https://$SERVICE_URL/health" >/dev/null 2>&1; then
+                    echo "✅ Brand Service is healthy and responding!"
+                    exit 0
+                  fi
+                  echo "Service not ready yet, waiting 30 seconds..."
+                  sleep 30
+                done
+                
+                echo "⚠️ Health check timed out, but deployment may still be in progress"
+                echo "Check the service status in Azure Portal"

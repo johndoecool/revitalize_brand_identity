@@ -1,0 +1,202 @@
+# =============================================================================
+# Infrastructure Pipeline for Revitalize Brand Identity
+# =============================================================================
+# This pipeline sets up the Azure infrastructure needed for the microservices
+# Trigger: Manual or on changes to infrastructure files
+# =============================================================================
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - azure-setup/*
+    - .azure-pipelines/infrastructure-pipeline.yml
+
+pr: none  # Don't trigger on PRs
+
+variables:
+- name: serviceConnection
+  value: 'Azure-RevitalizeBrandIdentity'
+- name: resourceGroup
+  value: 'rg-revitalize-brand-identity-prod'
+- name: location
+  value: 'eastus'
+- name: acrName
+  value: 'crrevitalizebrandidentity'
+- name: containerAppsEnv
+  value: 'cae-revitalize-brand-identity-prod'
+- name: storageAccountPrefix
+  value: 'sarevitalizebrand'
+- name: fileShareName
+  value: 'shared-data'
+
+stages:
+- stage: Infrastructure
+  displayName: 'Setup Azure Infrastructure'
+  jobs:
+  - job: CreateInfrastructure
+    displayName: 'Create Azure Resources'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: self
+      displayName: 'Checkout Repository'
+    
+    - task: AzureCLI@2
+      displayName: 'Register Azure Providers'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "Registering required Azure providers..."
+          az provider register --namespace Microsoft.ContainerRegistry
+          az provider register --namespace Microsoft.App
+          az provider register --namespace Microsoft.Storage
+          echo "Providers registration initiated"
+    
+    - task: AzureCLI@2
+      displayName: 'Create Resource Group'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "Creating Resource Group: $(resourceGroup)"
+          if az group show --name $(resourceGroup) >/dev/null 2>&1; then
+            echo "Resource Group $(resourceGroup) already exists"
+          else
+            az group create --name $(resourceGroup) --location $(location)
+            echo "Resource Group created: $(resourceGroup)"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Create Container Registry'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "Creating Azure Container Registry: $(acrName)"
+          if az acr show --name $(acrName) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "Container Registry $(acrName) already exists"
+          else
+            az acr create --resource-group $(resourceGroup) --name $(acrName) --sku Basic --admin-enabled true
+            echo "Container Registry created: $(acrName)"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Create Storage Account and File Share'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Generate unique storage account name
+          STORAGE_ACCOUNT_NAME="$(storageAccountPrefix)$(date +%s | tail -c 6)"
+          echo "Storage Account Name: $STORAGE_ACCOUNT_NAME"
+          
+          # Create storage account if it doesn't exist
+          if ! az storage account show --name $STORAGE_ACCOUNT_NAME --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "Creating Storage Account: $STORAGE_ACCOUNT_NAME"
+            az storage account create \
+              --name $STORAGE_ACCOUNT_NAME \
+              --resource-group $(resourceGroup) \
+              --location $(location) \
+              --sku Standard_LRS \
+              --kind StorageV2
+            echo "Storage Account created: $STORAGE_ACCOUNT_NAME"
+          else
+            echo "Storage Account $STORAGE_ACCOUNT_NAME already exists"
+          fi
+          
+          # Get storage key
+          STORAGE_KEY=$(az storage account keys list --resource-group $(resourceGroup) --account-name $STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
+          
+          # Create file share if it doesn't exist
+          if ! az storage share exists --name $(fileShareName) --account-name $STORAGE_ACCOUNT_NAME --account-key $STORAGE_KEY --query "exists" -o tsv | grep -q "true"; then
+            echo "Creating File Share: $(fileShareName)"
+            az storage share create \
+              --name $(fileShareName) \
+              --account-name $STORAGE_ACCOUNT_NAME \
+              --account-key $STORAGE_KEY \
+              --quota 1
+            echo "File Share created: $(fileShareName)"
+          else
+            echo "File Share $(fileShareName) already exists"
+          fi
+          
+          # Export variables for later tasks
+          echo "##vso[task.setvariable variable=storageAccountName;isOutput=true]$STORAGE_ACCOUNT_NAME"
+          echo "##vso[task.setvariable variable=storageAccountKey;isOutput=true]$STORAGE_KEY"
+    
+    - task: AzureCLI@2
+      displayName: 'Upload Shared Database File'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Get storage account details from previous task
+          STORAGE_ACCOUNTS=$(az storage account list --resource-group $(resourceGroup) --query "[?contains(name, '$(storageAccountPrefix)')].name" -o tsv)
+          STORAGE_ACCOUNT_NAME=$(echo $STORAGE_ACCOUNTS | head -n1)
+          STORAGE_KEY=$(az storage account keys list --resource-group $(resourceGroup) --account-name $STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
+          
+          if [ -f "shared/database.json" ]; then
+            echo "Uploading shared/database.json to File Share"
+            az storage file upload \
+              --share-name $(fileShareName) \
+              --source "shared/database.json" \
+              --path "database.json" \
+              --account-name $STORAGE_ACCOUNT_NAME \
+              --account-key $STORAGE_KEY \
+              --no-progress
+            echo "Database file uploaded successfully"
+          else
+            echo "Warning: shared/database.json not found"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Create Container Apps Environment'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          echo "Creating Container Apps Environment: $(containerAppsEnv)"
+          if az containerapp env show --name $(containerAppsEnv) --resource-group $(resourceGroup) >/dev/null 2>&1; then
+            echo "Container Apps Environment $(containerAppsEnv) already exists"
+          else
+            az containerapp env create \
+              --name $(containerAppsEnv) \
+              --resource-group $(resourceGroup) \
+              --location $(location)
+            echo "Container Apps Environment created: $(containerAppsEnv)"
+          fi
+    
+    - task: AzureCLI@2
+      displayName: 'Output Infrastructure Summary'
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Get storage account details
+          STORAGE_ACCOUNTS=$(az storage account list --resource-group $(resourceGroup) --query "[?contains(name, '$(storageAccountPrefix)')].name" -o tsv)
+          STORAGE_ACCOUNT_NAME=$(echo $STORAGE_ACCOUNTS | head -n1)
+          
+          echo "=== Infrastructure Setup Complete ==="
+          echo "Resource Group: $(resourceGroup)"
+          echo "Container Registry: $(acrName).azurecr.io"
+          echo "Storage Account: $STORAGE_ACCOUNT_NAME"
+          echo "File Share: $(fileShareName)"
+          echo "Container Apps Environment: $(containerAppsEnv)"
+          echo "Location: $(location)"
+          echo "=== Next Steps ==="
+          echo "1. Set up variable groups with these values"
+          echo "2. Run the service-specific pipelines to build and deploy containers"
+          echo "3. Services will be available at their respective endpoints"
+          echo "4. Monitor deployments in Azure Container Apps"
