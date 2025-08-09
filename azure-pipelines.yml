@@ -61,7 +61,7 @@ stages:
     - template: .azure/pipelines/templates/security-scan.yml
       parameters:
         scanType: 'source-code'
-        failOnHighSeverity: $(failOnHighVulnerabilities)
+        failOnHighSeverity: true
     
     - script: |
         echo "📊 Code Quality Metrics:"
@@ -130,7 +130,7 @@ stages:
         scanType: 'container-images'
         dockerNamespace: $(dockerNamespace)
         buildVersion: $(buildVersion)
-        failOnHighSeverity: $(failOnHighVulnerabilities)
+        failOnHighSeverity: true
 
 # =============================================================================
 # STAGE 4: PUBLISH & ARCHIVE
