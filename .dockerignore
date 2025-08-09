@@ -1,0 +1,189 @@
+# =============================================================================
+# Docker Build Optimization - Brand Intelligence Hub
+# =============================================================================
+# Exclude unnecessary files from Docker build context
+# Reduces build time and image size
+# =============================================================================
+
+# Git and Version Control
+.git
+.gitignore
+.gitattributes
+.github/
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Azure DevOps
+.azure/
+azure-pipelines.yml
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+pytest.ini
+tox.ini
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Build artifacts
+*.tar.gz
+*.zip
+*.rar
+
+# Service-specific excludes
+# Brand Service
+brand-service/logs/
+brand-service/cache/
+brand-service/tests/
+brand-service/*.log
+
+# Data Collection Service
+data-collection/data/collected_data/
+data-collection/data/jobs/
+data-collection/logs/
+data-collection/tests/
+
+# Analysis Engine
+analysis-engine/reports/
+analysis-engine/venv/
+analysis-engine/logs/
+analysis-engine/*.log
+
+# Flutter (if building in same context)
+flutter/build/
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+flutter/.packages
+flutter/pubspec.lock
+
+# Node.js (if any)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Security and sensitive files
+*.key
+*.pem
+*.crt
+*.p12
+secrets/
+.secrets/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Docker
+Dockerfile.dev
+docker-compose.dev.yml
+docker-compose.override.yml
+
+# CI/CD artifacts
+.azure-pipelines/
+scripts/
+postman/
+
+# Test data and fixtures
+test-data/
+fixtures/
+mocks/
+
+# Reports and outputs
+reports/
+output/
+dist/
+build/

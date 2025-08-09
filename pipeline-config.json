@@ -1,0 +1,241 @@
+{
+  "pipelineConfig": {
+    "version": "1.0.0",
+    "name": "Brand Intelligence Hub Enterprise CI/CD",
+    "description": "Enterprise-grade CI/CD pipeline with security scanning and compliance",
+    "lastUpdated": "2025-01-01T00:00:00Z"
+  },
+  "buildConfiguration": {
+    "versioning": {
+      "strategy": "semantic",
+      "majorVersion": 1,
+      "minorVersion": 0,
+      "patchAutoIncrement": true,
+      "tagFormat": "v{major}.{minor}.{patch}"
+    },
+    "dockerRegistry": {
+      "registry": "docker.io",
+      "namespace": "avishekdascool",
+      "publicRepositories": true,
+      "tagStrategy": ["latest", "version", "build-number"]
+    }
+  },
+  "services": [
+    {
+      "name": "brand-service",
+      "port": 8001,
+      "path": "brand-service",
+      "dockerfile": "brand-service/Dockerfile",
+      "healthEndpoint": "/health",
+      "testCommand": "python -m pytest tests/",
+      "buildContext": "brand-service",
+      "cpuLimit": "0.5",
+      "memoryLimit": "1Gi",
+      "replicas": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    {
+      "name": "data-collection",
+      "port": 8002,
+      "path": "data-collection",
+      "dockerfile": "data-collection/Dockerfile",
+      "healthEndpoint": "/health",
+      "testCommand": "python -m pytest tests/",
+      "buildContext": "data-collection",
+      "cpuLimit": "1.0",
+      "memoryLimit": "2Gi",
+      "replicas": {
+        "min": 1,
+        "max": 5
+      }
+    },
+    {
+      "name": "analysis-engine",
+      "port": 8003,
+      "path": "analysis-engine",
+      "dockerfile": "analysis-engine/Dockerfile",
+      "healthEndpoint": "/health",
+      "testCommand": "python -m pytest tests/",
+      "buildContext": "analysis-engine",
+      "cpuLimit": "1.0",
+      "memoryLimit": "2Gi",
+      "replicas": {
+        "min": 1,
+        "max": 5
+      }
+    }
+  ],
+  "qualityGates": {
+    "codeCoverage": {
+      "enabled": true,
+      "threshold": 80,
+      "failBuildOnThreshold": false,
+      "warnOnThreshold": true
+    },
+    "securityScanning": {
+      "enabled": true,
+      "failOnHighSeverity": true,
+      "failOnCriticalSeverity": true,
+      "maxHighVulnerabilities": 10,
+      "maxCriticalVulnerabilities": 0,
+      "tools": [
+        "bandit",
+        "safety",
+        "trivy"
+      ]
+    },
+    "codeQuality": {
+      "linting": {
+        "python": "flake8",
+        "dart": "flutter analyze",
+        "failOnErrors": false,
+        "failOnWarnings": false
+      },
+      "secretsDetection": {
+        "enabled": true,
+        "failOnSecrets": false,
+        "warnOnSecrets": true
+      }
+    }
+  },
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "onFailure": true,
+      "onSuccess": false,
+      "recipients": [
+        "Avishek.das4@cognizant.com"
+      ]
+    },
+    "teams": {
+      "enabled": false,
+      "webhook": "",
+      "onFailure": true,
+      "onSuccess": true
+    }
+  },
+  "artifactManagement": {
+    "retention": {
+      "successfulBuilds": 30,
+      "failedBuilds": 7,
+      "taggedReleases": 365,
+      "dockerImages": 10
+    },
+    "archiving": {
+      "enabled": true,
+      "includeLogs": true,
+      "includeTestResults": true,
+      "includeSecurityReports": true,
+      "includeCoverageReports": true
+    }
+  },
+  "triggers": {
+    "branches": {
+      "include": ["master"],
+      "exclude": ["feature/*", "bugfix/*"]
+    },
+    "paths": {
+      "exclude": [
+        "README.md",
+        "docs/*",
+        "**/*.md",
+        ".gitignore",
+        "postman/*"
+      ]
+    },
+    "pullRequests": {
+      "enabled": false,
+      "validationOnly": true,
+      "skipDeployment": true
+    }
+  },
+  "stages": [
+    {
+      "name": "CodeQuality",
+      "displayName": "🔍 Code Quality & Security Analysis",
+      "enabled": true,
+      "parallel": false,
+      "condition": "always"
+    },
+    {
+      "name": "BuildAndTest",
+      "displayName": "🧪 Build & Test Services",
+      "enabled": true,
+      "parallel": true,
+      "dependsOn": ["CodeQuality"],
+      "condition": "succeeded"
+    },
+    {
+      "name": "ContainerSecurity",
+      "displayName": "🔒 Container Security Scanning",
+      "enabled": true,
+      "parallel": false,
+      "dependsOn": ["BuildAndTest"],
+      "condition": "succeeded"
+    },
+    {
+      "name": "PublishArtifacts",
+      "displayName": "📦 Publish & Archive",
+      "enabled": true,
+      "parallel": false,
+      "dependsOn": ["ContainerSecurity"],
+      "condition": "succeeded"
+    },
+    {
+      "name": "Reporting",
+      "displayName": "📊 Reporting & Notifications",
+      "enabled": true,
+      "parallel": false,
+      "dependsOn": ["PublishArtifacts"],
+      "condition": "always"
+    }
+  ],
+  "agentConfiguration": {
+    "poolName": "Brand-Intelligence-Pool",
+    "agentType": "self-hosted",
+    "requirements": [
+      "docker",
+      "python3",
+      "pip",
+      "curl",
+      "git"
+    ],
+    "capabilities": {
+      "docker": "required",
+      "python": "3.11+",
+      "diskSpace": "10GB",
+      "memory": "8GB"
+    }
+  },
+  "compliance": {
+    "auditTrail": {
+      "enabled": true,
+      "retainLogs": 365,
+      "includeSourceCode": false,
+      "includeArtifacts": true
+    },
+    "securityStandards": {
+      "framework": "ISO27001",
+      "scanContainers": true,
+      "scanDependencies": true,
+      "scanSourceCode": true,
+      "reportGeneration": true
+    }
+  },
+  "monitoring": {
+    "buildMetrics": {
+      "enabled": true,
+      "trackDuration": true,
+      "trackSuccess": true,
+      "trackFailures": true,
+      "trackCoverage": true
+    },
+    "dashboard": {
+      "enabled": true,
+      "publicAccess": false,
+      "metricsRetention": 90
+    }
+  }
+}
