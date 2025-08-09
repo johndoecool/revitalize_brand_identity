@@ -84,10 +84,10 @@ stages:
       parameters:
         serviceName: 'brand-service'
         servicePort: '8001'
-        dockerRegistry: $(dockerRegistry)
-        dockerNamespace: $(dockerNamespace)
-        buildVersion: $(buildVersion)
-        codeCoverageThreshold: $(codeCoverageThreshold)
+        dockerRegistry: 'docker.io'
+        dockerNamespace: 'avishekdascool'
+        buildVersion: '$(buildVersion)'
+        codeCoverageThreshold: 80
   
   - job: DataCollection
     displayName: 'Data Collection Service'
@@ -96,10 +96,10 @@ stages:
       parameters:
         serviceName: 'data-collection'
         servicePort: '8002'
-        dockerRegistry: $(dockerRegistry)
-        dockerNamespace: $(dockerNamespace)
-        buildVersion: $(buildVersion)
-        codeCoverageThreshold: $(codeCoverageThreshold)
+        dockerRegistry: 'docker.io'
+        dockerNamespace: 'avishekdascool'
+        buildVersion: '$(buildVersion)'
+        codeCoverageThreshold: 80
   
   - job: AnalysisEngine
     displayName: 'Analysis Engine Service'
@@ -108,10 +108,10 @@ stages:
       parameters:
         serviceName: 'analysis-engine'
         servicePort: '8003'
-        dockerRegistry: $(dockerRegistry)
-        dockerNamespace: $(dockerNamespace)
-        buildVersion: $(buildVersion)
-        codeCoverageThreshold: $(codeCoverageThreshold)
+        dockerRegistry: 'docker.io'
+        dockerNamespace: 'avishekdascool'
+        buildVersion: '$(buildVersion)'
+        codeCoverageThreshold: 80
 
 # =============================================================================
 # STAGE 3: CONTAINER SECURITY & COMPLIANCE
@@ -128,8 +128,8 @@ stages:
     - template: .azure/pipelines/templates/security-scan.yml
       parameters:
         scanType: 'container-images'
-        dockerNamespace: $(dockerNamespace)
-        buildVersion: $(buildVersion)
+        dockerNamespace: 'avishekdascool'
+        buildVersion: '$(buildVersion)'
         failOnHighSeverity: true
 
 # =============================================================================
