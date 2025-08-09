@@ -58,7 +58,7 @@ stages:
     - checkout: self
       displayName: 'Checkout Source Code'
     
-    - template: templates/security-scan.yml
+    - template: .azure/pipelines/templates/security-scan.yml
       parameters:
         scanType: 'source-code'
         failOnHighSeverity: $(failOnHighVulnerabilities)
@@ -80,7 +80,7 @@ stages:
   - job: BrandService
     displayName: 'Brand Service'
     steps:
-    - template: templates/build-service.yml
+    - template: .azure/pipelines/templates/build-service.yml
       parameters:
         serviceName: 'brand-service'
         servicePort: '8001'
@@ -92,7 +92,7 @@ stages:
   - job: DataCollection
     displayName: 'Data Collection Service'
     steps:
-    - template: templates/build-service.yml
+    - template: .azure/pipelines/templates/build-service.yml
       parameters:
         serviceName: 'data-collection'
         servicePort: '8002'
@@ -104,7 +104,7 @@ stages:
   - job: AnalysisEngine
     displayName: 'Analysis Engine Service'
     steps:
-    - template: templates/build-service.yml
+    - template: .azure/pipelines/templates/build-service.yml
       parameters:
         serviceName: 'analysis-engine'
         servicePort: '8003'
@@ -125,7 +125,7 @@ stages:
     steps:
     - checkout: self
     
-    - template: templates/security-scan.yml
+    - template: .azure/pipelines/templates/security-scan.yml
       parameters:
         scanType: 'container-images'
         dockerNamespace: $(dockerNamespace)
