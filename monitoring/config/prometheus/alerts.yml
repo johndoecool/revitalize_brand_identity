@@ -1,0 +1,300 @@
+groups:
+  # =============================================================================
+  # BRAND INTELLIGENCE HUB - SERVICE AVAILABILITY ALERTS
+  # =============================================================================
+  - name: brand-intelligence-services
+    rules:
+      # Service Down Alerts
+      - alert: BrandServiceDown
+        expr: up{job="brand-service"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: brand-service
+          team: platform
+        annotations:
+          summary: "Brand Service is down"
+          description: "Brand Service has been down for more than 30 seconds"
+          remediation: "Check brand-service logs and restart if necessary: docker-compose restart brand-service"
+          runbook_url: "https://github.com/johndoecool/revitalize_brand_identity/blob/master/brand-service/README.md"
+
+      - alert: DataCollectionServiceDown
+        expr: up{job="data-collection"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: data-collection
+          team: platform
+        annotations:
+          summary: "Data Collection Service is down"
+          description: "Data Collection Service has been down for more than 30 seconds"
+          remediation: "Check data-collection logs and restart if necessary: docker-compose restart data-collection"
+          runbook_url: "https://github.com/johndoecool/revitalize_brand_identity/blob/master/data-collection/README.md"
+
+      - alert: AnalysisEngineDown
+        expr: up{job="analysis-engine"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: analysis-engine
+          team: platform
+        annotations:
+          summary: "Analysis Engine is down"
+          description: "Analysis Engine has been down for more than 30 seconds"
+          remediation: "Check analysis-engine logs and restart if necessary: docker-compose restart analysis-engine"
+          runbook_url: "https://github.com/johndoecool/revitalize_brand_identity/blob/master/analysis-engine/README.md"
+
+      # Service Health Degradation
+      - alert: ServiceHighErrorRate
+        expr: |
+          (
+            rate(http_requests_total{code=~"5.."}[5m]) /
+            rate(http_requests_total[5m])
+          ) * 100 > 5
+        for: 2m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High error rate detected for {{ $labels.service }}"
+          description: "Service {{ $labels.service }} has error rate above 5% (current: {{ $value }}%)"
+          remediation: "Check service logs for errors and investigate root cause"
+
+      - alert: ServiceSlowResponse
+        expr: |
+          histogram_quantile(0.95, 
+            rate(http_request_duration_seconds_bucket[5m])
+          ) > 5
+        for: 3m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Slow response time for {{ $labels.service }}"
+          description: "95th percentile response time is {{ $value }}s (threshold: 5s)"
+          remediation: "Check service performance and consider scaling or optimization"
+
+  # =============================================================================
+  # SYSTEM RESOURCE ALERTS
+  # =============================================================================
+  - name: system-resources
+    rules:
+      # CPU Usage
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is above 80% (current: {{ $value }}%)"
+          remediation: "Check running processes and consider scaling or optimization"
+
+      - alert: CriticalCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 95
+        for: 2m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is above 95% (current: {{ $value }}%)"
+          remediation: "Immediate action required: scale up or restart services"
+
+      # Memory Usage
+      - alert: HighMemoryUsage
+        expr: |
+          (
+            node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+          ) / node_memory_MemTotal_bytes * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "High memory usage on {{ $labels.instance }}"
+          description: "Memory usage is above 80% (current: {{ $value }}%)"
+          remediation: "Check memory-intensive processes and consider scaling"
+
+      - alert: CriticalMemoryUsage
+        expr: |
+          (
+            node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+          ) / node_memory_MemTotal_bytes * 100 > 95
+        for: 2m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical memory usage on {{ $labels.instance }}"
+          description: "Memory usage is above 95% (current: {{ $value }}%)"
+          remediation: "Immediate action required: free memory or restart services"
+
+      # Disk Usage
+      - alert: HighDiskUsage
+        expr: |
+          (
+            node_filesystem_size_bytes{fstype!="tmpfs"} - 
+            node_filesystem_free_bytes{fstype!="tmpfs"}
+          ) / node_filesystem_size_bytes{fstype!="tmpfs"} * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          team: infrastructure
+        annotations:
+          summary: "High disk usage on {{ $labels.instance }}"
+          description: "Disk usage is above 80% on {{ $labels.mountpoint }} (current: {{ $value }}%)"
+          remediation: "Clean up disk space or expand storage"
+
+      - alert: CriticalDiskUsage
+        expr: |
+          (
+            node_filesystem_size_bytes{fstype!="tmpfs"} - 
+            node_filesystem_free_bytes{fstype!="tmpfs"}
+          ) / node_filesystem_size_bytes{fstype!="tmpfs"} * 100 > 95
+        for: 2m
+        labels:
+          severity: critical
+          team: infrastructure
+        annotations:
+          summary: "Critical disk usage on {{ $labels.instance }}"
+          description: "Disk usage is above 95% on {{ $labels.mountpoint }} (current: {{ $value }}%)"
+          remediation: "Immediate action required: free disk space"
+
+  # =============================================================================
+  # CONTAINER MONITORING ALERTS
+  # =============================================================================
+  - name: container-monitoring
+    rules:
+      # Container Resource Usage
+      - alert: ContainerHighCPU
+        expr: |
+          rate(container_cpu_usage_seconds_total{name!=""}[5m]) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High CPU usage in container {{ $labels.name }}"
+          description: "Container {{ $labels.name }} CPU usage is above 80%"
+          remediation: "Check container resource limits and application performance"
+
+      - alert: ContainerHighMemory
+        expr: |
+          container_memory_usage_bytes{name!=""} / 
+          container_spec_memory_limit_bytes{name!=""} * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High memory usage in container {{ $labels.name }}"
+          description: "Container {{ $labels.name }} memory usage is above 80%"
+          remediation: "Check for memory leaks or increase container memory limits"
+
+      - alert: ContainerRestarted
+        expr: increase(container_last_seen[1m]) > 0
+        for: 0m
+        labels:
+          severity: info
+          team: platform
+        annotations:
+          summary: "Container {{ $labels.name }} restarted"
+          description: "Container {{ $labels.name }} has restarted"
+          remediation: "Check container logs for restart reason"
+
+  # =============================================================================
+  # LOG ANALYSIS ALERTS (DISABLED - LogQL NOT COMPATIBLE WITH PROMETHEUS)
+  # =============================================================================
+  # NOTE: These log-based alerts use LogQL syntax which is specific to Loki
+  # They would need to be implemented in Loki's ruler or converted to Prometheus metrics
+  #
+  # - name: log-analysis
+  #   rules:
+  #     # Error Rate from Logs
+  #     - alert: HighErrorRateInLogs
+  #       expr: |
+  #         rate({job="brand-intelligence-logs"} |= "ERROR" [5m]) > 0.1
+  #       for: 2m
+  #       labels:
+  #         severity: warning
+  #         team: platform
+  #       annotations:
+  #         summary: "High error rate detected in logs"
+  #         description: "Error rate in logs is above threshold"
+  #         remediation: "Check application logs for error patterns"
+
+  #     # Critical Errors
+  #     - alert: CriticalErrorsInLogs
+  #       expr: |
+  #         rate({job="brand-intelligence-logs"} |= "CRITICAL" [1m]) > 0
+  #       for: 0m
+  #       labels:
+  #         severity: critical
+  #         team: platform
+  #       annotations:
+  #         summary: "Critical errors detected in logs"
+  #         description: "Critical errors found in application logs"
+  #         remediation: "Immediate investigation required for critical errors"
+
+  # =============================================================================
+  # BUSINESS LOGIC ALERTS
+  # =============================================================================
+  - name: business-metrics
+    rules:
+      # Analysis Processing Time
+      - alert: SlowAnalysisProcessing
+        expr: |
+          histogram_quantile(0.95, 
+            rate(analysis_processing_duration_seconds_bucket[10m])
+          ) > 300
+        for: 5m
+        labels:
+          severity: warning
+          team: ai-ml
+        annotations:
+          summary: "Slow analysis processing detected"
+          description: "95th percentile analysis processing time is above 5 minutes"
+          remediation: "Check AI/ML pipeline performance and API response times"
+
+      # Data Collection Success Rate
+      - alert: DataCollectionFailure
+        expr: |
+          rate(data_collection_failures_total[5m]) /
+          rate(data_collection_attempts_total[5m]) * 100 > 10
+        for: 3m
+        labels:
+          severity: warning
+          team: data-engineering
+        annotations:
+          summary: "High data collection failure rate"
+          description: "Data collection failure rate is above 10%"
+          remediation: "Check external API connectivity and rate limits"
+
+  # =============================================================================
+  # MONITORING STACK HEALTH
+  # =============================================================================
+  - name: monitoring-stack
+    rules:
+      - alert: PrometheusTargetDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: warning
+          team: monitoring
+        annotations:
+          summary: "Prometheus target {{ $labels.instance }} is down"
+          description: "Target {{ $labels.instance }} has been down for more than 1 minute"
+          remediation: "Check target service health and network connectivity"
+
+      - alert: PrometheusConfigReloadFailed
+        expr: prometheus_config_last_reload_successful != 1
+        for: 0m
+        labels:
+          severity: critical
+          team: monitoring
+        annotations:
+          summary: "Prometheus configuration reload failed"
+          description: "Prometheus configuration reload has failed"
+          remediation: "Check Prometheus configuration syntax and restart if necessary"

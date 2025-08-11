@@ -1,0 +1,67 @@
+apiVersion: 1
+
+datasources:
+  # =============================================================================
+  # PROMETHEUS - Metrics & Alerting
+  # =============================================================================
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      timeInterval: "5s"
+      queryTimeout: "60s"
+      httpMethod: "POST"
+      prometheusType: "Prometheus"
+      prometheusVersion: "2.47.0"
+      cacheLevel: "High"
+      exemplarTraceIdDestinations:
+        - name: "Request ID"
+          datasourceUid: "loki-uid"
+          urlDisplayLabel: "View in Logs"
+
+  # =============================================================================
+  # LOKI - Logs
+  # =============================================================================
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    uid: "loki-uid"
+    editable: true
+    jsonData:
+      timeout: 60
+      maxLines: 1000
+      derivedFields:
+        - name: "Request ID"
+          matcherRegex: "REQUEST_ID: (\\w+)"
+          url: "http://localhost:3200/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%22,%7B%22expr%22:%22%7Bjob%3D%5C%22brand-intelligence-logs%5C%22%7D%20%7C%3D%20%5C%22${__value.raw}%5C%22%22%7D%5D"
+          datasourceUid: "loki-uid"
+
+  # =============================================================================
+  # PROMETHEUS - Node Exporter (System Metrics)
+  # =============================================================================
+  - name: Node Exporter
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    editable: true
+    jsonData:
+      timeInterval: "10s"
+      queryTimeout: "60s"
+      httpMethod: "POST"
+      exemplarTraceIdDestinations:
+        - name: "Instance Logs"
+          datasourceUid: "loki-uid"
+
+  # =============================================================================
+  # TESTDATA - For Demo Historical Data
+  # =============================================================================
+  - name: TestData
+    type: testdata
+    access: proxy
+    editable: true
+    jsonData: {}
+    orgId: 1

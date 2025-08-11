@@ -1,0 +1,170 @@
+version: "3.8"
+
+services:
+  # =============================================================================
+  # PROMETHEUS - Metrics Collection & Alerting
+  # =============================================================================
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: brand-intelligence-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--storage.tsdb.retention.time=30d"
+      - "--web.enable-lifecycle"
+      - "--alertmanager.notification-queue-capacity=10000"
+    networks:
+      - monitoring
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=false"
+
+  # =============================================================================
+  # ALERTMANAGER - Alert Management & Notification
+  # =============================================================================
+  alertmanager:
+    image: prom/alertmanager:v0.26.0
+    container_name: brand-intelligence-alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./config/alertmanager:/etc/alertmanager
+      - alertmanager_data:/alertmanager
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+      - "--storage.path=/alertmanager"
+      - "--web.external-url=http://localhost:9093"
+      - "--cluster.advertise-address=0.0.0.0:9093"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  # =============================================================================
+  # LOKI - Log Aggregation
+  # =============================================================================
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: brand-intelligence-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./config/loki:/etc/loki
+      - loki_data:/loki
+    command: -config.file=/etc/loki/loki.yml
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  # =============================================================================
+  # PROMTAIL - Log Collection & Shipping
+  # =============================================================================
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: brand-intelligence-promtail
+    volumes:
+      - ./config/promtail:/etc/promtail
+      - ../logs:/var/log/brand-intelligence:ro
+    command: -config.file=/etc/promtail/promtail.yml
+    networks:
+      - monitoring
+    restart: unless-stopped
+    depends_on:
+      - loki
+
+  # =============================================================================
+  # GRAFANA - Visualization & Dashboards
+  # =============================================================================
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: brand-intelligence-grafana
+    ports:
+      - "3200:3000"
+    volumes:
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/executive-dashboard.json
+      - GF_FEATURE_TOGGLES_ENABLE=ngalert
+      - GF_UNIFIED_ALERTING_ENABLED=true
+      - GF_ALERTING_ENABLED=false
+    networks:
+      - monitoring
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+      - loki
+
+  # =============================================================================
+  # NODE EXPORTER - System Metrics
+  # =============================================================================
+  node-exporter:
+    image: prom/node-exporter:v1.6.1
+    container_name: brand-intelligence-node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.rootfs=/rootfs"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  # =============================================================================
+  # CADVISOR - Container Metrics
+  # =============================================================================
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    container_name: brand-intelligence-cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+# =============================================================================
+# NETWORKS
+# =============================================================================
+networks:
+  monitoring:
+    driver: bridge
+    name: brand-intelligence-monitoring
+
+# =============================================================================
+# VOLUMES
+# =============================================================================
+volumes:
+  prometheus_data:
+    name: brand-intelligence-prometheus-data
+  alertmanager_data:
+    name: brand-intelligence-alertmanager-data
+  loki_data:
+    name: brand-intelligence-loki-data
+  grafana_data:
+    name: brand-intelligence-grafana-data

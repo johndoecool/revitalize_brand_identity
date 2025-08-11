@@ -6127,5 +6127,77 @@
     "total_results": 1,
     "cached_at": "2025-08-02T09:24:49.937217",
     "expires_at": null
+  },
+  {
+    "query": "HONDA",
+    "success": true,
+    "data": [
+      {
+        "id": "HNDAF",
+        "name": "Honda Motor Co., Ltd.",
+        "full_name": "Honda Motor Co., Ltd.",
+        "industry": "Auto - Manufacturers",
+        "logo_url": "https://img.logo.dev/ticker/HNDAF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda Motor Co., Ltd. develops, manufactures, and distributes motorcycles, automobiles, power products, and other products in Japan, North America, Europe, Asia, and internationally. It operates through four segments: Motorcycle Business, Automobile Business, Financial Services Business, and Life Creation and Other Businesses. The Motorcycle Business segment produces motorcycles, including sports, business, and commuter models; and various off-road vehicles, such as all-terrain vehicles and side-by-sides. The Automobile Business segment offers passenger cars, light trucks, and mini vehicles. The Financial Services Business segment provides various financial services, including retail lending and leasing services to customers, as well as wholesale financing services to dealers. The Life Creation and Other Businesses segment manufactures and sells power products, such as general purpose engines, generators, water pumps, lawn mowers, riding mowers, robotic mowers, brush cutters, tillers, snow blowers, outboard marine engines, walking assist devices, and portable battery inverter power sources. This segment also offers HondaJet aircraft. The company also sells spare parts; and provides after-sale services through retail dealers directly, as well as through independent distributors and licensees. Honda Motor Co., Ltd. was founded in 1946 and is headquartered in Tokyo, Japan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "HMC",
+        "name": "Honda Motor Co., Ltd.",
+        "full_name": "Honda Motor Co., Ltd.",
+        "industry": "Auto - Manufacturers",
+        "logo_url": "https://img.logo.dev/ticker/HMC?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda Motor Co., Ltd. develops, manufactures, and distributes motorcycles, automobiles, power products, and other products in Japan, North America, Europe, Asia, and internationally. It operates through four segments: Motorcycle Business, Automobile Business, Financial Services Business, and Life Creation and Other Businesses. The Motorcycle Business segment produces motorcycles, including sports, business, and commuter models; and various off-road vehicles, such as all-terrain vehicles and side-by-sides. The Automobile Business segment offers passenger cars, light trucks, and mini vehicles. The Financial Services Business segment provides various financial services, including retail lending and leasing services to customers, as well as wholesale financing services to dealers. The Life Creation and Other Businesses segment manufactures and sells power products, such as general purpose engines, generators, water pumps, lawn mowers, riding mowers, robotic mowers, brush cutters, tillers, snow blowers, outboard marine engines, walking assist devices, and portable battery inverter power sources. This segment also offers HondaJet aircraft. The company also sells spare parts; and provides after-sale services through retail dealers directly, as well as through independent distributors and licensees. Honda Motor Co., Ltd. was founded in 1946 and is headquartered in Tokyo, Japan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "7267.T",
+        "name": "Honda Motor Co., Ltd.",
+        "full_name": "Honda Motor Co., Ltd.",
+        "industry": "Auto - Manufacturers",
+        "logo_url": "https://img.logo.dev/ticker/7267.T?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda Motor Co., Ltd. develops, manufactures, and distributes motorcycles, automobiles, power products, and other products in Japan, North America, Europe, Asia, and internationally. It operates through four segments: Motorcycle Business, Automobile Business, Financial Services Business, and Life Creation and Other Businesses. The Motorcycle Business segment produces motorcycles, including sports, business, and commuter models; and various off-road vehicles, such as all-terrain vehicles and side-by-sides. The Automobile Business segment offers passenger cars, light trucks, and mini vehicles. The Financial Services Business segment provides various financial services, including retail lending and leasing services to customers, as well as wholesale financing services to dealers. The Life Creation and Other Businesses segment manufactures and sells power products, such as general purpose engines, generators, water pumps, lawn mowers, riding mowers, robotic mowers, brush cutters, tillers, snow blowers, outboard marine engines, walking assist devices, and portable battery inverter power sources. This segment also offers HondaJet aircraft. The company also sells spare parts; and provides after-sale services through retail dealers directly, as well as through independent distributors and licensees. Honda Motor Co., Ltd. was founded in 1946 and is headquartered in Tokyo, Japan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "6826.T",
+        "name": "Honda Tsushin Kogyo Co., Ltd.",
+        "full_name": "Honda Tsushin Kogyo Co., Ltd.",
+        "industry": "Hardware, Equipment & Parts",
+        "logo_url": "https://img.logo.dev/ticker/6826.T?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda Tsushin Kogyo Co., Ltd. manufactures and sells electronic components in Japan. It offers connectors for use in Internet information infrastructure, such as FA equipment, machine tools, and office equipment; and advanced driving assistant system and automatic driving system connectors used in-vehicle cameras and ECUs in the automotive industry. The company also constructs virtual servers; and develops hardware control programs and IoT, as well as maintains and operates various systems for information and communications technology sector. In addition, it engages in the system design and software development activities. Honda Tsushin Kogyo Co., Ltd. was incorporated in 1947 and is headquartered in Tokyo, Japan.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "HONDAPOWER.NS",
+        "name": "Honda India Power Products Limited",
+        "full_name": "Honda India Power Products Limited",
+        "industry": "Industrial - Machinery",
+        "logo_url": "https://img.logo.dev/ticker/HONDAPOWER.NS?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda India Power Products Limited manufactures and markets portable generators, water pumps, general purpose engines, lawn mowers, brush cutters, tillers, and backpack sprayers in India. It also exports its products to the United States, Europe, and internationally. The company was formerly known as Honda Siel Power Products Limited and changed its name to Honda India Power Products Limited in July 2020. The company was incorporated in 1985 and is headquartered in Gautam Buddha Nagar, India. Honda India Power Products Limited is a subsidiary of Honda Motor Co., Ltd.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "HONDAPOWER.BO",
+        "name": "Honda India Power Products Limited",
+        "full_name": "Honda India Power Products Limited",
+        "industry": "Industrial - Machinery",
+        "logo_url": "https://img.logo.dev/ticker/HONDAPOWER.BO?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Honda India Power Products Limited manufactures, markets, and sells portable generators, water pumps, general purpose engines, lawn mowers, brush cutters, tillers, and marine engines in India and internationally. It also engages in marketing of outboard motors. The company was formerly known as Honda Siel Power Products Limited and changed its name to Honda India Power Products Limited in July 2020. The company was incorporated in 1985 and is headquartered in Gautam Buddha Nagar, India. Honda India Power Products Limited is a subsidiary of Honda Motor Co., Ltd.",
+        "confidence_score": 0.9
+      },
+      {
+        "id": "3191.T",
+        "name": "Joyful Honda Co., Ltd.",
+        "full_name": "Joyful Honda Co., Ltd.",
+        "industry": "Home Improvement",
+        "logo_url": "https://img.logo.dev/ticker/3191.T?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "description": "Joyful Honda Co., Ltd. engages in the home improvement retail business in Japan. The company operates home centers, which provide timber, building materials, paints, tools, hardware, worker essentials, and electrical fittings; gardening and plumbing supplies, agricultural materials, and engine machinery; wallpapers, carpets and curtains, lighting fixtures, and electrical appliances, as well as daily living essentials, daily consumables, and fresh cut flowers; and storage goods, stationery and office supplies, outdoor goods, automotive accessories, bicycles, medicines, and alcoholic and non-alcoholic drinks. It also operates garden centers that offer flower seedlings, vegetable seedlings, plants, mulch and other soil for horticulture, fertilizers, plant pots and other gardening supplies, bricks, paving stones, and other landscaping supplies; pet centers, which provide dogs, cats, small animals, birds and fish, and pet supplies, as well as pet foods, cages, toys, and trimmer service facilities; and self-service gas stations. It operates 15 stores in Ibaraki, Chiba, Saitama, Tochigi, Gunma, and Tokyo. In addition, the company, through its subsidiaries, is involved in home renovation, art and craft supplies retail, sports club, vehicle inspection and maintenance, and tire sales and fitting businesses. It also operates an online shop. Joyful Honda Co., Ltd. was founded in 1975 and is headquartered in Tsuchiura, Japan.",
+        "confidence_score": 0.9
+      }
+    ],
+    "total_results": 7,
+    "cached_at": "2025-08-10T21:04:16.951033",
+    "expires_at": null
   }
 ]

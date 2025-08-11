@@ -2350,5 +2350,103 @@
         "symbol": "HPC"
       }
     ]
+  },
+  {
+    "brand_id": "HMC",
+    "area_id": "product_quality",
+    "cached_at": "2025-08-10T21:05:31.445592",
+    "success": true,
+    "data": [
+      {
+        "id": "TM",
+        "name": "Toyota Motor",
+        "logo_url": "https://img.logo.dev/ticker/TM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.95,
+        "competition_level": "direct",
+        "symbol": "TM"
+      },
+      {
+        "id": "F",
+        "name": "Ford Motor",
+        "logo_url": "https://img.logo.dev/ticker/F?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.93,
+        "competition_level": "direct",
+        "symbol": "F"
+      },
+      {
+        "id": "GM",
+        "name": "General Motors",
+        "logo_url": "https://img.logo.dev/ticker/GM?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.92,
+        "competition_level": "direct",
+        "symbol": "GM"
+      },
+      {
+        "id": "NSANY",
+        "name": "Nissan Motor",
+        "logo_url": "https://img.logo.dev/ticker/NSANY?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.91,
+        "competition_level": "direct",
+        "symbol": "NSANY"
+      },
+      {
+        "id": "HYMTF",
+        "name": "Hyundai Motor",
+        "logo_url": "https://img.logo.dev/ticker/HYMTF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.9,
+        "competition_level": "direct",
+        "symbol": "HYMTF"
+      },
+      {
+        "id": "KIMTF",
+        "name": "Kia Motors",
+        "logo_url": "https://img.logo.dev/ticker/KIMTF?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.89,
+        "competition_level": "indirect",
+        "symbol": "KIMTF"
+      },
+      {
+        "id": "MGA",
+        "name": "Magna International",
+        "logo_url": "https://img.logo.dev/ticker/MGA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.88,
+        "competition_level": "indirect",
+        "symbol": "MGA"
+      },
+      {
+        "id": "BWA",
+        "name": "BorgWarner",
+        "logo_url": "https://img.logo.dev/ticker/BWA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.87,
+        "competition_level": "indirect",
+        "symbol": "BWA"
+      },
+      {
+        "id": "LEA",
+        "name": "Lear Corporation",
+        "logo_url": "https://img.logo.dev/ticker/LEA?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.86,
+        "competition_level": "indirect",
+        "symbol": "LEA"
+      },
+      {
+        "id": "APTV",
+        "name": "Aptiv PLC",
+        "logo_url": "https://img.logo.dev/ticker/APTV?token=pk_TVi0kXveSqGUNVDsvdijOA",
+        "industry": "Automotive",
+        "relevance_score": 0.85,
+        "competition_level": "indirect",
+        "symbol": "APTV"
+      }
+    ]
   }
 ]

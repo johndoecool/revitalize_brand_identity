@@ -1,0 +1,259 @@
+global:
+  # SMTP configuration for email alerts
+  smtp_smarthost: "smtp.gmail.com:587"
+  smtp_from: "brand-intelligence-alerts@hackathon.demo"
+  smtp_auth_username: "your-email@gmail.com" # CONFIGURE: Replace with your Gmail
+  smtp_auth_password: "your-app-password" # CONFIGURE: Replace with Gmail App Password
+  smtp_require_tls: true
+
+# Templates for alert formatting
+templates:
+  - "/etc/alertmanager/*.tmpl"
+
+# Alert routing and grouping rules
+route:
+  # Root route - all alerts start here
+  group_by: ["alertname", "cluster", "service"]
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+  receiver: "default-receiver"
+
+  # Specific routing rules
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: "critical-alerts"
+      group_wait: 0s
+      group_interval: 5m
+      repeat_interval: 4h
+
+    # Warning alerts - grouped notifications
+    - match:
+        severity: warning
+      receiver: "warning-alerts"
+      group_wait: 30s
+      group_interval: 10m
+      repeat_interval: 8h
+
+    # Info alerts - daily digest
+    - match:
+        severity: info
+      receiver: "info-alerts"
+      group_wait: 5m
+      group_interval: 1h
+      repeat_interval: 24h
+
+    # Service-specific routing
+    - match:
+        service: brand-service
+      receiver: "brand-service-team"
+      continue: true
+
+    - match:
+        service: data-collection
+      receiver: "data-collection-team"
+      continue: true
+
+    - match:
+        service: analysis-engine
+      receiver: "analysis-engine-team"
+      continue: true
+
+# Alert receivers (notification channels)
+receivers:
+  # =============================================================================
+  # DEFAULT RECEIVER
+  # =============================================================================
+  - name: "default-receiver"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "[Brand Intelligence Hub] {{ .Status | toUpper }}: {{ .GroupLabels.alertname }}"
+        body: |
+          {{ range .Alerts }}
+          **Alert:** {{ .Annotations.summary }}
+          **Description:** {{ .Annotations.description }}
+          **Severity:** {{ .Labels.severity }}
+          **Service:** {{ .Labels.service }}
+          **Started:** {{ .StartsAt.Format "2006-01-02 15:04:05" }}
+          {{ if .Annotations.remediation }}
+          **Remediation:** {{ .Annotations.remediation }}
+          {{ end }}
+          {{ if .Annotations.runbook_url }}
+          **Runbook:** {{ .Annotations.runbook_url }}
+          {{ end }}
+          {{ end }}
+        html: |
+          <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 20px; }
+              .header { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+              .alert { border-left: 4px solid #dc3545; padding: 15px; margin: 10px 0; background-color: #f8d7da; border-radius: 5px; }
+              .alert.warning { border-left-color: #ffc107; background-color: #fff3cd; }
+              .alert.info { border-left-color: #17a2b8; background-color: #d1ecf1; }
+              .metric { margin: 5px 0; }
+              .remediation { background-color: #d4edda; padding: 10px; border-radius: 5px; margin-top: 10px; }
+              .footer { margin-top: 30px; font-size: 12px; color: #6c757d; }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h2>🚨 Brand Intelligence Hub Alert</h2>
+              <p><strong>Status:</strong> {{ .Status | toUpper }}</p>
+              <p><strong>Timestamp:</strong> {{ .Alerts | len }} alert(s) at {{ now.Format "2006-01-02 15:04:05" }}</p>
+            </div>
+            
+            {{ range .Alerts }}
+            <div class="alert {{ .Labels.severity }}">
+              <h3>{{ .Annotations.summary }}</h3>
+              <div class="metric"><strong>Description:</strong> {{ .Annotations.description }}</div>
+              <div class="metric"><strong>Severity:</strong> {{ .Labels.severity | toUpper }}</div>
+              <div class="metric"><strong>Service:</strong> {{ .Labels.service }}</div>
+              <div class="metric"><strong>Started:</strong> {{ .StartsAt.Format "2006-01-02 15:04:05" }}</div>
+              {{ if .Annotations.remediation }}
+              <div class="remediation">
+                <strong>🔧 Recommended Action:</strong><br>
+                {{ .Annotations.remediation }}
+              </div>
+              {{ end }}
+              {{ if .Annotations.runbook_url }}
+              <div class="metric"><strong>📚 Runbook:</strong> <a href="{{ .Annotations.runbook_url }}">{{ .Annotations.runbook_url }}</a></div>
+              {{ end }}
+            </div>
+            {{ end }}
+            
+            <div class="footer">
+              <p>This alert was generated by Brand Intelligence Hub Monitoring Stack</p>
+              <p>Grafana Dashboard: <a href="http://localhost:3200">http://localhost:3200</a></p>
+              <p>Prometheus: <a href="http://localhost:9090">http://localhost:9090</a></p>
+            </div>
+          </body>
+          </html>
+
+  # =============================================================================
+  # SEVERITY-BASED RECEIVERS
+  # =============================================================================
+  - name: "critical-alerts"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "🔥 CRITICAL ALERT - Brand Intelligence Hub"
+        body: |
+          CRITICAL ALERT DETECTED!
+
+          {{ range .Alerts }}
+          🚨 {{ .Annotations.summary }}
+
+          Service: {{ .Labels.service }}
+          Description: {{ .Annotations.description }}
+          Started: {{ .StartsAt.Format "2006-01-02 15:04:05" }}
+
+          IMMEDIATE ACTION REQUIRED:
+          {{ .Annotations.remediation }}
+          {{ end }}
+
+          Grafana: http://localhost:3200
+          Prometheus: http://localhost:9090
+
+  - name: "warning-alerts"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "⚠️ Warning - Brand Intelligence Hub"
+        body: |
+          Warning alerts detected:
+
+          {{ range .Alerts }}
+          ⚠️ {{ .Annotations.summary }}
+          Service: {{ .Labels.service }}
+          Description: {{ .Annotations.description }}
+          Remediation: {{ .Annotations.remediation }}
+          {{ end }}
+
+  - name: "info-alerts"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "ℹ️ Info - Brand Intelligence Hub Daily Digest"
+        body: |
+          Daily information digest:
+
+          {{ range .Alerts }}
+          ℹ️ {{ .Annotations.summary }}
+          {{ end }}
+
+  # =============================================================================
+  # SERVICE-SPECIFIC RECEIVERS
+  # =============================================================================
+  - name: "brand-service-team"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "[Brand Service] {{ .Status | toUpper }} Alert"
+        body: |
+          Brand Service Alert:
+
+          {{ range .Alerts }}
+          {{ .Annotations.summary }}
+          {{ .Annotations.description }}
+          {{ .Annotations.remediation }}
+          {{ end }}
+
+  - name: "data-collection-team"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "[Data Collection] {{ .Status | toUpper }} Alert"
+        body: |
+          Data Collection Service Alert:
+
+          {{ range .Alerts }}
+          {{ .Annotations.summary }}
+          {{ .Annotations.description }}
+          {{ .Annotations.remediation }}
+          {{ end }}
+
+  - name: "analysis-engine-team"
+    email_configs:
+      - to: "avishek.das4@cognizant.com"
+        subject: "[Analysis Engine] {{ .Status | toUpper }} Alert"
+        body: |
+          Analysis Engine Alert:
+
+          {{ range .Alerts }}
+          {{ .Annotations.summary }}
+          {{ .Annotations.description }}
+          {{ .Annotations.remediation }}
+          {{ end }}
+
+# Inhibition rules - suppress redundant alerts
+inhibit_rules:
+  # Suppress warning if critical alert is firing
+  - source_match:
+      severity: "critical"
+    target_match:
+      severity: "warning"
+    equal: ["alertname", "service", "instance"]
+
+  # Suppress info if warning is firing
+  - source_match:
+      severity: "warning"
+    target_match:
+      severity: "info"
+    equal: ["alertname", "service", "instance"]
+
+  # Suppress service-specific alerts if general service down alert is firing
+  - source_match:
+      alertname: "BrandServiceDown"
+    target_match_re:
+      alertname: ".*"
+    equal: ["service"]
+
+  - source_match:
+      alertname: "DataCollectionServiceDown"
+    target_match_re:
+      alertname: ".*"
+    equal: ["service"]
+
+  - source_match:
+      alertname: "AnalysisEngineDown"
+    target_match_re:
+      alertname: ".*"
+    equal: ["service"]

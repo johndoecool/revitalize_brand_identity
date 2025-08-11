@@ -1753,5 +1753,122 @@
         ]
       }
     ]
+  },
+  {
+    "brand_id": "HMC",
+    "cached_at": "2025-08-10T21:05:06.764364",
+    "success": true,
+    "data": [
+      {
+        "id": "market_position",
+        "name": "Market Position",
+        "description": "Company's market share and competitive standing",
+        "relevance_score": 0.95,
+        "metrics": [
+          "market_share",
+          "competitor_analysis",
+          "growth_rate"
+        ]
+      },
+      {
+        "id": "financial_performance",
+        "name": "Financial Performance",
+        "description": "Company's revenue, profitability, and financial health",
+        "relevance_score": 0.92,
+        "metrics": [
+          "revenue_growth",
+          "net_income",
+          "return_on_equity"
+        ]
+      },
+      {
+        "id": "product_quality",
+        "name": "Product Quality",
+        "description": "Quality and reliability of company's products or services",
+        "relevance_score": 0.89,
+        "metrics": [
+          "customer_satisfaction",
+          "product_reliability",
+          "innovation"
+        ]
+      },
+      {
+        "id": "employee_experience",
+        "name": "Employee Experience",
+        "description": "Company culture, employee engagement, and benefits",
+        "relevance_score": 0.85,
+        "metrics": [
+          "employee_satisfaction",
+          "compensation",
+          "work_life_balance"
+        ]
+      },
+      {
+        "id": "public_sentiment",
+        "name": "Public Sentiment",
+        "description": "Company's reputation and public perception",
+        "relevance_score": 0.82,
+        "metrics": [
+          "social_media_sentiment",
+          "customer_reviews",
+          "media_coverage"
+        ]
+      },
+      {
+        "id": "innovation",
+        "name": "Innovation",
+        "description": "Company's ability to innovate and adapt to changing markets",
+        "relevance_score": 0.79,
+        "metrics": [
+          "research_and_development",
+          "patent_filings",
+          "new_product_launches"
+        ]
+      },
+      {
+        "id": "customer_service",
+        "name": "Customer Service",
+        "description": "Quality and responsiveness of company's customer service",
+        "relevance_score": 0.76,
+        "metrics": [
+          "customer_support",
+          "response_time",
+          "resolution_rate"
+        ]
+      },
+      {
+        "id": "supply_chain_management",
+        "name": "Supply Chain Management",
+        "description": "Company's ability to manage its supply chain and logistics",
+        "relevance_score": 0.73,
+        "metrics": [
+          "supply_chain_resilience",
+          "inventory_management",
+          "shipping_reliability"
+        ]
+      },
+      {
+        "id": "environmental_sustainability",
+        "name": "Environmental Sustainability",
+        "description": "Company's commitment to environmental sustainability and social responsibility",
+        "relevance_score": 0.69,
+        "metrics": [
+          "carbon_footprint",
+          "renewable_energy",
+          "sustainable_practices"
+        ]
+      },
+      {
+        "id": "regulatory_compliance",
+        "name": "Regulatory Compliance",
+        "description": "Company's adherence to laws, regulations, and industry standards",
+        "relevance_score": 0.65,
+        "metrics": [
+          "regulatory_fines",
+          "compliance_audit",
+          "industry_certifications"
+        ]
+      }
+    ]
   }
 ]

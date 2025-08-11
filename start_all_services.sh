@@ -227,6 +227,59 @@ stop_all_services() {
     print_success "All services stopped"
 }
 
+# Function to start monitoring stack
+start_monitoring() {
+    print_status "Starting monitoring stack (Grafana + Prometheus + Loki + AlertManager)..."
+    
+    local monitoring_dir="$SCRIPT_DIR/monitoring"
+    
+    if [ ! -f "$monitoring_dir/docker-compose.yml" ]; then
+        print_error "Monitoring stack configuration not found at $monitoring_dir/docker-compose.yml"
+        return 1
+    fi
+    
+    cd "$monitoring_dir"
+    
+    # Start monitoring stack
+    print_status "Starting monitoring containers..."
+    docker-compose up -d
+    
+    if [ $? -eq 0 ]; then
+        print_success "Monitoring stack started successfully!"
+        echo
+        print_info "Monitoring Services:"
+        echo "  • Grafana Dashboard:    http://localhost:3200 (admin/admin123)"
+        echo "  • Prometheus Metrics:   http://localhost:9090"
+        echo "  • Loki Logs:           http://localhost:3100"
+        echo "  • AlertManager:        http://localhost:9093"
+        echo
+        print_info "Pre-configured Dashboards:"
+        echo "  • Executive Dashboard: High-level KPIs and business metrics"
+        echo "  • Technical Dashboard: Detailed system and service metrics"
+        echo "  • Alert Dashboard:     Real-time alerts and incident management"
+        echo
+        return 0
+    else
+        print_error "Failed to start monitoring stack"
+        return 1
+    fi
+}
+
+# Function to stop monitoring stack
+stop_monitoring() {
+    print_status "Stopping monitoring stack..."
+    
+    local monitoring_dir="$SCRIPT_DIR/monitoring"
+    
+    if [ -f "$monitoring_dir/docker-compose.yml" ]; then
+        cd "$monitoring_dir"
+        docker-compose down
+        print_success "Monitoring stack stopped"
+    else
+        print_warning "Monitoring configuration not found - skipping"
+    fi
+}
+
 # Main execution
 main() {
     echo
@@ -234,25 +287,68 @@ main() {
     echo -e "${PURPLE}=================================================${NC}"
     echo
     
+    local with_monitoring=false
+    
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --with-monitoring)
+                with_monitoring=true
+                shift
+                ;;
+            start|stop|restart|status)
+                action=$1
+                shift
+                ;;
+            *)
+                action=$1
+                shift
+                ;;
+        esac
+    done
+    
     # Handle command line arguments
-    case "${1:-start}" in
+    case "${action:-start}" in
         "stop")
             stop_all_services
+            if [ "$with_monitoring" = true ]; then
+                stop_monitoring
+            fi
             exit 0
             ;;
         "status")
             show_service_status
+            if [ "$with_monitoring" = true ]; then
+                echo
+                print_info "Monitoring Stack Status:"
+                cd "$SCRIPT_DIR/monitoring" 2>/dev/null && docker-compose ps || print_warning "Monitoring stack not running"
+            fi
             exit 0
             ;;
         "restart")
             stop_all_services
+            if [ "$with_monitoring" = true ]; then
+                stop_monitoring
+            fi
             sleep 3
             ;;
         "start"|"")
             # Continue with startup
             ;;
         *)
-            echo "Usage: $0 [start|stop|restart|status]"
+            echo "Usage: $0 [start|stop|restart|status] [--with-monitoring]"
+            echo ""
+            echo "Options:"
+            echo "  start              Start all Brand Intelligence Hub services"
+            echo "  stop               Stop all services"
+            echo "  restart            Restart all services"
+            echo "  status             Show service status"
+            echo "  --with-monitoring  Include monitoring stack (Grafana + Prometheus + Loki)"
+            echo ""
+            echo "Examples:"
+            echo "  $0 start                    # Start services only"
+            echo "  $0 start --with-monitoring  # Start services + monitoring"
+            echo "  $0 stop --with-monitoring   # Stop everything including monitoring"
             exit 1
             ;;
     esac
@@ -296,10 +392,23 @@ main() {
     # Show final status
     show_service_status
     
+    # Start monitoring if requested
+    if [ "$with_monitoring" = true ]; then
+        echo
+        start_monitoring
+    fi
+    
     print_success "🎉 All services started successfully!"
     echo
-    print_info "To stop all services, run: $0 stop"
-    print_info "To check status, run: $0 status"
+    if [ "$with_monitoring" = true ]; then
+        print_info "Access your complete monitoring stack:"
+        echo "  • Grafana Dashboards: http://localhost:3200"
+        echo "  • Prometheus Metrics:  http://localhost:9090"
+        echo "  • Log Analysis:        http://localhost:3100"
+        echo
+    fi
+    print_info "To stop all services, run: $0 stop$([ "$with_monitoring" = true ] && echo " --with-monitoring")"
+    print_info "To check status, run: $0 status$([ "$with_monitoring" = true ] && echo " --with-monitoring")"
     print_info "To view logs: tail -f $LOG_DIR/<service-name>.log"
     echo
 }

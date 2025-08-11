@@ -1,0 +1,177 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: "brand-intelligence-hub"
+    environment: "hackathon-demo"
+
+# Load alert rules from this file
+rule_files:
+  - "alerts.yml"
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Scrape configurations
+scrape_configs:
+  # =============================================================================
+  # PROMETHEUS SELF-MONITORING
+  # =============================================================================
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  # =============================================================================
+  # BRAND INTELLIGENCE HUB SERVICES
+  # =============================================================================
+  - job_name: "brand-service"
+    static_configs:
+      - targets: ["host.docker.internal:8001"]
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: /health
+    scheme: http
+    params:
+      format: ["prometheus"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: "brand-service"
+      - source_labels: [__address__]
+        target_label: service
+        replacement: "brand-service"
+
+  - job_name: "data-collection"
+    static_configs:
+      - targets: ["host.docker.internal:8002"]
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: /health
+    scheme: http
+    params:
+      format: ["prometheus"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: "data-collection"
+      - source_labels: [__address__]
+        target_label: service
+        replacement: "data-collection"
+
+  - job_name: "analysis-engine"
+    static_configs:
+      - targets: ["host.docker.internal:8003"]
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: /health
+    scheme: http
+    params:
+      format: ["prometheus"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: "analysis-engine"
+      - source_labels: [__address__]
+        target_label: service
+        replacement: "analysis-engine"
+
+  # =============================================================================
+  # SERVICE AVAILABILITY MONITORING (HTTP PROBES)
+  # =============================================================================
+  - job_name: "brand-service-probe"
+    static_configs:
+      - targets: ["host.docker.internal:8001"]
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "blackbox-exporter:9115"
+      - source_labels: [__param_target]
+        target_label: service
+        replacement: "brand-service"
+
+  - job_name: "data-collection-probe"
+    static_configs:
+      - targets: ["host.docker.internal:8002"]
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "blackbox-exporter:9115"
+      - source_labels: [__param_target]
+        target_label: service
+        replacement: "data-collection"
+
+  - job_name: "analysis-engine-probe"
+    static_configs:
+      - targets: ["host.docker.internal:8003"]
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "blackbox-exporter:9115"
+      - source_labels: [__param_target]
+        target_label: service
+        replacement: "analysis-engine"
+
+  # =============================================================================
+  # SYSTEM MONITORING
+  # =============================================================================
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+    scrape_interval: 10s
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: "brand-intelligence-host"
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["cadvisor:8080"]
+    scrape_interval: 10s
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: "docker-containers"
+
+  # =============================================================================
+  # MONITORING STACK SELF-MONITORING
+  # =============================================================================
+  - job_name: "alertmanager"
+    static_configs:
+      - targets: ["alertmanager:9093"]
+    scrape_interval: 30s
+
+  - job_name: "grafana"
+    static_configs:
+      - targets: ["grafana:3000"]
+    scrape_interval: 30s
+    metrics_path: /metrics

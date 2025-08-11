@@ -475,5 +475,32 @@
     "analysisEngineId": "analysis_b092db10-c50d-4634-b1e7-6d8fea0a108a_195302",
     "analysisEngineStatus": "COMPLETED",
     "lastUpdated": "2025-08-02T23:53:23.539120+00:00"
+  },
+  {
+    "requestId": "c378b9f8-29ff-4731-8640-f4e9f2627e81",
+    "brandId": "Apple Inc",
+    "dataCollectionId": "collect_536107bd",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_c378b9f8-29ff-4731-8640-f4e9f2627e81_205950",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-11T01:00:14.649110+00:00"
+  },
+  {
+    "requestId": "b6581a6c-fa58-415b-b514-a0b67c2fa8fa",
+    "brandId": "Cognizant Technology Solutions Corporation",
+    "dataCollectionId": "collect_4a874346",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_b6581a6c-fa58-415b-b514-a0b67c2fa8fa_210145",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-11T01:02:11.592610+00:00"
+  },
+  {
+    "requestId": "2ee6e6bd-6eac-4436-8800-5bfb6797eea0",
+    "brandId": "Honda Motor Co., Ltd.",
+    "dataCollectionId": "collect_6fa1519a",
+    "dataCollectionStatus": "COMPLETED",
+    "analysisEngineId": "analysis_2ee6e6bd-6eac-4436-8800-5bfb6797eea0_210600",
+    "analysisEngineStatus": "COMPLETED",
+    "lastUpdated": "2025-08-11T01:06:19.856730+00:00"
   }
 ]

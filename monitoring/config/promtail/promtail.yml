@@ -1,0 +1,223 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # =============================================================================
+  # BRAND INTELLIGENCE HUB SERVICE LOGS
+  # =============================================================================
+  - job_name: brand-service-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: brand-service-logs
+          service: brand-service
+          environment: hackathon-demo
+          __path__: /var/log/brand-intelligence/brand-service.log
+
+    pipeline_stages:
+      # Parse timestamp and log level
+      - regex:
+          expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) \[(?P<level>\w+)\] (?P<logger>[\w.]+): (?P<message>.*)'
+
+      # Convert timestamp
+      - timestamp:
+          source: timestamp
+          format: "2006-01-02 15:04:05"
+
+      # Extract log level
+      - labels:
+          level: level
+          logger: logger
+
+      # Filter out health check noise (optional)
+      - match:
+          selector: '{job="brand-service-logs"} |~ "health"'
+          action: drop
+
+  - job_name: data-collection-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: data-collection-logs
+          service: data-collection
+          environment: hackathon-demo
+          __path__: /var/log/brand-intelligence/data-collection.log
+
+    pipeline_stages:
+      # Parse different log formats from data-collection service
+      - regex:
+          expression: "^(?P<level>INFO|DEBUG|WARNING|ERROR|CRITICAL):.*?(?P<message>.*)"
+
+      # Fallback regex for other formats
+      - regex:
+          expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}).*?(?P<level>INFO|DEBUG|WARNING|ERROR|CRITICAL).*?(?P<message>.*)'
+
+      # Extract log level
+      - labels:
+          level: level
+
+      # Parse structured log entries (JSON-like)
+      - json:
+          expressions:
+            request_id: request_id
+            status_code: status_code
+            endpoint: endpoint
+
+      # Add parsed fields as labels
+      - labels:
+          request_id: request_id
+          status_code: status_code
+          endpoint: endpoint
+
+  - job_name: analysis-engine-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: analysis-engine-logs
+          service: analysis-engine
+          environment: hackathon-demo
+          __path__: /var/log/brand-intelligence/analysis-engine.log
+
+    pipeline_stages:
+      # Parse uvicorn and custom log formats
+      - regex:
+          expression: '^(?P<level>INFO|DEBUG|WARNING|ERROR|CRITICAL):(?P<logger>[\w.]*):?(?P<message>.*)'
+
+      # Alternative regex for timestamped logs
+      - regex:
+          expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}).*?(?P<level>INFO|DEBUG|WARNING|ERROR|CRITICAL):(?P<logger>[\w.]*):?(?P<message>.*)'
+
+      # Extract request ID from analysis engine logs
+      - regex:
+          expression: 'REQUEST_ID: (?P<request_id>\w+)'
+
+      # Extract HTTP method and status from access logs
+      - regex:
+          expression: '"(?P<method>GET|POST|PUT|DELETE|PATCH) (?P<endpoint>[^"]*)" (?P<status_code>\d+)'
+
+      # Add labels
+      - labels:
+          level: level
+          logger: logger
+          request_id: request_id
+          method: method
+          endpoint: endpoint
+          status_code: status_code
+
+  # =============================================================================
+  # AGGREGATED LOGS (ALL SERVICES)
+  # =============================================================================
+  - job_name: brand-intelligence-all-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: brand-intelligence-logs
+          environment: hackathon-demo
+          __path__: /var/log/brand-intelligence/*.log
+
+    pipeline_stages:
+      # Determine service from filename
+      - regex:
+          source: filename
+          expression: '/var/log/brand-intelligence/(?P<service_name>[\w-]+)\.log'
+
+      # Add service label
+      - labels:
+          service: service_name
+
+      # Parse log level from any format
+      - regex:
+          expression: "(?P<level>INFO|DEBUG|WARNING|ERROR|CRITICAL|TRACE)"
+
+      # Add level label
+      - labels:
+          level: level
+
+      # Drop noisy health check logs
+      - match:
+          selector: '{job="brand-intelligence-logs"} |~ "GET /health"'
+          action: drop
+
+      # Drop reloader process logs
+      - match:
+          selector: '{job="brand-intelligence-logs"} |~ "reloader process"'
+          action: drop
+
+  # =============================================================================
+  # ERROR LOGS (HIGH PRIORITY)
+  # =============================================================================
+  - job_name: error-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: error-logs
+          environment: hackathon-demo
+          priority: high
+          __path__: /var/log/brand-intelligence/*.log
+
+    pipeline_stages:
+      # Only capture ERROR and CRITICAL logs
+      - match:
+          selector: '{job="error-logs"}'
+          stages:
+            - regex:
+                expression: "(?P<level>ERROR|CRITICAL)"
+            - labels:
+                level: level
+
+      # Drop if not error/critical
+      - match:
+          selector: '{job="error-logs"} !~ "ERROR|CRITICAL"'
+          action: drop
+
+      # Determine service from filename
+      - regex:
+          source: filename
+          expression: '/var/log/brand-intelligence/(?P<service_name>[\w-]+)\.log'
+
+      # Add service label
+      - labels:
+          service: service_name
+
+  # =============================================================================
+  # PERFORMANCE LOGS (API RESPONSE TIMES)
+  # =============================================================================
+  - job_name: performance-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: performance-logs
+          environment: hackathon-demo
+          __path__: /var/log/brand-intelligence/*.log
+
+    pipeline_stages:
+      # Capture HTTP access logs with response times
+      - regex:
+          expression: '(?P<method>GET|POST|PUT|DELETE|PATCH) (?P<endpoint>[^"]*)" (?P<status_code>\d+)'
+
+      # Only keep if we found HTTP method
+      - match:
+          selector: '{job="performance-logs"}'
+          stages:
+            - labels:
+                method: method
+                endpoint: endpoint
+                status_code: status_code
+
+      # Drop if no HTTP method found
+      - match:
+          selector: '{job="performance-logs", method=""}'
+          action: drop
