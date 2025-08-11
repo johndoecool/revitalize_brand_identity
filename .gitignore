@@ -187,6 +187,9 @@ Thumbs.db
 config.json
 secrets.json
 
+# Setup scripts with secrets/tokens
+manual-agent-setup.sh
+
 # Database files
 *.db
 *.sqlite
